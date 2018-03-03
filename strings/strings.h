@@ -3,6 +3,6 @@
 
 int string_length(char s[]);
 
-char *reverse_string(char s[]);
+char *reverse_string(char rv[], char s[]);
 
 #endif
