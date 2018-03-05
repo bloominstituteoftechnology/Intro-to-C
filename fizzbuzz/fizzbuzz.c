@@ -26,9 +26,10 @@ int fizzbuzz(int n)
         else
         {
             printf("%d\n", i);
+             counter++;
         }
     }
-    return 0;
+    return counter;
 }
 
 #ifndef TESTING
