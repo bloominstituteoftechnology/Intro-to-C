@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 /*
     Your fizzbuzz implementation should initialize a counter, then
     iterate n times. If the ith iteration is divisible by 3, print
@@ -9,7 +8,27 @@
 */
 int fizzbuzz(int n)
 {
+    int counter = 0;
+    for (int i = 1; i < n + 1; ++i) {
 
+        if ((i % 3 == 0) && (i % 5 == 0)) {
+            printf("FizzBuzz\n");
+        }
+         else if (i % 3 == 0) 
+        {
+            printf("Fizz\n");
+        } 
+        else if (i % 5 == 0) 
+        {
+            printf("%d Buzz\n", i);
+        } 
+        else 
+        {
+            counter++;
+            printf("%d\n", counter);
+        }
+    }
+    return 0;
 }
 
 #ifndef TESTING
