@@ -8,15 +8,15 @@ int fizzbuzz(int n)
   {
     if ((i % 3 == 0) && (i % 5 == 0))
     {
-      printf("%d: fizzbuzz\n", i);
+      printf("%d: FizzBuzz\n", i);
     }
     else if (i % 3 == 0)
     {
-      printf("%d: fizz\n", i);
+      printf("%d: Fizz\n", i);
     }
     else if (i % 5 == 0)
     {
-      printf("%d: buzz\n", i);
+      printf("%d: Buzz\n", i);
     }
     else
     {
