@@ -10,8 +10,8 @@ But before any of that happens, you've gotta get your feet wet with C. So withou
 
 This lab is structured very much like how your introductory JavaScript labs are structured. There are independent modules, each with their own set of exercises that you'll be tasked with implementing. There's an associated set of tests for all the exercises in each module, which you'll run against your code to check to see if it behaves and functions correctly. The order in which you should tackle these exercises is this:
 
-  - [ ] fizzbuzz
-  - [ ] strings
+  - [x] fizzbuzz
+  - [x] strings
   - [ ] pointers
   - [ ] quicksort
   - [ ] malloc

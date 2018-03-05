@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
     Given a character array s, return the number of characters 
@@ -7,7 +8,8 @@
 */
 int string_length(char s[])
 {
-
+    int length = strlen(s);
+    return length;
 }
 
 /*
@@ -18,10 +20,24 @@ int string_length(char s[])
     string. Don't forget to terminate the reversed string with a null
     character. Return the rv array.
 */
+
+// char listString(char string[])
+// {
+//     int length = string_length(string);
+//     printf("the size of listString string is: %d\n", length);
+// };
+
 char *reverse_string(char rv[], char s[])
 {
+    int length = string_length(s) - 1;
+    for (int i = length; i >= 0; i--)
+    {
+        rv[length - i] = s[i];
+        // printf("rv[i] inside reverseString is: %s\n", rv);
+    };
 
-}
+    return rv;
+};
 
 #ifndef TESTING
 int main(void)
@@ -37,4 +53,3 @@ int main(void)
     return 0;
 }
 #endif
-    
