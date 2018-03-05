@@ -1,6 +1,12 @@
 #include <stdio.h>
 #ifndef fizzbuzz_h
 #define fizzbuzz_h
+
+/*
+* fizzbuzz
+* @param { int: n } Number of times to loop the fizzbuzz condition check.
+* @return { int: counter } Number of times that it was unsuccessful matching.
+*/
 int fizzbuzz(int n)
 {
   int counter = 0;
@@ -8,15 +14,15 @@ int fizzbuzz(int n)
   {
     if ((i % 3 == 0) && (i % 5 == 0))
     {
-      printf("%d: fizzbuzz\n", i);
+      printf("%d: FizzBuzz\n", i);
     }
     else if (i % 3 == 0)
     {
-      printf("%d: fizz\n", i);
+      printf("%d: Fizz\n", i);
     }
     else if (i % 5 == 0)
     {
-      printf("%d: buzz\n", i);
+      printf("%d: Buzz\n", i);
     }
     else
     {
