@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+// #include <string.h>
 
 /*
     Given a character array s, return the number of characters 
@@ -8,7 +8,13 @@
 */
 int string_length(char s[])
 {
-    int length = strlen(s);
+    int length = 0;
+    int index = 0;
+    while (s[index] != '\0')
+    {
+        index++;
+        length++;
+    }
     return length;
 }
 
