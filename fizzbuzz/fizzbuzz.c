@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include <fizzbuzz.h>
 
 /*
     Your fizzbuzz implementation should initialize a counter, then
@@ -7,16 +7,11 @@
     by both 3 and 5, print "FizzBuzz". Increment the counter variable
     every time that nothing gets printed and return the counter.
 */
-int fizzbuzz(int n)
-{
-
-}
 
 #ifndef TESTING
 int main(void)
 {
     fizzbuzz(20);
-
     return 0;
 }
 #endif

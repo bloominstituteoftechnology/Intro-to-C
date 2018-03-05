@@ -9,7 +9,11 @@
 */
 int sorted_order(int a, int b)
 {
-
+        if (a > b)
+        {
+            swap(a, b);
+        }
+    }
 }
 
 /*
