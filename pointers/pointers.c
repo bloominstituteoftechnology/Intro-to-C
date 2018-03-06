@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -9,18 +10,14 @@
 void swap(int* a, int* b)
 {
 
-    printf("The original value of A: %d and its address is:%p\n", *a,&a);
-    printf("The original value of B: %d and its address is:%p\n", *b,&b);
-int valueA = *a;
-int valueB = *b;
-int helper = *a;
+    // printf("The original value of A: %d and its address is:%p\n", *a,&a);
+    // printf("The original value of B: %d and its address is:%p\n", *b,&b);
+    int swpr = *a;
+    *a = *b;
+    *b = swpr;
 
-*b = helper;
-*a = valueB;
-*b = valueA;
-
-   printf("Value A: %d and its address is: %p\n", *a, &a);
-   printf("Value B: %d and its address is: %p\n", *b, &b);
+    // printf("Value A: %d and its address is: %p\n", *a, &a);
+    // printf("Value B: %d and its address is: %p\n", *b, &b);
 
 }
 
@@ -31,7 +28,12 @@ int helper = *a;
 */
 int string_length(char *s)
 {
-
+   int length = 0;
+   while(*s != '\0') {
+       length++;
+       s++;
+   }
+   return length;
 }
 
 /*
@@ -42,7 +44,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0') {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
+    printf("x is: %s\n y is: %s\n", x, y);
 }
 
 /* 
@@ -59,7 +67,13 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int acc = *m -*n;
+      while(*m != '\0' && *n != '\0' && acc == 0) {
+          acc = *m - *n;
+          n++;
+          m++;
+      }
+      return acc;
 }
 
 #ifndef TESTING
