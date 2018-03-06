@@ -28,7 +28,7 @@ int string_length(char *s)
     while(*s != '\0')
     {
         a++;
-        *s++;
+        s++;
     }
     return(a);
 }
@@ -66,12 +66,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    
-    
+    while((*m && *n) && (*m == *n))
+   {
+        m++;
+        n++;
+
+   }
     return (*m - *n);
-    
-    
-}
+}          
 
 #ifndef TESTING
 int main(void)
