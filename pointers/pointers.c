@@ -1,16 +1,20 @@
 #include <stdio.h>
-
+void swap(int *a, int *b);
+int string_length(char *s);
+void string_copy(char *x, char *y);
+int string_compare(char *m, char *n);
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
-
 /*
     Given a character pointer s, returns the number of characters
     it is pointing to. Think about how pointer arithmetic can 
@@ -18,9 +22,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int length = 0;
+    while (*s != '\0')
+    {
+        length++;
+        s++;
+    }
+    return length;
 }
-
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -29,9 +38,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y)
+    {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
 }
-
 /* 
     Compares the character strings m and n and returns negative,
     0, or positive if n is lexicographically less than, equal to,
@@ -46,26 +60,26 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    while ((*m && *n) && (*m == *n))
+    {
+        m++;
+        n++;
+    }
+    return *m - *n;
 }
-
 #ifndef TESTING
 int main(void)
 {
     int x = 10, y = 20;
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
-
     char *hello = "Hello";
     char *world = "World";
     char buffer[1024];
-
     string_copy(buffer, hello);
-
     printf("Buffer is %s\n", buffer);
     printf("Length is %d\n", string_length(buffer));
     printf("Comparison is %d\n", string_compare(hello, world));
-
     return 0;
 }
 #endif

@@ -11,7 +11,16 @@
 */
 char *string_dup(char *src)
 {
-
+    // printf("inside string_dump src is: %s\n", src);
+    int length = string_length(src); // Extract length of *src
+    // printf("inside string_dump length is: %d\n", length);
+    char *str = malloc(length + 1); // create *src with allocation of length of src
+    for (int index = 0; index < length; index++)
+    {
+        str[index] = src[index];
+    }
+    // printf("inside string_dump str is: %s\n", str);
+    return str;
 }
 
 /*
@@ -22,7 +31,12 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+char *csrc = src;
+char *cdest =dest;
+for (int i =0; i < n; i++) {
+    cdest[i] = csrc[i];
+}
+return dest;
 }
 
 #ifndef TESTING
