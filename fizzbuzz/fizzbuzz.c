@@ -19,16 +19,16 @@ int fizzbuzz(int n)
         printf("i is equal to %d: ", i);
         if (i % 3 == 0 && i % 5 == 0)
         {
-            printf("fizzbuzz\n");
+            printf("FizzBuzz\n");
             continue;
         }
         if (i % 3 == 0)
         {
-            printf("fizz\n");
+            printf("Fizz\n");
         }
         else if (i % 5 == 0)
         {
-            printf("buzz\n");
+            printf("Buzz\n");
         }
         else
         {
