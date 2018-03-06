@@ -9,6 +9,19 @@
 void swap(int* a, int* b)
 {
 
+    printf("The original value of A: %d and its address is:%p\n", *a,&a);
+    printf("The original value of B: %d and its address is:%p\n", *b,&b);
+int valueA = *a;
+int valueB = *b;
+int helper = *a;
+
+*b = helper;
+*a = valueB;
+*b = valueA;
+
+   printf("Value A: %d and its address is: %p\n", *a, &a);
+   printf("Value B: %d and its address is: %p\n", *b, &b);
+
 }
 
 /*
