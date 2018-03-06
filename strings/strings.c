@@ -5,9 +5,17 @@
     Given a character array s, return the number of characters 
     held inside it.
 */
+char *reverse_string(char rv[], char s[]);
+int string_length(char s[]);
+
 int string_length(char s[])
 {
+    int i =0;
+   
 
+    for(i = 0; s[i] != '\0'; ++i);
+    printf("%d", i);
+    return i;
 }
 
 /*
@@ -21,7 +29,22 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
 
+    int k, l;
+
+    k = 0;
+    l = string_length(s) - 1;
+
+    while (l >=0) 
+    {
+        rv[k] = s[l];
+        k++;
+        l--;    
+    }
+    rv[k] = '\0';
+    
+    return(rv);
 }
+
 
 #ifndef TESTING
 int main(void)
