@@ -26,7 +26,7 @@ int fizzbuzz(int n)
     }
     else
     {
-      counter++;
+     counter++;
     }
   }
   return counter;
