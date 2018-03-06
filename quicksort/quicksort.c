@@ -9,7 +9,20 @@
 */
 void quicksort(int arr[], int low, int high)
 {
-
+    if(low < high)
+    {   
+        int pi= low;
+        int pivot = arr[high];
+        for(int i = low; i < high ; i++){
+            if(arr[i] < pivot){
+                swap(&arr[pi], &arr[i]);
+                pi++;
+            }
+        }
+        swap(&arr[pi], &arr[high]);
+        quicksort(arr,low,pi-1);
+        quicksort(arr,pi+1,high);
+    }
 }
 
 #ifndef TESTING
