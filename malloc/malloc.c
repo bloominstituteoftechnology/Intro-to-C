@@ -11,7 +11,15 @@
 */
 char *string_dup(char *src)
 {
-
+    int len = string_length(src); //find length of src
+    char * copy; 
+    copy = (char *)malloc(len); //dynamically allocate memory 
+    int i; 
+    for(i = 0; i < len; i++) 
+    {
+        copy[i] = src[i];  //copy characters               
+    }
+       return copy; //return address
 }
 
 /*
