@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,11 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+    printf("The value of a is %d\n", *a);
+    printf("The value of b is %d\n", *b);
 }
 
 /*
@@ -18,7 +23,16 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    // return strlen(s); Works with library but wanted to try it this way
+    int length = 0;
 
+    while(*s != '\0')
+    {
+        length++;
+        s++;
+    }
+
+    return length;
 }
 
 /*
@@ -29,7 +43,15 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    printf("Called string_copy\n");
+    while(*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
+    printf("Finished string copy\n");
 }
 
 /* 
@@ -46,7 +68,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    printf("called string_compare\n");
 
+    for (; *m == *n; m++, n++)
+    {
+        if(*m == '\0')
+        {
+            return 0;
+        }
+    }
+    return *n - *m;
 }
 
 #ifndef TESTING
@@ -56,15 +87,35 @@ int main(void)
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
-    char buffer[1024];
+    char *test = "hello";
+    int testLength = string_length(test);
+    printf("The length of our test is %d\n", testLength);
 
-    string_copy(buffer, hello);
+    char *swap1 = "Ferrari";
+    char testBuffer[1024];
 
-    printf("Buffer is %s\n", buffer);
-    printf("Length is %d\n", string_length(buffer));
-    printf("Comparison is %d\n", string_compare(hello, world));
+    printf("we start with %s in swap1 and %s in nullString\n", swap1, testBuffer);
+
+    string_copy(swap1, testBuffer);
+
+    printf("After running string_copy we have %s in swap1 and %s in nullString\n", swap1, testBuffer);
+
+    char *animal1 = "aardvark";
+    char *animal2 = "zebra";
+
+    int testResult = string_compare(animal1, animal2);
+
+    printf("String compare returned %d", testResult);
+
+    // char *hello = "Hello";
+    // char *world = "World";
+    // char buffer[1024];
+
+    // string_copy(buffer, hello);
+
+    // printf("Buffer is %s\n", buffer);
+    // printf("Length is %d\n", string_length(buffer));
+    // printf("Comparison is %d\n", string_compare(hello, world));
 
     return 0;
 }
