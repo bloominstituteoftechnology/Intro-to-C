@@ -12,7 +12,7 @@
 char *string_dup(char *src)
 {
     int len = string_length(src); //find length of src
-    char * copy; 
+    char *copy; 
     copy = (char *)malloc(len); //dynamically allocate memory 
     int i; 
     for(i = 0; i < len; i++) 
@@ -30,7 +30,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *cdest = (char *)dest;
+    char *csrc = (char *)src;
+    
+    for (int i = 0; i < n; i++)
+    {
+        cdest[i] = csrc[i];
+    }
+       
 }
 
 #ifndef TESTING
