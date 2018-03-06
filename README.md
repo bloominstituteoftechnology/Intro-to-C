@@ -12,7 +12,7 @@ This lab is structured very much like how your introductory JavaScript labs are 
 
   - [X] fizzbuzz
   - [X] strings
-  - [ ] pointers
+  - [X] pointers
   - [ ] quicksort
   - [ ] malloc
   - [ ] structs
