@@ -23,13 +23,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-    int a = 0;
+    int length = 0;
    while(*s != '\0')
    {
-       a++;
+       length++;
        s++;
    }
-   return(a);
+   return length;
 }
 
 /*

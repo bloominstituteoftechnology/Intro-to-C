@@ -11,9 +11,19 @@
 */
 char *string_dup(char *src)
 {
+  int length = string_length(src);
+  char *newString = malloc(length + 1);
+  char *p = newString;
 
+  while(*src)
+  {
+      *p++ = *src++;
+  }
+
+  *p = '\0';
+
+  return newString;
 }
-
 /*
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
@@ -22,7 +32,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *cdest = dest;
+    char *csrc = src;
+    
+    for (int i = 0; i < n; i++)
+    {
+        cdest[i] = csrc[i];
+    }
+     return dest;  
 }
 
 #ifndef TESTING
@@ -49,4 +66,4 @@ int main(void)
 
     return 0;
 }
-#endif
+#endif 
