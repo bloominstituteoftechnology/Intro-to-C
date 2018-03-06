@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+ int temp =*a;
+ *a = *b;
+ *b = temp;
 }
 
 /*
@@ -18,7 +20,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+int count = 0;
+while(*s!='\0') {
+count++;
+s++;
+}
+return count;
 }
 
 /*
@@ -29,8 +36,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    while(*y !='\0') {
+        *x=*y;
+        *y++;
+        x++;
+    }
+    *x = '\0';
+    }
 
-}
 
 /* 
     Compares the character strings m and n and returns negative,
@@ -46,7 +59,26 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int result;
+    int longest;
+    int i;
+    if (string_length(*m) > string_length(*n)) {
+       longest = string_length(*m);
+}
+    else {
+        longest = string_length(*n);
+   }
+   for( i = 0; i<longest; i++) {
+    if( *m[i]== *n[i]) {
+    result = result;
+}
+    else if(*m[i]>*n[i]) {
+    result++;
+}
+else {
+    result--;;
+}
+} return result;
 }
 
 #ifndef TESTING

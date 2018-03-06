@@ -42,9 +42,12 @@ build:
 
 # The Unit Tests
 .PHONY: tests
-tests2: CFLAGS += $(TARGET)
+#tests2: CFLAGS += $(TARGET)
 tests2: $(TESTS)
 	sh ./tests/runtests.sh
+
+$(TESTS): $(TEST_SRC)
+	$(CC) $(CFLAGS) $^ $(TARGET) -o $@
 
 # The Cleaner
 clean:
