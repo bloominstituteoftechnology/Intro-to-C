@@ -25,11 +25,12 @@ int string_length(char s[])
     string. Don't forget to terminate the reversed string with a null
     character. Return the rv array.
 */
+
 char *reverse_string(char rv[], char s[])
 {
-    int length;
-    int i = 1;
-    length = string_length(s);
+    int length = string_length(s) - 1;
+    int i = 0;
+    
 
     for (; i <= length; i++)
     {
@@ -56,4 +57,3 @@ int main(void)
     return 0;
 }
 #endif
-    
