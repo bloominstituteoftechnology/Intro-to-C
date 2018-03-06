@@ -9,20 +9,34 @@
 */
 void quicksort(int arr[], int low, int high)
 {
-int pivot = arr[high];
-    int i = (low -1);
+    int i, j, pivot, temp;
 
-    for (int j = low; j <= high -1; j++)
-    {
-        if (arr[j] <= pivot)
-        {
+   if(low < high){
+      pivot = low;
+      i = low;
+      j = high;
+
+      while(i < j){
+         while(arr[i] <= arr[pivot] && i < high)
             i++;
-            swap(&arr[i], &arr[j]);
-        }
-    }
-    swap(&arr[i + 1], &arr[high]);
-       
+         while(arr[j] > arr[pivot])
+            j--;
+         if(i < j){
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+         }
+      }
+
+      temp = arr[pivot];
+      arr[pivot] = arr[j];
+      arr[j] = temp;
+      quicksort(arr,low,j-1);
+      quicksort(arr,j+1,high);
+
+   }
 }
+
 
 #ifndef TESTING
 int main(void)
