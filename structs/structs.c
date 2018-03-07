@@ -8,13 +8,15 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 struct Person {
-
+    char *name;
+    int age;
+    int height;
+    int weight;
 };
 
 /*
     Creates an instance of the Person struct that receives all the relevant
     pieces of data associated with a Person instance.
-
     Allocates the appropriate amount of memory to hold an instance of the 
     Person struct, and then sets the struct's fields with the input data.
     When setting the `name` field, use your previously-built string_dup
@@ -22,7 +24,13 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+    struct Person *randPerson = malloc(sizeof(struct Person));
+    randPerson->name = name;
+    randPerson->age = age;
+    randPerson-> height= height;
+    randPerson->weight = weight;
 
+    return randPerson;
 }
 
 /*
@@ -31,20 +39,28 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+   if (who->name != NULL)
+    {
+        free(who->name);
+    }
+    if (who != NULL)
+    {
+        free(who);
+    }
 }
+
 
 #ifndef TESTING
 int main(void)
 {
-    struct Person *tony = Person_create("Tony Stark", 32, 64, 140);
+    struct Person *Vinnie = Person_create("Vinnie Scalco", 32, 64, 140);
 
-    printf("  Name: %s\n", tony->name);
-    printf("   Age: %d\n", tony->age);
-    printf("Height: %d\n", tony->height);
-    printf("Weight: %d\n", tony->weight);
+    printf("  Name: %s\n", Vinnie->name);
+    printf("   Age: %d\n", Vinnie->age);
+    printf("Height: %d\n", Vinnie->height);
+    printf("Weight: %d\n", Vinnie->weight);
 
-    Person_destroy(tony);
+    Person_destroy(Vinnie);
 
     return 0;
 }

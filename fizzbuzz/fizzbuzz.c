@@ -1,4 +1,5 @@
 #include <stdio.h>
+int fizzbuzz(int n);
 
 /*
     Your fizzbuzz implementation should initialize a counter, then
@@ -8,25 +9,24 @@
     every time that nothing gets printed and return the counter.
 */
 int fizzbuzz(int n)
-{
-    int counter = 0;
-    for (int i = 0; i <= n; i++)
-    {
-        if (i % 3 == 0 && i % 5 == 0)
-        {
-            printf("fizzbuzz\n");
+{   
+    //Tests here pass;
+    int counter=0;
+    for(int i = 1; i <= n; i++){
+        // printf("The number is %d\n", i);
+        if(i%5 == 0 && i%3 == 0){
+            // printf("The number is %d\n", i);
+            printf("FizzBuzz\n");
         }
-        else if (i % 3 == 0)
-        {
-            printf("fizz\n");
+        else if(i%3 == 0){
+            // printf("The number is %d\n", i);
+            printf("Fizz\n");
         }
-        else if (i % 5 == 0)
-        {
-            printf("buzz\n");
-        }
-        else
-        {
-            printf("%d\n", i);
+        else if(i%5 == 0){
+            // printf("The number is %d\n", i);
+            printf("Buzz\n");
+        } else {
+            printf("\n");
             counter++;
         }
     }
@@ -36,8 +36,7 @@ int fizzbuzz(int n)
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(20);
-
+    fizzbuzz(5);
     return 0;
 }
 #endif
