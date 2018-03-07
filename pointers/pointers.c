@@ -65,6 +65,8 @@ void string_copy(char *x, char *y)
 int string_compare(char *m, char *n)
 {
     while((*m && *n) && (*m == *n)) 
+    // while they both exist (not = 0)
+    // while they point at the same space in each string
     {
         m++;
         n++;
