@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib.h"
-
 /*
     Duplicates the input string by dynamically allocating memory for 
     the duplicate string using `malloc` and then copying the string
@@ -11,17 +10,16 @@
 */
 char *string_dup(char *src)
 {
-    int len = string_length(src); //find length of src
-    char *copy; 
-    copy = (char *)malloc(len); //dynamically allocate memory 
-    int i; 
-    for(i = 0; i < len; i++) 
-    {
-        copy[i] = src[i];  //copy characters               
-    }
-       return copy; //return address
+  int length = string_length(src);
+  char *newString = malloc(length + 1);
+  char *p = newString;
+  while(*src)
+  {
+      *p++ = *src++;
+  }
+  *p = '\0';
+  return newString;
 }
-
 /*
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
@@ -30,38 +28,31 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-    char *cdest = (char *)dest;
+    char *cdest = dest;
     char *csrc = (char *)src;
     
     for (int i = 0; i < n; i++)
     {
         cdest[i] = csrc[i];
     }
-       
+     return dest;  
 }
-
 #ifndef TESTING
 int main(void)
 {
     char *s = "Some string to duplicate.";
     char *dup = string_dup(s);
-
     printf("Duplicated string: %s\n", dup);
-
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
     
     mem_copy(target, numbers, n * sizeof(int));
-
     printf("Copied array: ");
-
     for (int i = 0; i < n; i++) {
         printf("%d ", target[i]);
     }
-
     printf("\n");
-
     return 0;
 }
-#endif
+#endif 

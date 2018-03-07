@@ -14,7 +14,7 @@ int string_length(char s[])
    
 
     for(i = 0; s[i] != '\0'; ++i);
-    printf("%d", i);
+    // printf("%d", i);
     return i;
 }
 
@@ -34,7 +34,7 @@ char *reverse_string(char rv[], char s[])
     k = 0;
     l = string_length(s) - 1;
 
-    while (l >=0) 
+    while (l >= 0) 
     {
         rv[k] = s[l];
         k++;
