@@ -7,8 +7,12 @@
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
-struct Person {
-
+struct Person
+{
+    char *name;
+    int *age;
+    int *height;
+    int *weight;
 };
 
 /*
@@ -22,7 +26,14 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+    struct Person *a_person = malloc(sizeof(struct Person)); // Make a new Person Copy
 
+    a_person->name = strdup(name); // Assign the string of the persons name.
+    a_person->age = age;
+    a_person->height = height;
+    a_person->weight = weight;
+
+    return a_person;
 }
 
 /*
@@ -31,7 +42,17 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+    if (who->name != NULL)
+    {
+        // printf("Arrived at Who->Name %s\n", who->name);
+        free(who->name);
+        // printf("Freed Who->Name %s\n", who->name);
+    }
+    if (who != NULL)
+    {
+        free(who);
+        // printf("Freed previous struct\n");
+    }
 }
 
 #ifndef TESTING

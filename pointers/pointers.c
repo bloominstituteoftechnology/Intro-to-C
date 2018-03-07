@@ -8,10 +8,9 @@
 */
 void swap(int *a, int *b)
 {
-    int avalue = *a;
-    int bvalue = *b;
-    *a = bvalue;
-    *b = avalue;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -38,11 +37,18 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    int length = string_length(y);
-    for (int i = 0; i <= length; ++i)
+    // int length = string_length(y);
+    // for (int i = 0; i <= length; ++i)
+    // {
+    //     x[i] = y[i];
+    // };
+    while (*y != '\0')
     {
-        x[i] = y[i];
-    };
+        *x = *y;
+        ++x;
+        ++y;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -66,6 +72,7 @@ int string_compare(char *m, char *n)
 int main(void)
 {
     int x = 10, y = 20;
+    printf("x was=%d, y was=%d\n", x, y);
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 

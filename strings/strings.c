@@ -9,10 +9,8 @@
 int string_length(char s[])
 {
     int length = 0;
-    int index = 0;
-    while (s[index] != '\0')
+    while (s[length] != '\0')
     {
-        index++;
         length++;
     }
     return length;

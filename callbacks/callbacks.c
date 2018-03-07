@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <callbacks.h>
-#include "lib.h" 
+#include "lib.h"
 
 /*
     Implement the callback that will be passed to your bubble_sort function to sort 
@@ -9,7 +9,14 @@
 */
 int sorted_order(int a, int b)
 {
-
+    if (a > b)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 /*
@@ -18,7 +25,14 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    if (a < b)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
 }
 
 /*
@@ -29,7 +43,21 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    while (n > 0)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            int a = numbers[i];
+            int b = numbers[i + 1];
+            if (1 == (*compare_cb)(a, b))
+            {
+                numbers[i] = b;
+                numbers[i + 1] = a;
+            }
+        }
+        n--;
+    }
+    return 0;
 }
 
 #ifndef TESTING
@@ -42,7 +70,8 @@ int main(void)
     //sorted_arr = bubble_sort(arr, count, sorted_order);
     sorted_arr = bubble_sort(arr, count, reverse_order);
 
-    for (int i = 0 ; i < count ; i++) {
+    for (int i = 0; i < count; i++)
+    {
         printf("%d ", sorted_arr[i]);
     }
 

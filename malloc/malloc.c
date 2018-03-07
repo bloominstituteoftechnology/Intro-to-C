@@ -11,7 +11,16 @@
 */
 char *string_dup(char *src)
 {
-
+    // printf("inside string_dump src is: %s\n", src);
+    int length = string_length(src); // Extract length of *src
+    // printf("inside string_dump length is: %d\n", length);
+    char *str = malloc(length + 1); // create *src with allocation of length of src
+    for (int index = 0; index < length; index++)
+    {
+        str[index] = src[index];
+    }
+    // printf("inside string_dump str is: %s\n", str);
+    return str;
 }
 
 /*
@@ -22,7 +31,16 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    // Ensure we have 2 "apple baskets", and not 2 "whatever baskets"...
+    char *sourceChar = (char *)src;  // Typecasting to Char "apple basket full"
+    char *returnDest = (char *)dest; // Typecasting to Char "apple basket empty"
+    for (int index = 0; index < n; index++)
+    {
+        // Transfering a copy of each "apple" to our empty basket.
+        returnDest[index] = sourceChar[index];
+    }
+    dest = returnDest; // Point to the fully copied apple basket.
+    return 0;
 }
 
 #ifndef TESTING
@@ -36,12 +54,13 @@ int main(void)
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
-    
+
     mem_copy(target, numbers, n * sizeof(int));
 
     printf("Copied array: ");
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("%d ", target[i]);
     }
 
