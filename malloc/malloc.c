@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib.h"
+#include <string.h>
 
 /*
     Duplicates the input string by dynamically allocating memory for 
@@ -11,7 +12,21 @@
 */
 char *string_dup(char *src)
 {
+    printf("Stub for *string_dup called\n");
 
+    int length = strlen(src);
+    
+    char *newString = malloc(length + 1);
+
+    char *p = newString;
+
+    while(*src)
+    {
+        *p++ = *src++;
+    }
+
+    *p = '\0';
+    return newString;
 }
 
 /*
@@ -22,7 +37,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    printf("called *mem_copy");
 }
 
 #ifndef TESTING
@@ -30,8 +45,6 @@ int main(void)
 {
     char *s = "Some string to duplicate.";
     char *dup = string_dup(s);
-
-    printf("Duplicated string: %s\n", dup);
 
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
