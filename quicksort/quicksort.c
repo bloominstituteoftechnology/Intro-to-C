@@ -6,6 +6,10 @@
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is why
     the pointers header file is included here).
+    quicksort
+    @param int* arr arr1
+    @param int low 0
+    @param int high last item index
 */
 void quicksort(int arr[], int low, int high)
 {
