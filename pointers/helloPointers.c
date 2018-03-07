@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+void random(x){
+ int* low = &x;
+}
 
 int main(){
-    char str[] = "Some String";
-    str[0] = 'r';
-    printf("The pointes is %c\n",*str);
-    printf("The pointes is %s\n",str);
+    int a = 6;
+   
     return 0;
 }

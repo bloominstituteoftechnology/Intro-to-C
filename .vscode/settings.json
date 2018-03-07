@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "fizzbuzz.h": "c"
+        "fizzbuzz.h": "c",
+        "string.h": "c"
     }
 }

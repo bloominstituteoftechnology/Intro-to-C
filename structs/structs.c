@@ -8,7 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 struct Person {
-
+    char *name;
+    int age;
+    int height;
+    int weight;
 };
 
 /*
@@ -22,7 +25,13 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+    struct Person *randPerson = malloc(sizeof(struct Person));
+    randPerson->name = name;
+    randPerson->age = age;
+    randPerson-> height= height;
+    randPerson->weight = weight;
 
+    return randPerson;
 }
 
 /*
@@ -31,8 +40,16 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+   if (who->name != NULL)
+    {
+        free(who->name);
+    }
+    if (who != NULL)
+    {
+        free(who);
+    }
 }
+
 
 #ifndef TESTING
 int main(void)
