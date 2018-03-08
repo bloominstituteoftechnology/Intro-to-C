@@ -39,7 +39,7 @@ void string_copy(char *x, char *y)
     while(*y !='\0') {
         *x=*y;
         *y++;
-        x++;
+        *x++;
     }
     *x = '\0';
     }
@@ -59,20 +59,20 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    int result;
-    int longest;
-    int i;
-    if (string_length(*m) > string_length(*n)) {
-       longest = string_length(*m);
+    int result = 0;
+    int longest, i;
+
+    if (string_length(m) > string_length(n)) {
+       longest = string_length(m);
 }
     else {
-        longest = string_length(*n);
+        longest = string_length(n);
    }
    for( i = 0; i<longest; i++) {
-    if( *m[i]== *n[i]) {
+    if( m[i]== n[i]) {
     result = result;
 }
-    else if(*m[i]>*n[i]) {
+    else if(m[i]>n[i]) {
     result++;
 }
 else {
