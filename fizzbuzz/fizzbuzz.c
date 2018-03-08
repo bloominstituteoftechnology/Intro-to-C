@@ -7,9 +7,33 @@
     by both 3 and 5, print "FizzBuzz". Increment the counter variable
     every time that nothing gets printed and return the counter.
 */
+int fizzbuzz(int n);
+
 int fizzbuzz(int n)
 {
-
+    int counter = 0;
+    for(int i = 0; i < n; ++i) 
+    {   
+        
+        if(i % 3 == 0 && i % 5 == 0)
+        {
+            printf("fizzbuzz");
+        }
+        else if(i % 5 == 0)
+        {
+            printf("buzz");
+        }
+        else if(i % 3 == 0) 
+        {
+            printf("fizz");
+        }
+        else 
+        {
+            counter++;
+        }
+        printf("\n");
+    }
+    return counter;
 }
 
 #ifndef TESTING

@@ -11,7 +11,18 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
 
+    char *newString = malloc(length + 1);
+
+    char *p = newString;
+
+    while(*src)
+    {
+        *p++ = *src++;
+    }
+    *p = '\0';
+    return newString;
 }
 
 /*

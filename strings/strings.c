@@ -1,13 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+// #include <string.h>
 /*
     Given a character array s, return the number of characters 
     held inside it.
 */
 int string_length(char s[])
 {
+    // return strlen(s);
+    int length = 0;
+    while(s[length] != '\0')
+    {
+        length++;
+    }
 
+    return length;
 }
 
 /*
@@ -21,6 +28,13 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
 
+    int length = string_length(s);
+    for(int i = 0; i < length; i++)
+    {
+        rv[i] = s[length - i - 1];
+    }
+    rv[length] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
