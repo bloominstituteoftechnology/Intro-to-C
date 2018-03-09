@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include "lib.h" 
 
 /*
@@ -7,7 +8,13 @@
     `swap` function you implemented in the pointers module (which is why
     the pointers header file is included here).
 */
-void quicksort(int arr[], int low, int high)
+
+int partition(int arr[], int left, int right)
+{
+
+}
+
+void quicksort(int arr[], int left, int right)
 {
 
 }

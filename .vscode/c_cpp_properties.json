@@ -1,0 +1,29 @@
+{
+    "configurations": [
+        {
+            "name": "WSL",
+            "includePath": [
+                "${workspaceRoot}",
+                "C:/Users/Jesse/AppData/Local/lxss/rootfs/usr/include",
+                "C:/Users/Jesse/AppData/Local/lxss/rootfs/usr/include/linux",
+                "C:/Users/Jesse/AppData/Local/lxss/rootfs/usr/include/x86_64-linux-gnu",
+                "C:/Users/Jesse/AppData/Local/lxss/rootfs/usr/include/c++/5/tr1",
+                "C:/Users/Jesse/AppData/Local/lxss/rootfs/usr/include/c++/5"
+            ],
+            "defines": [
+                "__linux__",
+                "__x86_64__"
+            ],
+            "intelliSenseMode": "clang-x64",
+            "browse": {
+                "path": [
+                    "${workspaceRoot}",
+                    "C:/Users/Jesse/AppData/Local/lxss/rootfs/usr/include"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            }
+        }
+    ],
+    "version": 3
+}
