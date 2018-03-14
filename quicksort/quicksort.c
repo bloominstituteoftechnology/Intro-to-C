@@ -8,30 +8,30 @@
     already being included for you in this file).
 */
 
-void swap(int* a, int* b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+// void swap(int* a, int* b)
+// {
+//     int temp = *a;
+//     *a = *b;
+//     *b = temp;
+// }
 //This works
-void quicksort(int arr[], int low, int high)
-{
-    if(low < high)
-    {   
-        int pi= low;
-        int pivot = arr[high];
-        for(int i = low; i < high ; i++){
-            if(arr[i] < pivot){
-                swap(&arr[pi], &arr[i]);
-                pi++;
-            }
-        }
-        swap(&arr[pi], &arr[high]);
-        quicksort(arr,low,pi-1);
-        quicksort(arr,pi+1,high);
-    }
-}
+// void quicksort(int arr[], int low, int high)
+// {
+//     if(low < high)
+//     {   
+//         int pi= low;
+//         int pivot = arr[high];
+//         for(int i = low; i < high ; i++){
+//             if(arr[i] < pivot){
+//                 swap(&arr[pi], &arr[i]);
+//                 pi++;
+//             }
+//         }
+//         swap(&arr[pi], &arr[high]);
+//         quicksort(arr,low,pi-1);
+//         quicksort(arr,pi+1,high);
+//     }
+// }
 //This doesn't work. Goes in infinite loop
 void quicksort(int arr[], int low, int high)
 {
