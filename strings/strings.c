@@ -7,7 +7,11 @@
 */
 int string_length(char s[])
 {
-
+    int length = 1;
+    while (s + 1 != 0) {
+        length++;
+    };
+    return length;
 }
 
 /*
