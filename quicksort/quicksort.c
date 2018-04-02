@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib.h" 
+#include "partition.h"
 
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
@@ -9,8 +10,20 @@
 */
 void quicksort(int arr[], int low, int high)
 {
+    int pivot;
+    int partitionIndex;
 
+    if (low < high) {
+        pivot = high;
+
+        partitionIndex = partition(arr, pivot, low, high);
+
+        quicksort(arr, low, partitionIndex - 1);
+        quicksort(arr, partitionIndex + 1, high);
+    }
 }
+
+/* http://khan4019.github.io/front-end-Interview-Questions/sort.html */
 
 #ifndef TESTING
 int main(void)
