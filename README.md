@@ -14,7 +14,7 @@ This lab is structured very much like how your introductory JavaScript labs are 
   - [X] strings
   - [X] pointers
   - [X] quicksort
-  - [ ] malloc
+  - [X] malloc
   - [ ] structs
   - [ ] callbacks
 
