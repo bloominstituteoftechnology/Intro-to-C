@@ -1,6 +1,6 @@
+#include <structs.h>
 #include "../../utils/minunit.h"
 #include "../../utils/utils.h"
-#include <structs.h>
 
 char *test_person_create()
 {
@@ -31,7 +31,7 @@ char *all_tests()
 
     mu_run_test(test_person_create);
     mu_run_test(test_person_destroy);
-    
+
     return NULL;
 }
 
