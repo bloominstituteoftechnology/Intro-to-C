@@ -7,10 +7,28 @@
     `swap` function you implemented in the pointers module (which is
     already being included for you in this file).
 */
-void quicksort(int arr[], int low, int high)
-{
-
-}
+int partition (int arr[], int low, int high) {
+    int pivotValue = arr[high];
+    int lowIndex = low - 1;
+ 
+    for (int highIndex = low; highIndex <= high - 1; highIndex++) {
+        if (arr[highIndex] <= pivotValue) {
+            lowIndex++;
+            swap(&arr[lowIndex], &arr[highIndex]);
+        };
+    };
+    swap(&arr[lowIndex + 1], &arr[high]);
+    return lowIndex + 1;
+};
+ 
+void quicksort(int arr[], int low, int high) {
+    if (low < high) {
+        int partitionIndex = partition(arr, low, high);
+ 
+        quicksort(arr, low, partitionIndex - 1);
+        quicksort(arr, partitionIndex + 1, high);
+    };
+};
 
 #ifndef TESTING
 int main(void)
