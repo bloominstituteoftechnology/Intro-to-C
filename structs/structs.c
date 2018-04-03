@@ -27,7 +27,7 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 {
     struct Person *createPerson = malloc(sizeof(struct Person));
 
-    createPerson->name = name;
+    createPerson->name = string_dup(name);
     createPerson->age = age;
     createPerson->height = height;
     createPerson->weight = weight;
