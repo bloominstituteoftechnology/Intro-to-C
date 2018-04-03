@@ -11,7 +11,14 @@
 */
 char *string_dup(char *src)
 {
+    char *src2;
 
+    src2 = malloc(strlen(src) + 1);
+
+    if (src2 != 0) {
+        strcpy(src2, src);
+    }
+    return src2;
 }
 
 /*
@@ -20,9 +27,16 @@ char *string_dup(char *src)
     You may want to cast the input pointers to char pointers first before
     performing the copying. 
 */
-void *mem_copy(void *dest, const void *src, int n)
+void *mem_copy(void *dest, const void *src, size_t n)
 {
-
+    size_t i = 0;
+    char* newsrc = (char*)src;
+    char* newdest = (char*)dest;
+    while(i < n) {
+        newdest[i] = newsrc[i];
+        i++;
+    }
+    return newdest;
 }
 
 #ifndef TESTING
