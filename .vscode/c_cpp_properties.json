@@ -10,9 +10,13 @@
                 "C:\\Users\\cgroo\\AppData\\Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed",
                 "C:\\Users\\cgroo\\AppData\\Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs/usr/include/x86_64-linux-gnu",
                 "C:\\Users\\cgroo\\AppData\\Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs/usr/include/*",
-                "${workspaceFolder}/structs"
+                "${workspaceFolder}/structs",
+                "${workspaceFolder}/callbacks"
             ],
-            "defines": ["__linux__", "__x86_64__"],
+            "defines": [
+                "__linux__",
+                "__x86_64__"
+            ],
             "browse": {
                 "path": [
                     "C:\\Users\\cgroo\\AppData\\Local/Packages/CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc/LocalState/rootfs/usr/lib/gcc/x86_64-linux-gnu/5/include",
