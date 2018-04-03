@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a - b;
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return b - a;
 }
 
 /*
@@ -29,7 +29,17 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n - 1 ; j++) {
+                if (cmp(numbers[j], numbers[j + 1]) > 0) {
+                    int temp = numbers[j];
+                    numbers[j] = numbers[j + 1];
+                    numbers[j + 1] = temp;
+                }       
+            }
+        }
 
+    return numbers;
 }
 
 #ifndef TESTING
@@ -39,8 +49,8 @@ int main(void)
     int count = sizeof(arr) / sizeof(arr[0]);
     int *sorted_arr;
 
-    //sorted_arr = bubble_sort(arr, count, sorted_order);
-    sorted_arr = bubble_sort(arr, count, reverse_order);
+    sorted_arr = bubble_sort(arr, count, sorted_order);
+    // sorted_arr = bubble_sort(arr, count, reverse_order);
 
     for (int i = 0 ; i < count ; i++) {
         printf("%d ", sorted_arr[i]);
