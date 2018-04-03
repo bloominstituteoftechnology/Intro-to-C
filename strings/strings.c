@@ -25,14 +25,12 @@ char *reverse_string(char rv[], char s[])
 {
     int n = strlen(s);
 
-    for(int i = 0,k = n - 1 ; i < n; i++, k--)
-{
+    for(int i = 0, k = n - 1; i < n; i++, k--)
+    {
         char temp = s[k];
         s[k] = rv[i];
         rv[i] = temp;
-
-}
-    printf("%lu\n", strlen(rv));
+    }
     rv[n] = '\0';
     return rv;
 }
