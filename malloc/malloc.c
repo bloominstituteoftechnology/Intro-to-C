@@ -13,7 +13,11 @@ char *string_dup(char *src)
 {
     int length = string_length(src);
     char *str = (char *) malloc(length);
-    strcpy(str, src);
+    // strcpy(str, src);
+
+    for (int i = 0; i < length; i++) {
+        str[i] = src[i];
+    }
 
     return str;
 }
