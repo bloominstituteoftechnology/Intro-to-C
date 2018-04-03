@@ -7,6 +7,7 @@
     `swap` function you implemented in the pointers module (which is
     already being included for you in this file).
 */
+// researched, borrowed, and experimented with code to get this working
 int partition (int arr[], int low, int high) {
     int pivotValue = arr[high];
     int lowIndex = low - 1;
