@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 
 /*
     Given a character array s, return the number of characters 
@@ -7,7 +8,12 @@
 */
 int string_length(char s[])
 {
-
+    int n = 0;
+    while (s[n] != '\0')
+    {
+        n++;
+    }
+    return n;
 }
 
 /*
@@ -20,7 +26,15 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    {
+        int n = string_length(s);
+        for (int i = 0; i < n; i++)
+        {
+            rv[i] = s[n - i - 1];
+        }
+        rv[n] = '\0';
+        return rv;
+    }
 }
 
 #ifndef TESTING
@@ -37,4 +51,3 @@ int main(void)
     return 0;
 }
 #endif
-    
