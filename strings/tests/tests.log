@@ -1,0 +1,5 @@
+DEBUG tests/strings_tests.c:39: ----- RUNNING: ./tests/strings_tests
+DEBUG tests/strings_tests.c:33: 
+----- test_string_length
+DEBUG tests/strings_tests.c:34: 
+----- test_reverse_string
