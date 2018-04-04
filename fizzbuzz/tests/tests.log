@@ -1,0 +1,3 @@
+DEBUG tests/fizzbuzz_tests.c:23: ----- RUNNING: ./tests/fizzbuzz_tests
+DEBUG tests/fizzbuzz_tests.c:18: 
+----- test_fizzbuzz
