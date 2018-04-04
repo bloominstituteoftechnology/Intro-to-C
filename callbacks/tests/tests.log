@@ -1,0 +1,3 @@
+DEBUG tests/callbacks_tests.c:27: ----- RUNNING: ./tests/callbacks_tests
+DEBUG tests/callbacks_tests.c:22: 
+----- test_bubble_sort
