@@ -3,6 +3,8 @@
 #include "../../utils/minunit.h"
 #include "../../utils/utils.h"
 #include "../../pointers/pointers.h"
+#include <signal.h>
+
 
 char *test_string_dup()
 {
@@ -20,7 +22,7 @@ char *test_mem_copy()
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
-    
+
     mem_copy(target, numbers, n * sizeof(int));
     mu_assert(check_arrays(target, numbers, n, n) == 1, "Your mem_copy function did not correctly copy an array of integers.");
 
@@ -40,8 +42,9 @@ char *all_tests()
     mu_suite_start();
 
     mu_run_test(test_string_dup);
+
     mu_run_test(test_mem_copy);
-    
+
     return NULL;
 }
 
