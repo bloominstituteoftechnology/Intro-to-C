@@ -1,0 +1,9 @@
+DEBUG tests/pointers_tests.c:71: ----- RUNNING: ./tests/pointers_tests
+DEBUG tests/pointers_tests.c:63: 
+----- test_swap
+DEBUG tests/pointers_tests.c:64: 
+----- test_string_length
+DEBUG tests/pointers_tests.c:65: 
+----- test_string_copy
+DEBUG tests/pointers_tests.c:66: 
+----- test_string_compare
