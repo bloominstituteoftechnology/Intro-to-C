@@ -9,9 +9,9 @@
 void swap(int* a, int* b)
 {
   int temp1 = *a;
-  int temp2 = *b;
+  // int temp2 = *b;
+  *a = *b;
   *b = temp1;
-  *a = temp2;
 
   printf("%d\n%d\n", *b, *a);
 }

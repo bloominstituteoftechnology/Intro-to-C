@@ -1,15 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib.h" 
+#include "lib.h"
 
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is
     already being included for you in this file).
 */
+
+int parts(int arr[], int low, int high)
+{
+    int pivot = arr[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
 void quicksort(int arr[], int low, int high)
 {
+    if (low < high) {
+        int mid = parts(arr, low, high);
 
+        quicksort(arr, low, mid - 1);
+        quicksort(arr, mid + 1, high);
+    }
 }
 
 #ifndef TESTING
