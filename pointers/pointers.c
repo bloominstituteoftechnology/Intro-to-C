@@ -8,6 +8,18 @@
 */
 void swap(int* a, int* b)
 {
+	// *a = b;
+	// *b = a;
+	printf("a is at address %p\n", a);
+	printf("b is at address %p\n", b);
+	int *temp_a = a;
+	int *temp_b = b;
+	a = temp_b;
+	b = temp_a;
+	printf("a is at address %p\n", a);
+	printf("b is at address %p\n", b);
+	printf("a points to %d\n", *a);
+	printf("b points to %d\n", *b);
 
 }
 
@@ -18,7 +30,7 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+	
 }
 
 /*
