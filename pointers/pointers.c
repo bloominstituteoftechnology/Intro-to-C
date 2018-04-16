@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -7,9 +8,10 @@
     pointing at.
 */
 void swap(int* a, int* b)
-{
-    int* a = &b;
-    int* b = &a;
+{  
+    int placeholder = *a;
+    *a = *b;
+    *b = placeholder;
 }
 
 /*
@@ -30,7 +32,7 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    return strcpy(x, y);
+    strcpy(x, y);
 }
 
 /* 
