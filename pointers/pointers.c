@@ -8,7 +8,8 @@
 */
 void swap(int* a, int* b)
 {
-
+    int* a = &b;
+    int* b = &a;
 }
 
 /*
@@ -18,7 +19,7 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    return strlen(s);
 }
 
 /*
@@ -29,7 +30,7 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    return strcpy(x, y);
 }
 
 /* 
@@ -46,7 +47,7 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    return strcmp(m, n);
 }
 
 #ifndef TESTING

@@ -19,7 +19,7 @@ Indeed, there are many similarities between how you work with arrays and how you
 
 ## Differences between arrays and pointers
 
-Even though C let's you work with pointers and arrays in many of the same ways, don't think of them as synonomous. C's `sizeof` operator allows us to find the size of something in bytes. Let's say for example we had the following array:
+Even though C lets you work with pointers and arrays in many of the same ways, don't think of them as synonomous. C's `sizeof` operator allows us to find the size of something in bytes. Let's say for example we had the following array:
 ```c
     int integers[] = { 9, 49, 1, 6, 10, 15 };
 ```
