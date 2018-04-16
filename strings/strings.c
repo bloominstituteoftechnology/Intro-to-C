@@ -23,13 +23,10 @@ char *reverse_string(char rv[], char s[])
     int counter = 0;
     for (int i = strlen(s) - 1; i >= 0; i--) {
         rv[counter] = s[i];
-        // printf("%c\n", s[i]);
         counter++;
     }
     rv[counter + 1] = "\0";
     return rv;
-    // printf("%s\n", rv);
-    // printf("%c\n", s[strlen(s)-2]);
 }
 
 #ifndef TESTING
