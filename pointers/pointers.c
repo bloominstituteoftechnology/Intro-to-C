@@ -18,11 +18,12 @@ void swap(int *a, int *b)
     it is pointing to. Think about how pointer arithmetic can 
     help you with this.
 */
-int string_length(char *s) 
+int string_length(char *s)
 {
     int store = 0;
-    while (*s != '\0'){
-    
+    while (*s != '\0')
+    {
+
         s++;
         store++;
     }
@@ -37,6 +38,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -53,6 +61,24 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+
+    if (*m != *n)
+    {
+        printf('%s', '%s', *m, *n);
+        if (*m < *n)
+        {
+            return 1;
+        }
+        else if (*m > *n)
+        {
+            return -1;
+        }
+    }
+    else {
+        m++;
+        n++;
+    }
+    return 0;
 }
 
 #ifndef TESTING
