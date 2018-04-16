@@ -27,6 +27,7 @@ int string_length(char *s)
         s++;
     }
     return counter;
+    // return strlen(s);
 }
 
 /*
@@ -43,6 +44,7 @@ void string_copy(char *x, char *y)
         x++;
     }
     *x = '\0';
+    // strcpy(x, y);
 }
 
 /* 
@@ -59,7 +61,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    return strcmp(m, n);
+    while (*m != '\0' && *n != '\0') {
+        if ((strlen(m)) == (strlen(n))) {
+            return 0;
+        } else if ((strlen(m)) > (strlen(n))) {
+            return -1;
+        } else if ((strlen(m)) < (strlen(n))) {
+            return 1;
+        }
+    }
+    // return strcmp(m, n);
 }
 
 #ifndef TESTING
