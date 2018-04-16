@@ -40,8 +40,8 @@ void string_copy(char *x, char *y)
     
     For example, given matching strings, this function should 
     return 0. Given strings m = "hello world" and n = "goodbye",
-    this function should return a negative value. Given strings
-    m = "aardvark" and n = "zebra", should return a positive
+    this function should return a positive value. Given strings
+    m = "aardvark" and n = "zebra", should return a negative
     value.
 */
 int string_compare(char *m, char *n)

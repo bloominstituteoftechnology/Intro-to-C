@@ -51,7 +51,7 @@ That's right, we'll need to call `malloc` to allocate the appropriate amount of 
 
 ## Freeing memory
 
-Yet another abstraction that you're used to from higher-level languages is the garbage collector. A garbage collector is typically part of a languages runtime, and its job is to clean up memory that is used up by your programs. 
+Yet another abstraction that you're used to from higher-level languages is the garbage collector. A garbage collector is typically part of a language's runtime, and its job is to clean up memory that is used up by your programs. 
 
 For example, after you write some JS program that has a bunch of arrays and objects, what happens to the memory that was needed to order to hold those instances? In a high-level language, a garbage collector goes through and figures out that those arrays and objects are no longer being used. It then deallocates or frees up that memory so that it can be reused by other programs. You the programmer never needs to worry about cleaning up after yourself; it's all handled for you automatically!
 
