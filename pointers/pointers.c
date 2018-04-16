@@ -61,24 +61,26 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
-    if (*m != *n)
+    while (*m == *n)
     {
-        printf('%s', '%s', *m, *n);
-        if (*m < *n)
+        if (*m == '\0' && *n == '\0')
         {
-            return 1;
+            return 0;
         }
-        else if (*m > *n)
+        else
         {
-            return -1;
+            m++;
+            n++;
         }
     }
-    else {
-        m++;
-        n++;
+    if (*m < *n)
+    {
+        return -1;
     }
-    return 0;
+    else
+    {
+        return 1;
+    }
 }
 
 #ifndef TESTING
@@ -90,13 +92,16 @@ int main(void)
 
     char *hello = "Hello";
     char *world = "World";
+
+    char *s = "hello, world";
+    char *t = "hiya";
     char buffer[1024];
 
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
     printf("Length is %d\n", string_length(buffer));
-    printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare(s, t));
 
     return 0;
 }
