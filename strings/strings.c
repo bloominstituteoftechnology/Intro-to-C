@@ -7,9 +7,10 @@
 */
 int string_length(char s[])
 {
-
+	int arrSize = sizeof(s);
+	int size = sizeof(s[0]);
+	return arrSize;
 }
-
 /*
     Don't worry about this funky 'char *' going on here. We'll get to
     that shortly. In the meantime, write a function that reverses the 
