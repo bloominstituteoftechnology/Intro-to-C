@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int point = *a;
+    *a = *b;
+    *b = point;
 }
 
 /*
@@ -16,9 +18,15 @@ void swap(int* a, int* b)
     it is pointing to. Think about how pointer arithmetic can 
     help you with this.
 */
-int string_length(char *s)
+int string_length(char *s) 
 {
-
+    int store = 0;
+    while (*s != '\0'){
+    
+        s++;
+        store++;
+    }
+    return store;
 }
 
 /*
@@ -29,7 +37,6 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
 }
 
 /* 
@@ -46,7 +53,6 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
 }
 
 #ifndef TESTING
