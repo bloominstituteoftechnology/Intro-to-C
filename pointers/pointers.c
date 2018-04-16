@@ -7,8 +7,15 @@
     pointing at.
 */
 void swap(int* a, int* b)
-{
-
+{   
+    int temp = *a;
+    int temp2 = *b;
+    printf("TEMP %d\n", temp);
+    printf("TEMP2 %d\n", temp2);
+    a = *b;
+    printf("A %d\n", a);
+    b = temp;
+    printf("B %d\n", b);
 }
 
 /*
@@ -18,7 +25,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int counter = 0;
 
+    while (*s != '\0') {
+        printf("%s", *s);
+        s++;
+    }
+
+    return counter;
 }
 
 /*
