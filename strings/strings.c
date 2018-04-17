@@ -31,7 +31,7 @@ char *reverse_string(char rv[], char s[])
 }
 
 #ifndef TESTING
-int main(void)
+int main(void) 
 {
     char quote1[] = "Don't forget to be awesome";
     char quote2[] = "a man a plan a canal panama";
