@@ -25,44 +25,46 @@ struct Person
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
-    struct Person *person = malloc(sizeof(struct Person));
-    person->name = string_dup(name);
-    person->age = age;
-    person->height = height;
-    person->weight = weight;
+    struct Person *who = malloc(sizeof(struct Person));
+    
+    who->name = string_dup(name);
+
+    who->age = age;
+    who->height = height;
+    who->weight = weight;
 
 
-    return 0;
+    return who;
 }
 
     /*
     Given a pointer to a Person struct, frees up the memory that holds the
     Person's name as well as the memory that holds the Person instance.
 */
-    // void Person_destroy(struct Person *who)
-    // {
+    void Person_destroy(struct Person *who)
+    {
 
-    //     // if (who->name != NULL)
-    //     // {
-    //     //     free(who->name);
-    //     // };
-    //     // // if (who->age != -1)
-    //     // // {
-    //     // //     free(who->age);
-    //     // // };
-    //     // // if (who->height != -1)
-    //     // // {
-    //     // //     free(who->height);
-    //     // // };
-    //     // // if (who->weight != -1)
-    //     // // {
-    //     // //     free(who->weight);
-    //     // // };
-    //     // if (who != NULL)
-    //     // {
-    //     //     free(who);
-    //     // }
-    // }
+        if (who->name != NULL)
+        {
+            free(who->name);
+        };
+        if (who->age != -1)
+        {
+            free(who->age);
+        };
+        if (who->height != -1)
+        {
+            free(who->height);
+        };
+        if (who->weight != -1)
+        {
+            free(who->weight);
+        };
+        if (who != NULL)
+        {
+            free(who);
+        }
+    }
 
 #ifndef TESTING
 int main(void)
@@ -74,7 +76,7 @@ int main(void)
     printf("Height: %d\n", tony->height);
     printf("Weight: %d\n", tony->weight);
 
-    // Person_destroy(tony);
+    Person_destroy(tony);
 
     return 0;
 }
