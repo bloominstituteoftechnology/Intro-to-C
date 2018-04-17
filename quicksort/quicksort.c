@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include "lib.h"
 
 /*
@@ -7,6 +6,7 @@
     `swap` function you implemented in the pointers module (which is
     already being included for you in this file).
 */
+
 void quicksort(int arr[], int low, int high)
 {
     int pivot, i, j;
