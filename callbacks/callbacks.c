@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <callbacks.h>
-#include "lib.h" 
+#include "callbacks.h"
+#include "lib.h"
 
 /*
     Implement the callback that will be passed to your bubble_sort function to sort 
@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a - b;
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return b - a;
 }
 
 /*
@@ -29,7 +29,18 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    int *sorted = malloc(n * sizeof(int));
+    mem_copy(sorted, numbers, n * sizeof(int));
 
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (cmp(sorted[j], sorted[j + 1]) > 0) {
+                swap(&sorted[j], &sorted[j + 1]);
+            }
+        }
+    }
+
+    return sorted;
 }
 
 #ifndef TESTING
