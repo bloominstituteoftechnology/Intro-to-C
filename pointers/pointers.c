@@ -36,10 +36,11 @@ int string_length(char *s)
 void string_copy(char *x, char *y)
 {
 	int counter = 0;
-	while (y != '\0') {
-		x[counter] = *y;
-		y += 1; 
+	while (y[counter] != '\0') {
+		x[counter] = y[counter];
+		counter += 1; 
 	}
+	x[counter] = '\0';
 }
 
 /* 
@@ -56,16 +57,24 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-	int counter = 0;
-	while	(m != '\0' || n != '\0') {
-		if (m[counter] == n[counter]) {
-			m += 1;
-		 	n += 1;
-		} else if (m[counter] > n[counter]) {
-			return 1;
-		} else if (m[counter] < n[counter]) {
-			return -1;
-		} 
+	/* int counter = 0; */
+	/* while	(m != '\0' || n != '\0') { */
+	/* 	if (m[counter] == n[counter]) { */
+	/* 		m += 1; */
+	/* 	 	n += 1; */
+	/* 	} else if (m[counter] > n[counter]) { */
+	/* 		return 1; */
+	/* 	} else if (m[counter] < n[counter]) { */
+	/* 		return -1; */
+	/* 	} */ 
+	/* } */
+	while (*m != '\0' && *n != '\0') {
+		if (m < n) { return -1; }
+		if (m > n) { return 1; }
+		else {
+			m++;
+			n++;
+		}
 	}
 	return 0;
 }
