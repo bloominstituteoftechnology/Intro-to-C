@@ -11,10 +11,28 @@
 */
 char *string_dup(char *src)
 {
-
+   int length_of_string = string_length(src);
+   char *str_double = malloc(length_of_string - 1);
+   int i = 0;
+   for (i; i < length_of_string; i++)
+   {
+       str_double[i] = src[i];
+   } 
+   str_double[length_of_string] = 0;
+   return str_double;
 }
 
 /*
+
+int double_length = string_length(src);
+    char *space = malloc(double_length);
+    for (int i = 0; i < double_length; i++)
+    {
+        space[i] = src[i];
+    }
+    space[double_length] = "/0";
+    return space;
+
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
     You may want to cast the input pointers to char pointers first before
