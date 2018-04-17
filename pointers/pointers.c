@@ -8,6 +8,10 @@
 */
 void swap(int* a, int* b)
 {
+   int temp;
+   temp= *a;
+   *a=*b;
+   *b=temp;
 
 }
 
@@ -18,8 +22,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+ int c = 0;
+    while (s[c])
+    {
+        c++;
+    }
+    return c;
 }
+
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -28,7 +38,8 @@ int string_length(char *s)
     end to terminate it properly. 
 */
 void string_copy(char *x, char *y)
-{
+{   
+    while(*x++ = *y++);
 
 }
 
@@ -46,7 +57,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+        int d=0;
+        if(*m!=*n)return *m-*n;
+        while(d!=0){
+          d= *m-*n;
+          m++;
+          n++; 
+        }
+    return d;
 }
 
 #ifndef TESTING

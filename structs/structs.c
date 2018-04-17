@@ -8,6 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 struct Person {
+    char *name;
+    int age;
+    int height;
+    int weight;
 
 };
 
@@ -22,6 +26,14 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+struct Person *p = malloc(sizeof(struct Person));
+    p->name = strdup(name); //initialise each bit of new data for the new struct, strdup allocates a new bit of memory for the original string to be duplicated to
+	p->age = age;
+	p->height = height;
+	p->weight = weight;
+
+	return p;
+
 
 }
 
@@ -31,7 +43,10 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+  if (who != NULL){
+	free(who->name); 
+	free(who); 
+}
 }
 
 #ifndef TESTING
