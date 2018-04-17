@@ -10,10 +10,10 @@ int string_length(char s[])
     int counter = 0;
 
     while(s[counter] != '\0') counter++;
-    
+
     return counter;
 }
-// 'h': 1 - index = 0
+
 /*
     Don't worry about this funky 'char *' going on here. We'll get to
     that shortly. In the meantime, write a function that reverses the 
