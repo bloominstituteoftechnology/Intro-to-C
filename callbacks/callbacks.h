@@ -3,6 +3,8 @@
 
 typedef int (*compare_cb) (int a, int b);
 
+//typedef int(*func)(int a);
+
 int sorted_order(int a, int b);
 
 int reverse_order(int a, int b);
