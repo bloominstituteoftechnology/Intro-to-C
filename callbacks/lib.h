@@ -5,11 +5,9 @@
 
 void swap(int* a, int* b)
 {
-  printf("a before: %i \n", *a);
   int temp = *a;
   *a = *b;
   *b = temp;
-  printf("a after: %i \n", *a);
 }
 
 void *mem_copy(void *x, const void *y, int n)

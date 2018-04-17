@@ -32,6 +32,7 @@ struct Person *Person_create(char *name, int age, int height, int weight)
     a_person->height = height;
     a_person->weight = weight;
 
+    return a_person;
 }
 
 /*
@@ -40,21 +41,9 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-    if(who->name != NULL) {
-        free(who->name);
-    }
-    // if(who->age != NULL) {
-    //     free(who->age);
-    // }
-    // if(who->height != NULL) {
-    //     free(who->height);
-    // }
-    // if(who->weight != NULL) {
-    //     free(who->weight);
-    // }
-    if(who != NULL) {
-        free(who);
-    }
+    // free((*who).name);
+    free(who->name);
+    free(who);
 }
 
 #ifndef TESTING
