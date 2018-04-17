@@ -7,6 +7,13 @@
     `swap` function you implemented in the pointers module (which is
     already being included for you in this file).
 */
+void swap(int* a, int* b)
+{
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+} 
+
 void quicksort(int arr[], int low, int high)
 {
 
