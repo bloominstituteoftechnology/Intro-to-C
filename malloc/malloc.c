@@ -25,6 +25,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *d = dest;
+    char *s = src;
+    for (int i = 0; i <= n; i++)
+    {
+        d[i] = s[i];
+    }
+    return d;
 }
 
 #ifndef TESTING
