@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib.h"
+#include <../pointers/pointers.h>
 
 /*
     Duplicates the input string by dynamically allocating memory for 
@@ -11,7 +12,13 @@
 */
 char *string_dup(char *src)
 {
-
+ int length = string_length(src);
+ char *temp = malloc(length + 1);
+ for (int i = 0; i <= length; i++) 
+ {
+  temp[i] = src[i];
+ }
+ return temp;
 }
 
 /*
