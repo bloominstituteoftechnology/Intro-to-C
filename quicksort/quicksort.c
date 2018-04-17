@@ -10,23 +10,6 @@
 
 int split(int arr[], int low, int high) 
 {
-    // int pivot = (*low + *high) / 2;
-    // int i = *low;
-    // int j = *high;
-    // while (i <= j) {
-    //     while (arr[i] < pivot) {
-    //         i++;
-    //     }
-    //     while (arr[j] > pivot) {
-    //         j--;
-    //     }
-    //     if (i <= j) {
-    //         swap(low, high);
-    //         i++;
-    //         j--;
-    //     }
-    // }
-    // return i;
     int pivot = arr[high];
     int i = (low - 1);
     for (int j = low; j <= high - 1; j += 1) {
@@ -41,16 +24,6 @@ int split(int arr[], int low, int high)
 
 void quicksort(int arr[], int low, int high)
 {
-    // int index;
-    // if (string_length(arr) > 1) {
-    //     index = split(arr, &low, &high);
-    //     if (low < index - 1) {
-    //         quicksort(arr, low, high);
-    //     }
-    //     if (index < high) {
-    //         quicksort(arr, index, high);
-    //     }
-    // }
     if (low < high) {
         int s = split(arr, low, high);
         quicksort(arr, low, s - 1);
