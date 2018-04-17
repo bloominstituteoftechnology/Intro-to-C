@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int setter = *b;
+    *b = *a;
+    *a = setter;
 }
 
 /*
@@ -18,7 +20,8 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int = 0;
+    
 }
 
 /*
