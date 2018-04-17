@@ -67,20 +67,14 @@ int string_compare(char *m, char *n)
         {
             return 0;
         }
-        else
-        {
-            m++;
-            n++;
-        }
+        m++;
+        n++;
     }
     if (*m < *n)
     {
         return -1;
     }
-    else
-    {
-        return 1;
-    }
+    return 1;
 }
 
 #ifndef TESTING
