@@ -7,9 +7,9 @@
 */
 int string_length(char s[])
 {
-	int arrSize = sizeof(s);
-	int size = sizeof(s[0]);
-	return arrSize;
+    int i;
+    for (i = 0; s[i] != '\0'; ++i);
+    return i;
 }
 /*
     Don't worry about this funky 'char *' going on here. We'll get to
