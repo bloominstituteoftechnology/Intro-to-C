@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib.h" 
+#include "lib.h"
 
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
