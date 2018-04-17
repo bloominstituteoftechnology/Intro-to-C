@@ -42,7 +42,6 @@ Let's say we have a function called `name_cat` that will assign a Cat instance w
     void name_cat(struct Cat *cat, char *name)
     {
         int name_length = string_length(name);
-
         cat->name = malloc(name_length);
         string_copy(cat->name, name);
     }
