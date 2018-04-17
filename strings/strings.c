@@ -8,6 +8,21 @@
 int string_length(char s[])
 {
 
+    int i = 0;
+
+    while (s[i] != 0){
+        i++;
+    }
+
+    return i;
+    // int i;
+    // int length = 0;
+
+    // for (i = 0; i < s.length; i++){
+    //     length++
+    // }
+
+    //printf("%c", sizeof (s));
 }
 
 /*
