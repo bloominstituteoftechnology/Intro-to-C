@@ -58,11 +58,19 @@ void string_copy(char *x, char *y)
     m = "aardvark" and n = "zebra", should return a negative
     value.
 */
+
 int string_compare(char *m, char *n)
 {
-    // while(*m != '\0' && *n != '\0') {
-    //     if ()
-    // }
+    while(*m != '\0' && *n != '\0') {
+        if (m == n) {
+            m++;
+            n++;
+        } else if(m < n) {
+            return -1;
+        } else if(m > n) {
+          return 1;
+        }
+    }
 }
 
 #ifndef TESTING
