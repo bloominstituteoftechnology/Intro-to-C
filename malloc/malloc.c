@@ -9,9 +9,23 @@
     You may want to use the string_length function to figure out the
     length of the input string.
 */
-char *string_dup(char *src)
-{
+char *string_dup(char *src){
+    int strLength;
+    strLength = string_length(src);
 
+	/* allocating amount of characters into strAllocation */
+    char *strAllocation = malloc(strLength - 1);
+
+	/* Allocating each character in each slot*/
+	int i;
+    for (i = 0; i < strLength; i++) {
+        strAllocation[i] = src[i];
+    }
+
+	/* Allocating las character*/
+    strAllocation[strLength] = '\0';
+
+    return strAllocation;
 }
 
 /*
@@ -22,7 +36,12 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *csrc = (char *) src;
+    char *cdest = (char *) dest;
 
+    for (int i = 0; i < n; i++) {
+        cdest[i] = csrc[i];
+    }
 }
 
 #ifndef TESTING

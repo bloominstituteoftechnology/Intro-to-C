@@ -37,13 +37,13 @@ int string_length(char *s)
 void string_copy(char *x, char *y)
 {
     int i = 0;
-    while(*(y + i) != '\0')
-    {
-        *(x + i) - *(y + i);
+    while(*(y+i) != '\0') {
+        *(x+i) = *(y+i);
         i++;
     }
-    *(x + i) = '\0';
+    *(x+i) = '\0';
 }
+
 
 /* 
     Compares the character strings m and n and returns negative,
@@ -59,8 +59,22 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    // int i = 0;
-    // int mlength = string_length
+    int i = 0;
+    int mLength = string_length(m);
+    int nLength = string_length(n);
+    while(*(m + i) == *(n + i)) {
+        if((i == nLength) || (i == mLength)) {
+            break;
+        }
+        i++;
+    }
+    if(i == mLength) {
+        return 0;
+    } else if(*(m + i) > *(n + 1)) {
+        return 1;
+    } else {
+        return -1;
+    }
 }
 
 #ifndef TESTING
