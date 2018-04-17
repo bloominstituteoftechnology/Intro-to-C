@@ -7,7 +7,9 @@
 */
 int string_length(char s[])
 {
-
+    int i;
+    for (i = 0; s[i] != '\0'; i++);
+    return i;
 }
 /*
     Don't worry about this funky 'char *' going on here. We'll get to
