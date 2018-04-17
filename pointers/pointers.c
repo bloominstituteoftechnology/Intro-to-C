@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -6,9 +7,12 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
+
 void swap(int* a, int* b)
 {
-
+   int temp = *a;
+	 *a = *b;
+	 *b = temp;
 }
 
 /*
@@ -18,9 +22,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+   int string_counter = 0;
+	 while (*s !='\0') {
+	    string_counter++;
+			s++;
+     }
+		 return string_counter;
 }
-
+    
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -29,7 +38,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+  while (*y != '\0') {
+	   *x = *y;
+		  y++;
+			x++;
+}
+     *x = '\0';
 }
 
 /* 
@@ -44,9 +58,26 @@ void string_copy(char *x, char *y)
     m = "aardvark" and n = "zebra", should return a negative
     value.
 */
-int string_compare(char *m, char *n)
-{
 
+int string_compare(char *m, char *n)
+{ 
+  char m;
+	char n;
+	int ret;
+  
+  strcpy(m, "hello world");
+	strcpy(n, "goodbye");
+
+	ret = strcpm(m, n);
+
+	if (ret < 0) {
+	printf("%s\n", "m is less than n");
+} else if (ret > 0) {
+  printf("%s\n", "n is less than m");
+} else {
+  printf("%s\n", "m is equal to n");
+}
+ return 0;
 }
 
 #ifndef TESTING
