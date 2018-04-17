@@ -11,7 +11,7 @@
 */
 char *string_dup(char *src)
 {
-
+    malloc(string_length(src));
 }
 
 /*
@@ -22,7 +22,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    mem_copy(dest, src, n);
 }
 
 #ifndef TESTING
