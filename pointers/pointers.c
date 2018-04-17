@@ -8,7 +8,10 @@
 */
 void swap(int* a, int* b)
 {
-
+    int* x = a;
+    a = b;
+    b = x;
+    printf("%p,%p",&a, &b);
 }
 
 /*
@@ -18,7 +21,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int count = 0;
+    for(int i = 0; i < strlen(s); i++) {
+        if(*s != '\0') 
+        {
+            count++;
+        }
+    }
+    return count; 
 }
 
 /*
