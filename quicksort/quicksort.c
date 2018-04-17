@@ -39,7 +39,6 @@ void quicksort(int arr[], int low, int high)
     quicksort(arr, low, index - 1);
     quicksort(arr, index, high);
 
-    return;
 }
 
 #ifndef TESTING

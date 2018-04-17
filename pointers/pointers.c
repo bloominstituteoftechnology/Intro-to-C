@@ -61,9 +61,9 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    if(*m < *n) return -1;
+    if(*m < *n) return 1;
     if(*m == *n) return 0;
-    if(*m > *n) return 1;
+    if(*m > *n) return -1;
 }
 
 #ifndef TESTING
