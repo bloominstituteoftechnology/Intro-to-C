@@ -61,7 +61,7 @@ void string_copy(char *x, char *y)
 
 int string_compare(char *m, char *n)
 { 
-	return strcpm(m, n);
+	return strcmp(m, n);
 }
 
 #ifndef TESTING
