@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -11,7 +12,7 @@
 */
 char *string_dup(char *src)
 {
-    malloc(string_length(src));
+    malloc(*src);
 }
 
 /*
@@ -22,7 +23,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-    mem_copy(dest, src, n);
+    memcpy(dest, src, n);
 }
 
 #ifndef TESTING
