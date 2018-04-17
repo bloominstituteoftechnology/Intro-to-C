@@ -8,13 +8,6 @@
     already being included for you in this file).
 */
 
-void swap(int *a, int *b)
-{
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
 int partition(int arr[], int low, int high)
 {
     int pivot = arr[high];
@@ -22,7 +15,7 @@ int partition(int arr[], int low, int high)
 
     for (int j = low; j <= high - 1; j++)
     {
-        if (arr[j <= pivot])
+        if (arr[j] <= pivot)
         {
             i++;
             swap(&arr[i], &arr[j]);
@@ -41,22 +34,6 @@ void quicksort(int arr[], int low, int high)
         quicksort(arr, low, p - 1);
         quicksort(arr, p + 1, high);
     }
-    // if(low < high) {
-    //     (low + high) / 2;
-    //     swap(&arr[low], &arr[high]);
-    //     x = arr[low];
-    //     y=low+1;
-    //     j = high;
-    //    while(y <= j) {
-    //        while((y <= high) && (arr[y] <= x))
-    //        x++;
-    //        while((j >= low) && (arr[j] > x))
-    //        j--;
-    //        if(y < j)
-    //         swap(&arr[x], &arr[j]);
-    //     }
-
-    //     swap(&arr[low], &arr[j]);
 }
 
 #ifndef TESTING
