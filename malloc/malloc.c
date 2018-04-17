@@ -23,16 +23,6 @@ char *string_dup(char *src)
 }
 
 /*
-
-int double_length = string_length(src);
-    char *space = malloc(double_length);
-    for (int i = 0; i < double_length; i++)
-    {
-        space[i] = src[i];
-    }
-    space[double_length] = "/0";
-    return space;
-
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
     You may want to cast the input pointers to char pointers first before
@@ -40,7 +30,13 @@ int double_length = string_length(src);
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    int *dest_pointer = dest;
+    const int *src_pointer = src;
+    int i = 0;
+    for (i; i < n; i++){
+        dest_pointer[i] = src_pointer[i];
+    }
+    dest_pointer[n] = 0;
 }
 
 #ifndef TESTING
