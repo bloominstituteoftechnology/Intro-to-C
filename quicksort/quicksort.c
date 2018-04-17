@@ -28,15 +28,17 @@ void quicksort(int arr[], int low, int high)
                 j--;
             }
             if (i < j) {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
+                swap(&arr[i], &arr[j]);
+                // temp = arr[i];
+                // arr[i] = arr[j];
+                // arr[j] = temp;
             }
         }
 
-        temp = arr[pivot];
-        arr[pivot] = arr[j];
-        arr[j] = temp;
+        swap(&arr[pivot], &arr[j]);
+        // temp = arr[pivot];
+        // arr[pivot] = arr[j];
+        // arr[j] = temp;
         quicksort(arr, low, j-1);
         quicksort(arr, j+1, high);
     }
