@@ -11,18 +11,34 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
+    char *string = malloc(length + 1);
 
+    for(int i = 0; i < length; i++) {
+        string[i] = src[i];
+    }
+
+    string[length] = '\0';
+
+    return string;
 }
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
     You may want to cast the input pointers to char pointers first before
-    performing the copying. 
+    performing the copying.
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *d = dest;
+    const char *s = src;
+    
+    for(int i = 0; i < n; i++) {
+        d[i] = s[i];
+    }
 
+    return d;
 }
 
 #ifndef TESTING
@@ -33,9 +49,9 @@ int main(void)
 
     printf("Duplicated string: %s\n", dup);
 
-    int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
+    int numbers[] = {256, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
-    int *target = malloc(n * sizeof(int));
+    int *target = malloc(1 * sizeof(int));
     
     mem_copy(target, numbers, n * sizeof(int));
 
