@@ -44,26 +44,8 @@ struct Person *Person_create(char *name, int age, int height, int weight)
     void Person_destroy(struct Person *who)
     {
 
-        if (who->name != NULL)
-        {
-            free(who->name);
-        };
-        if (who->age != -1)
-        {
-            free(who->age);
-        };
-        if (who->height != -1)
-        {
-            free(who->height);
-        };
-        if (who->weight != -1)
-        {
-            free(who->weight);
-        };
-        if (who != NULL)
-        {
-            free(who);
-        }
+        free(who->name);
+        free(who);
     }
 
 #ifndef TESTING
