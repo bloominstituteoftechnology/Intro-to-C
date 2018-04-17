@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /*
-    Given a character array s, return the number of characters 
+    Given a character array s, return the number of characters
     held inside it.
 */
 int string_length(char s[])
@@ -24,6 +24,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+
 	int rslength = string_length(s);
 	int index = 0;
 
@@ -33,6 +34,7 @@ char *reverse_string(char rv[], char s[])
 	}
 	rv[index] = '\0';
 	return rv;
+
 }
 
 #ifndef TESTING
@@ -49,4 +51,4 @@ int main(void)
     return 0;
 }
 #endif
-    
+
