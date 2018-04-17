@@ -61,23 +61,7 @@ void string_copy(char *x, char *y)
 
 int string_compare(char *m, char *n)
 { 
-  char m;
-	char n;
-	int ret;
-  
-  strcpy(m, "hello world");
-	strcpy(n, "goodbye");
-
-	ret = strcpm(m, n);
-
-	if (ret < 0) {
-	printf("%s\n", "m is less than n");
-} else if (ret > 0) {
-  printf("%s\n", "n is less than m");
-} else {
-  printf("%s\n", "m is equal to n");
-}
- return 0;
+	return strcpm(m, n);
 }
 
 #ifndef TESTING
