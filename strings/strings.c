@@ -29,6 +29,7 @@ char *reverse_string(char rv[], char s[])
         rv[j] = s[i];
         j++;
     };
+    rv[j] = "\0";
     return rv;
 }
 
