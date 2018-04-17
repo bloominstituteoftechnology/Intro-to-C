@@ -9,8 +9,7 @@
 
 int string_length(char s[])
 {
-    return strlen(s); 
-    
+    return strlen(s);
 }
 
 /*
@@ -25,11 +24,11 @@ char *reverse_string(char rv[], char s[])
 {
     int j = 0;
     int size = string_length(s);
-    for(int i = size-1;  i > 0; i--) {
+    for(int i = size - 1; i >= 0; i--) {
         rv[j] = s[i];
         j++;
     };
-    rv[j] = "\0";
+    rv[j] = *"\0";
     return rv;
 }
 
