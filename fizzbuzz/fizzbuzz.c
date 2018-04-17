@@ -14,11 +14,11 @@ int fizzbuzz(int n)
 
 
     for (i = 0; i <= n; i++){
-        if ((n % 3 == 0) && (n % 5 == 0))
+        if ((i % 3 == 0) && (i % 5 == 0))
             printf("FizzBuzz");
-        else if (n % 3 == 0)
+        else if (i % 3 == 0)
             printf("Fizz");
-        else if (n % 5 == 0)
+        else if (i % 5 == 0)
             printf("Buzz");
         else {
             printf("%d" ,counter);
