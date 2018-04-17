@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -18,7 +20,11 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int i = 0;
+    while (s[i] != '\0') {
+        i++;
+    }
+    return i;
 }
 
 /*
@@ -29,7 +35,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    int i = 0;
+    while (y[i] != '\0') {
+        x[i] = y[i];
+        i++;
+    }
+    x[i] = '\0';
 }
 
 /* 
@@ -44,9 +55,12 @@ void string_copy(char *x, char *y)
     m = "aardvark" and n = "zebra", should return a negative
     value.
 */
+
 int string_compare(char *m, char *n)
 {
-
+    if (m > n) return (1);
+    else if (m < n) return (-1);
+    else return (0);
 }
 
 #ifndef TESTING
