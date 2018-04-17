@@ -36,11 +36,19 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    int length = string_length(y);
-    for (int i = 0; i < length; i++) {
-        x[i] = y[i];
+    /* int length = string_length(y); */
+    /* for (int i = 0; i < length; i++) { */
+    /*     x[i] = y[i]; */
+    /* } */
+    /* x[length] = y[length]; */
+
+    while (*y != '\0') {
+        *x = *y;
+        x++;
+        y++;
     }
-    x[length] = y[length];
+
+    *x = '\0';
 }
 
 /* 
@@ -57,11 +65,20 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    /* int length = string_length(m); */
+    /* for (int i = 0; i <= length; i++) { */
+    /*     if (m[i] != n[i]) { */
+    /*         return m[i] - n[i]; */
+    /*     } */
+    /* } */
+    /* return 0; */
     int length = string_length(m);
     for (int i = 0; i <= length; i++) {
-        if (m[i] != n[i]) {
-            return m[i] - n[i];
+        if (*m != *n) {
+            return *m - *n;
         }
+        m++;
+        n++;
     }
     return 0;
 }
