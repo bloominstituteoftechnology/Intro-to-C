@@ -28,7 +28,7 @@ char *reverse_string(char rv[], char s[])
     {
         // printf("i = %d // rvi = %d\n", i, rvi);
         rv[rvi] = s[i];
-        // printf("rv[%d] = %d // s[%d] = %d\n", rvi, rv[rvi], i, s[i]);
+        printf("rv[%d] = %c // s[%d] = %c\n", rvi, rv[rvi], i, s[i]);
         rvi++;
     }
     rv[rvi] = '\0';
