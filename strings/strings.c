@@ -7,11 +7,11 @@
 */
 int string_length(char s[])
 {
-    int i = 0;
-    while(s[i] != '\0') {
-        i++;
-    }
-    return i;
+	int i;
+	for(i = 1; s[i] != 0; i++){
+		printf("\n the letter number %d \n ", i);
+	}
+	return i;
 }
 
 /*
@@ -24,15 +24,17 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    int length = string_length(s);
-    int count = 0;
 
-    for(int n = length - 1; n >= 0; n--) {
-        rv[count] = s[n];
-        count++;
-    }
-    rv[count] = '\0';
-    return rv;
+	int rslength = string_length(s);
+	int index = 0;
+
+	for (int i = rslength - 1; i >=0; i--) {
+	  rv[index] = s[i];
+	  index = index + 1;
+	}
+	rv[index] = '\0';
+	return rv;
+
 }
 
 #ifndef TESTING
