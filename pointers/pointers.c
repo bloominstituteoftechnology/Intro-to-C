@@ -36,7 +36,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+ 
+	while (*y != '\0') {
+		*x = *y;
+		x++;
+		y++;
+	}
+	*x = '\0';
+ 
 }
 
 /* 
@@ -53,7 +60,20 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+	int difval = *m - *n;
+	while (difval == 0 && *m != '\0' && *n != '\0')
+	{
+		difval = *m - *n;
+		n++;
+		m++;
+	}
+	if (difval == 0) {
+		return 0;
+	} else if (difval < 0) {
+		return -1;
+	} else {
+		return 1;
+	}
 }
 
 #ifndef TESTING
