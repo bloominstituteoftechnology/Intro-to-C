@@ -7,9 +7,9 @@
 */
 int string_length(char s[])
 {
-	int arrSize = sizeof(s);
-	int size = sizeof(s[0]);
-	return arrSize;
+    int i;
+    for (i = 0; s[i] != '\0'; i++);
+	return i;
 }
 /*
     Don't worry about this funky 'char *' going on here. We'll get to
@@ -21,7 +21,14 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int count = 0;
+    int i;
+    for (i = string_length(s) - 1; i >= 0; i--) {
+        rv[count] = s[i];
+        count += 1;
+    }
+    rv[count] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
@@ -38,4 +45,3 @@ int main(void)
     return 0;
 }
 #endif
-    
