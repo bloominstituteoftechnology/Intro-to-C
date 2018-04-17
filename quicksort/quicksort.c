@@ -11,20 +11,23 @@
 int split(int arr[], int low, int high) 
 {
     int pivot = arr[high];
-    int i = (low - 1);
-    for (int j = low; j <= high - 1; j += 1) {
-        if (arr[j] <= pivot) {
-            i += 1;
-            swap(&arr[i], &arr[j]);
+    int l = (low - 1);
+    for (int i = low; i <= high - 1; i += 1) 
+    {
+        if (arr[i] <= pivot) 
+        {
+            l += 1;
+            swap(&arr[l], &arr[i]);
         }
     }
-    swap(&arr[i + 1], &arr[high]);
-    return (i + 1);
+    swap(&arr[l + 1], &arr[high]);
+    return (l + 1);
 }
 
 void quicksort(int arr[], int low, int high)
 {
-    if (low < high) {
+    if (low < high) 
+    {
         int s = split(arr, low, high);
         quicksort(arr, low, s - 1);
         quicksort(arr, s + 1, high);
