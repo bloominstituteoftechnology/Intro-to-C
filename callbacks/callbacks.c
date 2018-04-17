@@ -9,7 +9,23 @@
 */
 int sorted_order(int a, int b)
 {
+    // int test;
+    // if (a > b){
+    //     test = a > b;
+    // }
+    // else if (a < b){
+    //     test = a < b;
+    // }
 
+    // return test;
+
+    int value;
+
+    if (a > b){
+        value = 1;
+    }
+
+    return value;
 }
 
 /*
@@ -18,7 +34,24 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
+    // int test;
+    // if (a > b){
+    //     test = b > a;
+    // }
+    // else if (a < b){
+    //     test = b < a;
+    // }
 
+    // return test;
+
+
+    int value;
+
+    if (a < b){
+        value = 0;
+    }
+
+    return value;
 }
 
 /*
@@ -29,7 +62,22 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    int *stored_data = malloc(n);
+    stored_data = mem_copy(stored_data, numbers, (n * sizeof(int)));
 
+    int i, temp;
+
+    for (i; i < n; i++) 
+    {
+        if (cmp(stored_data[i], stored_data[i + 1] == 1))
+        {
+            temp = stored_data[i];
+            &stored_data[i] = stored_data[i + 1];
+            &stored_data[i + 1] = temp;
+        }
+    }
+
+    return stored_data;
 }
 
 #ifndef TESTING
