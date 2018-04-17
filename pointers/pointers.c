@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -18,7 +20,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int counter = 0;
+    while (*s != '\0')
+    {
+        counter++;
+        s++;
+    }
+    return counter;
 }
 
 /*
@@ -29,12 +37,18 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y !=- '\0')
+    {
+        *x = *y;
+        y++;
+        x++;
+    };
+    *x = '\0';
 }
 
 /* 
     Compares the character strings m and n and returns negative,
-    0, or positive if n is lexicographically less than, equal to,
+    0, or positive if m is lexicographically less than, equal to,
     or greater than n. To calculate lexicographic difference, find
     the difference between the first characters in m and n that differ.
     
@@ -46,8 +60,19 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+while((*m-*n == 0) && (*m != '\0') && (*n != '\0'))
+{
+    m++;
+    n++;
 }
+if (*m - *n < 0){
+    return -1;
+} else if (*m == *n){
+    return 0;
+} else {return 1;}
+}
+
+ 
 
 #ifndef TESTING
 int main(void)
