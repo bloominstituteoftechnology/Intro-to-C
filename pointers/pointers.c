@@ -43,7 +43,6 @@ void string_copy(char *x, char *y)
 		y++;
 	}
 	*x = '\0';
- 
 }
 
 /* 
@@ -63,9 +62,9 @@ int string_compare(char *m, char *n)
 	int difval = *m - *n;
 	while (difval == 0 && *m != '\0' && *n != '\0')
 	{
-		difval = *m - *n;
 		n++;
 		m++;
+		difval = *m - *n;
 	}
 	if (difval == 0) {
 		return 0;
