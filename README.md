@@ -17,6 +17,7 @@ This lab is structured very much like how your introductory JavaScript labs are 
   - [x] malloc
   - [x] structs - Solution
   - [ ] callbacks
+  - [ ] [Stretch Goal] hangman
 
 Inside a module directory, type `make tests` (just like with the `npm install` command needing a `package.json` file, the `make` command requires a `Makefile`), which will do a couple of things as specified by the `Makefile`. These include compiling your source code inside that module, linking all of the included header files and libraries, and running the tests for that module. Once you've gotten all of the tests to pass for that module, move on to the next one.
 

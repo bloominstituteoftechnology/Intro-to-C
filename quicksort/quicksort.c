@@ -1,7 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include "lib.h"
-
+#include "lib.h" 
+#include <string.h>
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is
