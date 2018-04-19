@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -18,6 +20,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int length = 0;
+    while( *s != '\0'){
+        length++;
+        s++;
+    }
+    return length;
 
 }
 
@@ -29,7 +37,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0'){
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -46,6 +59,12 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int diff = m - n;
+
+    if(diff == 0) return 0;
+    if (diff > 1) return 1;
+    if(diff < 1) return -1;
+
 
 }
 
@@ -53,9 +72,9 @@ int string_compare(char *m, char *n)
 int main(void)
 {
     int x = 10, y = 20;
+    printf("Pre swap : x=%d, y=%d\n", x, y);
     swap(&x, &y);
-    printf("x=%d, y=%d\n", x, y);
-
+    printf("Post Swap : x=%d, y=%d\n", x, y);
     char *hello = "Hello";
     char *world = "World";
     char buffer[1024];
