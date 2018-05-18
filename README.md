@@ -1,6 +1,10 @@
 # Introduction to the C Programming Language
 
-Welcome to your first C lab! If it hasn't been made clear to you yet, C is a _hard_ language to learn, especially if you're coming from a language like JavaScript or Python. Again, the main reason for this is because C has you working directly with the memory on your machine. Higher level languages abstract this fact away from you. Essentially, you're getting exposed to the nitty-gritty seedy underbelly of your computer's inner workings, and being in such a place for extended periods of time is not for everybody. 
+Welcome to your first C lab! 
+
+The two main goals of this sprint are as follows. The first goal is to give students the experience of learning a different programming language. This is important because it is _very_ rarely the case where you are familiar and comfortable with all of the technologies/programming languages that you'll be using on a job as a professional developer. Being able to pick up languages/technologies you aren't familiar with is a skill that we want to cultivate in students during their time here at Lambda, which is why we expose students to both C and Python during their time here.
+
+The second goal is to start peeling away the layers of abstraction that students are used from having only worked with JavaScript. C supports very few of the abstractions that students are used to, because C has you working directly with the memory on your machine. Higher level languages abstract this fact away from you, at the cost of raw performance and control. Essentially, you're getting exposed to the nitty-gritty seedy underbelly of your computer's inner workings, and being in such a place for extended periods of time is not for everybody. 
 
 That being said, we the instructors do believe that every developer needs to get a taste of C in order to really be able to delve into the inner workings of how exactly software communicates and interfaces with hardware. That's not really something JavaScript or Python will expose to you. Additionally, once you get acclimated to C, the language provides you with unparalleled control over how your code gets executed on your machine. Some people find the sheer amount of control that C provides you intoxicating. 
 
