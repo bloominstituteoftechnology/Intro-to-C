@@ -17,6 +17,9 @@ char *string_dup(char *src)
 /*
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
+
+	n is the number of bytes to copy.
+
     You may want to cast the input pointers to char pointers first before
     performing the copying. 
 */
