@@ -7,7 +7,12 @@
 */
 int string_length(char s[])
 {
-
+    int i = 0;
+    for (i = 1; s[i] != '\0'; i++)
+    {
+        printf("Found integer %d at %u\n", i);
+    };
+    return i;
 }
 
 /*
@@ -20,6 +25,32 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    
+    // Main Solution:
+	int rvlength = string_length(s);
+	int index = 0;
+
+	for (int i = rvlength - 1; i >='\0'; i--) { // #QUESTION: Why is this base case working?
+	  rv[index] = s[i];
+	  index++;
+	}
+	rv[index] = '\0';
+
+    // ===== Prints all characters in s 'array' ===== //
+    for (int i = 0; i <= rvlength - 1; i++)
+    {
+        printf("Next pointer in s: %c\n", *(s + i));
+        // printf("with machine address: %x\n", rv);
+    }
+
+    // ===== Prints all characters in rv 'array' ===== //
+    for (int i = 0; i <= rvlength - 1; i++)
+    {
+        printf("Next pointer in rv: %c\n", *(rv + i));
+        // printf("with machine address: %x\n", rv);
+    }
+	return rv;
+
 
 }
 
@@ -37,4 +68,3 @@ int main(void)
     return 0;
 }
 #endif
-    
