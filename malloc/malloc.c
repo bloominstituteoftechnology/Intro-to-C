@@ -8,6 +8,8 @@
     into the allocated memory. Returns a pointer to the allocated memory.
     You may want to use the string_length function to figure out the
     length of the input string.
+    
+    Do not just use the `strdup` function from the standard library.
 */
 char *string_dup(char *src)
 {
@@ -22,6 +24,8 @@ char *string_dup(char *src)
 
     You may want to cast the input pointers to char pointers first before
     performing the copying. 
+    
+    Do not just use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
