@@ -4,6 +4,8 @@
 /*
     Given a character array s, return the number of characters 
     held inside it.
+    
+    Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
 {
