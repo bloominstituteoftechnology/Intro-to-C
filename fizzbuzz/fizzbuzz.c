@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 /*
     Your fizzbuzz implementation should initialize a counter, then
@@ -10,7 +11,33 @@
 */
 int fizzbuzz(int n)
 {
+    int count = 0;
+    bool toCount = true;
+    int iterator = n;
 
+    while (iterator > 0)
+    {
+        if ((iterator % 3) == 0)
+        {
+            printf("Fizz");
+            toCount = false;
+        }
+        if ((iterator % 5) == 0)
+        {
+            printf("Buzz");
+            toCount = false;
+        }
+        if (toCount)
+        {
+            count++;
+        }
+        printf("\n");
+
+        toCount = true;
+        iterator--;
+    }
+
+    return count;
 }
 
 #ifndef TESTING
