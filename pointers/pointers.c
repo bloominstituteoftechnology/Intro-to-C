@@ -8,7 +8,10 @@
 */
 void swap(int* a, int* b)
 {
-
+  int tmp;
+  tmp = *a;
+  *a = *b;
+  *b = tmp;
 }
 
 /*
@@ -17,8 +20,19 @@ void swap(int* a, int* b)
     help you with this.
 */
 int string_length(char *s)
-{
+{ 
+  int counter = 0;
+  int counting = 1;
 
+  while (counting == 1) {
+    counter++;
+
+    if (*s == 0) {
+      return counter - 1;
+    }
+    
+    s++;
+  }
 }
 
 /*
@@ -29,7 +43,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+  int strlen = string_length(y);
 
+  for (int i = 0; i < strlen; i++) {
+    *x = *(y + i);
+    x++;
+  }
+  
+  *x = '\0';
 }
 
 /* 
@@ -46,6 +67,13 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+  /* int* starting_point = m - 9; */
+
+  /* for (int i = 2; i < 28; i++) { */
+  /*   printf("%c\n", *starting_point + i); */
+  /* } */
+  
+  
 
 }
 
