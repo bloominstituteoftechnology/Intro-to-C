@@ -10,7 +10,27 @@
 */
 int fizzbuzz(int n)
 {
-
+    int counter = 0;
+    for (int i = 0; i <= n; i++)
+    {
+        if ((i % 3 == 0) && (i % 5 == 0))
+        {
+            puts("FizzBuzz");
+        }
+        else if (i % 3 == 0)
+        {
+            puts("Fizz");
+        }
+        else if (i % 5 == 0)
+        {
+            puts("Buzz");
+        }
+        else
+        {
+            counter++;
+        }
+    }
+    return counter;
 }
 
 #ifndef TESTING
@@ -21,3 +41,4 @@ int main(void)
     return 0;
 }
 #endif
+
