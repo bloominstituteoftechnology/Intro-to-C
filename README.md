@@ -17,7 +17,7 @@ If you haven't gotten your C compiler up and running, please do that first. You'
 This lab is structured very much like how your introductory JavaScript labs are structured. There are independent modules, each with their own set of exercises that you'll be tasked with implementing. There's an associated set of tests for all the exercises in each module, which you'll run against your code to check to see if it behaves and functions correctly. The order in which you should tackle these exercises is this:
 
 * [x] fizzbuzz
-* [ ] strings
+* [x] strings
 * [ ] pointers
 * [ ] quicksort
 * [ ] malloc
@@ -44,7 +44,6 @@ You have two options:
 1.  Open the file `tests/runtests.sh` in VS Code in whatever subproject folder you’re working in, e.g. `fizzbuzz`. Click on the lower right of the screen where it says `CRLF`. Choose `LF`. Save the file. Then the error should go away.
 
 2.  You can do this from the command line with the `tr` command:
-
 
 ```
 cd tests
