@@ -15,6 +15,8 @@ void swap(int* a, int* b)
     Given a character pointer s, returns the number of characters
     it is pointing to. Think about how pointer arithmetic can 
     help you with this.
+    
+    Do not just use the `strlen` function from the standard library.
 */
 int string_length(char *s)
 {
@@ -26,6 +28,8 @@ int string_length(char *s)
     copies the character contents of y over to x. Again, pointer arithmetic
     is necessary here. Also, make sure x points to a null character at its 
     end to terminate it properly. 
+    
+    Do not just use the `strcpy` function from the standard library.
 */
 void string_copy(char *x, char *y)
 {
@@ -43,6 +47,8 @@ void string_copy(char *x, char *y)
     this function should return a positive value. Given strings
     m = "aardvark" and n = "zebra", should return a negative
     value.
+    
+    Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
 {
