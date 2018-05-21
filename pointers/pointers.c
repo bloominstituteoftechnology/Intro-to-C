@@ -5,9 +5,22 @@
     mind when you need to access a pointer's actual value (the 
     address it's referring to) or the value at the address it's 
     pointing at.
-*/
-void swap(int* a, int* b)
-{
+
+    int x = 1, y = 2, z[10];
+// int *ip;        /* ip is a pointer to an int */
+
+// ip = &x;        /* ip now points to x */
+// y = *ip;        /* y is now 1 */
+// *ip = 0;        /* x is now 0 */
+// ip = &z[0];     /* ip now points to z[0] */
+// */
+void swap(int* a, int* b) {
+
+int aa = *a;
+int bb = *b;
+
+*a = bb;
+*b = aa;
 
 }
 
@@ -18,7 +31,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int count = 0;
+    while (s[count] != '\0') {
+        // printf("%s\n", s);
+        ++count;
+    }
+    return count;
 }
 
 /*
@@ -29,7 +47,15 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    *x = *y;
+    int count = 0;
+    while (y[count] != '\0') {
+        ++count;
+        x[count] = y[count];
+    // printf("%s\n", x);
+    // printf("%d\n", count);
+    }
+    x[count] = '\0';
 }
 
 /* 
@@ -46,7 +72,26 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    // printf("%c\n", *m); // h
+    // printf("%c\n", *n + 1); // h
 
+    int mlength = string_length(m);
+    int nlength = string_length(n);
+    // printf("%d\n", mlength); // 12
+
+    int count = 0;
+
+    for (int i = 0; i < mlength; i++ ) {
+        for (int j = 0; j < nlength; j++) {
+            if (m[i] > n[j]) {
+                count--;
+            } else if (m[i] < n[j]) {
+                count++;
+            }
+        }
+    }
+    printf("%d\n", count);
+    return count;
 }
 
 #ifndef TESTING
