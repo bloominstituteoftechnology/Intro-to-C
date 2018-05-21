@@ -11,6 +11,18 @@
 int fizzbuzz(int n)
 {
 
+    for (n = 1; n < 20; n++)
+    {
+        if (n % 3 == 0)
+            printf("Fizz");
+        if (n % 5 == 0)
+            printf("Buzz");
+        if (((n % 3) && (n % 5) == 0))
+            printf("number= %d FizzBuzz\n", n);
+        else
+            printf("number= %d\n", n);
+    }
+    return 0;
 }
 
 #ifndef TESTING
