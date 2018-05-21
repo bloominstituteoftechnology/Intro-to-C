@@ -11,6 +11,7 @@ That being said, we the instructors do believe that every developer needs to get
 But before any of that happens, you've gotta get your feet wet with C. So without further ado, let's get started!
 
 ## What you'll be doing in this lab
+ 
 
 If you haven't gotten your C compiler up and running, please do that first. You'll find instructions on how to do that for your specific platform here: https://github.com/LambdaSchool/CS-Wiki/wiki/Getting-Your-C-Compiler-Installed.
 
