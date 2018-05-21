@@ -8,6 +8,9 @@
 */
 void swap(int* a, int* b)
 {
+    int x = *a;
+    *a = *b;
+    *b = x;
 
 }
 
@@ -18,7 +21,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int i = 0;
+    while (*(s+i) != '\0') {
+        // printf("%s", *s);
+        i++;
+    }
+return i;
 }
 
 /*
@@ -29,7 +37,22 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    // [Solution with counter variable] This also passes, but is a little messier:
 
+    // int i = 0;
+    // while(*(y+i) != '\0') {
+    //     *(x + i) = *(y + i);
+    //     i++;
+    // }
+    // *(x + i) = '\0';
+
+    // [Solution w/o counter variable]:
+	while (*y != '\0') {
+		*x = *y;
+		x++;
+		y++;
+	}
+	*x = '\0';
 }
 
 /* 
@@ -46,7 +69,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int diff = (*m - *n);
+    // diff == 0 assumes pointers match.  Once diff != 0, that means
+    // you have hit two pointers which do not match, whose difference
+    // will be the lexocographic difference.
+	while (diff == 0 && *m != '\0' && *n != '\0')
+	{
+		diff = *m - *n;
+		n++;
+		m++;
+	}
+    return diff;
 }
 
 #ifndef TESTING
