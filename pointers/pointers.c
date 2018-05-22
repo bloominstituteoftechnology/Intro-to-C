@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -18,7 +20,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int charNum = 0;
+    while (*s != '\0') {
+        charNum++;
+        s++;
+    }
+    return charNum;
 }
 
 /*
@@ -29,7 +36,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    int index = 0;
+    while (*y != '\0') {
+        *(x + index) = *y;
+        index++;
+        y++;
+    }
+    *(x + index) = '\0';
 }
 
 /* 
@@ -46,7 +59,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+        while ((*m != '\0') && (*n != '\0')) {
+            if (*m != *n) {
+                return *m - *n;
+            }
+            m++;
+            n++;
+        }
+        return 0;
 }
 
 #ifndef TESTING
