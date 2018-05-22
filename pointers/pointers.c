@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,7 +23,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int counter = 0;
+    while (*s != '\0') {
+        counter++;
+        s++;
+    }
+    return counter;
+    // return strlen(s);
 }
 
 /*
@@ -33,7 +42,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0') {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
+    // strcpy(x, y);
 }
 
 /* 
@@ -52,7 +67,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    while (*m != '\0' && *n != '\0') {
+        if ((strlen(m)) == (strlen(n))) {
+            return 0;
+        } else if ((strlen(m)) > (strlen(n))) {
+            return -1;
+        } else if ((strlen(m)) < (strlen(n))) {
+            return 1;
+        }
+    }
+    // return strcmp(m, n);
 }
 
 #ifndef TESTING
