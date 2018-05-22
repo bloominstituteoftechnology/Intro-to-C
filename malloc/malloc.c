@@ -12,7 +12,7 @@
 char *string_dup(char *src)
 {
     int length = string_length(src);
-    char *dup = malloc(length);
+    char *dup = malloc(length+1);
     for(int i = 0; i<length; i++){
         dup[i] = src[i];
     }
