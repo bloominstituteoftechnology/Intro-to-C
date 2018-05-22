@@ -10,13 +10,45 @@
 */
 int fizzbuzz(int n)
 {
+    // static int counter = 0;
+    // while (n > 0) {
+    // if((n==3) && (n==5)) {
+    //     printf("FizzBuzz");
+    //     continue;
+    // }
+    // else if(n==3) {
+    //     printf("Fizz");
+    //     continue;
+    // } else if (n==5) {
+    //     printf("Buzz");
+    //     continue;
+    // } else {
+    //     counter++;
+    //     n--;
+    // }
 
+    
+    // }
+
+    // printf("%d" ,counter);
+
+    // return counter;
+int counter = 0;
+    int i;
+    for(i = 1; i <= n; i++) {
+        if((i % 3 == 0) && (i % 5 == 0)) printf("\nFizzBuzz");
+        else if(i % 3 == 0) printf("\nFizz");
+        else if(i % 5 == 0) printf("\nBuzz");
+        else counter++;
+    }
+    printf("\n%d", counter);
+    return counter;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(20);
+    fizzbuzz(3);
 
     return 0;
 }
