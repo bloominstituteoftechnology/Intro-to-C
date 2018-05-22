@@ -11,7 +11,7 @@
 */
 char *string_dup(char *src)
 {
-
+    return strdup(src);
 }
 
 /*
@@ -25,7 +25,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    return memcpy(dest, src, n);
 }
 
 #ifndef TESTING
