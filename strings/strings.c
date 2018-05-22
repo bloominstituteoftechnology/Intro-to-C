@@ -9,7 +9,7 @@
 int string_length(char s[])
 {
     //isolate the number of chars inside array
-    int length = strlen(s) - 1;
+    int length = s - 1;
     //print out the chars
     printf("%d\n", length);
     //return length
@@ -25,12 +25,14 @@ int string_length(char s[])
     character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[])
-{   //isolate the s array variables
-    int length = strlen(s);
+{ //isolate the s array variables
+    int length = s;
     //reverse the order of string s
-  
     //output the reverse string to the input array rv
-        
+    for (int i = 0; i < s; i++)
+    {
+        rv[i] = s - i - 1;
+    }
     //terminate the reversed string with null
     printf("%s\n", rv);
     //return the rv array
