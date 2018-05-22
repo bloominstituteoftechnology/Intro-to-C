@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return b < a;
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return b > a;
 }
 
 /*
@@ -27,11 +27,28 @@ int reverse_order(int a, int b)
     Your function should allocate memory to hold the sorted data and return the 
     sorted data. Call the callback as you would any other function. 
 */
+
+
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    int i,j;
+    for (i = 0; i < n; i++) {
+        //printf("%d\n", n);
+        for (j = 0; j < n - i - 1; j++) {
+            //printf("%d\n", n);
+            if ((*cmp)(numbers[j], numbers[j+1])) {swap(&numbers[j],&numbers[j + 1]);}
+        }
+    }
+    return numbers;
 }
 
+
+    // for ( int i =0; i < n; i++ )
+    // for ( int j = 0; j< n - i - 1; j++ )
+    // if ( (*compare)( a[ j ], a[ j + 1 ] ) )
+    // swap( &a[ j ], &a[ j + 1 ] );
+
+    //, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79
 #ifndef TESTING
 int main(void)
 {
