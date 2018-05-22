@@ -8,6 +8,9 @@
 */
 void swap(int* a, int* b)
 {
+    int swapper = *a;
+        *a = *b;
+        *b = swapper;
 
 }
 
@@ -18,6 +21,20 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    // char s = *s;
+    // int length = (sizeof(s) / sizeof(char));
+    // printf("Size Of String: %d\n", length);
+
+    // return length;
+
+    int length = 0;
+
+    while(*s != '\0') {
+        length++;
+        s++;
+    }
+    printf("Size Of String: %d\n", length);
+    return length;
 
 }
 
@@ -29,6 +46,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+        while(*y)
+        {
+            *x = *y;
+            y++;
+            x++;
+        }
+        *x = '\0';
 
 }
 
@@ -46,6 +70,18 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    while (*m != '\0' && *m == *n)
+    {
+        ++m;
+        ++n;
+    }
+
+    if (*m == *n)
+    {
+        return 0;
+    }
+
+    return *m < *n ? -1 : 1;
 
 }
 
