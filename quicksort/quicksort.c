@@ -8,7 +8,31 @@
 */
 void quicksort(int arr[], int low, int high)
 {
+    int wall = low;
+    int pivot = high;
+    int temp;
+    if (high - low < 2)
+      return;
+    else {
+      for (int i = low; i < high; i++) {
+        if (arr[i] < arr[pivot]){
+          //swap(arr[i], arr[wall]);
+          temp = arr[i];
+          arr[i] = arr[wall];
+          arr[wall] = temp;
+          wall++;
+        }
+      }
 
+      temp = arr[pivot];
+      arr[pivot] = arr[wall];
+      arr[wall] = temp;
+      if (wall == 0)
+        wall++;
+
+      quicksort(arr, low, wall-1);
+      quicksort(arr, wall, high);
+    }
 }
 
 #ifndef TESTING
