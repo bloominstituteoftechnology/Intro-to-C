@@ -11,7 +11,14 @@
 */
 char *string_dup(char *src)
 {
-
+	int length = string_length(src);
+	char *duplicate = malloc(length);
+	int i;
+	for (i = 0; i < length; i++) {
+		duplicate[i] = src[i];
+	}
+	duplicate[length] = '\0';
+	return duplicate;
 }
 
 /*
@@ -25,7 +32,18 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+//	int *copy = src;
+//	while(copy[n] >= 0) {
+//		dest[n] = copy[n];
+//		n--;
+//	}
+	char *destcopy = dest;
+	const char *srcCopy = src;
+	int i;
+	for (i = 0; i < n; i++) {
+		*(destcopy + i) = *(srcCopy+i);
+	}
+	*(destcopy + n) = '\0';
 }
 
 #ifndef TESTING
@@ -43,8 +61,8 @@ int main(void)
     mem_copy(target, numbers, n * sizeof(int));
 
     printf("Copied array: ");
-
-    for (int i = 0; i < n; i++) {
+	int i;
+    for (i = 0; i < n; i++) {
         printf("%d ", target[i]);
     }
 
