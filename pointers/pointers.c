@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -6,9 +7,12 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    //swap the integer values being pointed by a and b
+    int swaps = *a;
+    int *a = *b;
+    int *b = swaps;
 }
 
 /*
@@ -17,8 +21,18 @@ void swap(int* a, int* b)
     help you with this.
 */
 int string_length(char *s)
-{
-
+{ //Used if/else statement instead of loop
+    //length of char
+    int length = 0;
+    //if pointer s does not start at the beginning of the string
+    if (*s != '\0')
+    { //return the length where it is pointing to within
+        return length++;
+    }
+    else
+    { //return the actual char
+        return s++;
+    }
 }
 
 /*
@@ -28,8 +42,9 @@ int string_length(char *s)
     end to terminate it properly. 
 */
 void string_copy(char *x, char *y)
-{
-
+{ //possible loop involved?
+    //given an empty (NULL) character pointer x and character pointer y
+    //copy the character contents of y over to x
 }
 
 /* 
@@ -45,8 +60,10 @@ void string_copy(char *x, char *y)
     value.
 */
 int string_compare(char *m, char *n)
-{
-
+{ //definite looping
+    //compare the character strings m and n
+    //return negative, 0, or positive if n is lexicographically less than, equal to or greater than n
+    //to calculate lexicographic difference, find the difference between the first char in m and n that differ
 }
 
 #ifndef TESTING
