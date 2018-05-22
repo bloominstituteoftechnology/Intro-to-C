@@ -25,6 +25,8 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+  char r[string_length(s)];
+  rv = r;
   int i = 0;
   for(int j = string_length(s) - 1; j >= 0 ; i++,j--){
     rv[i] = s[j];
