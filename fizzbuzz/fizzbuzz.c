@@ -9,28 +9,36 @@
     Don't forget to include newlines '\n' in your printf statements!
 */
 int fizzbuzz(int n)
-{   //intializing a counter
+{ //intializing a counter
     int counter = 0;
     //iterating n times
-    for (int num = 1; n < 20; num++)
-    {   //if divisible by 3
-        if (num % 3 == 0)
+    for (int i = 1; i <= n; i++)
+    { //if divisible by 3
+        if (i % 3 == 0)
+        {
             //print fizz
             printf("Fizz\n");
+        }
         //if divisible by 5
-        if (num % 5 == 0)
+        else if (i % 5 == 0)
+        {
             //print buzz
             printf("Buzz\n");
+        }
         //if divisible by both 3 and 5
-        if (((num % 3) && (num % 5) == 0))
+        else if (i % 3 == 0 && i % 5 == 0)
+        {
             //print fizzbuzz
             printf("FizzBuzz\n");
+        }
         else
+        {
             //incrementing counter everytime that nothing gets printed
-            printf("%d\n", counter++);
+            counter++;
+        }
     }
     //returning counter
-    return 0;
+    return counter;
 }
 
 #ifndef TESTING
