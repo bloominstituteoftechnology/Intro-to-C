@@ -11,6 +11,17 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
+    printf("String Length: %d\n", length);
+    char *rv = malloc(length);
+    int next = 0;
+    while(next <= length)
+    {
+        *(rv + next) = *(src + next);
+        next++;
+    }
+    return rv;
+    
 
 }
 
