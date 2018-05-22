@@ -11,6 +11,17 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
+    char *duplicate = malloc(length);
+    int i = 0;
+    while(i < length) {
+        duplicate[i] = src[i];
+        i++;
+    }
+
+    duplicate[length] = '\0';
+    return duplicate;
+
 
 }
 
