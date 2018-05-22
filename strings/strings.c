@@ -13,6 +13,16 @@ int string_length(char s[])
         printf("Found integer %d at %u\n", i);
     };
     return i;
+
+    // Sean Example from class:
+    int intergers[] = {9,49,1,6,10,15};
+    // In `.../ sizeof(int)`, int is the standard size of an type 'int'.
+    int length = sizeof(integers) / sizeof(int); // => 6
+    char aString[] = {'G', 'o','o', 'd', 'b', 'y', 'e', '\0'};
+    int length = sizeof(aString) / sizeof(char); // => 8
+
+    return 0;
+
 }
 
 /*

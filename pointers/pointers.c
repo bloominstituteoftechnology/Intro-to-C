@@ -37,7 +37,10 @@ return i;
 */
 void string_copy(char *x, char *y)
 {
-    // [Solution with counter variable] This also passes, but is a little messier:
+    // [Solution with counter variable] This also passes.  It is more explicit
+    // with regard to what is going on with the addresses first being calculated
+    // e.g. y+i, then using the * to calculate the value at that address.  But
+    // this solution is also messier.
 
     // int i = 0;
     // while(*(y+i) != '\0') {
@@ -69,6 +72,9 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    // The string address is stored at m, and n BUT if you want the
+    // actual value, then you need *m - which will get you the first
+    // value in the m array.
     int diff = (*m - *n);
     // diff == 0 assumes pointers match.  Once diff != 0, that means
     // you have hit two pointers which do not match, whose difference
