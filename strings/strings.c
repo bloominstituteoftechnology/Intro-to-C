@@ -14,15 +14,13 @@ int string_length(char s[])
     };
     return i;
 
-    // Sean Example from class:
-    int intergers[] = {9,49,1,6,10,15};
-    // In `.../ sizeof(int)`, int is the standard size of an type 'int'.
-    int length = sizeof(integers) / sizeof(int); // => 6
-    char aString[] = {'G', 'o','o', 'd', 'b', 'y', 'e', '\0'};
-    int length = sizeof(aString) / sizeof(char); // => 8
+    // Sean's Solution:
 
-    return 0;
-
+    // int length = 0;
+    // while(s[length] != '\0') {
+    //     length++;
+    // }
+    // return length;
 }
 
 /*
@@ -40,28 +38,35 @@ char *reverse_string(char rv[], char s[])
 	int rvlength = string_length(s);
 	int index = 0;
 
-	for (int i = rvlength - 1; i >='\0'; i--) { // #QUESTION: Why is this base case working?
+	for (int i = rvlength - 1; i >='\0'; i--) { // #QUESTION: Why is this base case working?  Cuz '\0' == 0 in this case.
 	  rv[index] = s[i];
 	  index++;
 	}
 	rv[index] = '\0';
 
-    // ===== Prints all characters in s 'array' ===== //
-    for (int i = 0; i <= rvlength - 1; i++)
-    {
-        printf("Next pointer in s: %c\n", *(s + i));
-        // printf("with machine address: %x\n", rv);
-    }
+    // // ===== Prints all characters in s 'array' ===== //
+    // for (int i = 0; i <= rvlength - 1; i++)
+    // {
+    //     printf("Next pointer in s: %c\n", *(s + i));
+    //     // printf("with machine address: %x\n", rv);
+    // }
 
-    // ===== Prints all characters in rv 'array' ===== //
-    for (int i = 0; i <= rvlength - 1; i++)
-    {
-        printf("Next pointer in rv: %c\n", *(rv + i));
-        // printf("with machine address: %x\n", rv);
-    }
+    // // ===== Prints all characters in rv 'array' ===== //
+    // for (int i = 0; i <= rvlength - 1; i++)
+    // {
+    //     printf("Next pointer in rv: %c\n", *(rv + i));
+    //     // printf("with machine address: %x\n", rv);
+    // }
 	return rv;
 
-
+    // // Sean's Solution:
+    
+    // int length = string_length(s);
+    // for (int i = 0; i < length; i++) {
+    //     rv[i] = s[length - i - 1]
+    // }
+    // rv[length] = '\0'
+    // return rv
 }
 
 #ifndef TESTING

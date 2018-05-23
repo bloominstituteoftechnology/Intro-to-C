@@ -6,13 +6,21 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
+// Note that the asterisk (pointer declaration) can be placed on 
+// either side of either the `int` OR the variable.
+// Below, where we see `*a` w/o `int` is called "dereferencing"
 void swap(int* a, int* b)
 {
-    int x = *a;
+    int x = *a; // Here the asterisk gets us the VALUE that the memory address that `a` points to
     *a = *b;
     *b = x;
 
-}
+    // // Sean's Solution:
+    // int temp = *a;
+    // *a = *b;
+    // *b = temp;
+
+} 
 
 /*
     Given a character pointer s, returns the number of characters
@@ -28,6 +36,16 @@ int string_length(char *s)
     }
 return i;
 }
+
+// // Sean's Solution:
+// int string_length(*char s) {
+//     int length = 0;
+//     while (*s != '\0') {
+//         length++;
+//         s++;
+//     }
+//     return length;
+// }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -58,6 +76,35 @@ void string_copy(char *x, char *y)
 	*x = '\0';
 }
 
+// Sean's Solution:
+// void string_copy(char *x, char *y) {
+//     while (*y != '\0') {
+//         *x = *y;
+//         x++;
+//         y++;
+//     }
+//     *x = '\0';
+// }
+
+// OR if you wanted to only pass the y pointer:
+// void string_copy(char *y) 
+// {
+//     int length = string_length(y);
+//     // Technically you don't need  `sizeof(char)` since characters are 1 byte
+//     char *x = malloc(length * sizeof(char)); // gets you a pointer with the correct amount of memory in order to do the actual copying
+
+//     while (*y != '\0') {
+//         *x = *y;
+//         x++;
+//         y++;
+//     }
+
+//     *x = '\0';
+
+//     return x;
+// }
+
+
 /* 
     Compares the character strings m and n and returns negative,
     0, or positive if n is lexicographically less than, equal to,
@@ -87,6 +134,31 @@ int string_compare(char *m, char *n)
 	}
     return diff;
 }
+
+// // Sean's Solution (MUCH CLEANER!):
+// int string_compare(char *m, char *n) 
+// {
+//     while (*m == *n) {
+//         if (*m == '\0') {
+//             return 0
+//         }
+//         m++;
+//         n++;
+//     }
+//     // if you get here, then you know that *m does NOT match *n
+//     return *m - *n;
+// }
+
+// // OR THIS:
+// int string_compare(char *m, char *n) {
+//     for (; *m == *n; m++, n++) {
+//         if (*m == '\0') { 
+//             return 0
+//         }
+//     }
+//     return *m - *n; 
+// }
+
 
 #ifndef TESTING
 int main(void)
