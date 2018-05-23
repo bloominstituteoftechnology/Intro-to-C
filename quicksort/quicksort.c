@@ -5,6 +5,8 @@
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is
     already being included for you in this file).
+    
+    Do not just use the `qsort` function from the standard library.
 */
 int partition(int *arr, int low, int high) {
   int pivot = arr[high];
