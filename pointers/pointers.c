@@ -66,16 +66,29 @@ void string_copy(char *x, char *y)
     value.
 */
 int string_compare(char *m, char *n)
-{
-  /* int* starting_point = m - 9; */
+{ 
+  int strlen;
+  int strlen_m = string_length(m);
+  int strlen_n = string_length(n);
 
-  /* for (int i = 2; i < 28; i++) { */
-  /*   printf("%c\n", *starting_point + i); */
-  /* } */
-  
-  
+  if (strlen_m < strlen_n) {
+    strlen = strlen_m;
+  } else {
+    strlen = strlen_n;
+  }
 
+  for (int i = 0; i < strlen; i++) {
+    if (*(m + i) != *(n + i)) {
+      if (m + i < n + i) {
+        return -1;
+      } else if (m + i > n + i) {
+        return 1;
+      }
+    }
+  }
+    return 0;  
 }
+
 
 #ifndef TESTING
 int main(void)

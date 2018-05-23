@@ -11,7 +11,14 @@
 */
 char *string_dup(char *src)
 {
+  int strlen = string_length(src);
+  char *dup = malloc(strlen);
+  
+  for (int i = 0; i <= strlen; i++) {
+    *(dup + i) = *(src + i);
+  }
 
+  return dup;
 }
 
 /*
@@ -25,6 +32,12 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+  char *pSrc = (char *)src;
+  char *pDest = (char *)dest;
+
+  for (int i = 0; i < n; i++) {
+    *(pDest + i) = *(pSrc + i);
+  }
 
 }
 

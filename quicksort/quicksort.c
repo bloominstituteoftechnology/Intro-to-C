@@ -1,23 +1,71 @@
 #include <stdio.h>
 #include "lib.h" 
-
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is
     already being included for you in this file).
 */
+
+int partition(int arr[], int low, int high) {
+    int pivot = *(arr + low);
+    int i = low, j = high;
+    
+    while (1 == 1) {
+      while (*(arr + i) < pivot && i < j) {
+        i++;
+      }
+      while (*(arr + j) > pivot && j > i) {
+        j--;
+      }
+     
+      swap((arr + i), (arr + j));
+      i++;
+
+      if (i >= j) {
+        if (*(arr + j) <= pivot && j != high) {
+         return j + 1;
+       } else {
+         return j;
+       }
+      }
+     
+     j--; 
+  }
+}
+
+  /* int partition(int arr[], int low, int high) { */
+  /*   int pivot = *(arr + high); */
+  /*   int i = low - 1; */
+
+  /*   for (int j = low; j <= high - 1; j++) { */
+  /*     if (*(arr + j) <= pivot) { */
+  /*       swap((arr + i), (arr + j)); */
+  /*       i++; */
+  /*     } */
+  /*   } */
+  /*   swap((arr + i + 1), (arr + high)); */
+  /*   return i + 1; */
+  /* } */    
+
+
 void quicksort(int arr[], int low, int high)
 {
+
+  if (low < high) {
+   int p = partition(arr, low, high);
+   quicksort(arr, low, p - 1);
+   quicksort(arr, p, high);
+ }
 
 }
 
 #ifndef TESTING
+
 int main(void)
 {
     int arr1[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(arr1) / sizeof(arr1[0]);
     quicksort(arr1, 0, n-1);
-
     for (int i = 0; i < n; i++) {
         printf("%d ", arr1[i]);
     }
