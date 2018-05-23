@@ -26,7 +26,7 @@ struct Person {
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
     struct Person *person = malloc(sizeof(struct Person));
-    person->name = name;
+    person->name = strdup(name);
     person->age = age;
     person->height = height;
     person->weight = weight;
@@ -38,8 +38,12 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-    free(who->name);
-    free(who);
+    if (who->name != NULL) {
+        free(who->name);
+    }
+    if (who != NULL) {
+        free(who);
+    }
 }
 
 #ifndef TESTING
