@@ -9,34 +9,8 @@
 */
 int sorted_order(int a, int b)
 {
-    int array[100], n, c, d, swap;
-
-    printf("Enter number of elements\n");
-    scanf("%d", &n);
-
-    printf("Enter %d integers\n", n);
-
-    for (c = 0; c < n; c++)
-        scanf("%d", &array[c]);
-
-    for (c = 0; c < n - 1; c++)
-    {
-        for (d = 0; d < n - c - 1; d++)
-        {
-            if (array[d] > array[d + 1])
-            {
-                swap = array[d];
-                array[d] = array[d + 1];
-                array[d + 1] = swap;
-            }
-        }
-    }
-
-    printf("Sorted list in ascending order:\n");
-
-    for (c = 0; c < n; c++)
-        printf("%d\n", array[c]);
-
+    if (a > b)
+        return 1;
     return 0;
 }
 
@@ -46,6 +20,9 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
+    if (a < b)
+        return 1;
+    return 0;
 }
 
 /*
@@ -56,6 +33,12 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    for (int i = 0; i < n - 1; i++)
+        for (int j = 0; j < n - i - 1; j++)
+            if (cmp(numbers[j], numbers[j + 1]))
+                swap(&numbers[j], &numbers[j + 1]);
+
+    return numbers;
 }
 
 #ifndef TESTING
