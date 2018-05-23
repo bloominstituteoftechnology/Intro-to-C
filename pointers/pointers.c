@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,7 +22,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int counter = 0;
+    while (*s != '\0')
+    {
+        s++;
+        counter++;
+    }
+    return counter;
 }
 
 /*
@@ -33,7 +41,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -52,7 +66,18 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int result = 0;
+    while (*m != '\0')
+    {
+        if (*m != *n)
+        {
+            result = *m - *n;
+            break;
+        }
+        m++;
+        n++;
+    }
+    return result;
 }
 
 #ifndef TESTING
