@@ -11,22 +11,32 @@
 //   int stringLength = sizeof(s) / sizeof(char);
 //   return stringLength;
 // }
+// int string_length(char s[])
+// {
+//   int count = 0;
+//   while (1)
+//   {
+//     char currentChar = *(s + count);
+//     if (currentChar == '\0')
+//     {
+//       break;
+//     }
+//     else
+//     {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
+
 int string_length(char s[])
 {
-  int count = 0;
-  while (1)
+  char i;
+  for (i = 0; s[i] != '\0'; ++i)
   {
-    char currentChar = *(s + count);
-    if (currentChar == '\0')
-    {
-      break;
-    }
-    else
-    {
-      count++;
-    }
+    printf("Length of string: %d\n", i);
   }
-  return count;
+  return i;
 }
 
 /*
