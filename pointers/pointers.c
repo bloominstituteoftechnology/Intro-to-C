@@ -6,9 +6,14 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    // *a -> 2233ffcc -> 4 | *b -> 45ffcf -> 9
+    int temp = *a; // temp == 4
+    *a = *b;        // a == 9
+    *b = temp;     // b == 4
+    // printf(" a is equal to %d\n", a);
+    // printf("b is equal to %d", b);
 }
 
 /*
@@ -18,7 +23,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int length = 0;
+    while (*s != '\0') {
+        s++;
+        length++;
+    }
+    return length;
 }
 
 /*
@@ -29,7 +39,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+  while (*y != '\0') {
+    *x = *y;
+    y++;
+    x++;
+  }
+  *x = '\0';
 }
 
 /* 
@@ -43,10 +58,14 @@ void string_copy(char *x, char *y)
     this function should return a positive value. Given strings
     m = "aardvark" and n = "zebra", should return a negative
     value.
+    h8 - g7 = 1
+    a1 - z26 = -25
 */
 int string_compare(char *m, char *n)
 {
+    char letters[] = "abcdefghijklmnopqrstuvwxyz";
 
+    
 }
 
 #ifndef TESTING
