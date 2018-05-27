@@ -20,17 +20,17 @@ int main()
 	srand(time(NULL)); // New calc of random numbers each time
 
 	char guessWords[][16] = {
-		"green",
-		"yellow",
-		"purple",
-		"windows",
-		"linux",
-		"apple"};
+		"teal",
+		"lavender",
+		"burgandy",
+		"baige",
+		"magenta",
+		"turquoise"};
 
 	// Used to calculate a random index to select one of the above words for the game.
 	int randomIndex = rand() % 6; // returns 0 to 5
 
-	int numLives = 5;
+	int numLives = 9;
 	int numCorrect = 0;
 	int oldCorrect = 0;
 
@@ -49,11 +49,13 @@ int main()
 	char guess[16]; // The guess the user makes.
 	char letterEntered;
 
-	printf("guessWords: %s randomIndex: %d lengthOfWord: %d\n", guessWords[randomIndex], randomIndex, lengthOfWord);
+	printf("\n\n\n\n\n\n\n\n\n\n\nWelcome to HANGMAN (categorie: COLORS)\n");
+	printf("guessWord: %s randomIndex: %d lengthOfWord: %d\n", guessWords[randomIndex], randomIndex, lengthOfWord);
 
 	// game loop
 	while (numCorrect < lengthOfWord)
 	{
+
 		printf("\n\nYour Turn:\nHangman Word:  ");
 
 		// loops through entire guessWords word
@@ -103,6 +105,26 @@ int main()
 			}
 		}
 
+		// AJ ================ START
+
+		char *currentGuess;
+		// printf("guessedString 1: %s\n", guessedString);
+
+		int low = (9 - numLives) * 10;
+		int high = ((9 - numLives) * 10) + 9;
+		// Prints Hangman pic
+		printf("\n________________________________________\n\n");
+		for (int i = 0; i <= 6; i++)
+		{
+			for (int j = low; j <= high; j++)
+			{
+				printf("%c", HANG_STATES[i][j]);
+			}
+			printf("\n");
+		}
+
+		// AJ ================ END
+
 		if (oldCorrect == numCorrect)
 		{
 			numLives--;
@@ -135,7 +157,7 @@ int main()
 	}
 	else
 	{
-		printf("\nCONGRATULATIONS! YOU WIN!\nExiting Hangman...\n\n");
+		printf("\nCONGRATULATIONS! YOU WIN!\n\n");
 	}
 
 	return 0;
