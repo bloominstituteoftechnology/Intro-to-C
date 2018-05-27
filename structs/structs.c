@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include "lib.h"
 
+// See: https://www.cprogramming.com/tutorial/c/lesson7.html
+
 /* 
     Define the Person struct by specifying the fields that make up the
     Person type. Don't forget to specify the type of each field. A 
