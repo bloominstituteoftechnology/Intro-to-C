@@ -49,7 +49,7 @@ int main()
 	char guess[16]; // The guess the user makes.
 	char letterEntered;
 
-	printf("\n\n\n\n\n\n\n\n\n\n\nWelcome to HANGMAN (categorie: COLORS)\n");
+	printf("\n\n=====================================================\n\nWelcome to HANGMAN (categorie: COLORS)\n");
 	printf("guessWord: %s randomIndex: %d lengthOfWord: %d\n", guessWords[randomIndex], randomIndex, lengthOfWord);
 
 	// game loop
