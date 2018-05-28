@@ -144,27 +144,33 @@ int main()
 		}
 		else
 		{
-			// AJ's Code ================ START
 
-			// char *currentGuess;
-			// printf("guessedString 1: %s\n", guessedString);
-
-			int low = (8 - numLives) * 10;
-			int high = ((8 - numLives) * 10) + 9;
-			// Prints Hangman pic
-			printf("\n________________________________________\n\n");
-			for (int i = 0; i <= 6; i++)
+			if (numLives < 8)
 			{
-				for (int j = low; j <= high; j++)
+				// AJ's Code ================ START
+
+				// char *currentGuess;
+				// printf("guessedString 1: %s\n", guessedString);
+
+				int low = (8 - numLives) * 10;
+				int high = ((8 - numLives) * 10) + 9;
+				// Prints Hangman pic
+				printf("\n________________________________________\n\n");
+				for (int i = 0; i <= 6; i++)
 				{
-					printf("%c", HANG_STATES[i][j]);
+					for (int j = low; j <= high; j++)
+					{
+						printf("%c", HANG_STATES[i][j]);
+					}
+					printf("\n");
 				}
-				printf("\n");
+
+				// AJ's Code ================ END
 			}
-
-			// AJ's Code ================ END
-
-			printf("\nCorrect! :)\n");
+			else
+			{
+				printf("\nCorrect! :)\n");
+			}
 		}
 	}
 
