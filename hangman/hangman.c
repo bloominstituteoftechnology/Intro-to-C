@@ -108,11 +108,11 @@ int main()
 
 		if (oldCorrect == numCorrect)
 		{
-			numLives--;
-			// printf("Sorry, wrong guess!\n %s", HANG_STATES[oldCorrect]);
-			// AJ ================ START
+			numLives--; // This is ultimately which changes the value below
 
-			char *currentGuess;
+			// AJ's Code ================ START
+
+			// char *currentGuess;
 			// printf("guessedString 1: %s\n", guessedString);
 
 			int low = (8 - numLives) * 10;
@@ -128,7 +128,8 @@ int main()
 				printf("\n");
 			}
 
-			// AJ ================ END
+			// AJ's Code ================ END
+
 			printf("\nSorry, wrong guess!\n");
 
 			// #QUESTION: HOW TO PRINT HANG_STATES IMG PROPERLY???
@@ -143,6 +144,26 @@ int main()
 		}
 		else
 		{
+			// AJ's Code ================ START
+
+			// char *currentGuess;
+			// printf("guessedString 1: %s\n", guessedString);
+
+			int low = (8 - numLives) * 10;
+			int high = ((8 - numLives) * 10) + 9;
+			// Prints Hangman pic
+			printf("\n________________________________________\n\n");
+			for (int i = 0; i <= 6; i++)
+			{
+				for (int j = low; j <= high; j++)
+				{
+					printf("%c", HANG_STATES[i][j]);
+				}
+				printf("\n");
+			}
+
+			// AJ's Code ================ END
+
 			printf("\nCorrect! :)\n");
 		}
 	}
