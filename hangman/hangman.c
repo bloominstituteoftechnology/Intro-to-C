@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 
 // Used this Tutorial Series: "Hangman for Beginners" --> https://www.youtube.com/watch?v=sitn00wQMrg
 
@@ -105,30 +106,29 @@ int main()
 			}
 		}
 
-		// AJ ================ START
-
-		char *currentGuess;
-		// printf("guessedString 1: %s\n", guessedString);
-
-		int low = (9 - numLives) * 10;
-		int high = ((9 - numLives) * 10) + 9;
-		// Prints Hangman pic
-		printf("\n________________________________________\n\n");
-		for (int i = 0; i <= 6; i++)
-		{
-			for (int j = low; j <= high; j++)
-			{
-				printf("%c", HANG_STATES[i][j]);
-			}
-			printf("\n");
-		}
-
-		// AJ ================ END
-
 		if (oldCorrect == numCorrect)
 		{
 			numLives--;
 			// printf("Sorry, wrong guess!\n %s", HANG_STATES[oldCorrect]);
+			// AJ ================ START
+
+			char *currentGuess;
+			// printf("guessedString 1: %s\n", guessedString);
+
+			int low = (8 - numLives) * 10;
+			int high = ((8 - numLives) * 10) + 9;
+			// Prints Hangman pic
+			printf("\n________________________________________\n\n");
+			for (int i = 0; i <= 6; i++)
+			{
+				for (int j = low; j <= high; j++)
+				{
+					printf("%c", HANG_STATES[i][j]);
+				}
+				printf("\n");
+			}
+
+			// AJ ================ END
 			printf("\nSorry, wrong guess!\n");
 
 			// #QUESTION: HOW TO PRINT HANG_STATES IMG PROPERLY???
