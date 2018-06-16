@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a-b;
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return b-a;
 }
 
 /*
@@ -29,7 +29,18 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    int i, j;
+    for(i = 0; i< n-1; i++) {
+        for(j = 0; j<n-i-1; j++) {
+            //So I compared all 
+            if(cmp(numbers[j], numbers[j+1]) >= 0) {
+                 int temp = numbers[j];
+                numbers[j] = numbers[j+1];
+                numbers[j+1] = temp;
+            }
+        }
+    }
+    return numbers;
 }
 
 #ifndef TESTING
