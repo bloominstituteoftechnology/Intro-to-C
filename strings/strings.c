@@ -9,7 +9,29 @@
 */
 int string_length(char s[])
 {
+    int counter = 0;
 
+    while (s[counter] != '\0')
+    {
+        // printf("%d\n", i);
+        counter++;
+    };
+
+    // printf("%d\n", counter);
+    return counter;
+
+    // *** For loop version ***
+    //   int i;
+    // int counter = 0;
+
+    // for (i = 0; s[i] != '\0'; i++) 
+    // {
+    //   counter++;
+    // }
+
+    // printf("counter: %d\n", counter);
+    // // printf("counter size: %d\n", sizeof(s));
+    // return counter;
 }
 
 /*
@@ -20,7 +42,6 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
 }
 
 #ifndef TESTING
@@ -37,4 +58,3 @@ int main(void)
     return 0;
 }
 #endif
-    
