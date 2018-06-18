@@ -26,16 +26,14 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
     int length = string_length(s);
-    int count = 0;
+    int countUp = 0;
 
     for (int i = length - 1; i >= 0; i--)
     {
-        rv[count] = s[i];
-        count++;
-        printf("CHARS: %d\n", rv[count]);
+        rv[countUp] = s[i];
+        countUp++;
     }
-    rv[count] = '\0';
-    // printf("REVERSED: %s\n", rv);
+    rv[countUp] = '\0';
     return rv;
 } 
 
