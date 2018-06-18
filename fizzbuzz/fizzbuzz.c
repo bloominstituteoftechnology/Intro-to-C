@@ -10,6 +10,23 @@
 */
 int fizzbuzz(int n)
 {
+    int i;
+
+    for ( i = 0; i < n; i++) {
+        // check if divis by 3 & 5 => print fizz buzz
+        if( i % 3 && i % 5) {
+            printf("fizz buzz\n");
+        // check if divis by 3 => print fizz
+        } else if (i % 3 ) {
+            printf("fizz\n");
+        // check if divis by 5 => print buzz
+        } else if (i % 5) {
+            printf("buzz\n");
+        } else {
+            return (i);
+        }
+    }
+    
 
 }
 
