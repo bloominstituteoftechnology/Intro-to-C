@@ -8,6 +8,12 @@
 */
 void swap(int* a, int* b)
 {
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+
+
 
 }
 
@@ -20,7 +26,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int counter = 0;
+    while (s[counter] != '\0') {
+        counter++;
+    }
 
+    return counter;
+
+    
 }
 
 /*
@@ -33,6 +46,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    int str_len = string_length(y);
+    int i;
+    for (i = 0; i < str_len; i++) {
+        *(x + i) = *(y + i);
+    }
+    x[str_len] = '\0';
+
 
 }
 
@@ -53,6 +73,19 @@ void string_copy(char *x, char *y)
 int string_compare(char *m, char *n)
 {
 
+  
+    int i = 0; 
+    while ( m[i] != '\0' ) 
+    { 
+        if( n[i] == '\0' ) { return 1; } 
+        else if( m[i] < n[i] ) { return -1; }
+        else if( m[i] > n[i] ) { return 1; } 
+        i++; 
+    } 
+    if(n[i]=='\0')
+        return 0;
+    else 
+        return -1;
 }
 
 #ifndef TESTING
