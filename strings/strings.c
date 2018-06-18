@@ -32,6 +32,18 @@ int string_length(char s[])
     // printf("counter: %d\n", counter);
     // // printf("counter size: %d\n", sizeof(s));
     // return counter;
+
+    //kevin's while loop version
+
+    //    //while loop version (might work)
+    // int counter = 0;
+
+    // while (s[counter])
+    //     {
+    //         counter++;
+    //     }
+    //     return counter;
+    
 }
 
 /*
