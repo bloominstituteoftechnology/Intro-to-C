@@ -9,7 +9,11 @@
 */
 int string_length(char s[])
 {
-
+    int length = 0;
+    while(s[length] != NULL) {
+        length++;
+    }
+    return length;
 }
 
 /*
@@ -18,21 +22,21 @@ int string_length(char s[])
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
 */
-char *reverse_string(char rv[], char s[])
-{
+// char *reverse_string(char rv[], char s[])
+// {
 
-}
+// }
 
 #ifndef TESTING
 int main(void)
 {
     char quote1[] = "Don't forget to be awesome";
-    char quote2[] = "a man a plan a canal panama";
+    // char quote2[] = "a man a plan a canal panama";
 
-    char rv[512];
+    // char rv[512];
 
     printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
-    printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
+    // printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
     return 0;
 }
