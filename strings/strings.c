@@ -9,7 +9,12 @@
 */
 int string_length(char s[])
 {
-
+    // make a counter variable
+    int c = 0;
+    // while the index of s[] is not the end of the array, increment the counter by 1
+    while (s[c] != '\0') c++;
+    // return the counter
+    return c;
 }
 
 /*
