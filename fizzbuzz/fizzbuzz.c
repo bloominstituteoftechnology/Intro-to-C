@@ -12,51 +12,51 @@ int fizzbuzz(int n)
 {
     int i = 0;
     int counter = 0;
-    while (i < n)
-    {
-        printf("i: %i\n", i);
-        printf("Counter: %i\n", counter);
-
-        if (i % 5 == 0 && i % 3 == 0)
-        {
-            printf("FizzBuzz\n");
-            i++;
-        }
-        else if (i % 5 == 0)
-        {
-            printf("Buzz\n");
-            i++;
-        }
-        else if (i % 3 == 0)
-        {
-            printf("Fizz\n");
-            i++;
-        }
-        else
-        {
-            counter++;
-            i++;
-        }
-    }
-    // for (; i < n; i++)
+    // while (i < n)
     // {
+    //     printf("i: %i\n", i);
+    //     printf("Counter: %i\n", counter);
+
     //     if (i % 5 == 0 && i % 3 == 0)
     //     {
     //         printf("FizzBuzz\n");
+    //         i++;
     //     }
     //     else if (i % 5 == 0)
     //     {
     //         printf("Buzz\n");
+    //         i++;
     //     }
     //     else if (i % 3 == 0)
     //     {
     //         printf("Fizz\n");
+    //         i++;
     //     }
     //     else
     //     {
     //         counter++;
+    //         i++;
     //     }
     // }
+    for (; i < n; i++)
+    {
+        if (i % 5 == 0 && i % 3 == 0)
+        {
+            printf("FizzBuzz\n");
+        }
+        else if (i % 5 == 0)
+        {
+            printf("Buzz\n");
+        }
+        else if (i % 3 == 0)
+        {
+            printf("Fizz\n");
+        }
+        else
+        {
+            counter++;
+        }
+    }
     return counter;
 }
 
