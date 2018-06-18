@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+  int temp = *a; // temp = memory address of A
+  *a = *b; // mem address of A is now the mem address of B
+  *b = temp; // mem address of B is now the mem address of A
 }
 
 /*
@@ -20,7 +22,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+  int count = 0;
 
+  while (s[count] != '\0')
+  {
+    count++;
+  }
+
+  return count;
 }
 
 /*
@@ -33,7 +42,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+  int i;
 
+  for (i = 0; y[i] != '\0'; i++)
+  {
+    x[i] = y[i];
+  }
+
+  x[i] = '\0';
 }
 
 /* 
@@ -52,7 +68,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+  int i = 0;
 
+  while (m[i] == n[i] && m[i] != '\0')
+  {
+    i++;
+  }
+
+  if (m[i] > n[i]) return 1;
+  else if (m[i] < n[i]) return -1;
+  else return 0;
 }
 
 #ifndef TESTING
