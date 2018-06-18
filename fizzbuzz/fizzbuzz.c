@@ -9,7 +9,7 @@
     Don't forget to include newlines '\n' in your printf statements!
 */
 int fizzbuzz(int n)
-{
+{   int negCounter = 0;
     int counter = 1;
     while(counter <= n) {
         if(counter % 15 == 0) {
@@ -32,10 +32,11 @@ int fizzbuzz(int n)
         }
 
         else
-            counter ++;
+            counter++;
+            // negCounter++;
     } 
 
-    return counter;
+    return negCounter;
 
 }
 
