@@ -10,23 +10,54 @@
 */
 int fizzbuzz(int n)
 {
-    int counter;
-    while (counter < n)
+    int i = 0;
+    int counter = 0;
+    while (i < n)
     {
-        counter++;
+        printf("i: %i\n", i);
+        printf("Counter: %i\n", counter);
+
+        if (i % 5 == 0 && i % 3 == 0)
+        {
+            printf("FizzBuzz\n");
+            i++;
+        }
+        else if (i % 5 == 0)
+        {
+            printf("Buzz\n");
+            i++;
+        }
+        else if (i % 3 == 0)
+        {
+            printf("Fizz\n");
+            i++;
+        }
+        else
+        {
+            counter++;
+            i++;
+        }
     }
-    if (counter % 5 == 0 && counter % 3 == 0)
-    {
-        printf("FizzBuzz\n");
-    }
-    else if (counter % 5 == 0)
-    {
-        printf("Buzz\n");
-    }
-    else if (counter % 3 == 0)
-    {
-        printf("Fizz\n");
-    }
+    // for (; i < n; i++)
+    // {
+    //     if (i % 5 == 0 && i % 3 == 0)
+    //     {
+    //         printf("FizzBuzz\n");
+    //     }
+    //     else if (i % 5 == 0)
+    //     {
+    //         printf("Buzz\n");
+    //     }
+    //     else if (i % 3 == 0)
+    //     {
+    //         printf("Fizz\n");
+    //     }
+    //     else
+    //     {
+    //         counter++;
+    //     }
+    // }
+    return counter;
 }
 
 #ifndef TESTING
