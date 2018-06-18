@@ -55,7 +55,7 @@ char *test_string_compare()
     mu_assert(string_compare(s, s) == 0, "Your string_compare did not return 0 for matching strings.");
     mu_assert(string_compare(s, t) < 0, "Your string_compare did not return a negative value where it was expected.");
     mu_assert(string_compare(n, m) > 0, "Your string_compare did not return a positive value where it was expected.");
-    mu_assert(string_compaire(firetruck, firetrucks) < 0, "Your string_compare did not return a negative value where it was expected.");
+    mu_assert(string_compare(firetruck, firetrucks) < 0, "Your string_compare did not return a negative value where it was expected.");
 
     return NULL;
 }
