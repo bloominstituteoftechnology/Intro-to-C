@@ -53,6 +53,6 @@ $(TESTS): $(TEST_SRC)
 clean:
 	rm -rf build $(OBJECTS) $(TESTS)
 	rm -f tests/tests.log
-	find . -name "*.gc" -exec rm {} \;
+	find . -name "*.gc" -exec rm -f {} \;
 	rm -rf `find . -name "*.dSYM" -print`
 	rm -f $(EXE)
