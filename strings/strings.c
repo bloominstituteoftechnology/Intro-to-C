@@ -36,9 +36,11 @@ char *reverse_string(char rv[], char s[])
 
     for(int i = 0; i < counter; i++) {
         printf("%c\n", rv[i]);
-    }
+    };
 
-}
+    printf("Revsersed String: %s\n", rv);
+
+};
 
 #ifndef TESTING
 int main(void)

@@ -19,7 +19,14 @@ void swap(int* a, int* b)
     Do not just use the `strlen` function from the standard library.
 */
 int string_length(char *s)
-{
+{  
+    int length = 1;
+    while(*s) {
+        length++;
+        s++;
+    }
+
+    return length;
 
 }
 
