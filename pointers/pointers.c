@@ -8,7 +8,13 @@
 */
 void swap(int* a, int* b)
 {
-
+    printf("pointer a: %d \n", a); 
+    printf("pointer b: %d \n", b); 
+    int *temp = a; 
+    a = b; 
+    b = temp; 
+    printf("after swap pointer a: %d \n", a); 
+    printf("after swap pointer b: %d \n", b); 
 }
 
 /*
@@ -20,6 +26,11 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+     int count = 0; 
+    while(s[count] != '\0') {
+        count++; 
+    }
+    return count;
 
 }
 
@@ -33,7 +44,9 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    x = y; 
+    printf("new x and old y %d %d \n", x,y); 
+     
 }
 
 /* 
