@@ -33,7 +33,7 @@ int *bubble_sort(int *numbers, int n, compare_cb cmp)
     for(i = 0; i< n-1; i++) {
         for(j = 0; j<n-i-1; j++) {
             //So I compared all numbers in the array from 0 to the end.
-            //This is a test line. Test 2 trying to fix my ubuntu terminal like my Normal Terminal.
+            //Fixed the terminal
             if(cmp(numbers[j], numbers[j+1]) >= 0) {
                  int temp = numbers[j];
                 numbers[j] = numbers[j+1];

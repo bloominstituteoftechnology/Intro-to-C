@@ -11,6 +11,7 @@
         "ostream": "c",
         "sstream": "c",
         "streambuf": "c",
-        "tuple": "c"
+        "tuple": "c",
+        "initializer_list": "c"
     }
 }

@@ -17,7 +17,30 @@
 */
 void quicksort(int *arr, int low, int high)
 {
-
+    int temp, p, i, j;
+if(low < high) {
+    p = low;
+    i = low;
+    j = high;
+    while(i<j) {
+           while(arr[i] <= arr[p]&& i<high){
+               i++;
+           }
+            while(arr[j] > arr[p]){
+               j--;
+           }
+           if(i < j) {
+               temp = arr[i];
+               arr[i] = arr[j];
+               arr[j] = temp;
+           }
+    }
+    temp = arr[p];
+    arr[p] = arr[j];
+    arr[j] = temp;
+    quicksort(arr, low, j -1);
+    quicksort(arr, j+1, high);
+}
 }
 
 #ifndef TESTING
