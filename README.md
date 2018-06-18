@@ -2,7 +2,8 @@
 
 Welcome to your first C lab! 
 
-The two main goals of this sprint are as follows. The first goal is to give students the experience of learning a different programming language. This is important because it is _very_ rarely the case where you are familiar and comfortable with all of the technologies/programming languages that you'll be using on a job as a professional developer. Being able to pick up languages/technologies you aren't familiar with is a skill that we want to cultivate in students during their time here at Lambda, which is why we expose students to both C and Python during their time here.
+The two main goals of this sprint are as follows. The first goal is to give students the experience of learning a different programming language. This is important because it is _very_ rarely the case where you are familiar and comfortable with all of the technologies/programming languages that you'll be using on a job as a professional developer. Being able to pick up languages/technologies you aren't familiar with ihttps://github.com/LambdaSchool/CS-Wiki/wiki/Getting-Your-C-Compiler-Installed.
+s a skill that we want to cultivate in students during their time here at Lambda, which is why we expose students to both C and Python during their time here.
 
 The second goal is to start peeling away the layers of abstraction that students are used from having only worked with JavaScript. C supports very few of the abstractions that students are used to, because C has you working directly with the memory on your machine. Higher level languages abstract this fact away from you, at the cost of raw performance and control. Essentially, you're getting exposed to the nitty-gritty seedy underbelly of your computer's inner workings, and being in such a place for extended periods of time is not for everybody. 
 
@@ -12,8 +13,7 @@ But before any of that happens, you've gotta get your feet wet with C. So withou
 
 ## What you'll be doing in this lab
 
-If you haven't gotten your C compiler up and running, please do that first. You'll find instructions on how to do that for your specific platform here: https://github.com/LambdaSchool/CS-Wiki/wiki/Getting-Your-C-Compiler-Installed.
-
+If you haven't gotten your C compiler up and running, please do that first. You'll find instructions on how to do that for your specific platform here: 
 This lab is structured very much like how your introductory JavaScript labs are structured. There are independent modules, each with their own set of exercises that you'll be tasked with implementing. There's an associated set of tests for all the exercises in each module, which you'll run against your code to check to see if it behaves and functions correctly. The order in which you should tackle these exercises is this:
 
   - [ ] fizzbuzz
