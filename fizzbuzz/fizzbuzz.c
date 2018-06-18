@@ -28,9 +28,7 @@ int fizzbuzz(int n)
         {
             printf("Buzz\n");
         }
-        printf("%d\n",i);
         i += 1;
-        
     }
     return i;
 }
