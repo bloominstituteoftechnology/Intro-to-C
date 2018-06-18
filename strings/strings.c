@@ -9,13 +9,20 @@
 */
 int string_length(char s[])
 {
-    // int c = 0;
-    int i = 0;
-    while (i < 100) {
-        printf("%s\n", s[i]);
-        i ++;
+    int c = 0;
+    for (int i = 0; s[i]; i++) {
+        c ++;
     }
-    return 0;
+    return c;
+}
+
+// prints all characters in array
+void print_arr(char a[])
+{
+    for (int k = 0; k < 27; k++) {
+        printf("%c", a[k]);
+    }
+    printf("\n");
 }
 
 /*
@@ -26,8 +33,17 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    return 0;
+    int j = 0;
+    for (int i = string_length(s) - 1; i >= 0; i--) {
+        rv[j] = s[i];
+        j++;
+    }
+    print_arr(rv);
+    return rv;
 }
+
+
+
 
 #ifndef TESTING
 int main(void)
@@ -37,7 +53,7 @@ int main(void)
 
     char rv[512];
 
-    printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
+    printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1)); // 26
     printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
     return 0;
