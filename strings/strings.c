@@ -9,7 +9,15 @@
 */
 int string_length(char s[])
 {
-
+    // set up a count variable
+    int count = 0;
+    // iterate over the passed in array
+    for (int i=0;s[i];i++){
+        //increment count
+        count ++;
+    }
+    // return count
+return count;
 }
 
 /*
@@ -20,7 +28,19 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    //declare variables, for the indexes.    
+    int i = 0;
+    int j = 0;
+    //call string_length passing in the s array
+    int strLength = string_length(s);
+    // itereate over s array decrmenting
+    for( i = strLength - 1;i>=0;i--)
+{
+    // set rv at index j = s and index i
+    rv[j--] = s[i];
+}
+    rv[i]='\0';
+    return rv;
 }
 
 #ifndef TESTING
