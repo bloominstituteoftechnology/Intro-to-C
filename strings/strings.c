@@ -29,17 +29,21 @@ return count;
 char *reverse_string(char rv[], char s[])
 {
     //declare variables, for the indexes.    
-    int i = 0;
-    int j = 0;
+   
     //call string_length passing in the s array
     int strLength = string_length(s);
+    int j =0;
     // itereate over s array decrmenting
-    for( i = strLength - 1;i>=0;i--)
+    for( int i = strLength; i>=0;i--)
 {
-    // set rv at index j = s and index i
-    rv[j--] = s[i];
+    // set rv at index j = s and index at strLength
+rv[j] = s[strLength - 1];
+//increment variables
+j++;
+strLength --;
+
 }
-    rv[i]='\0';
+
     return rv;
 }
 
