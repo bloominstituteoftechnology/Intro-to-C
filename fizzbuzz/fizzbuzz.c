@@ -10,23 +10,24 @@
 */
 int fizzbuzz(int n)
 {
-    int i;
+    int c = 0;
 
-    for ( i = 0; i < n; i++) {
+    for ( int i = 0; i <= n; i++) {
         // check if divis by 3 & 5 => print fizz buzz
-        if( i % 3 && i % 5) {
-            printf("fizz buzz\n");
+        if( i % 3 == 0 && i % 5 == 0) {
+            printf("%d is divisible by 3 and 5 -- FizzBuzz!\n", i);
         // check if divis by 3 => print fizz
-        } else if (i % 3 ) {
-            printf("fizz\n");
+        } else if (i % 3 == 0) {
+            printf("%d is divisible by 3 and not 5 -- Fizz!\n", i);
         // check if divis by 5 => print buzz
-        } else if (i % 5) {
-            printf("buzz\n");
+        } else if (i % 5 == 0) {
+            printf("%d is divisible by 5 but not 3 -- Buzz!\n", i);
         } else {
-            return (i);
+            printf("%d is not divisible by 5 nor 3 -- WOMP!\n", i);
+            c++;
         }
     }
-    
+    return c;
 
 }
 
