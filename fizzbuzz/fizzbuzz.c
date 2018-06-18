@@ -13,9 +13,8 @@
 
 int fizzbuzz(int n)
 {
-    int i = 1;
-
-    while (i < n) {
+    int c = 0;
+    for (int i = 1; i <= n; i++) {
         if (i % 3 == 0 && i % 5 == 0)
         {
             printf("FizzBuzz\n");
@@ -28,9 +27,11 @@ int fizzbuzz(int n)
         {
             printf("Buzz\n");
         }
-        i += 1;
+        else {
+            c += 1;
+        }
     }
-    return i;
+    return c;
 }
 
 #ifndef TESTING

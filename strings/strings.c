@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
-
+    // int c = 0;
+    int i = 0;
+    while (i < 100) {
+        printf("%s\n", s[i]);
+        i ++;
+    }
+    return 0;
 }
 
 /*
@@ -20,7 +26,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    return 0;
 }
 
 #ifndef TESTING
