@@ -11,12 +11,10 @@ int string_length(char s[])
 {
     int counter = 0;
 
-    do
+    while (s[counter] != '\0')
     {
-        if (s[counter] == '\0')
-            return counter;
         counter++;
-    } while (s[counter] != '\0');
+    }
     return counter;
 }
 
