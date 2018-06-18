@@ -15,10 +15,29 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
 void quicksort(int *arr, int low, int high)
 {
+    if (high - low < 1) {
+        return;
+    }
 
+    int pivot = high;
+    int i;
+    for (i = pivot - 1; i >= low; i--)
+    {
+        if (arr[i] > arr[pivot])
+        {
+            swap(&arr[i], &arr[pivot - 1]);
+            swap(&arr[pivot], &arr[pivot - 1]);
+            pivot--;
+        }
+    }
+
+    quicksort(arr, pivot + 1, high);
+    quicksort(arr, low, pivot - 1);
 }
+
 
 #ifndef TESTING
 int main(void)
