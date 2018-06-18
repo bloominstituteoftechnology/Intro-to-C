@@ -8,7 +8,11 @@
 */
 void swap(int* a, int* b)
 {
+    int temp;
 
+    temp = *b;
+    *b = *a;
+    *a = temp;
 }
 
 /*
@@ -20,7 +24,11 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int i;
 
+    for (i = 0; s[i] != '\0'; i++) {}
+
+    return i;
 }
 
 /*
@@ -33,6 +41,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    int i;
+
+    for (i = 0; y[i] != '\0'; i++) 
+    {
+        x[i] = y[i];
+    }
+
+    x[i] = '\0';
 
 }
 
@@ -53,21 +69,31 @@ void string_copy(char *x, char *y)
 int string_compare(char *m, char *n)
 {
 
+    for (int i = 0; m[i] != '\0' || n[i] != '\0'; i++) 
+    {
+        /* printf("I: %d   M: %c    N: %c\n", i,  m[i], n[i]); */
+        if (m[i] < n[i] ) return -1;
+        if (m[i] > n[i] ) return 1;
+    }
+    
+    return 0;
+
 }
 
 #ifndef TESTING
 int main(void)
 {
+
     int x = 10, y = 20;
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
     char *hello = "Hello";
     char *world = "World";
-
+    /*  */
     char buffer[1024];
     string_copy(buffer, hello);
-
+    /*  */
     printf("Buffer is %s\n", buffer);
     printf("Length is %d\n", string_length(buffer));
     printf("Comparison is %d\n", string_compare(hello, world));
