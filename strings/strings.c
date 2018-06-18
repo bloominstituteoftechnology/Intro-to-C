@@ -9,7 +9,7 @@
 */
 int string_length(char s[])
 {
-
+int string_length = sizeof(s) / sizeof(char);
 }
 
 /*

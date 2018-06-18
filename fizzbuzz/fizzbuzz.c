@@ -10,7 +10,9 @@
 */
 int fizzbuzz(int n)
 {
-
+//loop through and % 3 = 0 prints Fizz
+//loop through and % 5 = 0 prints Buzz
+//loop through and % 3 = 0 || % 5 = 0 prints FizzBuzz
 }
 
 #ifndef TESTING
