@@ -9,7 +9,7 @@
 */
 int string_length(char s[])
 {
-    int length = 0;
+    int length = 1;
     while(s[length]) {
         length++;
     }
@@ -23,13 +23,26 @@ int string_length(char s[])
     the reversed string with a null character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[])
-{
+{   
+    int length = string_length(s);
+    int counter = 0;
+
+    while(0 <= length) {
+    // printf("LOL: %d\n", length);
+    length--;
+    rv[counter] = s[length];
+    counter++;
+    };
+
+    for(int i = 0; i < counter; i++) {
+        printf("%c\n", rv[i]);
+    }
 
 }
 
 #ifndef TESTING
 int main(void)
-{
+{   
     char quote1[] = "Don't forget to be awesome";
     char quote2[] = "a man a plan a canal panama";
 
