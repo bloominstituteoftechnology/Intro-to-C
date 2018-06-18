@@ -15,8 +15,25 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
+// sources: Got help from my c++ programming book
 void quicksort(int *arr, int low, int high)
 {
+    if (low < high) {
+        int pivot = low;
+
+        for (int index = low; index < high; index++) {
+            if (arr[index] < arr[high]) {
+                swap(&arr[pivot], &arr[index]);
+                pivot++;
+            }
+        }
+
+        swap(&arr[pivot], &arr[high]);
+        quicksort(arr, low, pivot - 1);
+        quicksort(arr, pivot + 1, high);
+    }
+
 
 }
 
