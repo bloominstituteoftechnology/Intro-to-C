@@ -55,6 +55,20 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
     int length = string_length(s);
+    int count = 0;
+
+    for (int i = length - 1; i >= 0; i--)
+    {
+        rv[count] = s[i];
+        count++;
+        printf("CHARS: %d\n", rv[count]);
+    }
+    rv[count] = '\0';
+    printf("REVERSED: %s\n", rv);
+    return rv;
+
+    //justin's code
+    /*    int length = string_length(s);
     printf("ARRAY LENGTH: %d\n", length);
 
     for (int i = 0; i < string_length(s); i++) {
@@ -63,7 +77,7 @@ char *reverse_string(char rv[], char s[])
       printf("CHARS: %c\n", rv[i]);
     }
     printf("REVERSED ARRAY: %s\n", rv);
-    return rv;
+    return rv; */
 }
 
 #ifndef TESTING
