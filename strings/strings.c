@@ -25,7 +25,19 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    // declare a variable for the s[] length and a placeholder for the reverse str
+    int strLen = string_length(s);
+    int reverseStr = 0;
+    // counter variable for loop
+    int i;
+    // loop over each index in string s
+    for (i = strLen - 1; i >= 0; i--) {
+            // set the index at position reverseStr within rv to the index of i within s, then increment 
+            rv[reverseStr++] = s[i];
+            rv[reverseStr] = '\0';
+        }     
+    // return 
+    return rv;
 }
 
 #ifndef TESTING
