@@ -13,7 +13,18 @@
 */
 char *string_dup(char *src)
 {
+    printf("\n\n len: %d\n\n", string_length(src));
+    char *duplicate = malloc(sizeof(char) * (string_length(src) + 1));
+    char *walker = duplicate;
 
+    while (*src) {
+        *walker = *src;
+        src++;
+        walker++;
+    }
+
+    printf("duplicate: %s\n", duplicate);
+    return duplicate;
 }
 
 /*
@@ -29,7 +40,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    int i = 0;
+    while (i < n) {
+        *(char *)dest = *(char *)src;
+        src++;
+        dest++;
+        i++;
+    }
 }
 
 #ifndef TESTING
