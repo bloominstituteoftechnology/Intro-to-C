@@ -28,25 +28,20 @@ return count;
 */
 char *reverse_string(char rv[], char s[])
 {
-    //declare variables, for the indexes.    
-   
+    //declare variables, for the indexes.  
+    int j =0;  
     //call string_length passing in the s array
     int strLength = string_length(s);
-    int j =0;
     // itereate over s array decrmenting
     for( int i = strLength; i>=0;i--)
 {
-    // set rv at index j = s and index at strLength
-rv[j] = s[strLength - 1];
-//increment variables
+    // set rv at index j = s and index at i
+rv[j] = s[i - 1];
+//increment variable
 j++;
-strLength --;
-
 }
-
     return rv;
 }
-
 #ifndef TESTING
 int main(void)
 {

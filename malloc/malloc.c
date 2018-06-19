@@ -13,7 +13,15 @@
 */
 char *string_dup(char *src)
 {
-
+int strLength = string_length(src);
+char *rv = malloc(strLength);
+int count =0;
+while(count<=strLength)
+{
+ rv[count] = src[count];
+ count++;
+}
+return rv;
 }
 
 /*
@@ -29,7 +37,18 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    //set void pointer to char pointer
+    char *destCopy = dest;
+    //set cosnt char for the src pointer
+    const char *srcCopy = src;
+    // iterate while i<n
+for(int i =0; i <n; i++)
+{
+    // set the copy of dest at i to the copy of src at i
+    destCopy[i] = srcCopy[i];
+}
+// return my copy of dest
+return destCopy;
 }
 
 #ifndef TESTING
