@@ -1,6 +1,7 @@
 {
   "files.associations": {
-    "fizzbuzz.h": "c"
+    "fizzbuzz.h": "c",
+    "array": "c"
   },
   "C_Cpp.intelliSenseEngineFallback": "Enabled"
 }

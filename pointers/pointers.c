@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,7 +22,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int lengthCount = 0;
+    while (*s != '\0')
+    {
+        lengthCount++;
+        s++;
+    }
+    return lengthCount;
 }
 
 /*
@@ -33,7 +41,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0')
+    {
+        *x++ = *y++;
+        // x++;
+        // y++;
+    }
+    *x = 0; // this puts terminator '\0' at the end of string
 }
 
 /* 
@@ -42,6 +56,9 @@ void string_copy(char *x, char *y)
     or greater than n. To calculate lexicographic difference, find
     the difference between the first characters in m and n that differ.
     
+    m > n = 'positive'
+    and so on...
+
     For example, given matching strings, this function should 
     return 0. Given strings m = "hello world" and n = "goodbye",
     this function should return a positive value. Given strings
