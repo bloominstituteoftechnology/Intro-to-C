@@ -72,16 +72,6 @@ for(; *(y+i); i++){
 */
 int string_compare(char *m, char *n)
 {
-// char c;
-// if (string_length(m) < string_length(n)) c=n;
-// else c = m;
-
-// int i = 0
-// while(c[i])
-// {
-
-// i++;
-// }
 // while n or m have not reached the end of the string
 while(*m != '\0'|| *n !='\0')
 {
