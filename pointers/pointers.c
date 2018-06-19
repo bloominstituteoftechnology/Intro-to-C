@@ -33,7 +33,9 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+  while(*y != '\0') *x++ = *y++;
+  *x = '\0';
+  printf("%c\n", *(x - 1));
 }
 
 /* 
