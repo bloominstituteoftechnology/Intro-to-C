@@ -8,10 +8,10 @@
 */
 void swap(int* a, int* b)
 {
-    int temp = *b;
+    int temp = *a;
     printf("%d", a);
-    b = *a;
-    a = temp;
+    *a = *b;
+    *b = temp;
     printf("%d", a);
 }
 
@@ -24,7 +24,11 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int count = 0;
+    while (s[count] != '\0') {
+        count++;
+    }
+    return count;
 }
 
 /*
@@ -37,7 +41,7 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    
 }
 
 /* 
