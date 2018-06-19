@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
@@ -22,9 +23,7 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-    for (int i = 0; i < strlen(s); i++) {
-        printf("%c", s[i]);
-    }
+    int i = 0; while (s[i]) i ++; return i - 1;
 }
 
 /*
@@ -37,7 +36,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    int i = 0;
+    while (*(y + i)) {
+        x[i] = *(y + i);
+        i ++;
+    }
+    *(x + (i + 1)) = '\0';
 }
 
 /* 
@@ -56,7 +60,18 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    char *c;
+    if (string_length(m) < string_length(n)) c = n;
+    else c = m;
 
+
+    int i = 0;
+    int count = 0;
+    while (c[i]) {
+        printf("%c\n", c[i]);
+
+        i++;
+    }
 }
 
 #ifndef TESTING
