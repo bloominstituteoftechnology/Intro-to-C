@@ -11,13 +11,13 @@
 */
 void swap(int* a, int* b)
 {
-    printf("pointer a: %d \n", a); 
-    printf("pointer b: %d \n", b); 
+    // printf("pointer a: %d \n", a); 
+    // printf("pointer b: %d \n", b); 
     int temp = *a; 
     *a = *b; 
-    b = temp; 
-    printf("after swap pointer a: %d \n", a); 
-    printf("after swap pointer b: %d \n", b); 
+    *b = temp; 
+    // printf("after swap pointer a: %d \n", a); 
+    // printf("after swap pointer b: %d \n", b); 
 }
 
 /*
@@ -48,9 +48,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    x = y; 
-    printf("new x and old y %d %d \n", x,y); 
-     
+    int i; 
+    for (i = 0; y[i] != '\0'; i++) 
+    {
+        x[i] = y[i];
+    }
+
+    x[i] = '\0';    
 }
 
 /* 
@@ -69,6 +73,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    // check untill m or n === '\0'
+    for (int i = 0; m[i] != '\0' || n[i] != '\0'; i++) 
+    {
+        if (m[i] < n[i] ) return -1;// if any index of m !== n if m < n return -1
+        if (m[i] > n[i] ) return 1;// if any index of m !== n if m > n return 1
+    }
+    
+    return 0;// all the index of m and n are equal 
 
 }
 
