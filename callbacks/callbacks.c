@@ -9,6 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
+    return a < b;
 
 }
 
@@ -18,6 +19,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
+    return a < b;
 
 }
 
@@ -29,6 +31,9 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    // allocate a new array by mallocing
+    int *target = malloc(n * sizeof(int));
+    mem_copy(target, numbers, n * sizeof(int);)
 
 }
 
