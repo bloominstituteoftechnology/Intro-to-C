@@ -56,7 +56,7 @@ void string_copy(char *x, char *y)
     or greater than n. To calculate lexicographic difference, find
     the difference between the first characters in m and n that differ.
     
-    m > n = 'positive'
+    n > m = 'positive'
     and so on...
 
     For example, given matching strings, this function should 
@@ -69,7 +69,13 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    /* for loop looks for value difference in letters.
+    loop stops then returns after difference is found */
+    for (; *m && *n && *m == *n; ++m, ++n)
+    {
+        ;
+    }
+    return *m - *n; // calc done by values from ASCII table order for both letters
 }
 
 #ifndef TESTING
