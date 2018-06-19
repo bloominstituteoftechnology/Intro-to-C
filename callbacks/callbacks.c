@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a-b;
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return b-a;
 }
 
 /*
