@@ -13,12 +13,37 @@
 */
 char *string_dup(char *src)
 {
+	// Get the length of the src string
+	int length = string_length(src);
+	// Allocate memory that fits length of the src string + 1 for null terminator
+	char *str = malloc(length + 1);
+	// char *p = str;
 
+for (int i = 0; i < length; i++) {
+	// str[i] = src[i];
+	*(str + 1) = *(src + 1);
+
+	*(str + length) = '\0';
+}
+	// Iterate along the src string
+	// while (*src != '\0') {
+	// 	*p = *src;
+	// 	p++;
+	// 	src++;
+	// }
+
+	*p = '\0';
+
+	while (*src != '\0'){
+
+	}
+
+	// return str;
 }
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
-    of any type and copies its contents to the destination pointer (dest).
+    of any type and copies its contents to the desstination pointer (dest).
 
 	n is the number of bytes to copy.
 
@@ -29,6 +54,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+	
 
 }
 
