@@ -11,7 +11,6 @@ void swap(int *a, int *b)
     int temp = *a;
     *a = *b;
     *b = temp;
-    return;
 }
 
 /*
@@ -23,7 +22,10 @@ void swap(int *a, int *b)
 */
 int string_length(char *s)
 {
-    
+    int i = 0;
+    while (s[i] != '\0')
+        i++;
+    return i;
 }
 
 /*
@@ -36,6 +38,18 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    int flag = 0;
+    while (!flag)
+    {
+        *x++ = *y++;
+        *y == '\0' ? (flag = 1) : (flag = 0);
+    }
+    *x = *y;
+    /*
+    I know this logic seems conflated, but everything
+    shorter caused a segmentation fault in tests even
+    when returning correct values
+    */
 }
 
 /* 
@@ -59,6 +73,10 @@ int string_compare(char *m, char *n)
     //if they match increment both pointers
     //if they don't return *m - *n
     //if we've reached null on both we know they match return 0
+    while ((*n - 1) != '\n')
+        if (*n++ != *m++)
+            return *--m - *--n;
+    return 0;
 }
 
 #ifndef TESTING
@@ -68,15 +86,15 @@ int main(void)
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
-    // char *hello = "Hello";
-    // char *world = "World";
+    char *hello = "Hello";
+    char *world = "World";
 
-    // char buffer[1024];
-    // string_copy(buffer, hello);
+    char buffer[1024];
+    string_copy(buffer, hello);
 
-    // printf("Buffer is %s\n", buffer);
-    // printf("Length is %d\n", string_length(buffer));
-    // printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Buffer is %s\n", buffer);
+    printf("Length is %d\n", string_length(buffer));
+    printf("Comparison is %d\n", string_compare(hello, world));
 
     return 0;
 }
