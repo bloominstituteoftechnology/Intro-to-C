@@ -52,7 +52,7 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
- blah blah
+ 
 }
 
 #ifndef TESTING
