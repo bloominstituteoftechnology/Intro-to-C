@@ -24,7 +24,7 @@ int string_length(char s[])
     //   int i;
     // int counter = 0;
 
-    // for (i = 0; s[i] != '\0'; i++) 
+    // for (i = 0; s[i] != '\0'; i++)
     // {
     //   counter++;
     // }
@@ -43,7 +43,6 @@ int string_length(char s[])
     //         counter++;
     //     }
     //     return counter;
-    
 }
 
 /*
