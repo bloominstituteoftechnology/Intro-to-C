@@ -13,7 +13,10 @@
 */
 char *string_dup(char *src)
 {
-
+    int lsrc = string_length(src);
+    char *new = malloc(lsrc * 2);
+    // printf("Lenght of src %d", lsrc); 
+    return new;
 }
 
 /*

@@ -6,9 +6,26 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    // printf("value of a: %d, b: %d \n\n", a,b);
+    // *a = b;
+    // int aval = *a;
+    // int aadd = &a;
+    int c = *a;
+    *a = *b;
+    *b = c;
+    // int bval = *b;
+    // int badd = &b;
+    // a = *b;
+    // b = *a;
+    // & a = bval;
+    // & b = aval;
+    // *b = a;
+    // *a = b;
+    // *b = a;
+    // return a = *b, b = *a;
+    // printf("value of a: %d, %d, b: %d  \n\n", &a, badd, aadd);
 }
 
 /*
@@ -20,7 +37,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int i = 0;
+    while (s[i] != '\0')
+    {
+        i++;
+    }
+    printf("count of string %d", i);
+    return i;
 }
 
 /*
@@ -33,7 +56,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y)
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -52,7 +81,31 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int i = 0;
+    int mlength = string_length(&m) - 1;
+    int nlength = string_length(&n) - 1;
+    int max = 0;
+    if (mlength > nlength) {
+        max = mlength;
+    } else if (mlength < nlength) {
+        max = nlength;
+    } else {
+        max = nlength;
+    };
 
+    // while (m[i] !)
+    // return m - n;
+
+   for (;i <= max; i++) {
+       if (m[i] != n[i]) {
+        return *m - *n;
+       } else if (m[i] == n[i]) {
+           return 0;
+       } else {
+           printf("next");
+       }
+   }
+    printf("character of m %c and n %c", m[i], n[i]);
 }
 
 #ifndef TESTING
