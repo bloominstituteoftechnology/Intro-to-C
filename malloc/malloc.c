@@ -15,7 +15,6 @@ char *string_dup(char *src)
 {
     int length = string_length(src);
     char *dup = malloc(length * sizeof(char));
-    int i = 0;
     for (int i = 0; i < length; i++)
         dup[i] = src[i];
     return dup;
