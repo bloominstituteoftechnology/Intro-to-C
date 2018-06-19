@@ -43,31 +43,31 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    int add = 0;
+    // int add = 0;
 
-    while (*(y + add) != '0\n')
-    {
-        *(x + add) = *(y + add);
-        add++;
-        //printf("char: %s\n", x);
-    }
-    x[add] = '\0';
-    printf("STRING: %s\n", y);
+    // while (*(y + add) != '0\n')
+    // {
+    //     *(x + add) = *(y + add);
+    //     add++;
+    //     // printf("char: %s\n", x);
+    // }
+    // x[add] = '\0';
+    // printf("STRING: %s\n", y);
 
     // alternative solution
-    // // find length of y
-    // int ysize = string_length(y);
-    // int idx = 0;
-    // printf("ysize: %d\n", ysize);
-    // // loop over y and add chars to x
-    // while (idx < ysize) {
-    //   x[idx] = y[idx];
-    //   printf("x value: %c\n", x[idx]);
-    //   idx++;
-    // }
-    // printf("idx: %d\n", idx);
-    // printf("x at idx: %d\n", x[idx]);
-    // printf("copied: %s\n", x);
+    // find length of y
+    int ysize = string_length(y);
+    int idx = 0;
+    printf("ysize: %d\n", ysize);
+    // loop over y and add chars to x
+    while (idx < ysize) {
+      x[idx] = y[idx];
+      printf("x value: %c\n", x[idx]);
+      idx++;
+    }
+    printf("idx: %d\n", idx);
+    printf("x at idx: %d\n", x[idx]);
+    printf("copied: %s\n", x);
 }
 
 /* 
@@ -86,6 +86,33 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+  printf("string m: %s\n", m);
+  printf("string n: %s\n", n);
+
+  // length is the largest string length
+  int length = 0;
+  // m is larger than n
+  if (string_length(m) > string_length(n)) {
+    length = string_length(m);
+  } 
+  // n is larger than m
+  else if (string_length(m) < string_length(n)) {
+    length = string_length(n);
+  }
+  // m and n are the same size
+  else {
+    length = string_length(m);
+  }
+  // loop to length, the largest string size possible
+  for (int i = 0; i < length; i++) {
+    if (m[i] != n[i]) {
+      // find the lexicographic difference where m and n do not match
+      printf("m[i] - n[i]: %d\n", (m[i] - n[i]));
+      return (m[i] - n[i]);
+    }
+  }
+  // default case: all chars are matching
+  return 0;
 }
 
 #ifndef TESTING
