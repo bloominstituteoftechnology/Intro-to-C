@@ -11,12 +11,16 @@
 int fizzbuzz(int n)
 {
 	int counter = 0;
-	int i;
-	for(i = 1; i <= n; i++) {
-		if((i % 3 == 0) && (i % 5 == 0)) printf("\nFizzBuzz");
-		else if(i % 3 == 0) printf("\nFizz");
-		else if(i % 5 == 0) printf("\nBuzz");
-		else counter++;
+	for (int i = 1; i <= n; i++)
+	{
+		if ((i % 3 == 0) && (i % 5 == 0))
+			printf("\nFizzBuzz");
+		else if (i % 3 == 0)
+			printf("\nFizz");
+		else if (i % 5 == 0)
+			printf("\nBuzz");
+		else
+			counter++;
 	}
 	printf("\n%d", counter);
 	return counter;
@@ -25,8 +29,8 @@ int fizzbuzz(int n)
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(20);
+	fizzbuzz(20);
 
-    return 0;
+	return 0;
 }
 #endif
