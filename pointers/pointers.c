@@ -63,15 +63,11 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {   
-    int count = 0;
-    for (int i = 0; m[i] != '\0' || n[i] != '\0'; i++) {
-        if (m[i] == n[i]) count++;
-        else if (m[i] < n[i]) return -1;
+    for (int i = 0; m[i] != '\0' || n[i] != '\0'; i++) { // Ends the loop if m or n is empty
+        if (m[i] < n[i]) return -1;
         else if (m[i] > n[i]) return 1;
     }
-    if (count == string_length(m)) {
-        return 0;
-    }
+    return 0;
 }
 
 #ifndef TESTING
