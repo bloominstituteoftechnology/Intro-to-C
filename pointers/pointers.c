@@ -43,6 +43,7 @@ int string_length(char *s)
 void string_copy(char *x, char *y)
 {
     // *x = *y;
+    //this one is from stack overflow, i need to figure it out with explanation
     int i = 0;
     while (y[i] != '\0')
     {
