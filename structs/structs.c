@@ -8,7 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 struct Person {
-
+    unsigned char name;
+    unsigned int age;
+    unsigned int height;
+    unsigned int weight;
 };
 
 /*
