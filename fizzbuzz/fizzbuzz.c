@@ -11,6 +11,30 @@
 int fizzbuzz(int n)
 {
 
+    int count = 2;
+    int divisible = 3;
+    if (n < divisible)
+    {
+        printf(" %d is smaller then 3 \n ", n);
+    }
+    else
+    {
+
+        while (count < n)
+        {
+            count++;
+            int solution = count % divisible;
+            if (solution > 0)
+            {
+                printf("buzz \n");
+            }
+            else
+            {
+                printf(" fizz \n");
+            }
+        }
+    }
+    return 0;
 }
 
 #ifndef TESTING

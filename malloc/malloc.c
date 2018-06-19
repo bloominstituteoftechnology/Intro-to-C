@@ -11,9 +11,29 @@
     
     Do not just use the `strdup` function from the standard library.
 */
-char *string_dup(char *src)
+
+int src_length(char src[])
 {
 
+    int count = 0;
+    while (*src != '\0')
+    {
+        count++;
+        src++;
+    }
+    // printf(" string_length %d \n", count);
+    return count;
+}
+///////////////////////////////////////
+
+char *string_dup(char *src)
+{
+    int length = src_length(src);
+    // printf("%d \n", length);
+    char *dup_src = malloc(length);
+    dup_src = src;
+    //printf("%s \n", dup_src);
+    return dup_src;
 }
 
 /*
@@ -29,7 +49,6 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
 }
 
 #ifndef TESTING
@@ -38,21 +57,26 @@ int main(void)
     char *s = "Some string to duplicate.";
     char *dup = string_dup(s);
 
-    printf("Duplicated string: %s\n", dup);
+    //printf("Duplicated string: %s\n", dup);
 
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
-    int *target = malloc(n * sizeof(int));
-    
+    printf(" size of the array %d \n", sizeof(numbers));
+    printf(" size of  single element in array  %d \n", sizeof(numbers[0]));
+    printf(" number of items in the array %d \n", n);
+
+    int *target = malloc(n * sizeof(int)); /// *target is new array in the heap (memory) created by malloc
+
     mem_copy(target, numbers, n * sizeof(int));
 
-    printf("Copied array: ");
+    // printf("Copied array: ");
 
-    for (int i = 0; i < n; i++) {
-        printf("%d ", target[i]);
-    }
+    // for (int i = 0; i < n; i++)
+    //{
+    //     printf("%d ", target[i]);
+    // }
 
-    printf("\n");
+    //printf("\n");
 
     return 0;
 }
