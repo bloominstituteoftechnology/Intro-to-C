@@ -20,7 +20,7 @@ char *string_dup(char *src)
         dup[i] = src[i];
         i++;
     }
-    return dup; 
+    return dup;
 }
 
 /*
@@ -36,7 +36,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *a = dest;
+    char *b = src;
+    int i = 0;
+    while (n != i) {
+        a[i] = b[i];
+        i++;
+    }
+    return a;
 }
 
 #ifndef TESTING
