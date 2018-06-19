@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
+    int i = 0;
+    
+    while (s[i] != '\0') {
+        i++;
+    }
 
+    return i;
 }
 
 /*
@@ -20,6 +26,36 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int sLen = string_length(s);
+    int counter = 0;
+    for (int i = sLen - 1; i >= -1; i--) {
+        rv[counter] = s[i];
+        counter++;
+    }
+    return rv;
+/*****************Jacob's doo doo code******************************/
+    // //declare variables, for the indexes.    
+    // //call string_length passing in the s array
+    // int strLength = string_length(s);
+    // int j = 0;
+    // // itereate over s array decrmenting
+    // for (int i = strLength; i >= 0; i--) {
+    //     // set rv at index j = s and index at strLength
+    //     rv[j] = s[i - 1];
+    //     //increment variables
+    //     j++;
+    // }
+
+    // return rv;
+/****************Eric's Doo Doo code****************************/
+
+    // int j = 0;
+    // for (int i = string_length(s) - 1; i >= -1; i--) {
+    //     rv[j] = s[i];
+    //     j++;
+    // }
+    // printf("%s\n", rv);
+    // return rv;
 
 }
 
