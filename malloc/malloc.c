@@ -37,7 +37,6 @@ void *mem_copy(void *dest, const void *src, int n)
     const char *src_copy = src;
     for (int i = 0; i < n; i++)
         dest_copy[i] = src_copy[i];
-    return dest_copy;
 }
 
 #ifndef TESTING
