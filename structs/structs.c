@@ -8,7 +8,7 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 struct Person {
-    unsigned char name;
+    unsigned char *name;
     unsigned int age;
     unsigned int height;
     unsigned int weight;
@@ -27,7 +27,7 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 {
     struct Person* person = malloc(sizeof(struct Person));
 
-    (*person).name = name;
+    (*person).name = string_dup(name);
     (*person).age = age;
     (*person).height = height;
     (*person).weight = weight;
