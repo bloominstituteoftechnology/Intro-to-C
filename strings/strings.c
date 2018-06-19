@@ -7,10 +7,11 @@
     
     Do not just use the `strlen` function from the standard libary.
 */
+
 int string_length(char s[])
 {
-    int length = 1;
-    while(s[length]) {
+    int length = 0;
+    while(s[length] != '\0') {
         length++;
     }
     return length;
