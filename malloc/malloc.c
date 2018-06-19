@@ -13,7 +13,27 @@
 */
 char *string_dup(char *src)
 {
+    // get length of the src string
+    int length = string_length(src);
+    // allocate memory that fits length of the src string + 1 for null terminator
+    char *str = malloc(length + 1);
+    // Define char pointer p set to address (first block of memory of maloc) to str
+    // char *p  = str;
 
+    // iterate along the src string
+    // while (*src != '\0') {
+    //     *p = *src;
+    //     p++;
+    //     src++;
+    // }
+
+    for (int i = 0; i < length; i++) {
+        str[i] = src[i];
+    }
+
+    // *p = '\0';
+    str[length] = '\0';
+    return str;
 }
 
 /*
