@@ -33,9 +33,7 @@ void quicksort(int *arr, int low, int high)
             while (arr[j] > arr[pivot])
                 j--;
             if (i < j)
-            {
                 swap(&arr[i], &arr[j]);
-            }
         }
 
         temp = arr[pivot];
