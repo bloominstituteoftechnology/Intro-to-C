@@ -35,8 +35,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-       
+    char *csrc = (char *) src;
+    char *cdest = (char *) dest;
+
+    for (int i = 0; i < n; i++) {
+        *(cdest+i) = *(csrc+i);
 }
+
+return dest;
 
 #ifndef TESTING
 int main(void)
