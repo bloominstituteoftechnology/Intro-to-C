@@ -23,7 +23,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-    int i = 0; while (s[i]) i ++; return i - 1;
+    int i = 0; 
+    while (*(s + i))
+    {
+        i ++;
+    }
+    return i;
 }
 
 /*
@@ -60,18 +65,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    char *c;
-    if (string_length(m) < string_length(n)) c = n;
-    else c = m;
-
-
-    int i = 0;
-    int count = 0;
-    while (c[i]) {
-        printf("%c\n", c[i]);
-
-        i++;
-    }
+    while (*m == *n) {
+        m++;
+        n++;
+        if (*m == '\0' && *n == '\0') {
+            return 0;
+        }
+    };
+    return *m - *n;
 }
 
 #ifndef TESTING
