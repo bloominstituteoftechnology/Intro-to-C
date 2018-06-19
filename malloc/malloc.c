@@ -13,7 +13,14 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
+    char *dup = malloc(8 * length);
+    for(int i = 0; i < length; i++) {
+        dup[i] = src[i];
+    }
 
+    // printf("Duplicated: %s\n", dup);
+    return dup;
 }
 
 /*
