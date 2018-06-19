@@ -54,7 +54,8 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+  while(*m != '\0' || *n != '\0') {
+    if(*m++ != *n++) return *--m - *--n;
 }
 
 #ifndef TESTING
