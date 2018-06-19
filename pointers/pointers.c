@@ -53,6 +53,21 @@ void string_copy(char *x, char *y)
     }
     x[add] = '\0';
     printf("STRING: %s\n", y);
+
+    // alternative solution
+    // // find length of y
+    // int ysize = string_length(y);
+    // int idx = 0;
+    // printf("ysize: %d\n", ysize);
+    // // loop over y and add chars to x
+    // while (idx < ysize) {
+    //   x[idx] = y[idx];
+    //   printf("x value: %c\n", x[idx]);
+    //   idx++;
+    // }
+    // printf("idx: %d\n", idx);
+    // printf("x at idx: %d\n", x[idx]);
+    // printf("copied: %s\n", x);
 }
 
 /* 
