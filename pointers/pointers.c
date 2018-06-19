@@ -82,26 +82,20 @@ int string_compare(char *m, char *n)
 
 // i++;
 // }
-// while n and m are not null iterate
-while(*n != '\0'&& *m !='\0')
+// while n or m have not reached the end of the string
+while(*m != '\0'|| *n !='\0')
 {
-// if n is equal to m
-    if(n==m)
+// if m is not equal to n
+    if(*m!=*n)
     {
- // increment n and m 
-        n++;
-        m++;
+     // set a variable for  m - n
+     int result = *m - *n;
+     // return the variable.
+    return  result; 
     }
-    // while m is greater than n return 1
-    else if(m>n)
-    {  
-        return 1;
-    }
-    // m less than n return minus 1
-    else if(m>n)
-    {
-        return -1;
-    }
+    // else  increment n and m 
+     n++;
+     m++;
 }
 return 0;
 }
