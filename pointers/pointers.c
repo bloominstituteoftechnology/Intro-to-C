@@ -21,7 +21,15 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int size = 0;
 
+    while (*s != '\0') {
+      printf("%c\n", *s); // print a char in the string
+      size++;
+      s++; // increment pointer
+    }
+    printf("SIZE: %d\n", size);
+    return size;
 }
 
 /*
