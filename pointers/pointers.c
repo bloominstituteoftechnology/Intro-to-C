@@ -8,11 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+    *a += *b;
+    *b = *a - *b;
+    *a -= *b;
 }
 
 /*
-    Given a character pointer s, returns the number of characters
     it is pointing to. Think about how pointer arithmetic can 
     help you with this.
     
