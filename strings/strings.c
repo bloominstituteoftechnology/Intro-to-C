@@ -9,6 +9,9 @@
 */
 int string_length(char s[])
 {
+    printf(char);
+
+    return char;
 
 }
 
