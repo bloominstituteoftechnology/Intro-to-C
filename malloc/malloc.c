@@ -54,8 +54,18 @@ for (int i = 0; i < length; i++) {
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-	
+	// Should not cast an integer
+	const char *csrc = src;
+	char *cdest = dest;
 
+	// char *csrc = (char *) src;
+	// char *cdest = (char *) dest;
+
+	for (int i = 0; i < n; i++) {
+		*(cdest + i) = *(csrc + i);
+	}
+
+	return dest;
 }
 
 #ifndef TESTING
