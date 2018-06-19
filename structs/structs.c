@@ -25,6 +25,14 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+    struct Person* person = malloc(sizeof(struct Person));
+
+    (*person).name = name;
+    (*person).age = age;
+    (*person).height = height;
+    (*person).weight = weight;
+
+    return person;
 
 }
 
