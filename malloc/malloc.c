@@ -13,7 +13,16 @@
 */
 char *string_dup(char *src)
 {
+    char *str = malloc(string_length(src) + 1);
+    char *p = str;
 
+    while(*src != '\0') {
+        *p = *src;
+        p++;
+        src++;
+    }
+    *p = '\0';
+    return str;
 }
 
 /*
