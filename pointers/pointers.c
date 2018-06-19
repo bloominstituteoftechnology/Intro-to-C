@@ -9,10 +9,8 @@
 void swap(int* a, int* b)
 {
     int temp = *a;
-    printf("%d", a);
     *a = *b;
     *b = temp;
-    printf("%d", a);
 }
 
 /*
@@ -41,7 +39,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    
+    int count = 0;
+    while (y[count] != '\0') {
+        x[count] = y[count];
+        count++;   
+    }
+    x[count] = '\0';
 }
 
 /* 
@@ -59,8 +62,19 @@ void string_copy(char *x, char *y)
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
-{
-
+{   
+    int count = 0;
+    for (int i = 0; i < string_length(m); i++) {
+        if (m[i] == n[i]) {
+            count++;
+        } else {
+            return count;
+        }
+    }
+    printf("%d\n", count);
+    if (count == string_length(m)) return 0;
+    else if (count < string_length(m)) return -1;
+    else if (count > string_length(m)) return 1;
 }
 
 #ifndef TESTING
