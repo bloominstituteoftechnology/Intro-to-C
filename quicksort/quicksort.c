@@ -22,7 +22,6 @@ void quicksort(int *arr, int low, int high)
         pivot = low;
         l = low;
         h = high;
-
         while(l < h) {
             while (arr[l] <= arr[pivot] && l < high)
                 l++;
@@ -32,9 +31,7 @@ void quicksort(int *arr, int low, int high)
                 swap(&arr[l], &arr[h]);
             }
         }
-
         swap(&arr[pivot], &arr[h]);
-
         quicksort(arr, low, h-1);
         quicksort(arr, h+1, high);
 
