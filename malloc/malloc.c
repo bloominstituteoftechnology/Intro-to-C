@@ -35,7 +35,18 @@ char *string_dup(char *src)
     Do not just use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
-{
+{   
+    char *des = dest;
+    char *source = src;
+
+    int length = 0;
+
+    while(length != n) {
+        des[length] = source[length];
+        length++;
+    }
+
+    return des;
 
 }
 
