@@ -13,7 +13,23 @@
 */
 char *string_dup(char *src)
 {
+    // allocate enough memory to save a copy of the string parameter
+    int input_length = 0;
 
+    while (src[input_length] != '\0') input_length++;
+
+    char *allocate_memory = malloc(input_length);
+
+
+    // copy the string parameter to this allocated space
+    for (int i = 0; i <= input_length; i++)
+    {
+        allocate_memory[i] = src[i];
+    }
+
+
+    // retun a pointer to the allocated memory
+    return allocate_memory;
 }
 
 /*
@@ -29,7 +45,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *csrc = (char *)src;
+    char *cdest = (char *)dest;
 
+    for (int i = 0; i < n; i++)
+    {
+        cdest[i] = csrc[i];
+    }
 }
 
 #ifndef TESTING
