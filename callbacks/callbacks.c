@@ -1,15 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "callbacks.h"
-#include "lib.h" 
+#include "lib.h"
 
+typedef int (*compare_cb)(int current, int next);
 /*
     Implement the callback that will be passed to your bubble_sort function to sort 
     the elements in ascending numerical order.
 */
 int sorted_order(int a, int b)
 {
-
+    return a > b;
 }
 
 /*
@@ -18,7 +19,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return a < b;
 }
 
 /*
@@ -29,7 +30,20 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    //  cannot figure out how to do this in a while loop, need to do a nested for loop
+    int i, j;
+    i = 1;
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n - 1; j++)
+        {
+            if (cmp(numbers[j], numbers[j + 1]))
+            {
+                swap(&numbers[j], &numbers[j + 1]);
+            }
+        }
+    }
+    return numbers;
 }
 
 #ifndef TESTING
@@ -39,10 +53,12 @@ int main(void)
     int count = sizeof(arr) / sizeof(arr[0]);
     int *sorted_arr;
 
-    //sorted_arr = bubble_sort(arr, count, sorted_order);
-    sorted_arr = bubble_sort(arr, count, reverse_order);
+    sorted_arr = bubble_sort(arr, count, sorted_order);
+    // sorted_arr = bubble_sort(arr, count, reverse_order);
 
-    for (int i = 0 ; i < count ; i++) {
+    int i;
+    for (i = 0; i < count; i++)
+    {
         printf("%d ", sorted_arr[i]);
     }
 

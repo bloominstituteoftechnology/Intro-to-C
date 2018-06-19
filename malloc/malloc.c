@@ -39,7 +39,7 @@ char *string_dup(char *src)
 void *mem_copy(void *dest, const void *src, int n)
 {
     char* target = dest;
-    const `char* source = src;
+    const char* source = src;
 
     int i;
     for(i = 0; i < n; i++) {
