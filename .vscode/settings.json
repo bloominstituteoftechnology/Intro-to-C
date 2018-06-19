@@ -1,0 +1,16 @@
+{
+  "files.associations": {
+    "array": "c",
+    "*.tcc": "c",
+    "deque": "c",
+    "unordered_map": "c",
+    "vector": "c",
+    "fstream": "c",
+    "functional": "c",
+    "istream": "c",
+    "ostream": "c",
+    "sstream": "c",
+    "streambuf": "c",
+    "tuple": "c"
+  }
+}
