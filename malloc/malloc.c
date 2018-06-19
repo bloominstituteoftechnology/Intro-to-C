@@ -38,7 +38,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *newdest = (char *) dest;
+    char *newsrc = (char *) src;
 
+    for(int i = 0; i < n; i++) {
+        *(newdest+i) = *(newsrc+i);
+    }
+    return newdest;
 }
 
 #ifndef TESTING
