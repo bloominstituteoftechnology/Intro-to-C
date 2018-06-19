@@ -34,8 +34,8 @@ void print_arr(char a[])
 char *reverse_string(char rv[], char s[])
 {
     int j = 0;
-    for (int i = string_length(s) - 1; i >= 0; i--) {
-        rv[j] = s[i];
+    for (int i = string_length(s); i >= 0; i--) {
+        rv[j] = s[i - 1];
         j++;
     }
     print_arr(rv);

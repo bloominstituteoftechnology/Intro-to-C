@@ -13,7 +13,16 @@
 */
 char *string_dup(char *src)
 {
+    int size = string_length(src) * sizeof(int);
+    char *rv = malloc(size);
 
+    int i = 0;
+    while (i < size / sizeof(int))
+    {
+        rv[i] = src[i];
+        i++;
+    }
+    return rv;
 }
 
 /*
@@ -29,16 +38,24 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    const char *s = src;
+    int l = strlen(s);
+    printf("%d\n", l);
+    // for(int i = 0; ; i++) {
+    //     printf("%d", s[i]);
+    // }
+    printf("\n");
 
 }
 
 #ifndef TESTING
 int main(void)
 {
-    char *s = "Some string to duplicate.";
+    char *s = "Some string to duplicate."; // 25
     char *dup = string_dup(s);
 
     printf("Duplicated string: %s\n", dup);
+    free(dup);
 
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
