@@ -67,7 +67,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    do {
+        if(*m < *n ) {
+            return -1;
+        }
 
+        if( *m > *n) {
+            return 1;
+        }
+    } while (*(m++) != '\0' && *(n++) != '\0');
+    return 0;
 }
 
 #ifndef TESTING
