@@ -10,7 +10,23 @@
 */
 int fizzbuzz(int n)
 {
+    if (n % 3 == 0 && n % 5 == 0)
+    {
+        printf("fizzbuzz");
+        return 53;
+    }
+    else if (n % 3)
+    {
+        printf("fizz");
+        return 5;
+    }
+    else if (n % 5)
+    {
+        printf("buzz");
+        return 3;
+    }
 
+    return 2;
 }
 
 #ifndef TESTING
