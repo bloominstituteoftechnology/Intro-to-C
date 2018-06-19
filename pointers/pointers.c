@@ -8,7 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+    // set up a place holder vairable
+int placeholder = *a;
+// set point of a to pointer of b
+ *a = *b;
+ //  set pointer of b to the placeholder variable
+ *b = placeholder;
 }
 
 /*
@@ -20,6 +25,10 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    // set i variable
+    int i;
+    // while s at i is not void increment i, after return i
+    while(s[i])i++; return i;
 
 }
 
@@ -33,8 +42,19 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    //set index variable
+   int i =0;
+   // iterate over the y pointer at i
+for(; *(y+i); i++){
+    // set x at i to y at i
+    x[i] = y[i];
+}
+// add in null at the end of the x array
+*(x+(i+1)) ='\0';
 
 }
+
+
 
 /* 
     Compares the character strings m and n and returns negative,
@@ -52,7 +72,38 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+// char c;
+// if (string_length(m) < string_length(n)) c=n;
+// else c = m;
 
+// int i = 0
+// while(c[i])
+// {
+
+// i++;
+// }
+// while n and m are not null iterate
+while(*n != '\0'&& *m !='\0')
+{
+// if n is equal to m
+    if(n==m)
+    {
+ // increment n and m 
+        n++;
+        m++;
+    }
+    // while m is greater than n return 1
+    else if(m>n)
+    {  
+        return 1;
+    }
+    // m less than n return minus 1
+    else if(m>n)
+    {
+        return -1;
+    }
+}
+return 0;
 }
 
 #ifndef TESTING
