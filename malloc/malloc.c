@@ -14,17 +14,16 @@
 char *string_dup(char *src)
 {
     int strLength = string_length(src);
-    char *dup_Chars = malloc(strLength + 1);
-    char *result_str = dup_Chars;
+    char *dup_Chars = malloc(strLength + 1); // +1 to compensate for null terminator
+    char *saved = dup_Chars;                 // return this pointer, which will point to the array strings copied
 
     while (*src != '\0')
     {
         *dup_Chars++ = *src++;
     }
     *dup_Chars = 0;
-    dup_Chars = 0;
 
-    return result_str;
+    return saved; // you CANNOT directly return array; instead you need to return a pointer to the array.
 }
 
 /*
@@ -40,6 +39,17 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *c_src = (char *)src; // cast; changing type from void to char
+    char *c_dest = (char *)dest;
+
+    // alternative way
+    // const char *c_src = src;
+    // char *c_dest = dest;
+
+    for (int i = 0; i < n; i++)
+    {
+        *(c_dest + i) = *(c_src + i);
+    }
 }
 
 #ifndef TESTING
