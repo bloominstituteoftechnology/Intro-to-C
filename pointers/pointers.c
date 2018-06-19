@@ -22,6 +22,13 @@ void swap(int *a, int *b)
 */
 int string_length(char *s)
 {
+    int length = 0;
+    while (*s != '\0')
+    {
+        length++;
+        s++;
+    }
+    return length;
 }
 
 /*
@@ -34,6 +41,16 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    int i = 0;
+    while (*y != '\0')
+    {
+        x[i] = *y;
+        y++;
+        i++;
+    }
+    x[i] = '\0';
+    y -= i;
+    printf("string_copy x and y: %s %s \n", x, y);
 }
 
 /* 
