@@ -8,7 +8,7 @@
 */
 void swap(int* a, int* b)
 {
-  // Temp is holding the value that a points to
+  // Temp(variable) is holding the value that a points to
   int temp = *a;
   // Set A to point to the value that B is pointing to
   *a = *b;
@@ -41,9 +41,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+  // Walk along Y until we reach the end of the string
   while(*y != '\0') *x++ = *y++;
-  *x = '\0';
-  printf("%c\n", *(x - 1));
+  // Copy the current char we are at to X
+    *x = '\0';
+  // Increment X and Y Pointers
+    printf("%c\n", *(x - 1));
 }
 
 /* 
