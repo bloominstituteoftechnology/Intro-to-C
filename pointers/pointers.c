@@ -8,8 +8,11 @@
 */
 void swap(int* a, int* b)
 {
+  // Temp is holding the value that a points to
   int temp = *a;
+  // Set A to point to the value that B is pointing to
   *a = *b;
+  // Set B to point to the value that temp is holding
   *b = temp;
 }
 
