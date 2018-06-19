@@ -9,8 +9,12 @@
 */
 int string_length(char s[])
 {
-
-}
+  int n = 0;
+  while ( s[n] != '\0') {
+      n++;
+  }
+  return n;
+};
 
 /*
     Write a function that reverses the order of string s and outputs 
@@ -20,6 +24,13 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int length = string_length(s);
+
+    for (int i =0; i < length; i++) {
+        rv[i] = s[length-i-1];
+    }
+    rv[length] = '\0';
+    return rv;
 
 }
 
