@@ -5,13 +5,16 @@
     mind when you need to access a pointer's actual value (the 
     address it's referring to) or the value at the address it's 
     pointing at.
+
+    *s --> address
+
 */
 void swap(int* a, int* b)
 {
     printf("pointer a: %d \n", a); 
     printf("pointer b: %d \n", b); 
-    int *temp = a; 
-    a = b; 
+    int temp = *a; 
+    *a = *b; 
     b = temp; 
     printf("after swap pointer a: %d \n", a); 
     printf("after swap pointer b: %d \n", b); 
@@ -28,6 +31,7 @@ int string_length(char *s)
 {
      int count = 0; 
     while(s[count] != '\0') {
+        // while(*s !== '\0')
         count++; 
     }
     return count;
@@ -88,3 +92,6 @@ int main(void)
     return 0;
 }
 #endif
+
+
+
