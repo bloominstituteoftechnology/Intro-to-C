@@ -42,7 +42,7 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+    free(who);
 }
 
 #ifndef TESTING
