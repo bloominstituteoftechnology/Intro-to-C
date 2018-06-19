@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp1 = *a;
+    *a = *b;
+    *b = temp1;
 }
 
 /*
@@ -20,8 +22,23 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int i = 0;
+    while(s[i] != '\0') i++;
+    {
+        return i;
+    }
+    // while (*s != '\0') {
+    //     printf("%s", *s);
+    //     s++;
+        
+    }
 
-}
+
+// char *str = "Some string";
+//     while (*str != '\0') {
+//         printf("%s", *str);
+//         str++;
+//     }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -33,6 +50,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    int c = 0;
+    while(x[c] != '\0') {
+        y[c] = x[c];
+        c++;
+    }
+    x[c] = '\0';
+    return;
 
 }
 
@@ -52,6 +76,9 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    if(*m == *n) {
+        printf("%c", *m);
+    }
 
 }
 
