@@ -25,7 +25,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-    
+    int counter = 0;
+    while (*s != '\0') {
+        counter++;
+        printf("%s", *s);
+        s++;
+    }
+    return counter;
 }
 
 /*
@@ -38,7 +44,7 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    
 }
 
 /* 
