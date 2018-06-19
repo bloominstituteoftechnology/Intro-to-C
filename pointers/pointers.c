@@ -56,6 +56,9 @@ int string_compare(char *m, char *n)
 {
   while(*m != '\0' || *n != '\0') {
     if(*m++ != *n++) return *--m - *--n;
+  };
+  
+  return 0;
 }
 
 #ifndef TESTING
