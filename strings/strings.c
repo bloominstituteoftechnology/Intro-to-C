@@ -27,12 +27,11 @@ char *reverse_string(char rv[], char s[])
 {
   int length = string_length(s);
   int count = 0;
-  rv[length + 1] = '\0';
+  rv[length] = '\0';
   while(length >= 0){
     rv[count] = s[length - 1];
     count++;
     length--;
-
   }
   return rv;
 }
