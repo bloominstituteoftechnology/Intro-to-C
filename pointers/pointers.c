@@ -44,13 +44,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    int index;
+    while (*y != '\0') {
+        *x = *y;
 
-    for (index = 0; y[index] != '\0'; index++) {
-        x[index] = y[index];
+        x++;
+        y++;
+
+        *x = '\0';
     }
-        x[index] = '\0';
-
 }
 
 /* 
@@ -69,9 +70,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    for( ; *m == *n; ++m, ++n)
-    if( *m == '\0')
-        return 0; 
+    // iterate over both char pointers
+    while (*m == *n) {
+        // check to see if we've reached the end of one of the strings
+        if (*m == '\0') {
+            return 0;
+        }
+        // increment both pointers
+        m++;
+        n++;
+    }
     return *m - *n; 
 
 }
