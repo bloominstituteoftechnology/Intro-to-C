@@ -23,10 +23,19 @@ struct Person
     Person struct, and then sets the struct's fields with the input data.
     When setting the `name` field, use your previously-built string_dup
     function, which handles the allocation of memory for the new string.
+
+    Make sure to return the struct.
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
-    
+    struct Person *a_person = malloc(sizeof(struct Person));
+
+    a_person->name = string_dup(name);
+    a_person->age = age;
+    a_person->height = height;
+    a_person->weight = weight;
+
+    return a_person;
 }
 
 /*
@@ -35,6 +44,14 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
+    if (who->name != NULL)
+    {
+        free(who->name);
+    }
+    if (who != NULL)
+    {
+        free(who);
+    }
 }
 
 #ifndef TESTING

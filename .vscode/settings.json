@@ -12,7 +12,8 @@
     "ostream": "c",
     "sstream": "c",
     "streambuf": "c",
-    "tuple": "c"
+    "tuple": "c",
+    "typeinfo": "c"
   },
   "C_Cpp.intelliSenseEngineFallback": "Enabled"
 }
