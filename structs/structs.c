@@ -7,8 +7,12 @@
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
-struct Person {
-
+struct Person
+{
+    char *name;
+    unsigned int age;
+    unsigned int height;
+    unsigned int weight;
 };
 
 /*
@@ -16,22 +20,41 @@ struct Person {
     pieces of data associated with a Person instance.
 
     Allocates the appropriate amount of memory to hold an instance of the 
-    Person struct, and then sets the struct's fields with the input data.
+    Person struct, and then sets the structs fields with the input data.
     When setting the `name` field, use your previously-built string_dup
     function, which handles the allocation of memory for the new string.
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+    int count = 0;
+    while (*name != '\0')
+    {
+        count++;
+        name++;
+    }
+    char length = count;
 
+    struct Person *person = malloc(sizeof(struct Person));
+    person->age = age;
+    person->name = malloc(length);
+    person->weight = weight;
+    person->height = height;
+    // int i;
+    // for (i = 0; i <= length; i++)
+    // {
+    //     person->name[i] = name[i]; // assinging the string items to the pointer
+    // }
+    return person;
 }
 
 /*
     Given a pointer to a Person struct, frees up the memory that holds the
     Person's name as well as the memory that holds the Person instance.
 */
-void Person_destroy(struct Person *who)
+void Person_destroy(struct Person *person)
 {
-
+    free(person->name);
+    free(person);
 }
 
 #ifndef TESTING
