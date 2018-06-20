@@ -17,7 +17,29 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    int retArr[high];
+    int counter = 0;
 
+    if(high == 0) return;
+
+    for(int i = 0; i <= high; i++){
+        for(int ii = 0; ii <= high; ii++) {
+            if (arr[i] > arr[ii]){
+                counter++;
+            }
+        }
+        retArr[counter] = arr[i];
+        printf("retArr %d in %d\n", retArr[counter], counter);
+        counter = 0;
+    }
+
+    for(int i = 0; i <= high; i++) {
+        int *a = &arr[i];
+        int *b = &retArr[i];
+        swap(a, b);
+        printf("%d ", arr[i]);
+    }
+    return;
 }
 
 #ifndef TESTING
