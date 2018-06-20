@@ -13,7 +13,16 @@
 */
 char *string_dup(char *src)
 {
-
+    int length = string_length(src);
+    char *dup = malloc(length);
+    while (*src != '\0')
+    {
+        *dup = *src;
+        src++;
+        dup++;
+    }
+    dup -= length;
+    return dup;
 }
 
 /*
@@ -29,7 +38,16 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    int *intDest = dest;
+    int *num = src;
+    for (int i = 0; i < n / sizeof(int); i++)
+    {
+        // printf("%d %d \n", num[i], &num[i]);
+        *intDest = num[i];
+        // printf("%d \n", *intDest);
+        intDest++;
+    }
+    intDest -= n / sizeof(int);
 }
 
 #ifndef TESTING
@@ -43,12 +61,13 @@ int main(void)
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
-    
+
     mem_copy(target, numbers, n * sizeof(int));
 
     printf("Copied array: ");
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("%d ", target[i]);
     }
 
