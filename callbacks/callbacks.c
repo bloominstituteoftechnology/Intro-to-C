@@ -9,7 +9,11 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a < b
+        ? -1
+        : a == b
+            ? 0
+            : 1;
 }
 
 /*
@@ -18,7 +22,11 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return a < b
+        ? 1
+        : a == b
+            ? 0
+            : -1;
 }
 
 /*
@@ -27,9 +35,36 @@ int reverse_order(int a, int b)
     Your function should allocate memory to hold the sorted data and return the 
     sorted data. Call the callback as you would any other function. 
 */
+int sorted(int *numbers, int n, compare_cb cmp)
+{
+    int i;
+    for (i = 0; i < n - 1; i++) 
+    {
+        if (cmp(numbers[i], numbers[i+1]) == 1) 
+        {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    while(!sorted(numbers, n, cmp)) 
+    {
+        int i;
+        for (i = 0; i < n - 1; i++) 
+        {
+            int first = numbers[i];
+            int second = numbers[i + 1];
+            if (cmp(first, second) == 1) 
+            {
+                numbers[i] = second;
+                numbers[i + 1] = first;
+            }
+        }
+    }
+    return numbers;
 }
 
 #ifndef TESTING
