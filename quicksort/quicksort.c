@@ -15,10 +15,10 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-int partition (int arr[], int low, int high)
+int partition (int *arr, int low, int high)
 {
     int p = arr[high];
-    int i = (low - 1);
+    int i = low - 1;
  
     for (int j = low; j <= high- 1; j++)
     {
@@ -29,17 +29,17 @@ int partition (int arr[], int low, int high)
         }
     }
     swap(&arr[i + 1], &arr[high]);
-    return (i + 1);
+    return i + 1;
 }
 
 void quicksort(int *arr, int low, int high)
 {
     if (low < high)
     {
-        int pi = partition(arr, low, high);
+        int index = partition(arr, low, high);
 
-        quicksort(arr, low, pi - 1);
-        quicksort(arr,pi + 1, high);
+        quicksort(arr, low, index - 1);
+        quicksort(arr, index + 1, high);
     }
 }
 

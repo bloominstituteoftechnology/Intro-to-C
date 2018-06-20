@@ -41,12 +41,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    int i = 0;
-    while (*(y + i)) {
-        x[i] = *(y + i);
-        i ++;
+    while (*(y) != '\0') {
+        *x = *y;
+        x++;
+        y++;
     }
-    *(x + (i + 1)) = '\0';
+    *x = '\0';
 }
 
 /* 
