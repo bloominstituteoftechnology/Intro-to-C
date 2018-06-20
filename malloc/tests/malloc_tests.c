@@ -8,7 +8,7 @@ char *test_string_dup()
 {
     char *s = "Some string to duplicate.";
     char *dup = string_dup(s);
-    mu_assert(s != d, "Your string_dup function did not actually duplicate the given string.");
+    mu_assert(s != dup, "Your string_dup function did not actually duplicate the given string.");
     mu_assert(check_strings(dup, s) == 0, "Your string_dup function did not correctly duplicate the given string.");
 
     free(dup);
