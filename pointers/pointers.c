@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a; // defining an intermediate variable, temp, which is initialized to one of the two variables, for example a
+    *a = *b;       // assigning the value of the second variable,b to the first (saved in temp) variable a (now temp has value a and a has value b)
+    *b = temp;     // finally, assigning temp, to the second variable, b (now a has the value of b and vice versa)
 }
 
 /*
@@ -20,7 +22,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int i = 0;
+    while (*s != '\0')
+    {
+        s++; // increase the address until the tombstone break point
+        i++; // i follows s allowing it to pick up everything s passes over and stops with s at tombstone
+    }
+    return i;
 }
 
 /*
@@ -33,7 +41,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
 
+    *x = '\0';
 }
 
 /* 
@@ -52,7 +67,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    while (*m == *n) // matching chars in both pointers
+    {
+        if (*m == '\0') // add break point using tombstone/zero-case
+        {
+            return 0; // if m reaches this point, they are matching strings, thus 0
+        }
+        m++; //
+        n++;
+    }
 
+    return *m - *n;
 }
 
 #ifndef TESTING
