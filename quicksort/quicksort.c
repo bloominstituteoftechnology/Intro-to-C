@@ -15,30 +15,31 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high)
+
+int partition(int arr[], int low, int high)
+{
+    int pivot = arr[high]; // high is already n - 1
+    int i = low - 1;
+
+    for (int j = low; j <= high - 1; j++)
+    {
+        if (arr[j] < pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
+}
+
+void quicksort(int arr[], int low, int high)
 {
     if (low < high)
     {
-        p = partition(arr, low, high);
-
-        quickSort(arr, low, p - 1);  // Before pi
-        quickSort(arr, p + 1, high); // After pi
-    }
-
-    void partition(*arr, int low, int high)
-    {
-        pivot = high - 1;
-        i = low - 1;
-        for (int j = low; j < high - 1; j++)
-        {
-            if (arr[j] < pivot)
-            {
-                i++;
-                swap(arr[i], arr[j]);
-            }
-        }
-        swap(arr[i], arr[high]);
-        return i + 1;
+        int p = partition(arr, low, high);
+        quicksort(arr, low, p - 1);  // Before pi
+        quicksort(arr, p + 1, high); // After pi
     }
 }
 
