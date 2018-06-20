@@ -8,7 +8,11 @@
 */
 void swap(int* a, int* b)
 {
-
+    // make a temporary holder variable
+    int holder = *a;
+    // cycle through 
+    *a = *b;
+    *b = holder;
 }
 
 /*
@@ -20,7 +24,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    // make a counter
+    int counter = 0;
+    // loop through the string, and as long as the loop hasn't reached the end, increment the counter
+    while (s[counter]) {
+        counter++;
+    }
+    // return counter
+    return counter;
 }
 
 /*
@@ -33,6 +44,16 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    // make counter variable
+    int c = 0;
+    
+    // loop over char y. until you reach the end, copy the contents at each index from y to x
+    for (c = 0; *(y + 1); c++) {
+        x[c] = y[c];
+    }
+
+    // make the last index of placeholder point to void (c + 1)
+    *(x + (c + 1)) = '\0';
 
 }
 
@@ -52,7 +73,7 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    
 }
 
 #ifndef TESTING
