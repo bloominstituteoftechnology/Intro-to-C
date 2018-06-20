@@ -8,7 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+    // temp is holding the value that a points to
+    int temp = *a;
+    // set a to point to the value that b is pointing to
+    *a = b;
+    // set b to point to the value that temp is holding
+    *b = temp;
 }
 
 /*
@@ -20,7 +25,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int n = 0;
 
+    while (*s != '\0') {
+        n++;
+        s++;
+    }
+
+    return n;
 }
 
 /*
@@ -33,6 +45,16 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    // walk along y until we reach the end of the string
+    while (*y != '/0') {
+        //copy the current char we're at to x
+        *x = *y;
+        //increment x and y pointers
+        x++;
+        y++;
+    }
+
+    *x = '\0';
 
 }
 
@@ -53,6 +75,19 @@ void string_copy(char *x, char *y)
 int string_compare(char *m, char *n)
 {
 
+    // iterate over both char pointers
+    while (*m == *n) {
+        // check to see if we've reached the end of one of the strings
+        if (*m == '\0') {
+            return 0;
+    }
+
+    // increment both pointers
+    m++;
+    n++;
+    }
+
+    return *m - *n;
 }
 
 #ifndef TESTING
