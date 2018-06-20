@@ -7,14 +7,14 @@
     
     Do not just use the `strlen` function from the standard libary.
 */
-int string_length(char s[])
+int string_length(char s[]) // a string array passed in
 {
-    int i = 0;
-    while(s[i])
+    int i = 0; // i is set to 0 (index)
+    while(s[i]) // while we have an index...
     {
-        i++;
+        i++; // increment i by 1
     }
-    return i;
+    return i; // return the total.
 }
 
 /*
