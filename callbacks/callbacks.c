@@ -9,6 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
+
 return a > b;
 }
 
@@ -29,18 +30,26 @@ return a < b;
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    // set up array variable setting it to  malloc with n times the size of int(4)
 int *array = malloc(n * sizeof(int));
+// call mem copy passing in the array along with numbers and n times 4
 mem_copy(array,numbers,n* sizeof(int));
+// iterate over while i is less than n
 for(int i=0; i<n; i++)
 {
+    // iterate over while j is less than n
     for(int j = 0; j<n -1 ; j++)
     {
+        // if you compare the array at j and the array at j plus 1
+        // also if cmp is not false or greater than 0
         if(cmp(array[j], array[j +1] )>0)
         {
+        // swap array at j with array at j + 1
             swap(&array[j],&array[j +1]);
         }
     }
 }
+// return the updated array.
 return array;
 
 }
