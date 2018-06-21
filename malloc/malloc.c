@@ -13,14 +13,21 @@
 */
 char *string_dup(char *src)
 {
+    // set a string length variable calling the string_legth passing in the src
 int strLength = string_length(src);
+// set a char variable  and call malloc, passing the string length
 char *rv = malloc(strLength);
+// initialize a count setting it to 0
 int count =0;
+// while the counter is lower than the length of the string
 while(count<=strLength)
 {
+    // set rv at the index of count to src at the index of count
  rv[count] = src[count];
+ //increment the count
  count++;
 }
+//return the coppied rv variable
 return rv;
 }
 
