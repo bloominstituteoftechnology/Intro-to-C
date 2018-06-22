@@ -9,6 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
+    return a > b;
 }
 
 /*
@@ -17,6 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
+    return a < b;
 }
 
 /*
@@ -27,14 +29,32 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-    int i, j;
-    for (i = 0; i < n - 1; i++)
+        int *target = malloc(n * sizeof(int));
+    mem_copy(target, numbers, n * sizeof(int));
 
-        // Last i elements are already in place
-        for (j = 0; j < n - i - 1; j++)
-            if (numbers[j] > numbers[j + 1])
-                swap(&numbers[j], &numbers[j + 1]);
-        printf("This is the cmp: %d", cmp);
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n - 1; j++) {
+            if (cmp(target[j], target[j + 1])) {
+                swap(&target[j], &target[j+1]);
+            }
+        }
+    }
+    return target;
+    // int i, j;
+    // for (i = 0; i < n - 1; i++)
+
+    //     // Last i elements are already in place
+    //     for (j = 0; j < n - i - 1; j++)
+    //     {
+    //         compare_cb();
+    //         if (numbers[j] > numbers[j + 1])
+    //             ;
+    //         {
+
+    //             swap(&numbers[j], &numbers[j + 1]);
+    //         }
+    //     }
+    // printf("This is the cmp: %d", cmp);
 }
 
 #ifndef TESTING

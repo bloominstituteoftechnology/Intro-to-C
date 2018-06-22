@@ -13,10 +13,40 @@
 */
 char *string_dup(char *src)
 {
+    char *str = src;
     int lsrc = string_length(src);
-    char *new = malloc(lsrc * 2);
-    // printf("Lenght of src %d", lsrc); 
-    return new;
+    str = malloc(lsrc + 1);
+    printf("Lenght of lsrc %d\n", lsrc);
+    char *p = src;
+    printf("This is the str string %s\n", str);
+    int count = 0;
+    while (count != 2)
+    {
+        int track = 0;
+        int i;
+        int end = lsrc;
+        for (i = track; end > i; i++)
+        {
+            str[i] = src[i];
+        }
+        count++;
+        if (i == end)
+        {
+            for (i = track; lsrc > i; i++)
+            {
+                str[i + end] = src[i];
+            }
+        }
+        if (i == end)
+        {
+            int ending = end * 2 + 1;
+            str[ending] = '\0';
+        }
+        count++;
+    }
+    printf("This is the duplicate string %s\n", str);
+
+    return str;
 }
 
 /*
@@ -33,6 +63,17 @@ char *string_dup(char *src)
 void *mem_copy(void *dest, const void *src, int n)
 {
 
+    // int dup[];
+    // dup = malloc(n);
+
+    char *dup = (char *) src;
+    char *ddest = (char *) dest;
+    for (int i = 0; i < n; i++)
+    {
+        ddest[i] = dup[i];
+    }
+    //  printf("This is the array %d\n", src);
+    printf("This is the size %d\n", sizeof(src));
 }
 
 #ifndef TESTING
@@ -46,12 +87,13 @@ int main(void)
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
-    
+
     mem_copy(target, numbers, n * sizeof(int));
 
     printf("Copied array: ");
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("%d ", target[i]);
     }
 

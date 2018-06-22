@@ -10,9 +10,9 @@
 typedef struct Person
 {
     char *name;
-    unsigned int age;
-    unsigned int height;
-    unsigned int weight;
+     int age;
+     int height;
+     int weight;
 } Person;
 
 /*
@@ -27,8 +27,7 @@ typedef struct Person
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
     Person *stack = malloc(sizeof(Person));
-    // (*stack).length = -1;
-    (*stack).name = name;
+    stack->name = string_dup(name);
     (*stack).age = age;
     (*stack).height = height;
     (*stack).weight = weight;
@@ -46,18 +45,7 @@ void Person_destroy(struct Person *who)
         free(who->name);
         free(who);
     }
-    // if (who->age != NULL)
-    // {
-    //     free(who->age);
-    // }
-    // if (who->height != NULL)
-    // {
-    //     free(who->height);
-    // }
-    // if (who->weight != NULL)
-    // {
-    //     free(who->weight);
-    // }
+
 }
 
 #ifndef TESTING

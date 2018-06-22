@@ -6,6 +6,17 @@
         "ostream": "c",
         "system_error": "c",
         "type_traits": "c",
-        "typeinfo": "c"
+        "typeinfo": "c",
+        "sstream": "c",
+        "array": "c",
+        "deque": "c",
+        "unordered_map": "c",
+        "vector": "c",
+        "initializer_list": "c",
+        "string_view": "c",
+        "*.tcc": "c",
+        "fstream": "c",
+        "streambuf": "c",
+        "tuple": "c"
     }
 }

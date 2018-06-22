@@ -27,10 +27,21 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
     int count = 0;
+
     int strLength = string_length(s) - 1;
-    for (int i = strLength; i <= 0; i--) {
+    for (int i = strLength; i >= 0; i--) {
+        // printf("Testing s[i]: %c\n", s[i]);
         rv[count] = s[i];
-    }
+        count++;
+        if (i == 0) {
+            rv[count + 1] = '\0';
+        };
+    };
+    // printf("length: %d\n", strLength);
+    // printf("RR: %s\n", rv);
+    // printf("OR: %s\n", s);
+    return rv;
+    
 
 }
 

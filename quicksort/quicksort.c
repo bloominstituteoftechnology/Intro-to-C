@@ -19,7 +19,9 @@ int partition (int arr[], int low, int high)
 {
     int pivot = arr[high];    // pivot
     int i = (low - 1);  // Index of smaller element
- 
+    if (i < 0) {
+        printf("i is less than zero: %d\n", i);
+    }
     for (int j = low; j <= high- 1; j++)
     {
         // If current element is smaller than or
