@@ -9,7 +9,7 @@
 */
 struct Person
 {
-    char *name;
+    char *name; ///because it is a string we need an array
     unsigned int age;
     unsigned int height;
     unsigned int weight;
@@ -27,34 +27,33 @@ struct Person
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
     int count = 0;
-    while (*name != '\0')
+    while (name[count] != '\0')
     {
         count++;
-        name++;
     }
     char length = count;
 
-    struct Person *person = malloc(sizeof(struct Person));
-    person->age = age;
-    person->name = malloc(length);
-    person->weight = weight;
-    person->height = height;
-    // int i;
-    // for (i = 0; i <= length; i++)
-    // {
-    //     person->name[i] = name[i]; // assinging the string items to the pointer
-    // }
-    return person;
+    struct Person *who = malloc(sizeof(struct Person));
+    who->age = age;
+    who->name = malloc(length);
+    who->weight = weight;
+    who->height = height;
+    int i;
+    for (i = 0; i <= length; i++)
+    {
+        who->name[i] = name[i]; // assinging the string items to the pointer
+    }
+    who->name[length] = '\0';
+    return who;
 }
-
 /*
     Given a pointer to a Person struct, frees up the memory that holds the
     Person's name as well as the memory that holds the Person instance.
 */
-void Person_destroy(struct Person *person)
+void Person_destroy(struct Person *who)
 {
-    free(person->name);
-    free(person);
+    free(who->name);
+    free(who);
 }
 
 #ifndef TESTING

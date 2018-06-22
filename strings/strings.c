@@ -9,13 +9,18 @@
 */
 int string_length(char s[])
 {
+    printf("==> pointer s : %p\n", s);    // pointer address in ram
+    printf("==> pointer s : %c\n", *s);   ///  value of the first element in array  which is the pointer itself
+    printf("==> pointer s : %c\n", s[0]); //   value of first element in array ....................
+    printf("==> value of pointer s is :%s\n", s);
+    printf("==> & is the address of of s in the ram: %p \n", &s); //// variable s address in ram
+    ///////////////////////////////////////////////////////////////////////
     int count = 0;
-    while (*s != '\0')
+    while (s[count] != '\0')
     {
 
         printf("%c \n", *s);
         count++;
-        s++;
     }
     printf(" count is %d \n", count);
     return count;
@@ -29,6 +34,15 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int length = string_length(s);
+
+    for (int i = 0; i < length; i++)
+    {
+        rv[i] = s[length - i - 1];
+    }
+
+    rv[length] = '\0';
+
     return rv;
 }
 
