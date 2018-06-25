@@ -21,8 +21,8 @@ char *string_dup(char *src)
     ptr++;
     src++;
   }
-  *p = '\0';
-  
+  *ptr = '\0';
+
   return string;
 }
 
@@ -39,7 +39,18 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+  // void pointers - can not be dereferenced. can not find size
+  // must cast void pointers
+  // chars are the best type to cast [1 char is 1 byte]
 
+  char *csrc = (char *) src;
+  char *cdest = (char *) dest;
+
+  for (int i = 0; i < n; i++) {
+    *(cdest + i) = *(csrc + i);
+  }
+
+  return dest; // return first address of dest
 }
 
 #ifndef TESTING
