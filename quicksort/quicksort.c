@@ -16,6 +16,23 @@
     Do not just use the `qsort` function from the standard library.
 */
 
+int partition(int *arr, int low, int high) {
+
+  int pivot = arr[high];
+  int i = low - 1;
+
+  for (int j = low; j <= high - 1; j++) {
+    if (arr[j] <= pivot) {
+      i++;
+      // swap receives pointers which hold addresses
+      // swap addresses which will swap order of values
+      swap(&arr[i], &arr[j]);
+    }
+  }
+  swap(&arr[i + 1], &arr[high]);
+  return i + 1;
+}
+
 void quicksort(int *arr, int low, int high)
 {
   if (low < high) {
