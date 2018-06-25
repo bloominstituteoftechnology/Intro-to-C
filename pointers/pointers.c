@@ -72,6 +72,13 @@ void string_copy(char *x, char *y)
     printf("idx: %d\n", idx);
     printf("x at idx: %d\n", x[idx]);
     printf("copied: %s\n", x);
+
+      // while (*y != "\0") {
+      //   *x = *y; // address stored in x is the same as address in y
+      //   x++; // pointer arithmetic
+      //   y++;
+      // }
+      // *x = '\0'; // terminate the string
 }
 
 /* 

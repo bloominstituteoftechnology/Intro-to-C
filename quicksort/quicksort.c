@@ -15,9 +15,14 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
 void quicksort(int *arr, int low, int high)
 {
-
+  if (low < high) {
+    int index = partition(arr, low, high);
+    quicksort(arr, low, index - 1);
+    quicksort(arr, index + 1, high);
+  }
 }
 
 #ifndef TESTING
