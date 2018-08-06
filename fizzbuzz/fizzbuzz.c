@@ -19,17 +19,17 @@ int fizzbuzz(int n)
     {
         
         if (!n%3 && !n%5) {
-            println("FizzBuzz");
+            printf("FizzBuzz");
         }
 
         else if (!n%3)
         {
-            println("Fizz");
+            printf("Fizz");
         }
         
         else if (!n%5)
         {
-           println("Fizz");
+           printf("Fizz");
         }
         
         
