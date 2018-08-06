@@ -13,13 +13,13 @@ char *reverse_string(char *rv, char *s);
 
 #ifndef TESTING
 int main(void){
-    char quote1[] = "Don't forget to be awesome!";
+    char quote1[] = "Don't forget to be awesome";
     char quote2[] = "a man a plan a canal panama";
 
     char rv[512];
 
-    printf("The quote is this: '%s'.\n The length is this: %d\n.", quote1, string_length(quote1));
-    printf("Here is this quote: %s.\n This is the quote reversed: %s\n", quote2, reverse_string(rv, quote2));
+    printf("The string '%s' has %d characters.\n", quote1, string_length(quote1));
+    printf("The string '%s' reversed is: '%s'\n", quote2, reverse_string(rv, quote2));
 
     return 0;
 }
@@ -32,7 +32,6 @@ int length = 0;
     while (s[length] != '\0'){
         length += 1;
     }
-    printf("length: %d\n", length);
     return length;
 }
 
@@ -44,13 +43,13 @@ int length = 0;
 */
 char *reverse_string(char rv[], char s[]){
     int len = string_length(s);
+    int last = len - 1;
     int i;
-    int j = 0;
     for(i = len-1; i >= 0; i--){
-        rv[j] = s[len - i]; 
-        j++;
+        rv[last - i] = s[i]; 
     }
     rv[len] = '\0';
+    printf("%s\n", rv);
     return rv;
 }
 
