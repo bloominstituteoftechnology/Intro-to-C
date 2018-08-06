@@ -14,21 +14,20 @@
 int fizzbuzz(int n)
 {
     int i;
-    printf("here2");
 
     for( i = 0; i < n; i++)
     {
         
-        if (!n%3 && !n%5) {
+        if (n%3 == 0 && n%5 == 0) {
             printf("FizzBuzz");
         }
 
-        else if (!n%3)
+        else if (n%3 == 0)
         {
             printf("Fizz");
         }
         
-        else if (!n%5)
+        else if (n%5 == 0)
         {
            printf("Fizz");
         }
