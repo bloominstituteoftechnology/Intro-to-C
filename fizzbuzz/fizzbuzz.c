@@ -14,6 +14,7 @@
 int fizzbuzz(int n)
 {
     int i;
+    printf("here2");
 
     for( i = 0; i < n; i++)
     {
