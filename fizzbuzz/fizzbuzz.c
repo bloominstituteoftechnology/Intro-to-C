@@ -10,7 +10,23 @@
 */
 int fizzbuzz(int n)
 {
+    char *fizz = "Fizz";
+    char *buzz = "Buzz";
+    char *fizzbuzz = "FizzBuzz";
+    int counter = 0;
 
+    for (int i = 0; i <= n; i++) {
+        if (i % 15 == 0) {
+            printf("%s \n", fizzbuzz); 
+        } else if (i % 5 == 0) {
+            printf("%s \n", buzz);
+        } else if (i % 3 == 0) {
+            printf("%s \n", fizz);
+        } else {
+            counter++;
+        }
+    }
+    return counter;
 }
 
 #ifndef TESTING
