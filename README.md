@@ -16,7 +16,7 @@ If you haven't gotten your C compiler up and running, please do that first. You'
 
 This lab is structured very much like how your introductory JavaScript labs are structured. There are independent modules, each with their own set of exercises that you'll be tasked with implementing. There's an associated set of tests for all the exercises in each module, which you'll run against your code to check to see if it behaves and functions correctly. The order in which you should tackle these exercises is this:
 
-  - [ ] fizzbuzz
+  - [x] fizzbuzz
   - [ ] strings
   - [ ] pointers
   - [ ] quicksort
