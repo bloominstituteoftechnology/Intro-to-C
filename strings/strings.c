@@ -1,15 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 /*
     Given a character array s, return the number of characters 
     held inside it.
-    
     Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
 {
-
+  int length = 0;
+  while (s[length] != '\0')
+  {
+    length++;
+  }
+  return length;
 }
 
 /*
@@ -20,21 +25,30 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+  int begin, end, count = 0;
+  while (s[count] != '\0')
+    count++;
+  end = count - 1;
 
+  for (begin = 0; begin < count; begin++)
+  {
+    rv[begin] = s[end];
+    end--;
+  }
+  return rv;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    char quote1[] = "Don't forget to be awesome";
-    char quote2[] = "a man a plan a canal panama";
+  char quote1[] = "Don't forget to be awesome";
+  char quote2[] = "a man a plan a canal panama";
 
-    char rv[512];
+  char rv[512];
 
-    printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
-    printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
+  printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
+  printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
-    return 0;
+  return 0;
 }
 #endif
-    
