@@ -37,10 +37,10 @@ char *reverse_string(char rv[], char s[])
     char ch1;
 
     len = string_length(s);
-    ch1 = s[len-1];
+    ch1 = s[len];
     j = 0;
     
-    for( i = len-1; i >=0 ; i--)
+    for( i = len; i >=0 ; i--)
     {
         rv[j] = ch1;
         ch1 = s[i];
