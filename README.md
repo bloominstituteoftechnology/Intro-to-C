@@ -1,4 +1,4 @@
-# Introduction to the C Programming Language
+# Introduction to the C Programming Language - Wladimir Fraga CS10
 
 Welcome to your first C lab! 
 
