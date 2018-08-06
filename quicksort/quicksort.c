@@ -17,7 +17,38 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    int j;
+    if(low<high)
+    {
+        j = partition(arr, low, high);
+        quicksort(arr, low, j-1);
+        quicksort(arr, j+1, high);
+    }
+}
 
+int partition(int *arr, int low, int high)
+{
+    int v, i, j, temp;
+    v = arr[low];
+    i=low;
+    j=high+1;
+    do{
+        do i++;
+        while(arr[i]<v&&i<= high);
+        do
+            j--;
+        while(v < arr[j]);
+        if(i<j)
+        {
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    } while (i<j);
+    arr[low]=arr[j];
+    arr[j]=v;
+
+    return(j);
 }
 
 #ifndef TESTING
