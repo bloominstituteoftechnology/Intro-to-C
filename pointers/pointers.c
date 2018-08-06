@@ -69,6 +69,36 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    // printf("\n\n\nSTRING COMPARE");
+    // printf("\n\n M vs N: %s %s", m, n);
+    // char *x = m, *y = n;
+
+    // while (*x == *y && *x != '\0' && *y != '\0')
+    while (*m == *n && *m != '\0' && *n != '\0')
+    {
+        // printf("\n\n%d %d", *m, *n);
+        m++;
+        n++;
+    };
+
+    if (*m == *n)
+    {
+        // printf("\n\n%d %d", *m, *n);
+        // printf("\nRETURN: %d\n", 0);
+        return 0;
+    }
+    else if (*m < *n)
+    {
+        // printf("\n\n%d %d", *m, *n);
+        // printf("\nRETURN: %d\n", -1);
+        return -1;
+    }
+    else
+    {
+        // printf("\n\n%d %d", *m, *n);
+        // printf("\nRETURN: %d\n", 1);
+        return 1;
+    }
 }
 
 #ifndef TESTING
