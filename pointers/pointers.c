@@ -8,7 +8,16 @@
 */
 void swap(int* a, int* b)
 {
-
+    /*
+        a and b are pointers. to access the value need *
+        create a temp variable to hold the value of a
+        assign the value of a to the value of b. 
+        assign the value of b to temp
+    */
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+    printf("%d\n",*a);
 }
 
 /*
@@ -20,7 +29,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int counter = 0;
+    while(s[counter] != '\0')
+    {
+        counter++;
+    }
+    // printf("counter %d\n", counter);
+    return counter;
 }
 
 /*
@@ -33,7 +48,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    int index = 0;
+    while(y[index] != '\0')
+    {
+        x[index] = y[index];
+        index++;
+    }
+    x[index] = '\0';
 }
 
 /* 
@@ -52,7 +73,19 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int m_length = string_length(m);
+    int n_length = string_length(n);
+    // printf("outside loop m=%d n=%d\n",m_length, n_length);
+    for(int i = 0; i <= m_length && i <= n_length; i++)
+    {
+        // printf("inside loop m=%c n=%c\n",m[i], n[i]);
+        if(m[i] != n[i])
+        {
+            return m[i] - n[i];
+        }
+       
+    }
+    return 0;
 }
 
 #ifndef TESTING
@@ -71,7 +104,16 @@ int main(void)
     printf("Buffer is %s\n", buffer);
     printf("Length is %d\n", string_length(buffer));
     printf("Comparison is %d\n", string_compare(hello, world));
+    
+    char *s = "hello, world";
+    char *t = "hiya";
+    char *m = "goodbye";
+    char *n = "see ya";
 
+    char *firetruck = "firetruck";
+    char *firetrucks = "firetrucks";
+    printf("Comparison is %d\n", string_compare(s, t));
+    
     return 0;
 }
 #endif
