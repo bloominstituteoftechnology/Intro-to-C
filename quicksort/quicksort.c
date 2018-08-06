@@ -21,7 +21,7 @@ void quicksort(int *arr, int low, int high)
 {
     //If the array is not of size > 1, it is already trivially sorted.
     if (high > low) {
-        //We arbitrarily select the pivot as the leftmost element.
+        //We arbitrarily select the leftmost element as the pivot.
         int pivot = low;
         //We want to look at each value in the array after the pivot.
         for (int i = pivot + 1; i <= high; i++) {
