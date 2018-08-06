@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,7 +22,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int len = 0;
+    while(*s != '\0') {
+        len++;
+        s++;
+    }
+    return len;
 }
 
 /*
@@ -33,7 +40,10 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    int len = string_length(y);
+    for(int i = len; i >= 0; i--) {
+        x[i] = y[i];
+    }
 }
 
 /* 
@@ -52,7 +62,15 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    if (!m && !n) return 0;
+    if (m && !n) return 1;
+    if (!m && n) return -1;
 
+    while (*m && *n && *m == *n) m++, n++;
+
+    if (!*m && !*n) return 0;
+    else if (*m > *n) return 1;
+    else return -1;
 }
 
 #ifndef TESTING
@@ -64,6 +82,10 @@ int main(void)
 
     char *hello = "Hello";
     char *world = "World";
+    char *hello2 = "hello world";
+    char *gb = "goodbye";
+    char *aard = "aardvark";
+    char *zeb = "zebra";
 
     char buffer[1024];
     string_copy(buffer, hello);
@@ -71,6 +93,8 @@ int main(void)
     printf("Buffer is %s\n", buffer);
     printf("Length is %d\n", string_length(buffer));
     printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare(hello2, gb));
+    printf("Comparison is %d\n", string_compare(aard, zeb));
 
     return 0;
 }
