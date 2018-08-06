@@ -15,11 +15,42 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high)
-{
 
+// create helper function partition
+// take last element as pivot, place pivot element at correct position in
+// sorted array, place smaller elements to left of pivot and larger to
+// right
+int partition(int *arr, int low, int high)
+{
+    int i = low - 1; //index of smaller element
+    int pivot = arr[high];
+    for (int j = low; j <= high - 1; j++)
+// if current element is <= pivot, then increment index and swap
+// I accidentally had this as j <= high for a long time before I realized my mistake. Oops.
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;            
+            swap(&arr[i], &arr[j]);
+//&arr points to the whole array, while arr points to the first element
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
 }
 
+// this will put elements in their correct position in the sorted array
+// all smaller elements below pivot, all greater elements after
+void quicksort(int *arr, int low, int high)
+{
+    if (low < high) 
+    {
+    int pivoti = partition(arr, low, high);
+    quicksort(arr, low, pivoti - 1);
+    quicksort(arr, pivoti + 1, high);
+    }
+
+}
 #ifndef TESTING
 int main(void)
 {
