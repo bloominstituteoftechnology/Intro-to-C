@@ -31,9 +31,10 @@ int fizzbuzz(int n)
         {
            printf("Fizz");
         }
-        
-        return 0;
+    
     }
+
+    return 0;
     
 }
 
@@ -41,6 +42,7 @@ int fizzbuzz(int n)
 int main(void)
 {
     fizzbuzz(20);
+    printf("here");
 
     return 0;
 }
