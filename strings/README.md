@@ -12,7 +12,7 @@ Another way we might declare an array is the following:
 ```c
     int another_int_array[20];
 ```
-With this, we've declared a statically-sized integer array that has space for 20 bytes worth of integers. There's nothing in it initially, but we can now start populating it with integers (and only integers) up to it's specified capacity. 
+With this, we've declared a statically-sized integer array that has space for 20 integers. There's nothing in it initially, but we can now start populating it with integers (and only integers) up to it's specified capacity. 
 ```c
     int n = 20 / sizeof(int);
 
