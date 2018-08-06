@@ -1,5 +1,7 @@
 # Introduction to the C Programming Language
 
+=== initial commit ===
+
 Welcome to your first C lab! 
 
 The two main goals of this sprint are as follows. The first goal is to give students the experience of learning a different programming language. This is important because it is _very_ rarely the case where you are familiar and comfortable with all of the technologies/programming languages that you'll be using on a job as a professional developer. Being able to pick up languages/technologies you aren't familiar with is a skill that we want to cultivate in students during their time here at Lambda, which is why we expose students to both C and Python during their time here.
