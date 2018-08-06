@@ -8,7 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+    int ip1;
+    int ip2;
+    ip1 = *b;
+    ip2 = *a;
+    *b = ip2;
+    *a = ip1;
 }
 
 /*
@@ -20,7 +25,8 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    printf("%s\n", *s);
+    return 0;
 }
 
 /*
