@@ -17,7 +17,22 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    //make sure our array length > 1
 
+    //create pivot as first value
+
+    //compare each value from low to high
+    //if value is less than pivot, swap with pivot
+
+    //recursively call function from (low, pivot-1) and (pivot+1, high)
+    if (high > low) {
+        int pivot = low;
+        for (int i = low + 1; i <= high; i++) {
+            if (arr[i] <  arr[pivot]) {
+                swap(arr + i, arr + pivot);
+            }
+        }
+    }
 }
 
 #ifndef TESTING
