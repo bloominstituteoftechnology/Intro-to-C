@@ -11,13 +11,13 @@
 */
 int fizzbuzz(int n)
 {
-    printf("N %d\n", n);
+    printf("\n\N %d\n\n", n);
     int counter = 0;
     for (int i = 1; i <= n; ++i)
     {
-        i % 3 == 0 ? i % 5 == 0 ? printf("FizzBuzz %d\n", i) : printf("Fizz %d\n", i) : i % 5 == 0 ? i % 3 == 0 ? printf("FizzBuzz %d\n", i) : printf("Buzz") : counter++;
+        i % 3 == 0 ? i % 5 == 0 ? printf("FizzBuzz\n") : printf("Fizz\n") : i % 5 == 0 ? i % 3 == 0 ? printf("FizzBuzz %d\n", i) : printf("Buzz") : counter++;
     }
-    printf("COUNTER %d\n", counter);
+    printf("\n\COUNTER %d\n\n", counter);
     return counter;
 }
 
