@@ -32,7 +32,7 @@ int fizzbuzz(int n)
            printf("Fizz");
         }
         
-        
+        return 0;
     }
     
 }
