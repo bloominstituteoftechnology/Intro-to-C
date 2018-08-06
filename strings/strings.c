@@ -13,7 +13,8 @@ int string_length(char s[])
     char ch;
 
     ch = s[i];
-    while(ch != "\0"){
+
+    while(ch != '\0'){
         i++;
         ch = s[i];
     }
