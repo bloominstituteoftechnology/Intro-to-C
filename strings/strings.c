@@ -32,10 +32,23 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
     int len;
+    int i;
+    int j;
+    char ch1;
 
     len = string_length(s);
+    ch1 = s[len-1];
+    j = 0;
+    
+    for( i = len-1; i >=0 ; i--)
+    {
+        rv[j] = ch1;
+        ch1 = s[i];
+        j++;
+    }
+    
 
-    return len;
+    return rv;
 
 }
 
@@ -47,7 +60,7 @@ int main(void)
 
     char rv[512];
 
-    printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
+    printf("The string 'Don't forget to be awesome' has %d characters including spaces.\n", string_length(quote1));
     printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
     return 0;
