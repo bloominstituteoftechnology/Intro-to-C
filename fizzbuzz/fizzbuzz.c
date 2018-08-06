@@ -8,9 +8,33 @@
     every time that nothing gets printed and return the counter.
     Don't forget to include newlines '\n' in your printf statements!
 */
+
+
+
 int fizzbuzz(int n)
 {
+    int i;
 
+    for( i = 0; i < n; i++)
+    {
+        
+        if (!n%3 && !n%5) {
+            println("FizzBuzz");
+        }
+
+        else if (!n%3)
+        {
+            println("Fizz");
+        }
+        
+        else if (!n%5)
+        {
+           println("Fizz");
+        }
+        
+        
+    }
+    
 }
 
 #ifndef TESTING
