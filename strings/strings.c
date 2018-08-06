@@ -9,7 +9,17 @@
 */
 int string_length(char s[])
 {
+    /* initialize an integer variable at 0 */
+    int index = 0;
 
+    /* loop through the string!
+    while the element at the given index is not the NUL character,
+    increment the index variable */
+    while (s[index] != '\0') {
+        index++;
+    }
+    /* return the index */
+    return index;
 }
 
 /*
@@ -20,7 +30,27 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    /* initialize an integer variable length
+    set that variable equal to the return from string_length of s */
+    int length = string_length(s);
 
+    /* initialize an integer variable end and set it equal to length of string - 1
+    initialize an integer variable start and set it to 0 */
+    int end = length - 1;
+    int start = 0;
+    /* While the counter for start is less than or equal to the length of the string,
+    set the element at the index of start in the rv array
+    to equal the element at the index of end in the s array
+    increment the start counter
+    decrement the end counter */
+    while (start <= length)
+    {
+        rv[start] = s[end];
+        start++;
+        end--;
+    }
+    /* return the rv array */
+    return rv;
 }
 
 #ifndef TESTING
