@@ -10,6 +10,8 @@
 */
 int fizzbuzz(int n)
 {
+  // Your fizzbuzz implementation should initialize a counter
+  int count = 0;
 }
 
 #ifndef TESTING
