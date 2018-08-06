@@ -10,7 +10,24 @@
 */
 int fizzbuzz(int n)
 {
-
+   int c = 1;
+   int Count = 0;
+   while (c < n){
+       if (c % 3 == 0){
+           printf("fizz\n");
+       }
+       else if(c % 5 == 0){
+           printf("buzz\n");
+       }
+       else if(c % 15 == 0){
+           printf("fizzbuzz\n");
+       }
+       else{
+           Count ++;
+       }
+       c++;
+   }
+   return Count;
 }
 
 #ifndef TESTING
