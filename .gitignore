@@ -56,3 +56,4 @@ dkms.conf
 *.log
 */tests/*_tests
 /.vs
+/.vscode
