@@ -30,19 +30,21 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    /* initialize an integer variable length
-    set that variable equal to the return from string_length of s */
+    /* initialize an integer variable named 'length'
+    set 'length' equal to the return from string_length(s) */
     int length = string_length(s);
 
-    /* initialize an integer variable end and set it equal to length of string - 1
-    initialize an integer variable start and set it to 0 */
+    /* initialize an integer variable 'end' and set it equal to length of string - 1
+    (length - 1 because array indexes are zero-based and so the last index in the array
+    will be the number of items in the array - 1)
+    initialize an integer variable 'start' and set it to 0 */
     int end = length - 1;
     int start = 0;
-    /* While the counter for start is less than or equal to the length of the string,
-    set the element at the index of start in the rv array
-    to equal the element at the index of end in the s array
-    increment the start counter
-    decrement the end counter */
+    /* While the counter for 'start' is less than or equal to the length of the string,
+    set the element at the index of 'start' in the rv array
+    to equal the element at the index of 'end' in the s array
+    increment the 'start' counter
+    decrement the 'end' counter */
     while (start <= length)
     {
         rv[start] = s[end];
