@@ -12,7 +12,9 @@ int string_length(char s[])
     //int len = sizeof(s) / sizeof(s[0]);
     //return len;
     int i;
+    int counter = 0;
     for (i = 0; i < 512; i++) {
+        counter++;
         if(s[i] == '\0') {
             return(i);
         }
@@ -27,16 +29,14 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    int i, j, len;
-    j = 0;
+    int i,len;
     len = string_length(s);
 
     for(i = len - 1; i >= 0; i--)
     {
-        rv[j] = s[i];
-        j++;
+        rv[len - 1 - i] = s[i];
     }
-    rv[i] = '\0';
+    rv[len] = '\0';
     return rv;
 }
 
