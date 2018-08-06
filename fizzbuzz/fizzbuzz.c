@@ -18,18 +18,18 @@ int fizzbuzz(int n)
     for( i = 0; i < n; i++)
     {
         
-        if (n%3 == 0 && n%5 == 0) {
-            printf("FizzBuzz\t%d\n", n);
+        if (i%3 == 0 && i%5 == 0) {
+            printf("FizzBuzz\t%d\n", i);
         }
 
-        else if (n%3 == 0)
+        else if (i%3 == 0)
         {
-            printf("Fizz\t%d\n", n);
+            printf("Fizz\t%d\n", i);
         }
         
-        else if (n%5 == 0)
+        else if (i%5 == 0)
         {
-           printf("Fizz\t%d\n", n);
+           printf("Fizz\t%d\n", i);
         }
     
     }
