@@ -10,21 +10,50 @@
 */
 int fizzbuzz(int n)
 {
-    for(int i = 1; i <= 20; i++)
+    for(int i = 1; i <= n; i++)
     {
+        if(i % 3 == 0 && i % 5 == 0){
+            printf("FizzBuzz\n");
+            continue;
+        }
+        //int printnewline = 0;
         if(i % 3 == 0)
         {
             printf("Fizz\n");
+            //printnewline = 1;
+            continue;
         }
         if(i % 5 == 0)
         {
             printf("Buzz\n");
+            //printnewline = 1;
         }
-        if(i % 3 == 0 && i % 5 == 0)
+        //if (printnewline == 1) {
+        //  printf("\n");
+        //}
+    }
+    return 0;
+}
+
+int fizzbuzz_alt(int n)
+{
+    for(int i = 1; i <= n; i++)
+    {
+        int printnewline = 0;
+        if(i % 3 == 0)
         {
-            printf("FizzBuzz\n");
+            printf("Fizz");
+            printnewline = 1;
         }
-    };
+        if(i % 5 == 0)
+        {
+            printf("Buzz");
+            printnewline = 1;
+        }
+        if (printnewline == 1) {
+            printf("\n");
+        }
+    }
     return 0;
 }
 
