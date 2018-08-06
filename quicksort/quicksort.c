@@ -17,17 +17,12 @@
 */
 
 int descend(int *arr, int pivot, int index) {
-    if (index - 1 == pivot){
-        swap(arr + pivot, arr + index);
-        return index;
+    if (index-1 != pivot){
+        swap(arr + index, arr + pivot+1);
     }
-    else {
-        swap(arr + index, arr + index - 1);
-        return descend(arr, pivot, index - 1);
-    }
+    swap(arr + pivot, arr + pivot+1);
+    return pivot+1;
 }
-
-
 
 void quicksort(int *arr, int low, int high)
 {
@@ -57,9 +52,6 @@ void quicksort(int *arr, int low, int high)
 int main(void)
 {
     int arr1[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
-    {2,1,7,5,0}
-    {1,2,7,5,0}
-    {0,1,2,7,5}
 
     int n = sizeof(arr1) / sizeof(arr1[0]);
     quicksort(arr1, 0, n-1);
