@@ -36,7 +36,7 @@ char *reverse_string(char rv[], char s[])
 
     int i = 0;
 
-    while (i < length)
+    while (s[i])
     {
         rv[length - 1 - i] = s[i];
         i++;
