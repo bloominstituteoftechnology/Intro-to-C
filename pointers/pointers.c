@@ -31,7 +31,7 @@ int string_length(char *s)
         c++;
         *s++;
     }
-    return(c);
+    return(c-1);
 
 }
 
