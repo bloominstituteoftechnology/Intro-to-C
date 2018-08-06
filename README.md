@@ -54,7 +54,7 @@ If you see this error:
   The root of the problem is a setting in git that causes all newlines (LF) to be converted to carriage-return/newline (CRLF). The script `runtests.sh` is a _bash script_ that bash runs, and bash *hates* `\r` and pukes everywhere.
 
   To cause git to _not_ do newline conversion for future clones, run the following:
-
+ 
   ```
   git config --global core.autocrlf false
   ```
