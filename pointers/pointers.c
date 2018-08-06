@@ -15,7 +15,6 @@ void swap(int* a, int* b)
     *b = temp;
 
 }
-
 /*
     Given a character pointer s, returns the number of characters
     it is pointing to. Think about how pointer arithmetic can 
@@ -34,7 +33,6 @@ int string_length(char *s)
     return(c-1);
 
 }
-
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -55,7 +53,6 @@ void string_copy(char *x, char *y)
     }
 
 }
-
 /* 
     Compares the character strings m and n and returns negative,
     0, or positive if n is lexicographically less than, equal to,
@@ -97,7 +94,6 @@ int string_compare(char *m, char *n)
             return 0;
         } 
     }
-
     return 1;
 }
 
