@@ -6,10 +6,16 @@
     held inside it.
     
     Do not just use the `strlen` function from the standard libary.
+    
 */
 int string_length(char s[])
 {
-
+   int len = 0;
+   while(s[len] != '\0'){
+       len++;
+       printf("The current length is %d\n", len);
+   }
+   return len;
 }
 
 /*
@@ -20,7 +26,11 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int length = string_length(s);
+    for(int i = length-1; i > 0; i--){
+        rv[length-1-i] = s[i];
+    }
+    return rv;
 }
 
 #ifndef TESTING
