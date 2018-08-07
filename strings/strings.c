@@ -3,7 +3,7 @@
 
 /*
     Given a character array s, return the number of characters 
-    held inside it.
+    held inside it. dont count the null terminator ("\0")
     
     Do not just use the `strlen` function from the standard libary.
 */
@@ -11,14 +11,22 @@ int string_length(char s[])
 {
     //int len = sizeof(s) / sizeof(s[0]);
     //return len;
-    int i;
-    int counter = 0;
-    for (i = 0; i < 512; i++) {
-        counter++;
-        if(s[i] == '\0') {
-            return(i);
-        }
+    // int i;
+    // int counter = 0;
+    // for (i = 0; i < 512; i++) {
+    //     counter++;
+    //     if(s[i] == '\0') {
+    //         return(i);
+    //     }
+    // }
+    // Solution lecture code
+    int n = 0;
+
+    while(s[n] != '\0') {
+        n++;
     }
+
+    return n;
 }
 
 /*
@@ -29,13 +37,25 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    int i,len;
-    len = string_length(s);
+    // int i,len;
+    // len = string_length(s);
 
-    for(i = len - 1; i >= 0; i--)
-    {
-        rv[len - 1 - i] = s[i];
+    // for(i = len - 1; i >= 0; i--)
+    // {
+    //     rv[len - 1 - i] = s[i];
+    // }
+    // rv[len] = '\0';
+    // return rv;
+
+// Solution lecture code
+    int count = 0;
+    int len = string_length(s);
+
+    for (int i = len - 1; i >= 0; i--) {
+        // index then increments count
+        rv[count++] = s[i];
     }
+
     rv[len] = '\0';
     return rv;
 }

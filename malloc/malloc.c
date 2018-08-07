@@ -35,6 +35,18 @@ char *string_dup(char *src)
     }
     strcp[len] = '\0';
     return strcp;
+
+    //solution lecture code
+
+    // int n = string_length(src);
+    // char *str = malloc(n + 1);
+
+    // for (int i = 0; i < n; i++) {
+    //     *(str+i) = *(src+i);
+    // }
+    // *(str+n) = '\0';
+    
+    // return str;
 }
 
 /*
@@ -45,13 +57,23 @@ char *string_dup(char *src)
     
     Do not just use the `memcpy` function from the standard library.
 */
+// const is there to tell you to not manipulate src pointer
 void *mem_copy(void *dest, const void *src, int n)
 {
+    // char *csrc = (char *)src;
+    // char *cdest = (char *)dest;
+
+    // for (int i = 0; i < n; i++){
+    //     cdest[i] = csrc[i];
+    //     //working strictly with pointers
+            // //*(cdest+i) = *(csrc+i) same as array index syntax
+    // }
+    // solution lecture code
     char *csrc = (char *)src;
     char *cdest = (char *)dest;
 
     for (int i = 0; i < n; i++){
-        cdest[i] = csrc[i];
+        *(cdest+i) = *(csrc+i);
     }
 }
 

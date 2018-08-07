@@ -11,6 +11,8 @@ void swap(int* a, int* b)
     int temp = *a;
     *a = *b;
     *b = temp;
+    // code is same as solution lecture
+
 }
 
 /*
@@ -28,6 +30,17 @@ int string_length(char *s)
         s++;
     }
     return len;
+
+    //solution lecture
+    // int n = 0;
+
+    // while (*s != '\0') {
+    //     n++;
+    //     s++;
+    // }
+
+    // return n;
+
 }
 
 /*
@@ -40,10 +53,33 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-    int len = string_length(y);
-    for(int i = len; i >= 0; i--) {
-        x[i] = y[i];
-    }
+    // int len = string_length(y);
+    // for(int i = len; i >= 0; i--) {
+    //     x[i] = y[i];
+    // }
+
+    // solution lecture
+    // while (*y != '\0) {
+    //     *x = *y;
+    //     y++;
+    //     x++
+    // }
+    // *x = '\0';
+    
+    // solution 2
+     while ((*x = *y) != '\0') {
+         x++;
+         y++;
+     }
+
+    //solution 3
+    // while ((*x++ = *y++) != '\0')
+    //     ;
+
+    // solution 4
+
+    // while ((*x++) = (*y++))
+    //     ;
 }
 
 /* 
@@ -62,15 +98,27 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    if (!m && !n) return 0;
-    if (m && !n) return 1;
-    if (!m && n) return -1;
+    // this code came from google. 
+    // if (!m && !n) return 0;
+    // if (m && !n) return 1;
+    // if (!m && n) return -1;
 
-    while (*m && *n && *m == *n) m++, n++;
+    // while (*m && *n && *m == *n) m++, n++;
 
-    if (!*m && !*n) return 0;
-    else if (*m > *n) return 1;
-    else return -1;
+    // if (!*m && !*n) return 0;
+    // else if (*m > *n) return 1;
+    // else return -1;
+
+    // solution lecture code
+
+    for (; *m == *n; m++, n++){
+        if (*m == '\0') {
+            return 0;
+        }
+    }
+
+    return *m - *n;
+    // for (; *m == *n; m++, n++)
 }
 
 #ifndef TESTING
