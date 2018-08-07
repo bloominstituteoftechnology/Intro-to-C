@@ -8,6 +8,9 @@
 */
 void swap(int* a, int* b)
 {
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 
 }
 
@@ -20,6 +23,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int len = 0;
+    while (*s != '\0') {
+        s++;
+        len++;
+    }
+    return len;
 
 }
 
@@ -33,6 +42,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    //int len_y = string_length(y);
+    while (*y != '\0') {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x='\0';
 
 }
 
