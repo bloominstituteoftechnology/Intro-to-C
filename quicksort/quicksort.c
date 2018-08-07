@@ -17,7 +17,26 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    // base case
+    if (low >= high) {
+        return;
+    }
 
+    // partition
+    int pivot = *(arr+high);
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (*(arr+j) < pivot) {
+            i++;
+            swap(arr+i, arr+j);
+        }
+    }
+    swap(arr+i+1, arr+high);
+
+    // recursion
+    quicksort(arr, low, i);
+    quicksort(arr, i+2, high);
 }
 
 #ifndef TESTING
