@@ -6,9 +6,9 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-    int tempb= *b;
+    int tempb = *b;
     int tempa = *a;
     *b = tempa;
     *a = tempb;
@@ -21,9 +21,11 @@ void swap(int* a, int* b)
     
     Do not just use the `strlen` function from the standard library.
 */
-int string_length(char *s){
+int string_length(char *s)
+{
     int count = 0;
-    while (*s != '\0') {
+    while (*s != '\0')
+    {
         s++;
         count++;
     }
@@ -40,8 +42,13 @@ int string_length(char *s){
 */
 void string_copy(char *x, char *y)
 {
-    char temp = y;
-    printf("%d\n", temp);
+    while (*y != '\0')
+    {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -60,7 +67,20 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    while (*n != '\0')
+    {
+        if (*n > *m)
+        {
+            return -1;
+        }
+        else if (*n < *m)
+        {
+            return 1;
+        }
+        n++;
+        m++;
+    }
+    return 0;
 }
 
 #ifndef TESTING
