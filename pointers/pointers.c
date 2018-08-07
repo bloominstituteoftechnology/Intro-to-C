@@ -79,24 +79,24 @@ int string_compare(char *m, char *n)
    }
    else x = n;
 
-        while(*n != '\0') {
-            if (*m != *n) {
-                if(*m - *n > 0) {
-                    return 1;
-                }
-                else if (*m - *n <0) {
-                    return -1;
-                }
-                else{
-                    return 0;
-                } 
-            }
-            else {
-                m++;
-                n++;
-            }
+while(*n != '\0') {
+    if (*m != *n) {
+        if(*m - *n > 0) {
+            return 1;
         }
-        return 0;
+        else if (*m - *n <0) {
+            return -1;
+        }
+        else {
+            return 0;
+        } 
+    }
+    else {
+        m++;
+        n++;
+    }
+}
+return 0;
 }
 
 #ifndef TESTING

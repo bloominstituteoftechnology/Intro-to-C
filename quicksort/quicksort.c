@@ -17,6 +17,13 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    int pivot = arr[high];
+    for (int i = 0; i <= high; i++) {
+        if (arr[i] > pivot) {
+            swap(arr[i], pivot);
+        }
+    }
+    
 
 }
 

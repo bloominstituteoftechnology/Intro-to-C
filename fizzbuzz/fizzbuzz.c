@@ -10,9 +10,9 @@
 */
 int fizzbuzz(int n)
 {
-    int counter = 2;
-    for (int i = 3; i <= n; i++) {
-        if (i % 3 == 0 && i % 5 == 0) {
+    int counter = 0;
+    for (int i = 1; i <= n; i++) {
+        if (i % 3  == 0 && i % 5 == 0) {
             printf("FizzBuzz\n");
         }
         else if (i % 3 == 0) {

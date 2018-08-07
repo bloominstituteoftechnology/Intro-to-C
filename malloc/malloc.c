@@ -11,9 +11,19 @@
     
     Do not just use the `strdup` function from the standard library.
 */
+
 char *string_dup(char *src)
 {
+    int length = string_length(src);
+    char *dup_str = malloc(length + 1);
+    
+    for (int i =0; i < length; i++) {
+        dup_str[i] = src[i];
+    }
 
+    dup_str[length] = '\0';
+
+    return dup_str;
 }
 
 /*
@@ -26,7 +36,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    
 }
 
 #ifndef TESTING
