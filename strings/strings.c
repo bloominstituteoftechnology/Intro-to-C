@@ -9,8 +9,16 @@
 */
 int string_length(char s[])
 {
+    int len = 0;
+    for(int i=0; s[i] != '\0'; i++){
+        len++;
+    }
 
+    return len;
 }
+
+    
+
 
 /*
     Write a function that reverses the order of string s and outputs 
@@ -20,6 +28,18 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int len = string_length(s);
+    //printf("Total!!!!!!!!!!!!!! = %d\n", len);
+    //return rv;
+    
+    for (int i = 0; i< len; i++){
+        rv[len-(i+1)]=s[i];
+    }
+    //printf(" SSSSS %s\n", s);
+    //printf("length of S= %d\n", len);
+    //printf(" rv %s\n", rv);
+    rv[len] = '\0';
+    return rv;
 
 }
 
