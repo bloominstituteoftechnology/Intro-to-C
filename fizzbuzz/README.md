@@ -23,7 +23,7 @@ Here's another example:
 ```
 This function signature states that it receives a single integer array and doesn't return anything. You'll often see this kind of function signature when you want the function to simply mutate the input and/or print the contents of the input.
 
-For printing output, you'll want to use the `printf` function, which is included in the `stdlib` library. 
+For printing output, you'll want to use the `printf` function, which is included in the `stdio` library. 
 
 ## Implementing fizzbuzz
 
