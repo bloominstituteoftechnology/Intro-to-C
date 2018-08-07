@@ -31,6 +31,7 @@ struct Person *Person_create(char *name, int age, int height, int weight)
     some_dude->age = age;
     some_dude->height = height;
     some_dude->weight = weight;
+    return some_dude;
 }
 
 /*
