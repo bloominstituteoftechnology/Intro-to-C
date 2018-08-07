@@ -23,10 +23,11 @@ int length(int *arr){
     Do not just use the `qsort` function from the standard library.
 */
 void quicksort(int *arr, int low, int high){
-    int pivot = low;
     int temp;
     int i = low;
     int j = high;
+    int pivot = (i + j)/2;
+
 
     while(i < j){
         while(arr[i] <= arr[pivot] && i < high){
