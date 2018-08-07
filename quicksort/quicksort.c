@@ -15,14 +15,25 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high)
-{
 
+void quicksort(int* arr, size_t low, size_t high) {
+    if (low < high) {
+        int pivot = *(arr+high);
+        size_t i = low - 1;
+        for (size_t j = low; j < high; j++) {
+            if (*(arr+j) < pivot) {
+                i++;
+                swap(arr+i, arr+j);
+            }
+        }
+        swap(arr+i+1, arr+high);
+        quicksort(arr, low, i);
+        quicksort(arr, i + 2, high);
+    }
 }
 
 #ifndef TESTING
-int main(void)
-{
+int main() {
     int arr1[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(arr1) / sizeof(arr1[0]);
     quicksort(arr1, 0, n-1);
@@ -33,6 +44,6 @@ int main(void)
 
     printf("\n");
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 #endif

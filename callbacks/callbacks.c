@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "callbacks.h"
-#include "lib.h" 
+#include "lib.h"
 
 /*
     Implement the callback that will be passed to your bubble_sort function to sort 
@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a > b;
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return a < b;
 }
 
 /*
@@ -27,17 +27,30 @@ int reverse_order(int a, int b)
     Your function should allocate memory to hold the sorted data and return the 
     sorted data. Call the callback as you would any other function. 
 */
-int *bubble_sort(int *numbers, int n, compare_cb cmp)
-{
 
+int* bubble_sort(int* numbers, int n, compare_cb cmp)
+{
+    int is_swapped = 1;
+    while(is_swapped){
+        is_swapped = 0;
+        for (size_t i = 1; i < n; i++) {
+            int* lhs = numbers + i - 1;
+            int* rhs = numbers + i;
+            if (cmp(*lhs, *rhs)) {
+                swap(lhs, rhs);
+                is_swapped = 1;
+            }
+        }
+    }
+    return numbers;
 }
 
 #ifndef TESTING
-int main(void)
+int main()
 {
     int arr[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int count = sizeof(arr) / sizeof(arr[0]);
-    int *sorted_arr;
+    int* sorted_arr;
 
     //sorted_arr = bubble_sort(arr, count, sorted_order);
     sorted_arr = bubble_sort(arr, count, reverse_order);
@@ -48,6 +61,6 @@ int main(void)
 
     printf("\n");
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 #endif

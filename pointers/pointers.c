@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#define MAX(a, b) ((a) > (b) ? a : b)
+#define MIN(a, b) ((a) < (b) ? a : b)
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
@@ -8,7 +10,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -18,9 +22,13 @@ void swap(int* a, int* b)
     
     Do not just use the `strlen` function from the standard library.
 */
-int string_length(char *s)
+size_t string_length(char* s)
 {
-
+    size_t len = 0;
+    while(*(s+len) != '\0') {
+        len++;
+    }
+    return len;
 }
 
 /*
@@ -31,9 +39,14 @@ int string_length(char *s)
     
     Do not just use the `strcpy` function from the standard library.
 */
-void string_copy(char *x, char *y)
+void string_copy(char* x, char* y)
 {
-
+    size_t len_y = string_length(y);
+    for(size_t i = 0; i < len_y; i++)
+    {
+        *(x+i) = *(y+i);
+    }
+    *(x+len_y) = '\0';
 }
 
 /* 
@@ -50,9 +63,17 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
-int string_compare(char *m, char *n)
+int string_compare(char* m, char* n)
 {
-
+    int diff = 0;
+    size_t lhs_len = string_length(m);
+    size_t rhs_len = string_length(n);
+    size_t len = lhs_len == rhs_len ? lhs_len : MIN(lhs_len, rhs_len) + 1;
+    for (size_t i = 0; i < len + 1; i++) {
+        if (diff != 0) { break; }
+        diff += *(m+i) - *(n+i);
+    }
+    return diff;
 }
 
 #ifndef TESTING
@@ -62,8 +83,8 @@ int main(void)
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
+    char* hello = "Hello";
+    char* world = "World";
 
     char buffer[1024];
     string_copy(buffer, hello);
@@ -72,6 +93,6 @@ int main(void)
     printf("Length is %d\n", string_length(buffer));
     printf("Comparison is %d\n", string_compare(hello, world));
 
-    return 0;
+    return EXIT_SUCCESS;
 }
 #endif

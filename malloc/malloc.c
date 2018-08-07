@@ -11,9 +11,23 @@
     
     Do not just use the `strdup` function from the standard library.
 */
-char *string_dup(char *src)
-{
 
+void string_copy(char* x, char* y)
+{
+    size_t len_y = string_length(y);
+    for(size_t i = 0; i < len_y; i++)
+    {
+        *(x+i) = *(y+i);
+    }
+    *(x+len_y) = '\0';
+}
+
+char *string_dup(char* src)
+{
+    size_t len = string_length(src);
+    char* dup = malloc(len * sizeof(char));
+    string_copy(dup, src);
+    return dup;
 }
 
 /*
@@ -24,9 +38,13 @@ char *string_dup(char *src)
     
     Do not just use the `memcpy` function from the standard library.
 */
-void *mem_copy(void *dest, const void *src, int n)
+void* mem_copy(void* dest, const void* src, int n)
 {
-
+    for(size_t i = 0; i < n; i++)
+    {
+        *((char*)dest+i) = *((char*)src+i);
+    }
+    return dest;
 }
 
 #ifndef TESTING

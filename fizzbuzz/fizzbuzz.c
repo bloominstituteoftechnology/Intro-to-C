@@ -10,7 +10,22 @@
 */
 int fizzbuzz(int n)
 {
-
+    int counter = 0;
+    for(size_t i = 0; i < n; i++)
+    {
+        int will_fizz = i % 3 == 0;
+        int will_buzz = i % 5 == 0;
+        if (will_fizz && will_buzz) {
+            printf("FizzBuzz\n");
+        } else if (will_fizz) {
+            printf("Fizz\n");
+        } else if (will_buzz) {
+            printf("Buzz\n");
+        } else {
+            counter++;
+        }
+    }
+    return counter;
 }
 
 #ifndef TESTING

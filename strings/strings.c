@@ -7,9 +7,13 @@
     
     Do not just use the `strlen` function from the standard libary.
 */
-int string_length(char s[])
+size_t string_length(char s[])
 {
-
+    size_t len = 0;
+    while(s[len] != '\0') {
+        len++;
+    }
+    return len;
 }
 
 /*
@@ -20,7 +24,13 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    size_t len = string_length(s);
+    for(size_t i = 0; i < len; i++)
+    {
+        rv[len - i - 1] = s[i];
+    }
+    rv[len] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
