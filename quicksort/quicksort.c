@@ -20,16 +20,16 @@
 
 int findPartitionIndex(int *arr, int left, int right, int pivot)
 {
-    int leftPointer = left - 1;
-    int rightPointer = right;
+    int leftPointer = left;
+    int rightPointer = right - 1;
 
     while (1) {
-        while (arr[++leftPointer] < pivot) {
-            continue;
+        while (arr[leftPointer] < pivot) {
+            leftPointer++;
         }
 
-        while (rightPointer > 0 && arr[--rightPointer] > pivot) {
-            continue;
+        while (rightPointer > 0 && arr[rightPointer] > pivot) {
+            rightPointer--;
         }
 
         if (leftPointer >= rightPointer) {
@@ -39,25 +39,22 @@ int findPartitionIndex(int *arr, int left, int right, int pivot)
             swap(&arr[leftPointer], &arr[rightPointer]);
         }
     }
+
     swap(&arr[leftPointer], &arr[right]);
     return leftPointer;
 }
 
 void quicksort(int *arr, int low, int high)
 {
-    // printf("Pivot: %i\n", arr[high]);
     if (high - low <= 0) {
         return;
     }
     else {
         int pivot = arr[high];
         int index = findPartitionIndex(arr, low, high, pivot);
-        // printf("index: %i\n", index);
-        // swap(&arr[index], &arr[high]);
         quicksort(arr, low, index - 1);
         quicksort(arr, index + 1, high);
     }
-    
 }
 
 #ifndef TESTING
