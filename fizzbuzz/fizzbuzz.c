@@ -10,7 +10,25 @@
 */
 int fizzbuzz(int n)
 {
-
+    int counter = 0;
+    for (int i = 1; i <= n; i++) {
+        char result[8] = "";
+        if (i % 3 == 0) {
+            strcat(result, "Fizz");
+            if (i % 5 == 0) {
+                strcat(result, "Buzz");
+            }
+            printf("%s\n", result);
+        }
+        else if (i % 5 == 0) {
+            strcat(result, "Buzz");
+            printf("%s\n", result);
+        }
+        else {
+            counter++;
+        }
+    }
+    return counter;
 }
 
 #ifndef TESTING
