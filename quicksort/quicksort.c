@@ -18,18 +18,23 @@
 
 int set_equal_range(int *arr, int position, int head_or_tail) // head_or_tail =>  -1 = head (so head can move to the left) , 1 = tail (so tail can move to the right)
 {
-    printf("\n\n\nSET EQUAL RANGE\n%d %d \n", position, head_or_tail);
+    // printf("\n\n\nSET EQUAL RANGE\n%d %d \n", position, head_or_tail);
     int move = head_or_tail;
     while (*(arr + position) == *(arr + position + move)) // while current position value equal to immediately next neighbour value
     {
         position = position + move;
     }
-    printf("\n\n\nEND SET EQUAL RANGE\n%d %d \n", position, head_or_tail);
+    // printf("\n\n\nEND SET EQUAL RANGE\n%d %d \n", position, head_or_tail);
     return position;
 }
 
 void quicksort(int *arr, int low, int high)
 {
+    if (low >= high)
+    {
+        return;
+    }
+    // else if ()
     int pivot_index = (low + high) / 2;
 
     int left = low,
@@ -43,21 +48,21 @@ void quicksort(int *arr, int low, int high)
     equal_head = set_equal_range(arr, equal_head, -1);
     equal_tail = set_equal_range(arr, equal_tail, 1);
 
-    printf("\n\n\nVARIABLES\n%d\n%d %d %d %d \n", pivot_index, left, equal_head, equal_tail, right);
+    // printf("\n\n\nVARIABLES\n%d\n%d %d %d %d \n", pivot_index, left, equal_head, equal_tail, right);
 
     // while (left < pivot_index || pivot_index > right)
     while (left < equal_head || equal_tail < right)
     {
-        printf("\n\n\nVARIABLES\n%d\n%d %d %d %d \n", pivot_index, left, equal_head, equal_tail, right);
-        for (int i = 0; i < high + 1; i++)
-        {
-            printf("%d ", *(arr + i));
-        }
-        printf("\n");
-        for (int i = 0; i < high + 1; i++)
-        {
-            printf("%d ", i);
-        }
+        // printf("\n\n\nVARIABLES\n%d\n%d %d %d %d \n", pivot_index, left, equal_head, equal_tail, right);
+        // for (int i = 0; i < high + 1; i++)
+        // {
+        //     printf("%d ", *(arr + i));
+        // }
+        // printf("\n");
+        // for (int i = 0; i < high + 1; i++)
+        // {
+        //     printf("%d ", i);
+        // }
 
         //  CHECK if curren left_value and right_value are equal to pivot_value => set equal_head and equal_tail if needed.
         if (*(arr + left) == *(arr + equal_head) && left != equal_head)
@@ -78,7 +83,7 @@ void quicksort(int *arr, int low, int high)
         {
             if (*(arr + equal_tail) < *(arr + right)) // pinter_value < right_value
             {
-                printf("\n\n< <");
+                // printf("\n\n< <");
                 // Move left and right positions
                 if (left < equal_head)
                 {
@@ -91,7 +96,7 @@ void quicksort(int *arr, int low, int high)
             }
             else if (*(arr + equal_tail) > *(arr + right)) // pinter_value > right_value
             {
-                printf("\n\n< >");
+                // printf("\n\n< >");
                 // Move right_value to the left_side
                 // In case left = equal_head (the left side has finished looping) -> this actions ensures to make 'room' in the left side to put the right_value.
                 swap(arr + equal_head, arr + right);
@@ -118,7 +123,7 @@ void quicksort(int *arr, int low, int high)
             }
             else
             {
-                printf("\n\n< =");
+                // printf("\n\n< =");
                 if (left < equal_head)
                 {
                     left++;
@@ -129,7 +134,7 @@ void quicksort(int *arr, int low, int high)
         {
             if (*(arr + equal_tail) < *(arr + right)) // pinter_value < right_value
             {
-                printf("\n\n> <");
+                // printf("\n\n> <");
                 // Move left_value to the right_side
                 // In case right = equal_tail (the right side has finishied looping) -> this actions ensures to make 'room' in the right side to put the left_value.
                 swap(arr + left, arr + equal_tail);
@@ -154,7 +159,7 @@ void quicksort(int *arr, int low, int high)
             }
             else if (*(arr + equal_tail) > *(arr + right)) // pointer_value > right_value
             {
-                printf("\n\n> >");
+                // printf("\n\n> >");
                 swap((arr + left), (arr + right)); // swap left_value with right_value
                 if (left < equal_head)
                 {
@@ -167,7 +172,7 @@ void quicksort(int *arr, int low, int high)
             }
             else
             {
-                printf("\n\n> =");
+                // printf("\n\n> =");
                 if (equal_tail < right)
                 {
                     right--;
@@ -177,17 +182,20 @@ void quicksort(int *arr, int low, int high)
         }
     }
 
-    printf("\n\n\nEND WHILE VARIABLES\n%d\n%d %d %d %d \n", pivot_index, left, equal_head, equal_tail, right);
-    for (int i = 0; i < high + 1; i++)
-    {
-        printf("%d ", *(arr + i));
-    }
-    printf("\n");
-    for (int i = 0; i < high + 1; i++)
-    {
-        printf("%d ", i);
-    }
-    printf("\n");
+    // printf("\n\n\nEND WHILE VARIABLES\n%d\n%d %d %d %d \n", pivot_index, left, equal_head, equal_tail, right);
+    // for (int i = 0; i < high + 1; i++)
+    // {
+    //     printf("%d ", *(arr + i));
+    // }
+    // printf("\n");
+    // for (int i = 0; i < high + 1; i++)
+    // {
+    //     printf("%d ", i);
+    // }
+    // printf("\n");
+
+    quicksort(arr, low, equal_head - 1);
+    quicksort(arr, equal_tail + 1, high);
 }
 
 #ifndef TESTING
