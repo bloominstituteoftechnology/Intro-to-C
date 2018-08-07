@@ -1,6 +1,6 @@
 # Dynamic Memory
 
-Remember that a few modules ago when we were talking about arrays in C being entirely static? That's a pretty big limitation since we're forced to know up front what kind of data we want to store in the array and how much data there is before we can fit it into an array. We aren't psychics here. How do we get around this?
+Remember a few modules ago when we were talking about arrays in C being entirely static? That's a pretty big limitation since we're forced to know up front what kind of data we want to store in the array and how much data there is before we can fit it into an array. We aren't psychics here. How do we get around this?
 
 The answer to that is the `malloc` function. Its signature is this:
 ```c
