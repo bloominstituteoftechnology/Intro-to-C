@@ -13,6 +13,17 @@
 */
 char *string_dup(char *src)
 {
+    int len = string_length(src);
+    char *dup;
+    dup = (char *)malloc(len + 1); // dynamically allocate memory
+// allow extra character for null
+    int i;
+    for (i = 0; i < len; i++)
+        {
+            dup[i]=src[i];
+        }
+    dup[i] = '\0';
+    return dup; 
 
 }
 
@@ -26,7 +37,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    //typecast addresses to char *
+    char *srcc = (char *)src;
+    char *destc = (char *)dest;
 
+    for (int i=0; i < n; i++) {
+        destc[i] = srcc[i];
+    }
+    return destc;
 }
 
 #ifndef TESTING
