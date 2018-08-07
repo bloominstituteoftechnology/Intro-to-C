@@ -10,7 +10,22 @@
 */
 int fizzbuzz(int n)
 {
-
+    int i = 0;
+    for (i=1; n >= i; i++)
+    {
+        if(i % 3 == 0 && i%5 == 0){
+          printf("FizzBuzz \n");
+        }
+        else if (i % 5 == 0){
+          printf("Buzz \n");
+        }
+        else if (i % 3 == 0){
+          printf("Fizz \n");
+        }
+        else {
+          printf("That's numberwang! \n");
+        }
+    }
 }
 
 #ifndef TESTING
