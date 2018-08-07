@@ -68,13 +68,14 @@ int string_compare(char *m, char *n)
     int difference;
     while (*m != '\0' || *n != '\0') {
         difference = *m - *n;
+        printf("*m is %c, *n is %c, diff is %i\n", *m, *n, difference);
         if (difference != 0) {
             break;
         }
         m++; 
         n++;
     }
-    difference = *m - *n;
+    printf("\n");
     return difference;
 }
 
@@ -94,6 +95,11 @@ int main(void)
     printf("Buffer is %s\n", buffer);
     printf("Length is %d\n", string_length(buffer));
     printf("Comparison is %d\n", string_compare(hello, world));
+
+    printf("\nLet's compare firetrucks!\n");
+    char *firetruck = "firetruck";
+    char *firetrucks = "firetrucks";
+    printf("Comparison is %d\n", string_compare(firetruck, firetrucks));
 
     return 0;
 }
