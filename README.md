@@ -47,7 +47,7 @@ If you see this error:
 
   ```
   cd tests
-  tr -d '\r' runtests.sh > runtests.tmp
+  cat runtests.sh | tr -d '\r' > runtests.tmp
   mv runtests.tmp runtests.sh
   ```
 

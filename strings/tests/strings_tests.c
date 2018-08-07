@@ -7,6 +7,7 @@ char *test_string_length()
     char quote[] = "Don't forget to be awesome";
     char another_quote[] = "...My spirit is a roaring sea";
 
+    mu_assert(string_length("") == 0, "Your string_length function did not return the expected length.");
     mu_assert(string_length(quote) == 26, "Your string_length function did not return the expected length.");
     mu_assert(string_length(another_quote) == 29, "Your string_length function did not return the expected length.");
 
