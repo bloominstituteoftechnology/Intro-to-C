@@ -26,27 +26,15 @@ int string_length(char s[])
 
 char *reverse_string(char rv[], char s[])
 {
- int length = string_length(s);
-
-  rv [length + 1];
-  rv[length+1] = '\0';
-
-    for (int i = length; i >= 0; i--) {
-      printf("%c\n", s[i]);
-      int x = 1;
-     
-      for (int j = 0; j < length ; j++) {
-
-        while(x) {
-         rv[j] = s[i];
-         x = s[i + 1];
-         x = 0;
-        }
-        // printf("%c\n", rv[j]);
-      }
-      
+    int length = string_length(s);
+    for (int i = length -1; i >= 0; i--) {
+        /* instead of nested for loop, x will be a constant integer
+        and will allow insertion of values into rv beginning at index 0 */
+        int x = length-1; 
+        rv[x-i] = s[i];
     }
-    // printf("%s\n", rv);
+    
+    rv[length] = '\0';
     return rv;
 }
 
