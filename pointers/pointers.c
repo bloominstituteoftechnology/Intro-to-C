@@ -8,7 +8,10 @@
 */
 void swap(int* a, int* b)
 {
-
+    int tempb= *b;
+    int tempa = *a;
+    *b = tempa;
+    *a = tempb;
 }
 
 /*
@@ -18,9 +21,13 @@ void swap(int* a, int* b)
     
     Do not just use the `strlen` function from the standard library.
 */
-int string_length(char *s)
-{
-
+int string_length(char *s){
+    int count = 0;
+    while (*s != '\0') {
+        s++;
+        count++;
+    }
+    return count;
 }
 
 /*
@@ -33,7 +40,8 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    char temp = y;
+    printf("%d\n", temp);
 }
 
 /* 
