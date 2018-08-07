@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,7 +22,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int string = 0;
+    while (*s != '\0')
+    {
+        string++;
+        s++;
+    }
+    return string;
 }
 
 /*
@@ -33,7 +41,18 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    /* While the pointer for y is not equal to the null character,
+    assign the pointer for x to the pointer for y.
+    Increment the pointer for y to the next element in the array.
+    Increment the pointer for x to the next element in the array. */
 
+    while (*y != '\0') {
+        *x = *y;
+        y++;
+        x++;
+    }
+    /* set the pointer for x, which should be at the end now, to null character */
+    *x = '\0';
 }
 
 /* 
@@ -52,7 +71,21 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    /* while dereferenced m (so the value of m) equals dereferenced n
+    if the value of m is a null character, return 0 -
+    else, increment the pointer for m and the pointer for n
+    when the value of m is no longer equal to the value of n,
+    return the value of m minus the value of n */
+    while (*m == *n)
+    {
+       if (*m == '\0')
+       {
+           return 0;
+       }
+       m++;
+       n++;
+    }
+    return *m - *n;
 }
 
 #ifndef TESTING
