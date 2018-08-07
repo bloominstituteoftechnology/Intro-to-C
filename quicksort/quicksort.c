@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "lib.h" 
+#include "lib.h"
 
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
@@ -15,9 +15,47 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
+int *set_equal_range(int *position, int head_or_tail) // head_or_tail =>  -1 = head , 1 = tail
+{
+    int move = head_or_tail;
+    while (*position == *(position + move))
+    {
+        position = position + move;
+    }
+    return position;
+}
+
 void quicksort(int *arr, int low, int high)
 {
+    int pivot_index = (low + high) / 2;
+    int *pivot = arr + pivot_index;
+    int *left = (arr + low),                       // Pointers
+        *right = (arr + high),                     // Pointers
+            *equal_tail = (arr + pivot_index),     // Pointers
+                *equal_head = (arr + pivot_index); // Pointers
 
+    printf("\n\n%p %p %p %p %p\n\n\n\n", pivot, left, right, equal_tail, equal_head);
+    printf("\n\n%d %d %d %d %d\n\n\n\n", pivot, left, right, equal_tail, equal_head);
+    printf("\n\n%d %d %d %d %d\n\n\n\n", *pivot, *left, *right, *equal_tail, *equal_head);
+
+    // set 'starting' head and tail for the values that are equal to the pivot
+    equal_head = set_equal_range(equal_head, -1);
+    equal_tail = set_equal_range(equal_tail, 1);
+
+    while (left != equal_head || equal_tail != right)
+    {
+        if (*left == *equal_head)
+        {
+            equal_head--; // move this pointer one position to left
+            swap(left, equal_head);
+        }
+        if (*right == *equal_tail)
+        {
+            equal_tail++; // move this pointer one position to right
+            swap(right, equal_tail);
+        }
+    }
 }
 
 #ifndef TESTING
@@ -25,9 +63,10 @@ int main(void)
 {
     int arr1[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(arr1) / sizeof(arr1[0]);
-    quicksort(arr1, 0, n-1);
+    quicksort(arr1, 0, n - 1);
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("%d ", arr1[i]);
     }
 
