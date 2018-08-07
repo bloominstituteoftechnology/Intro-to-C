@@ -18,18 +18,17 @@
 int partition(int *arr, int low, int high)
 {
   int pivot = arr[high];
-  int lowIndex = low - 1;
+  int lowIndex = low;
 
   
   for(int index = low; index <= high - 1; index++)
   {
     if(arr[index] <= pivot){
-      lowIndex++;
       swap(&arr[lowIndex], &arr[index]);
+      lowIndex++;
     }
   }
 
-  ++lowIndex;
   swap(&arr[lowIndex], &arr[high]);
   return lowIndex;
 }
