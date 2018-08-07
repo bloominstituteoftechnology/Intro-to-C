@@ -7,9 +7,13 @@
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
-struct Person {
-
-};
+struct Person
+{
+  char *name;
+  int age;
+  int height;
+  int weight;
+} Person;
 
 /*
     Creates an instance of the Person struct that receives all the relevant
@@ -22,7 +26,12 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
-
+  struct Person *who = malloc(sizeof(struct Person));
+  who->name = string_dup(name);
+  who->age = age;
+  who->height = height;
+  who->weight = weight;
+  return who;
 }
 
 /*
@@ -31,21 +40,28 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+  if (who->name != NULL)
+  {
+    free(who->name);
+  }
+  if (who != NULL)
+  {
+    free(who);
+  }
 }
 
 #ifndef TESTING
 int main(void)
 {
-    struct Person *tony = Person_create("Tony Stark", 32, 64, 140);
+  struct Person *tony = Person_create("Tony Stark", 32, 64, 140);
 
-    printf("  Name: %s\n", tony->name);
-    printf("   Age: %d\n", tony->age);
-    printf("Height: %d\n", tony->height);
-    printf("Weight: %d\n", tony->weight);
+  printf("  Name: %s\n", tony->name);
+  printf("   Age: %d\n", tony->age);
+  printf("Height: %d\n", tony->height);
+  printf("Weight: %d\n", tony->weight);
 
-    Person_destroy(tony);
+  Person_destroy(tony);
 
-    return 0;
+  return 0;
 }
 #endif
