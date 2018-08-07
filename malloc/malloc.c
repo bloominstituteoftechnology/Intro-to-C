@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -13,7 +14,8 @@
 */
 char *string_dup(char *src)
 {
-
+    int length = string_length(src);
+    return memcpy(malloc(length * sizeof(char)), src, length);
 }
 
 /*
@@ -26,7 +28,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *to = (char *) dest;
+    char *from = (char *) src;
+    
+    for(int i=0; i < n; i++){
+        to[i] = from[i]; 
+    }
+    // i give uopadm,ke  give upz
 }
 
 #ifndef TESTING
