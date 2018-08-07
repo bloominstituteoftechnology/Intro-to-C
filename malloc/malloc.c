@@ -13,9 +13,9 @@
 */
 char *string_dup(char *src)
 {
+    print('Stuff is going on');
     int length = string_length(src);
     char *out = malloc(length);
-
     string_copy(out, src);
     return out;
 }
