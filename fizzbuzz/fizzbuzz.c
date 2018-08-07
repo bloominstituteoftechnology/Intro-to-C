@@ -33,7 +33,7 @@ else {
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(5);
+    fizzbuzz(16);
 
     return 0;
 }
