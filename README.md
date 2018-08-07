@@ -21,7 +21,7 @@ This lab is structured very much like how your introductory JavaScript labs are 
   - [x] pointers
   - [x] quicksort
   - [x] malloc
-  - [ ] structs
+  - [x] structs
   - [ ] callbacks
   - [ ] [Stretch Goal] hangman
 
