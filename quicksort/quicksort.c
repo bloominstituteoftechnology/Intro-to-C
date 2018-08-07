@@ -15,16 +15,35 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high)
-{
-    int descend(int *arr, int pivot, int index) {
+int descend(int *arr, int pivot, int index) {
     if (index - 1 != pivot){
         swap(arr + index, arr + pivot + 1);
     }
     swap(arr + pivot, arr + pivot + 1);
     return pivot + 1;
 }
-    
+
+void quicksort(int *arr, int low, int high)
+{
+        //make sure our array length > 1
+
+    //create pivot as first value
+
+    //compare each value from low to high
+    //if value is less than pivot, swap with pivot
+
+    //recursively call function from (low, pivot-1) and (pivot+1, high)
+    if (high > low) {
+        int pivot = low;
+        for (int i = low + 1; i <= high; i++) {
+            if (arr[i] < arr[pivot]) {
+                pivot = descend(arr, pivot, i);
+            }
+        }
+
+        quicksort(arr, low, pivot - 1);
+        quicksort(arr, pivot + 1, high);
+    }
 }
 
 #ifndef TESTING

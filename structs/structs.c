@@ -8,7 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 struct Person {
-
+    char *name;
+    int age;
+    int height;
+    int weight;
 };
 
 /*
@@ -22,7 +25,12 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
-
+    struct Person *some_dude = malloc(sizeof(struct Person));
+    char *duped_name = string_dup(name);
+    some_dude->name =  duped_name;
+    some_dude->age = age;
+    some_dude->height = height;
+    some_dude->weight = weight;
 }
 
 /*
@@ -31,7 +39,12 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+    if (who->name != NULL) {
+        free(who->name);
+    }
+    if (who != NULL) {
+        free(who);
+    }
 }
 
 #ifndef TESTING
