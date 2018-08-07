@@ -8,7 +8,10 @@
 */
 void swap(int* a, int* b)
 {
+  int *a_temp = a;
 
+  a = b;
+  b = a_temp;
 }
 
 /*
@@ -20,7 +23,15 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+  int s_length = 0;
 
+  while (*s != '\0')
+  {
+    s++;
+    s_length++;
+  }
+
+  return s_length;
 }
 
 /*
