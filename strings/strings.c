@@ -26,7 +26,6 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
   int begin = 0;
   int end = 0;
   int count = string_length(s);
