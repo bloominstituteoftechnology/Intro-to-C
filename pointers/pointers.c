@@ -6,9 +6,14 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
+
+// Always specify the return type. Also, indicate whether a function, argument, or variable will return, accept, or hold an int, char, or etc.
 void swap(int* a, int* b)
 {
+    int temp_val = *a;
 
+    *a = *b;
+    *b = temp_val;
 }
 
 /*
@@ -18,9 +23,21 @@ void swap(int* a, int* b)
     
     Do not just use the `strlen` function from the standard library.
 */
+
+// "\0" stands for "null character" or "null terminator"
+// "*s" means "pointer s"
+// In C, a string is simply an array of characters
 int string_length(char *s)
 {
+    int numOfChars = 0;
 
+    while (*s != '\0')
+    {
+        s++;
+        numOfChars++;
+    }
+
+    return numOfChars;
 }
 
 /*
@@ -33,7 +50,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0')
+    {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = *y;
 }
 
 /* 
@@ -52,7 +75,19 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    // if (*m > *n)
+    // {
+    //     return 1;
+    // }
+    // else if (*m < *n) 
+    // {
+    //     return -1;
+    // }
+    // else if (*m == '\0' && *n == '\0')
+    // {
+    //     return 0;
+    // }
+    // return string_compare(m++, n++);
 }
 
 #ifndef TESTING
