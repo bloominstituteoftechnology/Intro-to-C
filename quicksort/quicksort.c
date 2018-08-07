@@ -1,13 +1,6 @@
 #include <stdio.h>
 #include "lib.h" 
 
-int length(int *arr){
-    int len = 0;
-    while(arr != '\0'){
-        len++;
-    }
-    return len;
-}
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is
@@ -22,32 +15,39 @@ int length(int *arr){
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high){
-    int temp;
-    int i = low;
-    int j = high;
-    int pivot = (i + j)/2;
-
-
-    while(i < j){
-        while(arr[i] <= arr[pivot] && i < high){
-            i++;
-        } 
-        while(arr[j] > arr[pivot]){
-            j--;
-        }
-        if(i < j){
+void quicksort(int *arr, int low, int high)
+{
+    int pivot, i, j, temp;
+    if(low < high) {
+        pivot = high; // select a pivot element...doesn't matter if it's low or high
+        i = low;
+        j = high;
+        while(i < j) {
+        // increment i till you get a number greater than the pivot element
+            while(arr[i] <= arr[pivot] && i <= high)
+                i++;
+        // decrement j till you get a number less than the pivot element
+            while(arr[j] > arr[pivot] && j >= low)
+                j--;
+        // if i < j swap the elements in locations i and j
+        if(i < j) {
             temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
         }
     }
 
-    temp = arr[pivot];
-    arr[pivot] = arr[j];
-    arr[j] = temp;
+    // when i >= j it means the j-th position is the correct position
+    // of the pivot element, hence swap the pivot element with the
+    // element in the j-th position
+    temp = arr[j];
+    arr[j] = arr[pivot];
+    arr[pivot] = temp;
+    // Repeat quicksort for the two sub-arrays, one to the left of j
+    // and one to the right of j
     quicksort(arr, low, j-1);
-    quicksort(arr, j + 1, high);
+    quicksort(arr, j+1, high);
+  }
 }
 
 #ifndef TESTING

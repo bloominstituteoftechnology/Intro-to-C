@@ -28,9 +28,9 @@ int main(void)
 #endif
 
 void swap(int *a, int *b){
-    int temp = *a; // temp points to a
-    *a = *b; // a points to b
-    *b = temp; // b points to old a;
+    int temp = *a; // temp points to a's value
+    *a = *b; // a's value points to b's value
+    *b = temp; // b's value points to old a;
 
 }
 
