@@ -13,7 +13,17 @@
 */
 char *string_dup(char *src)
 {
-
+    int len = string_length(src);
+    printf("len of src %d\n", len);
+    char *duplicate = malloc(len + 1);
+    int index = 0;
+    while(src[index] != '\0')
+    {
+        duplicate[index] = src[index];
+        index++;
+    }
+    duplicate[index] = '\0';
+    return duplicate;
 }
 
 /*
