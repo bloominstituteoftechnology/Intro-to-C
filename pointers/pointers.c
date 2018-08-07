@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+int temp = *a;
+*a = *b;
+*b = temp;
 }
 
 /*
@@ -20,7 +22,12 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+int n = 0;
+    while (s[n] != '\0')
+    {
+        n++;
+    }
+    return n;
 }
 
 /*
@@ -33,26 +40,43 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+ int index = 0;
+    while(y[index] != '\0')
+    {
+        x[index] = y[index];
+        index++;
+    }
+    x[index] = '\0';
 }
 
-/* 
+/*
     Compares the character strings m and n and returns negative,
     0, or positive if n is lexicographically less than, equal to,
     or greater than n. To calculate lexicographic difference, find
     the difference between the first characters in m and n that differ.
-    
-    For example, given matching strings, this function should 
+
+    For example, given matching strings, this function should
     return 0. Given strings m = "hello world" and n = "goodbye",
     this function should return a positive value. Given strings
     m = "aardvark" and n = "zebra", should return a negative
     value.
-    
+
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
 {
-
+   if (m < n)
+    {
+        return -1;
+    }
+    else if (m == n)
+    {
+        return 0;
+    }
+    else
+    {
+        return 1;
+    }
 }
 
 #ifndef TESTING
