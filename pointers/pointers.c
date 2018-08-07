@@ -75,19 +75,19 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    // if (*m > *n)
-    // {
-    //     return 1;
-    // }
-    // else if (*m < *n) 
-    // {
-    //     return -1;
-    // }
-    // else if (*m == '\0' && *n == '\0')
-    // {
-    //     return 0;
-    // }
-    // return string_compare(m++, n++);
+    if (*m > *n)
+    {
+        return 1;
+    }
+    else if (*m < *n) 
+    {
+        return -1;
+    }
+    else if (*m == '\0' && *n == '\0')
+    {
+        return 0;
+    }
+    return string_compare(++m, ++n);
 }
 
 #ifndef TESTING
