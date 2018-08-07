@@ -9,9 +9,9 @@
 */
 typedef struct {
   char *name;
-  int age;
-  int height;
-  int weight;
+  unsigned int age;
+  unsigned int height;
+  unsignedint weight;
 } Person;
 
 /*
@@ -42,7 +42,7 @@ void Person_destroy(Person *who)
 {
   if (who->name != NULL)
     free(who->name);
-  
+    
   if (who != NULL)
     free(who);
 }
