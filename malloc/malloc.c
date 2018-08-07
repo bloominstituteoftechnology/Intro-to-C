@@ -11,9 +11,30 @@
     
     Do not just use the `strdup` function from the standard library.
 */
+// int string_length(char s[])
+// {
+//     //int len = sizeof(s) / sizeof(s[0]);
+//     //return len;
+//     int i;
+//     int counter = 0;
+//     for (i = 0; i < 512; i++) {
+//         counter++;
+//         if(s[i] == '\0') {
+//             return(i);
+//         }
+//     }
+// }
+
 char *string_dup(char *src)
 {
+    int len = string_length(src);
+    char *strcp = malloc(sizeof(len - 1));
 
+    for (int i = 0; i < len; i++){
+        strcp[i] = src[i];
+    }
+    strcp[len] = '\0';
+    return strcp;
 }
 
 /*
@@ -26,7 +47,12 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *csrc = (char *)src;
+    char *cdest = (char *)dest;
 
+    for (int i = 0; i < n; i++){
+        cdest[i] = csrc[i];
+    }
 }
 
 #ifndef TESTING
