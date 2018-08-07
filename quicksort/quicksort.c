@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include "lib.h" 
 
+int length(int *arr){
+    int len = 0;
+    while(arr != '\0'){
+        len++;
+    }
+    return len;
+}
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is
@@ -15,9 +22,31 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high)
-{
+void quicksort(int *arr, int low, int high){
+    int pivot = low;
+    int temp;
+    int i = low;
+    int j = high;
 
+    while(i < j){
+        while(arr[i] <= arr[pivot] && i < high){
+            i++;
+        } 
+        while(arr[j] > arr[pivot]){
+            j--;
+        }
+        if(i < j){
+            temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
+        }
+    }
+
+    temp = arr[pivot];
+    arr[pivot] = arr[j];
+    arr[j] = temp;
+    quicksort(arr, low, j-1);
+    quicksort(arr, j + 1, high);
 }
 
 #ifndef TESTING
