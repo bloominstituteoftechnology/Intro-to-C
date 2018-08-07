@@ -8,8 +8,12 @@
     Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
-{
-
+{   
+    int count; 
+    
+    for (count = 0; s[count] != '\0'; count++); 
+    
+    return count; 
 }
 
 /*
@@ -18,9 +22,22 @@ int string_length(char s[])
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
 */
+
 char *reverse_string(char rv[], char s[])
 {
-
+    int s_length; 
+    
+    for (s_length = 0; s[s_length] != '\0'; s_length++); 
+    s_length--; 
+    
+    for (int count = 0; s_length >= 0; count++) {
+        rv[count] = s[s_length]; 
+        s_length--; 
+        if (s_length == -1) 
+            rv[count+1] = '\0'; 
+    } 
+    
+    return rv; 
 }
 
 #ifndef TESTING
