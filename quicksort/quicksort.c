@@ -21,7 +21,7 @@ void quicksort(int *arr, int low, int high)
 
     if(low<high)
     {
-        pivot=low;
+        pivot=high;
         i=low;
         j=high;
 
