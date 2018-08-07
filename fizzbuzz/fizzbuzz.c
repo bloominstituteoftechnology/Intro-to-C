@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
     Your fizzbuzz implementation should initialize a counter, then
@@ -10,7 +11,21 @@
 */
 int fizzbuzz(int n)
 {
+  int counter = 0;
+  int i;
 
+  for (i = 0; i <= n; i++)
+  {
+  if ((i % 3 == 0) && (i % 5 ==0))
+      printf("fizzbuzz\n");
+  else if (i % 3 == 0)
+      printf("buzz\n");
+  else if (i % 5 == 0)
+      printf("fizz\n");
+  else
+      counter++;
+  }
+  return counter;
 }
 
 #ifndef TESTING
