@@ -16,10 +16,10 @@
     Do not just use the `qsort` function from the standard library.
 */
 
-int *set_equal_range(int *position, int head_or_tail) // head_or_tail =>  -1 = head , 1 = tail
+int set_equal_range(int *arr, int position, int head_or_tail) // head_or_tail =>  -1 = head , 1 = tail
 {
     int move = head_or_tail;
-    while (*position == *(position + move))
+    while (*(arr + position) == *(arr + position + move)) // while current position value equal to immediately next neighbour value
     {
         position = position + move;
     }
@@ -29,31 +29,29 @@ int *set_equal_range(int *position, int head_or_tail) // head_or_tail =>  -1 = h
 void quicksort(int *arr, int low, int high)
 {
     int pivot_index = (low + high) / 2;
-    int *pivot = arr + pivot_index;
-    int *left = (arr + low),                       // Pointers
-        *right = (arr + high),                     // Pointers
-            *equal_tail = (arr + pivot_index),     // Pointers
-                *equal_head = (arr + pivot_index); // Pointers
 
-    printf("\n\n%p %p %p %p %p\n\n\n\n", pivot, left, right, equal_tail, equal_head);
-    printf("\n\n%d %d %d %d %d\n\n\n\n", pivot, left, right, equal_tail, equal_head);
-    printf("\n\n%d %d %d %d %d\n\n\n\n", *pivot, *left, *right, *equal_tail, *equal_head);
+    int left = low,
+        right = high,
+        equal_tail = pivot_index,
+        equal_head = pivot_index;
 
     // set 'starting' head and tail for the values that are equal to the pivot
-    equal_head = set_equal_range(equal_head, -1);
-    equal_tail = set_equal_range(equal_tail, 1);
+    equal_head = set_equal_range(arr, equal_head, -1);
+    equal_tail = set_equal_range(arr, equal_tail, 1);
 
     while (left != equal_head || equal_tail != right)
     {
-        if (*left == *equal_head)
+        if (*(arr + left) == *(arr + equal_head))
         {
             equal_head--; // move this pointer one position to left
             swap(left, equal_head);
+            equal_head = set_equal_range(arr, equal_head, -1); // be sure to put all posible new neighbour equal values into the range
         }
-        if (*right == *equal_tail)
+        if (*(arr + right) == *(arr + equal_tail))
         {
             equal_tail++; // move this pointer one position to right
-            swap(right, equal_tail);
+            swap(*(arr + right), *(arr + equal_tail));
+            equal_tail = set_equal_range(arr, equal_tail, 1); // be sure to put all posible new neighbour equal values into the range
         }
     }
 }
