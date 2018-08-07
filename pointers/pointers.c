@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,7 +22,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int length = 0;
 
+    while(s[length] != '\0')
+    {
+        length++;
+    }
+    return length;
 }
 
 /*
@@ -31,9 +39,19 @@ int string_length(char *s)
     
     Do not just use the `strcpy` function from the standard library.
 */
+// passes two character type pointer values to the calling function.
+// Then the while loop is used to which continues if the *y is not 0 and inside while block.
+// it stores the y values to x values using a pointer and incrementing both the values of y and x by 1.
+// At the end of the loop, *x is initialized with `\0`.
 void string_copy(char *x, char *y)
 {
-
+    while(*y)
+    {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -52,7 +70,21 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int i = 0;
+    while(m[i] != 0)
+    {
+        if(n[i] == '\0')
+            return 1;
+        else if(m[i] < n[i])
+            return -1;
+        else if(m[i] > n[i])
+            return 1;
+        i++;
+    }
+    if(n[i] == '\0')
+        return 0;
+    else
+        return -1;
 }
 
 #ifndef TESTING
