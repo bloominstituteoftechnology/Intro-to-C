@@ -68,14 +68,12 @@ int string_compare(char *m, char *n)
     int difference;
     while (*m != '\0' || *n != '\0') {
         difference = *m - *n;
-        printf("*m is %c, *n is %c, diff is %i\n", *m, *n, difference);
         if (difference != 0) {
             break;
         }
         m++; 
         n++;
     }
-    printf("\n");
     return difference;
 }
 
