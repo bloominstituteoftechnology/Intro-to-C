@@ -11,7 +11,7 @@ int string_length(char s[])
 {
   int len = 0;
 
-  while(s[len] != '\0')
+  while(s[len])
     len++;
 
   return len;
@@ -28,13 +28,9 @@ char *reverse_string(char rv[], char s[])
   int index = 0;
 
   for (int i = string_length(s); i > -1; i--)
-  {
-    rv[index] = s[i - 1];
-    index++;
-    if (i == 0)
-      rv[index] = '\0';
-  }
-
+    rv[index++] = s[i - 1];
+    
+  rv[index] = '\0';
   return rv;
 }
 
