@@ -11,9 +11,15 @@
     
     Do not just use the `strdup` function from the standard library.
 */
+
 char *string_dup(char *src)
 {
-
+    int length = string_length(src);
+    char *copy = malloc(length);
+    for (int i = 0; i < length; i++) {
+        copy[i] = src[i];
+    }
+    return copy;
 }
 
 /*
@@ -26,6 +32,12 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *copy_dest = (char*)dest;
+    char *copy_src = (char*)src;
+
+    for ( int i = 0; i < n; i++) {
+        copy_dest[i] = copy_src[i];
+    }
 
 }
 
