@@ -8,6 +8,11 @@
 */
 void swap(int* a, int* b)
 {
+    int x;
+    
+    x = *a; // x is now equal to the same value that 'a' points to
+    *a = *b; // the value that 'a' points to is now equal to the value that 'b' points to
+    *b = x; // the value 'b' points to is now equal to x's value (i.e. same as value 'a' used to point to)
 
 }
 
@@ -20,7 +25,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int counter = 0;
 
+    while(*s != '\0') {
+        counter += 1;
+        s += 1;
+    }
+    return counter;
 }
 
 /*
