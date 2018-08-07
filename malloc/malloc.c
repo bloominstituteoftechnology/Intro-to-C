@@ -38,8 +38,8 @@ char *string_dup(char *src)
 void *mem_copy(void *dest, const void *src, int n)
 {
     //typecast addresses to char pointer
-    char *srcc = (char *)src;
-    char *destc = (char *)dest;
+    char *srcc = src;
+    char *destc = dest;
 
     for (int i=0; i < n; i++) {
         destc[i] = srcc[i];

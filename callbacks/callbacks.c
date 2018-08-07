@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a - b;
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return b - a;
 }
 
 /*
@@ -29,7 +29,22 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    //allocate n ints for sorted
+    int *sorted = malloc(n * sizeof(int));
+    //use mem_copy to copy all the numbers into sorted
+    mem_copy(sorted, numbers, n * sizeof(int));
 
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n-1; j++) {
+            // if you run the cmp callback (which uses the sorted
+            // and reverse order functions above) and the result
+            // is > 0, swap
+            if(cmp(sorted[j], sorted[j+1])>0) {
+                swap(&sorted[j], &sorted[j + 1]);
+            }
+        }
+    }
+    return sorted;
 }
 
 #ifndef TESTING
