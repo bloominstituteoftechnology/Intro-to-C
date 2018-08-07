@@ -5,10 +5,13 @@
     mind when you need to access a pointer's actual value (the 
     address it's referring to) or the value at the address it's 
     pointing at.
+    Important reference: https://stackoverflow.com/a/8403699
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,12 +23,17 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    char *start;
+    start = s;
+    while (*s != '\0') {
+        s++;
+    }
+    return s - start;
 }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
-    copies the character contents of y over to x. Again, pointer arithmetic
+    copy the character contents of y over to x. Again, pointer arithmetic
     is necessary here. Also, make sure x points to a null character at its 
     end to terminate it properly. 
     
@@ -33,7 +41,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0') {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = *y;
 }
 
 /* 
@@ -52,7 +65,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int difference;
+    while (*m != '\0' || *n != '\0') {
+        difference = *m - *n;
+        if (difference != 0) {
+            break;
+        }
+        m++; 
+        n++;
+    }
+    difference = *m - *n;
+    return difference;
 }
 
 #ifndef TESTING
