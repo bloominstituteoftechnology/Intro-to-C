@@ -8,6 +8,8 @@
     every time that nothing gets printed and return the counter.
     Don't forget to include newlines '\n' in your printf statements!
 */
+
+// "\n" stands for "new line"
 int fizzbuzz(int n)
 {
     int counter = 0;
