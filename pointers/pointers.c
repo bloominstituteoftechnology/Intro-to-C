@@ -44,7 +44,14 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+ 
+    int index = 0;
+    while(*y != '\0') {
+        x[index] = *y;
+        y++;
+        index++;
+    }
+    x[index] = '\0';
 }
 
 /* 
@@ -63,7 +70,33 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+   int length_m = string_length(m);
+   int length_n = string_length(n);
+   char x;
 
+   if (length_m > length_n) {
+       x = m;
+   }
+   else x = n;
+
+        while(*n != '\0') {
+            if (*m != *n) {
+                if(*m - *n > 0) {
+                    return 1;
+                }
+                else if (*m - *n <0) {
+                    return -1;
+                }
+                else{
+                    return 0;
+                } 
+            }
+            else {
+                m++;
+                n++;
+            }
+        }
+        return 0;
 }
 
 #ifndef TESTING
