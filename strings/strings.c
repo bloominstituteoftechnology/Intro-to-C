@@ -11,10 +11,10 @@
 int string_length(char s[])
 {
 int counter = 0;
-for (int i = 0; i < s.length(); i++) {
-    counter += i;
+while(s[counter] != '\0') {
+counter++;
+  }
   return counter;
-}
 }
 
 /*
@@ -25,7 +25,14 @@ for (int i = 0; i < s.length(); i++) {
 */
 char *reverse_string(char rv[], char s[])
 {
-
+int length = string_length(s);
+    int j = 0;
+    for(int i = length - 1; i >= 0; i--){
+        rv[j] = s[i];
+        j++;
+    }
+    rv[j] = '\0';
+    return rv;
 
 }
 
@@ -43,4 +50,4 @@ int main(void)
     return 0;
 }
 #endif
-    
+
