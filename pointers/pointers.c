@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,6 +9,9 @@
 */
 void swap(int* a, int* b)
 {
+int *temp = *a;
+*a = *b;
+*b = temp;
 
 }
 
@@ -20,7 +24,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+int count = 0;
+while(*s != '\0'){
+    // printf("oh holly");
+    count ++;    
+    s++;
+}
+return count;
 }
 
 /*
@@ -33,7 +43,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    int i = 0;
+while(y[i] != '\0'){
+    printf("%d\n", i); 
+    x[i] = y[i];    
+    i++;
+}
 }
 
 /* 
@@ -52,6 +67,18 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+// printf(strcmp(&m, &n));
+int v ;
+ v = strcmp(m, n);
+
+    if (v < 0)
+        printf("'%s' is less than '%s'.\n", m, n);
+    else if (v == 0)
+        printf("'%s' equals '%s'.\n", m, n);
+    else if (v > 0)
+        printf("'%s' is greater than '%s'.\n", m, n);
+
+    return 0;
 
 }
 
@@ -70,6 +97,7 @@ int main(void)
 
     printf("Buffer is %s\n", buffer);
     printf("Length is %d\n", string_length(buffer));
+    // printf("Length is %d\n", string_length("telltale"));
     printf("Comparison is %d\n", string_compare(hello, world));
 
     return 0;
