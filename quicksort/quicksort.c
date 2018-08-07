@@ -15,9 +15,32 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+int partition(int *arr, int low, int high)
+{
+  int pivot = arr[high];
+  int lowIndex = low - 1;
+
+  
+  for(int index = low; index <= high - 1; index++)
+  {
+    if(arr[index] <= pivot){
+      lowIndex++;
+      swap(&arr[lowIndex], &arr[index]);
+    }
+  }
+
+  ++lowIndex;
+  swap(&arr[lowIndex], &arr[high]);
+  return lowIndex;
+}
+
 void quicksort(int *arr, int low, int high)
 {
-
+  if(low < high){
+    int partitionIndex = partition(arr, low, high);
+    quicksort(arr, low, partitionIndex - 1);
+    quicksort(arr, partitionIndex + 1, high);
+  }
 }
 
 #ifndef TESTING
