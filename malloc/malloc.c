@@ -15,7 +15,7 @@ char *string_dup(char *src)
 {
     int len = string_length(src);
     char *dup;
-    dup = (char *)malloc(len + 1); // dynamically allocate memory
+    dup = malloc(len + 1); // allocate memory
 // allow extra character for null
     int i;
     for (i = 0; i < len; i++)
