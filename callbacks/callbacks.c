@@ -7,18 +7,26 @@
     Implement the callback that will be passed to your bubble_sort function to sort 
     the elements in ascending numerical order.
 */
-int sorted_order(int a, int b)
+int sorted_order(int *a, int *b)
 {
-
+    if (*a > *b){
+        swap(a, b);
+        return 1;
+    }
+    return 0;
 }
 
 /*
     Implement the callback that will be passed to your bubble_sort function to sort
     the elements in descending (reverse) numerical order.
 */
-int reverse_order(int a, int b)
+int reverse_order(int *a, int *b)
 {
-
+    if (*a < *b){
+        swap(a, b);
+        return 1;
+    }
+    return 0;
 }
 
 /*
@@ -27,9 +35,22 @@ int reverse_order(int a, int b)
     Your function should allocate memory to hold the sorted data and return the 
     sorted data. Call the callback as you would any other function. 
 */
+
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    int *sorted = malloc(sizeof(numbers));
+    mem_copy(sorted, numbers, n*sizeof(int));
 
+    int is_sorted = 0;
+    while(!is_sorted){
+        is_sorted = 1;
+        for (int i = 0; i < n-1; i++){
+            if ( cmp(sorted + i, sorted + (i+1)) ){
+                is_sorted = 0;
+            }
+        }
+    }
+    return sorted;
 }
 
 #ifndef TESTING
