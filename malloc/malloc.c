@@ -37,7 +37,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-    //typecast addresses to char *
+    //typecast addresses to char pointer
     char *srcc = (char *)src;
     char *destc = (char *)dest;
 
