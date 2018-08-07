@@ -17,7 +17,26 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    if (high > low)
+    {
+        int pivot = arr[low], lw = low, hh = high + 1;
+        
+        while (lw < hh)
+        {
+            if (arr[lw] <= pivot)
+            {
+                lw++;
+            }
+            else
+            {
+                swap(&arr[lw], &arr[--hh]);
+            }
+        }
 
+        swap(&arr[--lw], &arr[low]);
+        quicksort(arr, low, --lw);
+        quicksort(arr, hh, high);
+    }
 }
 
 #ifndef TESTING
