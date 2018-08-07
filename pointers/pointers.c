@@ -24,10 +24,8 @@ int string_length(char *s)
 {
   int len = 0;
 
-  while (*s != '\0'){
+  while (*(s++))
     len++;
-    *s++;
-  }
 
   return len;
 }
@@ -42,13 +40,12 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-  while(*y != '\0'){
-    *x = *y;
-    *x++;
-    *y++;
-  }
+  int len = string_length(y);
 
-  *x = '\0';
+  for (int i = 0; i < len; i++)
+    *(x + i) = *(y + i);
+
+  *(x + len) = '\0';
 }
 
 /* 
@@ -73,8 +70,8 @@ int string_compare(char *m, char *n)
     if(*m > *n)
       return 1;
 
-    *m++;
-    *n++;
+    m++;
+    n++;
   }
 
   return *n != '\0' ? -1 : 0;
