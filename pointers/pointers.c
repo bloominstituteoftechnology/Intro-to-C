@@ -6,12 +6,13 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
-{
-  int *a_temp = a;
 
-  a = b;
-  b = a_temp;
+void swap(int *a, int *b)
+{
+  int a_temp = *a;
+
+  *a = *b;
+  *b = a_temp;
 }
 
 /*
@@ -44,7 +45,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+  while (*y != '\0')
+  {
+    *x = *y;
 
+    x++;
+    y++;
+  }
 }
 
 /* 
