@@ -27,6 +27,7 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 {
     // malloc enough space to create a person instance
     struct Person *Person_create = malloc(sizeof(struct Person));
+        // arrow operator when you have a pointer to a struct
         Person_create->name = string_dup(name);
         Person_create->age = age;
         Person_create->height = height;
