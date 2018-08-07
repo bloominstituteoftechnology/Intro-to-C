@@ -6,9 +6,12 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+  int i;
+  i = *a;
+  *a = *b;
+  *b = i;
 }
 
 /*
@@ -20,7 +23,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+  int i = 0;
 
+  while (s[i] != '\0')
+  {
+    i++;
+  }
+  return i;
 }
 
 /*
@@ -33,7 +42,15 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+  // *x = *y;
+  //this one is from stack overflow, i need to figure it out with explanation
+  int i = 0;
+  while (y[i] != '\0')
+  {
+    *(x + i) = *(y + i);
+    i++;
+  }
+  x[i] = '\0';
 }
 
 /* 
@@ -52,26 +69,37 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+  if (m < n)
+  {
+    return -1;
+  }
+  else if (m == n)
+  {
+    return 0;
+  }
+  else
+  {
+    return 1;
+  }
 }
 
 #ifndef TESTING
 int main(void)
 {
-    int x = 10, y = 20;
-    swap(&x, &y);
-    printf("x=%d, y=%d\n", x, y);
+  int x = 10, y = 20;
+  swap(&x, &y);
+  printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
+  char *hello = "Hello";
+  char *world = "World";
 
-    char buffer[1024];
-    string_copy(buffer, hello);
+  char buffer[1024];
+  string_copy(buffer, hello);
 
-    printf("Buffer is %s\n", buffer);
-    printf("Length is %d\n", string_length(buffer));
-    printf("Comparison is %d\n", string_compare(hello, world));
+  printf("Buffer is %s\n", buffer);
+  printf("Length is %d\n", string_length(buffer));
+  printf("Comparison is %d\n", string_compare(hello, world));
 
-    return 0;
+  return 0;
 }
 #endif

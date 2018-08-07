@@ -13,44 +13,67 @@
 */
 char *string_dup(char *src)
 {
+  char *str;
+  char *p;
+  int len = string_length(src);
+  str = malloc(len + 1);
+  p = str;
 
+  while (*src)
+  {
+    *p++ = *src++;
+  }
+  *p = '\0';
+  return str;
 }
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
-    `n` is the number of bytes to copy. You may want to cast the input 
-    pointers to char pointers first before performing the copying. 
+
+	n is the number of bytes to copy.
+
+    You may want to cast the input pointers to char pointers first before
+    performing the copying. 
     
     Do not just use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+  char *csrc = (char *)src;
+  char *cdest = (char *)dest;
 
+  for (int i = 0; i < n; i++)
+  {
+    cdest[i] = csrc[i];
+  }
+
+  return dest;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    char *s = "Some string to duplicate.";
-    char *dup = string_dup(s);
+  char *s = "Some string to duplicate.";
+  char *dup = string_dup(s);
 
-    printf("Duplicated string: %s\n", dup);
+  printf("Duplicated string: %s\n", dup);
 
-    int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
-    int n = sizeof(numbers) / sizeof(numbers[0]);
-    int *target = malloc(n * sizeof(int));
-    
-    mem_copy(target, numbers, n * sizeof(int));
+  int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
+  int n = sizeof(numbers) / sizeof(numbers[0]);
+  int *target = malloc(n * sizeof(int));
 
-    printf("Copied array: ");
+  mem_copy(target, numbers, n * sizeof(int));
 
-    for (int i = 0; i < n; i++) {
-        printf("%d ", target[i]);
-    }
+  printf("Copied array: ");
 
-    printf("\n");
+  for (int i = 0; i < n; i++)
+  {
+    printf("%d ", target[i]);
+  }
 
-    return 0;
+  printf("\n");
+
+  return 0;
 }
 #endif
