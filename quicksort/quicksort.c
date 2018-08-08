@@ -34,6 +34,37 @@ void quicksort(int *arr, int low, int high)
         quicksort(arr, new_high, high);
     }
 }
+/* from solution
+// build helper function to find the pivot element.
+
+int partion(int *arr, int low, int high)
+{
+    int pivot = arr[high];
+    int i = low;
+
+    for(int j = low; j < high; j++)
+    {
+        if(arr[j] <= pivot)
+        {
+            swap(&arr[j], arr[i]);
+            i++;
+        }
+    }
+    &swap(arr[i], arr[high]);
+    return i;
+}
+
+void quicksort(int *arr, int low, int high)
+{
+    if(low < high)
+    {
+        int index = partition(arr, low, high);
+        quicksort(arr, low, index - 1);
+        quicksort(ar, index + 1, high);
+    }
+}
+
+*/
 
 #ifndef TESTING
 int main(void)

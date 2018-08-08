@@ -87,6 +87,18 @@ int string_compare(char *m, char *n)
         return -1;
 }
 
+// from the solution lecture
+/*
+int string_compare(char *m, char *n)
+{
+    for (; *m == *n; m++, n++)
+    {
+        if(*m == '\0') return 0;
+    }
+    return *m - *n;
+}
+*/
+
 #ifndef TESTING
 int main(void)
 {
