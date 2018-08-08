@@ -26,7 +26,7 @@ char *name;
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
-  Person *person = malloc(sizeof(Person));
+ struct Person *person = malloc(sizeof(Person));
     person->name = string_dup(name);
     person->age = age;
     person->height = height;
@@ -39,7 +39,7 @@ struct Person *Person_create(char *name, int age, int height, int weight)
     Given a pointer to a Person struct, frees up the memory that holds the
     Person's name as well as the memory that holds the Person instance.
 */
-void Person_destroy(struct Person *who)
+void Person_destroy(struct Person *person)
 {
  free(person->name);
     free(person);
