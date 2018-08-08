@@ -2,76 +2,115 @@
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
-    mind when you need to access a pointer's actual value (the 
-    address it's referring to) or the value at the address it's 
+    mind when you need to access a pointer's actual value (the
+    address it's referring to) or the value at the address it's
     pointing at.
 */
 void swap(int* a, int* b)
 {
+  // init temp variables to hold VALUES that are pointed at by a & b
+  int tempB;
+  int tempA;
 
+  // temp variables that are assigned the values of where a & b point to.
+  tempB = *b;
+  tempA = *a;
+
+  // swap and reassign values of where a&b point to.
+  *a = tempB;
+  *b = tempA;
 }
 
 /*
     Given a character pointer s, returns the number of characters
-    it is pointing to. Think about how pointer arithmetic can 
+    it is pointing to. Think about how pointer arithmetic can
     help you with this.
-    
+
     Do not just use the `strlen` function from the standard library.
 */
 int string_length(char *s)
 {
-
+  // int counter = 0;
+  // while(s[counter] != '\0'){
+  //   counter++;
+  // }
+  // return counter;
+  // Sean Solution
+  int n = 0;
+  while (*s != '\0') {
+    n++;
+    s++;
+  }
+  return n;
 }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
-    is necessary here. Also, make sure x points to a null character at its 
-    end to terminate it properly. 
-    
+    is necessary here. Also, make sure x points to a null character at its
+    end to terminate it properly.
+
     Do not just use the `strcpy` function from the standard library.
 */
 void string_copy(char *x, char *y)
 {
-
+  // Sean Solution
+  // Basic/Explicit
+  while (*y != '\0') {
+    *x = *y;
+    y++;
+    x++;
+  }
+  *x = '\0';
+  // 'Terse'
+  // while (*x++ = *y++)
+  //   ;
 }
 
-/* 
+/*
     Compares the character strings m and n and returns negative,
     0, or positive if n is lexicographically less than, equal to,
     or greater than n. To calculate lexicographic difference, find
     the difference between the first characters in m and n that differ.
-    
-    For example, given matching strings, this function should 
+
+    For example, given matching strings, this function should
     return 0. Given strings m = "hello world" and n = "goodbye",
     this function should return a positive value. Given strings
     m = "aardvark" and n = "zebra", should return a negative
     value.
-    
+
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
 {
-
+  // Sean Solution
+  while(*m == *n){
+    if (*m == '\0') {
+      return 0;
+    }
+    m++;
+    n++;
+  }
+  return *m - *n;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    int x = 10, y = 20;
-    swap(&x, &y);
-    printf("x=%d, y=%d\n", x, y);
+  int x = 10, y = 20;
+  swap(&x, &y);
+  printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
+  char *hello = "Hello";
+  char *world = "World";
 
-    char buffer[1024];
-    string_copy(buffer, hello);
+  char buffer[1024];
+  string_copy(buffer, hello);
 
-    printf("Buffer is %s\n", buffer);
-    printf("Length is %d\n", string_length(buffer));
-    printf("Comparison is %d\n", string_compare(hello, world));
+  printf("Buffer is %s\n", buffer);
+  printf("Length is %d\n", string_length(buffer));
+  printf("Comparison is %d\n", string_compare(hello, world));
 
-    return 0;
+  return 0;
 }
 #endif
