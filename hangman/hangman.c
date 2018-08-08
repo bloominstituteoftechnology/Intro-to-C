@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 		if (correct == 0)
 		{
 			lives--;
-			printf("Only %d lives remaining!\n");
+			printf("Only %d lives remaining!\n", lives);
 		}
 		if (lives == 0)
 		{
