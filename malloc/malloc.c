@@ -32,15 +32,14 @@ char *string_dup(char *src)
     
     Do not just use the `memcpy` function from the standard library.
 */
-void *mem_copy(void *dest, const void *src, int n)
+void mem_copy(void *dest, void *src, int n)
 {
-    char *source = src;
-    char *destination = dest; //value of destination
+    char *source = (char*) src;
+    char *destination = (char*) dest; //value of destination
 
     for(int i = 0; i < n; i++){
-        destination[i] = source[i];
+        *(destination+i) = *(source +i);
     }
-    return destination;
 }
 
 #ifndef TESTING
