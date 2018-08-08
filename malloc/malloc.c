@@ -12,8 +12,21 @@
     Do not just use the `strdup` function from the standard library.
 */
 char *string_dup(char *src)
+// find length of string
+// use malloc
+// copy the string
 {
+    int len = string_length(src);
+    char *str = malloc(len + 1);
+    int i;
 
+    for (i = 0; i < len; i++)
+    {
+        *(str + i) = *(src + i);
+    }
+    
+    *(str + len) = '\0';
+    return str;
 }
 
 /*
@@ -24,9 +37,18 @@ char *string_dup(char *src)
     
     Do not just use the `memcpy` function from the standard library.
 */
-void *mem_copy(void *dest, const void *src, int n)
+void mem_copy(void *dest, const void *src, int n)
+// need to cast the type first. char = one bite and int = four bites.
+// that's why use char instead of int for casting.
 {
+    char *csrc = (char *) src;
+    char *cdest = (char *) dest;
+    int i;
 
+    for(i = 0; i < n; i++)
+    {
+        *(cdest + i) = *(csrc + i);
+    }
 }
 
 #ifndef TESTING
