@@ -41,7 +41,7 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-  while(*y)
+  while(*y != '\0')
   {
     *x++=*y++;
   }
@@ -64,32 +64,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-  while(*m != '\0' && *n != '\0')
-  {
-    if(*n > *m)
+    while(*m == *n)
     {
-      return -1;
+        if(*m == '\0' || *n == '\0')
+        {
+            return 0;
+        }
+        m++;
+        n++;
     }
-    if(*n < *m)
-    {
-      return 1;
-    }
-    *n++;
-    *m++;
-  }
-  
-  if(*m == *n)
-  {
-    return 0;
-  }
-  if(*n > *m)
-  {
-    return -1;
-  }
-  if(*n < *m)
-  {
-    return 1;
-  }
+    return *m - *n;
 }
 
 #ifndef TESTING
