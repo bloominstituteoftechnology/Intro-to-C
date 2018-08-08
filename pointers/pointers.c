@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -20,7 +22,14 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    int length = 0;
+    //while dereferenced s, length++ and pointer s++
+    while (*s)
+    {
+        length++;
+        s++;
+    }
+    return length;
 }
 
 /*
@@ -33,7 +42,31 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    int i = 0;
+    while (*y)
+    {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
+}
 
+void string_copy2(char *x, char *y)
+{
+    while ((*x = *y))
+    {
+        x++;
+        y++;
+    }
+    *x = '\0';
+}
+
+void string_copy3(char *x, char *y)
+{
+    while ((*x++ = *y++))
+        ;
+    *x = '\0';
 }
 
 /* 
@@ -52,7 +85,33 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int i = 0;
+    while (m[i] == n[i])
+    {
+        if (m[i] == '\0')
+        {
+            return 0;
+        }
+        i++;
+    }
+    return m[i] - n[i];
+}
 
+int recursive_string_compare(char *m, char *n)
+{
+    if (*m > *n)
+    {
+        return 1;
+    }
+    else if (*m < *n)
+    {
+        return -1;
+    }
+    else if (*m == '\0' && *n == '\0')
+    {
+        return 0;
+    }
+    return string_compare(++m, ++n);
 }
 
 #ifndef TESTING
