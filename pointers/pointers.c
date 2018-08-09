@@ -99,9 +99,9 @@ int string_compare(char *m, char *n)
 
 int sean_string_compare(char *m, char *n)
 {
-    for(; *m == *n; m++, n++)
+    for (; *m == *n; m++, n++)
     {
-        if(*m == '\0')
+        if (*m == '\0')
         {
             return 0;
         }

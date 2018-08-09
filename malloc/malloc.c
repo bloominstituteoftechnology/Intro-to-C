@@ -13,18 +13,31 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
+    // you have to malloc +1 to account for the '\n'
+    char *dup = malloc(length + 1);
+    while ((*dup++ = *src++))
+        ;
+    *dup = '\0';
+    return dup - length - 1;
 }
 
 /*
-    A generic version of string_copy, mem_copy receives a block of memory
-    of any type and copies its contents to the destination pointer (dest).
-    `n` is the number of bytes to copy. You may want to cast the input 
-    pointers to char pointers first before performing the copying. 
-    
-    Do not just use the `memcpy` function from the standard library.
+*mem_copy is a type agnostic function that copies src to dest with size n,
+Work flow is just like a regular string copy, BUT because void types are not able to be dereferenced,
+you have to type cast the void type to another type.
+char is the least finicky of the types and is the best kind to be type cast to.
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    //create a new dereferenceable pointer which is the char type cast of the void *src
+    char *csrc = (char *)src;
+    //create a new dereferenceable pointer which is the char type cast of the void *dest
+    char *cdest = (char *)dest;
+    for (int i = 0; i < n; i++)
+    {
+        *(cdest + i) = *(csrc + i);
+    }
 }
 
 #ifndef TESTING
@@ -53,4 +66,3 @@ int main(void)
     return 0;
 }
 #endif
-
