@@ -26,6 +26,24 @@ struct Person
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+    struct Person *new_person = malloc(sizeof(struct Person));
+
+    int length = strlen(name);
+
+    new_person->name = malloc(length + 1);
+    new_person->name[length + 1] = '\0';
+    new_person->name = string_dup(name);
+
+    // new_person->age = malloc(sizeof(age)); THIS IS NOT NECCESARY!!!
+    new_person->age = age;
+
+    // new_person->height = malloc(sizeof(height)); THIS IS NOT NECCESARY!!!
+    new_person->height = height;
+
+    // new_person->weight = malloc(sizeof(weight)); THIS IS NOT NECCESARY!!!
+    new_person->weight = weight;
+
+    return new_person;
 }
 
 /*
@@ -34,6 +52,26 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
+    if (who->name != NULL)
+    {
+        free(who->name);
+    }
+    // if (who->age != NULL)  THIS IS NOT NECCESARY!!!  Only needed when the 'malloc' is called.
+    // {
+    //     free(who->age);
+    // }
+    // if (who->height != NULL)  THIS IS NOT NECCESARY!!!  Only needed when the 'malloc' is called.
+    // {
+    //     free(who->height);
+    // }
+    // if (who->weight != NULL)  THIS IS NOT NECCESARY!!!  Only needed when the 'malloc' is called.
+    // {
+    //     free(who->weight);
+    // }
+    if (who != NULL)
+    {
+        free(who);
+    }
 }
 
 #ifndef TESTING
