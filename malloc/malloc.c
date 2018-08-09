@@ -17,12 +17,12 @@ char *string_dup(char *src)
     char *new = malloc(length + 1);
     int i = 0;
 
-    for (int i = 0; i < length; ++i)
+    for (int i = 0; i <= length; ++i)
     {
         *(new + i) = *(src + i);
         printf("%c\n", *(new + i));
     }
-    *(new + length) = '\0';
+    // *(new + length) = '\0';
 
     return new;
 }
@@ -37,6 +37,8 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *origin = src;
+    char *copy = dest;
 }
 
 #ifndef TESTING
