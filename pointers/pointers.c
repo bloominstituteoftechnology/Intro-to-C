@@ -29,15 +29,15 @@ void swap(int* a, int* b)
 // In C, a string is simply an array of characters
 int string_length(char *s)
 {
-    int numOfChars = 0;
+    int n = 0;
 
     while (*s != '\0')
     {
         s++;
-        numOfChars++;
+        n++;
     }
 
-    return numOfChars;
+    return n;
 }
 
 /*
@@ -48,6 +48,9 @@ int string_length(char *s)
     
     Do not just use the `strcpy` function from the standard library.
 */
+char *x;
+char *y = 'Goodbye';
+
 void string_copy(char *x, char *y)
 {
     while (*y != '\0')
@@ -56,7 +59,7 @@ void string_copy(char *x, char *y)
         y++;
         x++;
     }
-    *x = *y;
+    *x = '\0';
 }
 
 /* 
@@ -89,6 +92,19 @@ int string_compare(char *m, char *n)
     }
     return string_compare(++m, ++n);
 }
+
+// Alternative solution
+// int string_compare(char *m, char *n)
+// {
+//     for (; *m == *n; m++, n++)
+//     {
+//         if (*m == '\0')
+//         {
+//             return 0;
+//         }
+//     }
+//     return *m - *n;
+// }
 
 #ifndef TESTING
 int main(void)
