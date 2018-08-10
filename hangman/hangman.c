@@ -14,7 +14,14 @@ char HANG_STATES[7][10 * 9] =
 };
 
 int main(int argc, char *argv[]) {
-  /* Your code here */
-  
+	int strikes = 0;
+
+	char prev_guesses[] = {};
+
+	int length;
+	length = strlen(argv);
+
+	
+
   return 0;
 }

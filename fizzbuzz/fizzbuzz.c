@@ -10,7 +10,24 @@
 */
 int fizzbuzz(int n)
 {
-
+    int counter = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (n % 3 != 0 && n % 5 != 0)
+        {
+            counter++;
+            continue;
+        }
+        if (i % 3 == 0)
+        {
+            print("Fizz");
+        }
+        if (i % 5 == 0)
+        {
+            print("Buzz\n");
+        }
+    }
+    return counter;
 }
 
 #ifndef TESTING
