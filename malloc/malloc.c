@@ -13,7 +13,7 @@
 */
 char *string_dup(char *src)
 {
-    char *dup = malloc(string_length(src));
+    char *dup = malloc(string_length(src) + 1);
     char *ret = dup;
     while (*src != '\0') {
         *dup = *src;
