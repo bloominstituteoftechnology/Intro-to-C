@@ -11,7 +11,7 @@
 int fizzbuzz(int n)
 {
 //looping thru 1 to 100 incrementing by 1
-for(int i=1; i <=100; ++i){
+for(int i=1; i <=100; i++){
     if (i > 0){
         //if i is didvided by 3 and leaves no remainder
         //and i is divided by 5 with no remainer
