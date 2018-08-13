@@ -9,7 +9,12 @@
 */
 int string_length(char s[])
 {
-
+    int counter = 0;           // initialize a counter variable
+    while (s[counter] != '\0') // while the value at the counter-th index of the string array is not equal to the null character, increment counter, and compare again until null character is found.
+    {
+        counter++; // increment counter
+    }
+    return counter; // returns counter value to be used in the prinf on line 38
 }
 
 /*
@@ -20,7 +25,6 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
 }
 
 #ifndef TESTING
@@ -37,4 +41,3 @@ int main(void)
     return 0;
 }
 #endif
-    
