@@ -6,11 +6,19 @@
     held inside it.
     
     Do not just use the `strlen` function from the standard libary.
+    starts counting the string at second character
 */
-int string_length(char s[])
+    int string_length(char s[])
 {
-
+        int n = 0;
+        while (s[n] != '\0'){
+             n++;  
+        }
+        return ;                     
 }
+
+ 
+
 
 /*
     Write a function that reverses the order of string s and outputs 
@@ -20,7 +28,14 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+int count = 0;
+int len = string_length(s);
 
+for (int i = n - 1; i >= 0; i--){
+    rv(_IO_cleanup_region_start\)
+
+
+}
 }
 
 #ifndef TESTING

@@ -9,25 +9,54 @@
     Don't forget to include newlines '\n' in your printf statements!
 */
 int fizzbuzz(int n)
+
 {
-//looping thru 1 to 100 incrementing by 1
-for(int i=1; i <=100; i++){
-    if (i > 0){
-        //if i is didvided by 3 and leaves no remainder
-        //and i is divided by 5 with no remainer
-        //print FizzBuzz digits newline
-    if((i % 3 == 0) && (i % 5 == 0)){
-        printf("FizzBuzz %d\n", i);
-        //if you go thru loop and find numbers divivded by 5 with no remainder
-        //print Buzz
-    }else if(i % 5 == 0){
-        printf("Buzz %d\n", i);     }
-    }else if (i % 3 == 0){
-        printf("Fizz %d\n", i);
-        
+
+    int counter = 0;
+
+
+
+    for (int i = 0; i < n; i++) {
+
+        if (i % 15 == 0) 
+
+        {
+
+            printf("FizzBuzz\n");
+
+        }
+
+        else if (i % 3 == 0) 
+
+        {
+
+            printf("Fizz\n");
+
+        }
+
+        else if (i % 5 == 0) 
+
+        {
+
+            printf("Buzz\n");
+
+        }
+
+        else 
+
+        {
+
+            counter++;
+
+        }
+
     }
+
+    return counter;
+
 }
-}
+
+
 
 #ifndef TESTING
 int main(void)

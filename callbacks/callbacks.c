@@ -20,7 +20,13 @@ int sorted_order(int a, int b)
 
 {
 
- if (a > b)
+    /* Given two elements in the array, if the first is greater than the second,
+
+    the two elements are in descending order and need to be swapped, so return 1
+
+    else, return 0 */
+
+    if (a > b)
 
     {
 
@@ -31,8 +37,6 @@ int sorted_order(int a, int b)
     return 0;
 
 }
-
-
 
 
 
@@ -47,7 +51,14 @@ int sorted_order(int a, int b)
 int reverse_order(int a, int b)
 
 {
- if (a < b)
+
+    /* Given two elements in the array, if the second is greater than the first,
+
+    the two elements are in ascending order and need to be swapped, so return 1
+
+    else, return 0 */
+
+    if (a < b)
 
     {
 
@@ -58,8 +69,6 @@ int reverse_order(int a, int b)
     return 0;
 
 }
-
-
 
 
 
@@ -79,31 +88,51 @@ int *bubble_sort(int *numbers, int n, compare_cb cmp)
 
 {
 
-    int *sorted = malloc(n * sizeof(int));
+    /* Create an int pointer equal to the value of the return of mem_copy,
 
-    mem_copy(sorted, numbers, n * sizeof(int));
+    which takes a void pointer to a destination array, the pointer of a source array,
 
+    and the number of bytes to be copied and copies the source array into the destination array.
 
-
-    for (int i =0; i <= n; i++) {
-
-        for (int j = 0; j < n - 1; j++){
-
-            if(cmp(sorted[j], sorted[j+1])){
-
-                swap(&sorted[j], &sorted[j+1]);
+    int *sort is now a pointer to a copy of the numbers array. */
 
 
+
+    int *sort = mem_copy(malloc(n * sizeof(int)), numbers, n * sizeof(int));
+
+    /* Create a nested loop and on every loop, invoke the callback,
+
+        passing in the value of sort[j] and the value of sort[j + 1]
+
+    if the return from the callback is greater than 1 (which means the elements are out of order)
+
+        swap the address of sort[j] with the address of sort[j+1] */
+
+
+
+        for (int i = 0; i <= n; i++)
+
+        {
+
+            for (int j = 0; j < n - 1; j++)
+
+            {
+
+               if (cmp(sort[j], sort[j + 1]))
+
+               {
+
+                   swap(&sort[j], &sort[j + 1]);
+
+               }
 
             }
 
         }
 
-    }
+    /* Return the now sorted array */
 
-
-
-    return sorted;
+    return sort;
 
 }
 
@@ -125,7 +154,7 @@ int main(void)
 
     //sorted_arr = bubble_sort(arr, count, sorted_order);
 
-    sorted_arr = bubble_sort(arr, count, reverse_order);
+    sorted_arr = bubble_sort(arr, count, sorted_order);
 
 
 

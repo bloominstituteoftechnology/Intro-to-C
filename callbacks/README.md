@@ -20,17 +20,7 @@ Let's say we have the following function pointer signature:
 ```c
     void (*callback) (char *str);
 ```
-We'll need to go and define a type for this function. C provides the `typedef` operator as a way to alias some definition into it's own type. The `typedef` operator's other main use is to create new types from defined structs. But anyways, we'll use it to create a function pointer type like so:
-```c
-    typedef void (*callback) (char *str);
-```
-Voilà! We've created a callback type which can now be passed into another function like this:
-```c
-    void foo(callback cb);
-```
-Keep in mind though that this callback type is specifically a function pointer that has a `void` return type and only accepts a single string as argument. If we wanted to define another callback function with a different signature, we'd have to `typedef` it separately. 
-
-For this module you'll be implementing a bubble sort function that accepts a callback. The callback will be the specifier of the order that the bubble sort should be sorting the input into. It's very much like JavaScript's `Array.sort` method that accepts a callback. This makes the sort function slightly more generic. 
+We'll need to go and define a type for this function. C provides the `typedef` operator as a way to alias some definitiocdike JavaScript's `Array.sort` method that accepts a callback. This makes the sort function slightly more generic. 
 
 Take a look at `callbacks.h`. There you'll see the type declaration for the function pointer callback that you'll implement as part of this module. 
 

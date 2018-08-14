@@ -1,31 +1,85 @@
-#include <quicksort.h>
-#include "../../utils/minunit.h"
-#include "../../utils/utils.h"
+#include <stdio.h>
 
-char *test_quicksort()
+
+
+/*
+
+    Your fizzbuzz implementation should initialize a counter, then
+
+    iterate n times. If the ith iteration is divisible by 3, print
+
+    "Fizz". If it's divisible by 5, print "Buzz". If it's divisible
+
+    by both 3 and 5, print "FizzBuzz". Increment the counter variable
+
+    every time that nothing gets printed and return the counter.
+
+    Don't forget to include newlines '\n' in your printf statements!
+
+*/
+
+int fizzbuzz(int n)
+
 {
-    int single_int[] = { 100 };
-    int expected1[] = { 100 };
-    quicksort(single_int, 0, 0);
-    mu_assert(check_arrays(single_int, expected1, 1, 1), "Your quicksort implementation failed on an array with a single element.");
 
-    int arr1[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
-    int expected2[] = {4, 10, 11, 18, 42, 43, 47, 49, 55, 67, 79, 89, 90, 95, 98, 100};
-    int n = sizeof(arr1) / sizeof(arr1[0]);
-    int m = sizeof(expected2) / sizeof(expected2[0]);
-    quicksort(arr1, 0, n-1);
-    mu_assert(check_arrays(arr1, expected2, n, m) == 1, "Your quicksort implementation did not return the expected output.");
+    int counter = 0;
 
-    return NULL;
+
+
+    for (int i = 0; i < n; i++) {
+
+        if (i % 15 == 0) 
+
+        {
+
+            printf("FizzBuzz\n");
+
+        }
+
+        else if (i % 3 == 0) 
+
+        {
+
+            printf("Fizz\n");
+
+        }
+
+        else if (i % 5 == 0) 
+
+        {
+
+            printf("Buzz\n");
+
+        }
+
+        else 
+
+        {
+
+            counter++;
+
+        }
+
+    }
+
+    return counter;
+
 }
 
-char *all_tests()
+
+
+#ifndef TESTING
+
+int main(void)
+
 {
-    mu_suite_start();
 
-    mu_run_test(test_quicksort);
+    fizzbuzz(20);
 
-    return NULL;
+
+
+    return 0;
+
 }
 
-RUN_TESTS(all_tests);
+#endif
