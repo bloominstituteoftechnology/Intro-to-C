@@ -11,6 +11,28 @@
 int fizzbuzz(int n)
 {
 
+    int count = 0;           //initialize counter
+    int i;                   // inits. i in the for loop as an int, can also initialize in the loop itself
+    for (i = 1; i <= n; i++) // for loop iterates from 0 - n
+    {
+        if (i % 3 == 0 && i % 5 != 0) //if divisible by three but not divisible by five, so order isn't as much an issue
+        {
+            printf("Fizz\n"); //prints fizz
+        }
+        else if (i % 3 == 0 && i % 5 == 0) // if i divided by 3 and 5 is divisible without a remainder then -
+        {
+            printf("FizzBuzz\n"); // - prints FizzBuzz
+        }
+        else if (i % 5 == 0) // otherwise if only divisible by 5
+        {
+            printf("Buzz\n"); // prints Buzz
+        }
+        else
+        {
+            count++;
+        }
+    }
+    return count;
 }
 
 #ifndef TESTING
