@@ -9,27 +9,34 @@
 */
 int fizzbuzz(int n)
 {
+    // init a counter
     int counter = 0;
 
+    // loop over the input
     for (int i=0; i<n; i++)
-    {
+    {   
+        // if divisible by 3, but not 5, print Fizz
         if (i % 3 == 0 && i %5 !=0)
         {
             printf("Fizz \n");
         }
+        // if divisible by 5, but not 3, print Buzz
         else if (i % 5 == 0 && i%3 !=0)
         {
             printf("Buzz \n");
         }
+        // if divisible by both 3 and 5, print fizzbuzz
         else if (i % 3 == 0 && i % 5 == 0)
         {
             printf("FizzBuzz \n");
         }
+        // if none of the above, increment the counter
         else 
         {
             counter++;
         }
     }
+    // return the counter
     return counter;
 }
 

@@ -3,14 +3,22 @@
 
 /*
     Given a character array s, return the number of characters 
-    held inside it.
+    held inside it. Dont count the null terminator(\0)
     
     Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
 {
-    int len = sizeof(s)/sizeof(char);
-    return len;
+    // init a counter
+    int counter = 0;
+    // while the counter isn't the end of the string,
+    // increment the counter for each char
+    while (s[counter] !='\0')
+    {
+        counter ++;
+    }
+    // return the counter
+    return counter;
 }
 
 /*
@@ -21,7 +29,21 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    // init a count, which is used as an index in the return value
+    int count = 0;
+    // get the length of the string from the function we just wrote
+    int len = string_length(s);
+    // loop over the string, incrementing the count as you do
+    // this is basically a normal for loop in reverse
+    for(int i=len-1; i>=0; i--)
+    {
+        // first element in RV is the last value of s
+        rv[count++] = s[i];
+    }
+    //stop when we hit the null terminator
+    rv[len] = '\0';
+    //return the return value
+    return rv;
 }
 
 #ifndef TESTING
