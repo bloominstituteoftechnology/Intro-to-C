@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
+    int n = 0; // set a variable n which will be an index and counter
 
+    while (s[n] != '\0') { // using while loop, iterate n times as much as the number of elements in the array until the condition meets '\0', the null character
+        n++; // at each iteration, add 1 to n
+    }
+
+    return n; // When the iteration is over, return n which now has how many time the code was iterated. In other words, n represents how many elements the array has
 }
 
 /*
