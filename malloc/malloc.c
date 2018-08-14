@@ -9,7 +9,7 @@
     You may want to use the string_length function to figure out the
     length of the input string.
     
-    Do not just use the `strdup` function from the standard library.
+    Do not use the `strdup` function from the standard library.
 */
 char *string_dup(char *src)
 {
@@ -22,9 +22,23 @@ char *string_dup(char *src)
     `n` is the number of bytes to copy. You may want to cast the input 
     pointers to char pointers first before performing the copying. 
     
-    Do not just use the `memcpy` function from the standard library.
+    Do not use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
+{
+
+}
+
+/*
+    Given a pointer that `malloc`'d memory, this function will 
+    attempt to resize the allocated memory to the new specified
+    (larger) size. Any data that was previously in the old 
+    `malloc`'d memory should be intact in the new resized block
+    of memory. 
+
+    Do not use the `realloc` function from the standard libary.
+*/
+void *resize_memory(void *ptr, int new_size)
 {
 
 }
