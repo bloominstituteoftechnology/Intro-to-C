@@ -25,6 +25,24 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    // calculate the length of a string using the function from above that does this
+    int length = string_length(s);
+
+    // initialize variable end to be equal to length - 1. Will be used to signify the end index position of string s
+    int end = length - 1;
+
+    for (int i = 0; i < length; i++)
+    {
+        // copying the characters in reverse order (from the end of string s to the beginning) to a new char array rv (from the beginning of the rv array) using a for loop
+        rv[i] = s[end];
+        // decrementing the value of end until s[end] is at the beginning of the string
+        end--;
+    }
+    // terminating the reversed string by assigning the null character
+    rv[length] = '\0';
+
+    // return the reversed string 'amanap lanac a nalp a nam a'
+    return rv;
 }
 
 #ifndef TESTING
