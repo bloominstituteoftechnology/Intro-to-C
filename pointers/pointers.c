@@ -8,7 +8,13 @@
 */
 void swap(int* a, int* b)
 {
-
+    // a and b are pointers
+    // store a's value on a temporary variable
+    int temp = *a;
+    // turn a's value for b's
+    *a = *b;
+    // reassign b's value to the temporary variable, effectively swapping them
+    *b = temp;
 }
 
 /*
@@ -20,7 +26,17 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+    // init a counter
+    int n = 0;
+    // while the counter isn't the end of the string,
+    // increment the counter for each char
+    while (*s != '\0')
+    {
+        n++;
+        s++;
+    }
+    // return the counter
+    return n;
 }
 
 /*
@@ -33,7 +49,15 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    // dereference y, check its value, and as long as it is not the null terminator,
+    // we continue to increment it until it hits the null terminator
+    while (*y != '\0')
+    {
+        *x = *y; //copy value
+        y++; // incrememnt y
+        x++; // increment x
+    }
+    *x = '\0'; // x(which is actually y), is dereferenced, and has advanced to the last chracter
 }
 
 /* 
@@ -52,7 +76,20 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    // while characters match, continue to the next block of code
+    while (*m == *n)
+    {
+        // if the while loop reaches the null terminator, return 0 for a match
+        if (*m == '\0')
+        {
+            return 0;
+        }
+        m++; // iterate on m
+        n++; // iterate on n
+    }
+    // if no match, subtract their values, and it will return a negative value to 
+    // symbolize "no match"
+    return *m - *n;
 }
 
 #ifndef TESTING

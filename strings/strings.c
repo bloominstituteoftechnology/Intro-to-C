@@ -15,7 +15,7 @@ int string_length(char s[])
     // increment the counter for each char
     while (s[counter] !='\0')
     {
-        counter ++;
+        counter++;
     }
     // return the counter
     return counter;
