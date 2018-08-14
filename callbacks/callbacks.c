@@ -33,19 +33,6 @@ int *bubble_sort(int *numbers, int n, compare_cb cmp)
     mem_copy(sorted, numbers, n * sizeof(int));
 }
 
-#ifndef TESTING
-int main(void)
-{
-    int arr[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
-    int count = sizeof(arr) / sizeof(arr[0]);
-    int *sorted_arr;
-
-    //sorted_arr = bubble_sort(arr, count, sorted_order);
-    sorted_arr = bubble_sort(arr, count, reverse_order);
-
-    for (int i = 0 ; i < count ; i++) {
-        printf("%d ", sorted_arr[i]);
-    }
 
     printf("\n");
 
