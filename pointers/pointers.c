@@ -8,8 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a; // use a temp variable to swap pointers
+    *a = *b;
+    *b = temp;
 }
+
+
 
 /*
     Given a character pointer s, returns the number of characters
@@ -20,7 +24,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
+    int n = 0; //counter
 
+    while (*s != '\0') {
+        n++;
+        s++;
+    }
+    return n;
 }
 
 /*
@@ -33,7 +43,13 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0') {
+        *x = *y;
+        y++;
+        x++
+    }
+    *x = '\0';
+    
 }
 
 /* 

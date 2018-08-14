@@ -14,22 +14,22 @@ int fizzbuzz(int n)
     for(int i = 0; i < n; i++){ //create a loop
         if (i % 3 == 0 && i % 5 == 0) // test the fizzbuzz case first, as this case case has the trickest logic
         {
-            printf("%s FizzBuzz");
+            printf("FizzBuzz\n");
         }
         else if (i % 3 == 0) // test fizz logic
         {
-            printf("%s Fizz");
+            printf("Fizz\n");
         }
         else if (i % 5 == 0) // test buzz logic
         {
-            printf("%s Buzz");
+            printf("Buzz\n");
         }
         else
         {
             counter++; // if all else fails, increase the counter by 1
         }
     }
-    
+    return counter;
 }
 
 #ifndef TESTING
