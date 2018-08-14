@@ -12,13 +12,27 @@ void swap(int* a, int* b)
 }
 
 /*
-    Given a character pointer s, returns the number of characters
-    it is pointing to. Think about how pointer arithmetic can 
-    help you with this.
-    
-    Do not just use the `strlen` function from the standard library.
+    Searches the input string `str` for the first instance of the 
+    character `c` (an unsigned char). This function returns a pointer
+    that points to the first instance of the character `c` in the
+    input string `str`.
+
+    Do not use the `strchr` function from the standard library.
 */
-int string_length(char *s)
+char *find_char(char *str, int c)
+{
+
+}
+
+/*
+    Searches the input string `haystack` for the first instance of
+    the string `needle`. This function returns a pointer that points
+    to the first instance of the string `needle` in the input
+    string `haystack`. 
+
+    Do not use the `strstr` function from the standard library.
+*/
+char *find_string(char *haystack, char *needle)
 {
 
 }
