@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a; //sets a variable 'temp' that is points to a
+    *a = *b; // this swaps the values of a and b that are being pointed at
+    *b = temp; //this sets the value of b as the new value of the 'temp' variable
 }
 
 /*
@@ -20,7 +22,13 @@ void swap(int* a, int* b)
 */
 int string_length(char *s)
 {
-
+   int string = 0; //sets the current length of the string to zero
+   while (*s !=0 '\0') // While the string is not empty
+   {
+       string++; //increments the string length counter
+       s++; // increments over the characters in the string
+   }
+   return string //returns the string
 }
 
 /*
@@ -33,7 +41,18 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
-
+    /* While the pointer for y is not equal to the null character,
+    assign the pointer for x to the pointer for y.
+    Increment the pointer for y to the next element in the array.
+    Increment the pointer for x to thr next element in the array. */
+    while (*y != '\0')
+    {
+        *x = *y;
+        y++;
+        x++;
+    }
+    /* Set the pointer for x, which should be at the end now, to the null character */
+    *x = '\0';
 }
 
 /* 
@@ -52,7 +71,22 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    /* While dereferenced m (so the value of m) equals dereferenced n,
+    if the value of m is a null character, return 0.
+    Else, increment the pointer for m and the pointer for n.
+    When the value of m is no longer equal to the value of n,
+    return the value of m minus the value of n */
+    while (*m == *n)
+    {
+       if(*m == '\0')
+       {
+           return 0;
+       } else {
+           m++;
+           n++;
+       }
+       return *m - *n;
+    }
 }
 
 #ifndef TESTING
