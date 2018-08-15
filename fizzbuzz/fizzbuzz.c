@@ -8,26 +8,31 @@
     every time that nothing gets printed and return the counter.
     Don't forget to include newlines '\n' in your printf statements!
 */
+
 int fizzbuzz(int n) {
-//looping through 1 to 100 incrementing by 1
-for (int i=1; i <=100; i++) {
-    if (n > 0) {
+    int counter = 0; //this initializes a counter that starts at 0 and increases as we iterate
+//looping through 1 to n incrementing by 1
+    for (int i=0; i <= n; i++) {
         //if n is divided by 3 and leaves no remainder
         // and n is divided by 5 with no remainder
         // print fizzbuzz digits newline
-        if((n % 3 == 0) && (n % 5 == 0)) {
-            printf("Fizzbuzz %d\n", i);
+        if((i % 3 == 0) && (n % 5 == 0)) {
+            printf("Fizzbuzz %d\n", i); //print out fizzbuzz
             //if you loop through and find numbers divided by 5 with no remainder
             //print buzz
-        }else if(n % 5 == 0) {
-            printf("Buzz %d\n", i);
-        } else if (n % 3 == 0) {
-            printF("Fizz %d\n", i);
+        }else if(n % 5 == 0) { // if the number is divisible by 5
+            printf("Buzz %d\n", i); //we print Buzz
+        } else if (n % 3 == 0) { //if the number is divisible by 3
+            printF("Fizz %d\n", i); // we print Fizz
         }
-    return 0;
+        else 
+        {
+            counter ++; //this iterates the counter
+        }
     }
+    return counter; // returns the current value of the counter
 }
-}
+
 
 #ifndef TESTING
 int main(void)
