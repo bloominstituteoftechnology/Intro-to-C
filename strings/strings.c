@@ -26,7 +26,15 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int count = 0; // set a variable count which will be a counter and index
+    int len = string_length(s); // using the function set above, count the lengh of the input string and store in variable 'len'
 
+    for (int i = len - 1; i >= 0; i--) { // iterate code 'len' times backward from end of array using for loop
+        rv[count++] = s[i]; // Read elements in s[] one by one from the end, assign them in rv[] one by one from the front
+    }
+
+    rv[len] = '\0'; // add null character at the tail of rv[] array to mark the end of the array.
+    return rv; // return the reversed array rv
 }
 
 #ifndef TESTING
