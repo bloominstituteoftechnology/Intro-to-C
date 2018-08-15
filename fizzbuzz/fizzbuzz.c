@@ -29,7 +29,7 @@ int fizzbuzz(int n)
         }
         else
         {
-            count++;
+            count++; // counts up one
         }
     }
     return count;

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "callbacks.h"
-#include "lib.h" 
+#include "lib.h"
 
 /*
     Implement the callback that will be passed to your bubble_sort function to sort 
@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a > b; // returns in order
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return b < a; // returns in order reveresed
 }
 
 /*
@@ -29,7 +29,20 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    int *sorted = malloc(n * sizeof(int));      // sets pointer at sorted to use malloc n times the bytes in an int
+    mem_copy(sorted, numbers, n * sizeof(int)); // uses a method from the lib header file to copy the numbers from numbers for total number of bytes for n times size of int
+    int i, j;                                   // declares i and j as int data types saving a few key strokes
+    for (i = 0; i < n; i++)
+    { // for every iteration over n
+        for (j = 0; j < n - 1; j++)
+        {                                      // we iterate over it again
+            if (cmp(sorted[j], sorted[j + 1])) // compares j plus the next index and if they are not sorted it will swap them with next line of code
+            {
+                swap(&sorted[j], &sorted[j + 1]);
+            }
+        }
+    }
+    return sorted;
 }
 
 #ifndef TESTING
@@ -42,7 +55,8 @@ int main(void)
     //sorted_arr = bubble_sort(arr, count, sorted_order);
     sorted_arr = bubble_sort(arr, count, reverse_order);
 
-    for (int i = 0 ; i < count ; i++) {
+    for (int i = 0; i < count; i++)
+    {
         printf("%d ", sorted_arr[i]);
     }
 
