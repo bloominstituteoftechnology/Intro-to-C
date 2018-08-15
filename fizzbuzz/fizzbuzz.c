@@ -10,23 +10,23 @@
 */
 int fizzbuzz(int n)
 {
-    int counter = 0; 
+    int counter = 0; // initialize counter at index 0
 
-    for (int i = 0; i < n; i++ ) {  // for loop to iterate
-        if (i % 3 == 0 && i % 5 == 0) {
+    for (int i = 0; i < n; i++ ) {  // for loop to iterate over the elements in n
+        if (i % 3 == 0 && i % 5 == 0) { // if index/item is divisible by 3 & 5, print 'FizzBuzz'
             printf("FizzBuzz");
         } 
-        else if (i % 3 == 0) {
+        else if (i % 3 == 0) {  // else if index/item is divisible by 3, print 'Fizz'
             printf("Fizz");
         } 
-        else if  (i % 5 == 0) {
+        else if  (i % 5 == 0) { // else if index/item is divisible by 5, print 'Buzz'
             printf("Buzz");
         } else {
-            counter++;
+            counter++;  // else if item is neither divisible by 3 or 5, increment counter
         }
-        printf("\n");
+        printf("\n");   // new line
     }
-    return counter;
+    return counter;     // return counter
 }
 
 #ifndef TESTING
