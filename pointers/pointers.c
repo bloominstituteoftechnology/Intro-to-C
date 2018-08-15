@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int* a, int* b)   // a & b are pointers; pointing to spots/cells in RAM
 {
-
+    int temp = *a;   // fetches a & b and swaps their places
+    *a = *b;         // swaps a & b
+    *b = temp;      
 }
 
 /*
@@ -18,9 +20,15 @@ void swap(int* a, int* b)
     
     Do not just use the `strlen` function from the standard library.
 */
-int string_length(char *s)
+int string_length(char *s) // s is the address/pointer
 {
+    int n = 0;
 
+    while (*s != '\0') {  // retrieve element using the pointer *s and making sure it's not equal to the null terminator
+        n++;    // incremenet n 
+        s++;    // increment s being the address/pointer
+    }
+    return n;   // return n
 }
 
 /*
@@ -31,10 +39,26 @@ int string_length(char *s)
     
     Do not just use the `strcpy` function from the standard library.
 */
-void string_copy(char *x, char *y)
-{
 
+void string_copy(char *x, char *y)  // copy y over to x
+{
+    while (*y != '\0') {    // check that pointer y is not equal to the null terminator
+        *x = *y;    // swap x & y
+        y++;    // increment the y pointer
+        x++;    // increment the x pointer
+    }
+    *x = '\0';  // if x reaches the null terminator, terminate function
 }
+
+
+
+// void string_copy(char *x, char *y)
+// {
+//     while ((*x = *y) != '\0') {
+//         x++;
+//         y++;
+//     }
+// }
 
 /* 
     Compares the character strings m and n and returns negative,
@@ -52,7 +76,15 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    // for (; *m == *n; m++, n++) {
+    while (*m == *n) {      // checkng if m and n matches
+        if (*m == '\0') {   // if m equals to null terminator
+            return 0;       // return 0
+        }
+        m++;                // increment pointer m
+        n++;                // increment pointer n
+    }
+    return *m - *n; // return difference between the items/elements in pointers m & n
 }
 
 #ifndef TESTING
