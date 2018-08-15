@@ -15,9 +15,29 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high)
+int partition(int *arr, int low, int high) // create a pivot element which will be basis for the quicksort
 {
+    int pivot = arr[high];  // initialize pivot element
+    int i = low;    // i set to low
 
+    for (int j = low; j < high; j++) { // for loop to iterate over the items in j
+        if (arr[j] <= pivot) {    // if the array of j is less than the pivot element
+            swap(&arr[j], &arr[i]); // put on the left side of the pivot
+            i++; // increment i 
+        }
+    }
+    &swap(arr[i], &arr[high]);  // swap the last element and 2nd to the last element
+    return i;                   // return i
+}
+
+void quicksort(int *arr, int low, int high) // pass high and low indices
+{
+    if (low < high) {   // low index is less that the high index 
+        int index = partition(arr, low, high); // find index in partition taking in the same array, low, and high indices
+        quicksort(arr, low, index -1);   // recursively call quicksort with same array, low index, and index - 1
+        quicksort(arr, index + 1, high); // call quicksort with the same array, index + 1, and same high index
+        // partitioning the array into 2 halves at the index in the partition function
+    }
 }
 
 #ifndef TESTING
