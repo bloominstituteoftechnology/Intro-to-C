@@ -43,7 +43,6 @@ void Person_destroy(struct Person *who)
 {
     free(who->name);    // free up memory
     free(who);
-
 }
 
 #ifndef TESTING

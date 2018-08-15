@@ -9,7 +9,7 @@
 */
 int sorted_order(int a, int b)
 {
-
+    return a > b;   // return in ascending order
 }
 
 /*
@@ -18,7 +18,7 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    return a < b;   // return reverse order
 }
 
 /*
@@ -29,7 +29,18 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
+    int *sorted = malloc(n * sizeof(int));  // malloc memory
+    mem_copy(sorted, numbers, n * sizeof(int)); // takes the destination pointer, source array/pointer, and the total number of elements/bytes to be copied   
 
+    for (int i = 0; i < n; i++) {   // for loop to iterate over elements in i
+        for (int j = 0; j < n - 1; j++) {   // for loop to iterate over elements in j
+            if (cmp(sorted[j], sorted[j+1])) {  // next element
+                swap(&sorted[j], &sorted[j+1]); // swap them
+            }  
+        }
+    }
+
+    return sorted; 
 }
 
 #ifndef TESTING
