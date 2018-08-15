@@ -7,9 +7,14 @@
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
-struct Person {
-
-};
+typedef struct Person // used typedef so that I dont have to prepend each instance of the Person struct with the keyword struct
+{
+    // specified the fields that make up the Person type including the string name, and ints age, height, and weight
+    char *name;
+    int age;
+    int height;
+    int weight;
+} Person;
 
 /*
     Creates an instance of the Person struct that receives all the relevant
@@ -20,18 +25,26 @@ struct Person {
     When setting the `name` field, use your previously-built string_dup
     function, which handles the allocation of memory for the new string.
 */
-struct Person *Person_create(char *name, int age, int height, int weight)
+Person *Person_create(char *name, int age, int height, int weight)
 {
+    Person *person = malloc(sizeof(Person)); // allocates appropriate amount of memory to hold an instance of the Person struct
+    //setting the struct fields with the input data given
+    person->name = string_dup(name); // setting the name field with the previously built string_dup function
+    person->age = age;
+    person->height = height;
+    person->weight = weight;
 
+    return person;
 }
 
 /*
     Given a pointer to a Person struct, frees up the memory that holds the
     Person's name as well as the memory that holds the Person instance.
 */
-void Person_destroy(struct Person *who)
+void Person_destroy(Person *person)
 {
-
+    free(person->name); // frees up the memory that hold the person's name
+    free(person);       // frees up the memory that holds the person instance
 }
 
 #ifndef TESTING
