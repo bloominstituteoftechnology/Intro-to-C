@@ -9,7 +9,7 @@
 */
 int string_length(char s[])
 {
-    int n = 0;  // n starts at first index in the array
+    int n = 0;              // initialize n to start at first index in the array
 
     while (s[n] != '\0') { //while loop that if n has not reached the null terminator 
         n++;               // n will keep incrementing
@@ -28,12 +28,12 @@ char *reverse_string(char rv[], char s[])
     int count = 0;  // initialize a count starting at index 0
     int len = string_length(s); // get length of string that we're reversing using the previous string_length function
 
-    for (int i = len - 1; i >= 0; i-- ) {  // reverse for loop to add the characters one by one backwards
+    for (int i = len - 1; i >= 0; i--) {  // reverse for loop to add the characters one by one backwards
         rv[count++] = s[i]; // after indexing into the array, increment count; the first element in rv is the last element in s  
     } 
 
     rv[len] = '\0'; // null terminator to terminate the string
-    return rv;
+    return rv;      // return rv
 }
 
 #ifndef TESTING
