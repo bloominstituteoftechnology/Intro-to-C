@@ -15,9 +15,38 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
+//helper function that creates a pivot point to sort values on either side
+int partition(int *arr, int low, int high)
+{
+    int pivot = arr[high];
+    int i = low;
+
+    for (int j = low; j < high; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            // swap function comes from lib.h
+            swap(&arr[j], &arr[i]);
+            i++;
+        }
+    }
+
+    swap(&arr[i], &arr[high]);
+    return i;
+}
+
 void quicksort(int *arr, int low, int high)
 {
-
+    if (low < high) // pretty self explanitorye
+    {
+        // assign a pivot partition for the quicksort to sort on either side
+        int index = partition(arr, low, high);
+        // recursively sort one side
+        quicksort(arr, low, index-1);
+        // recursively sort the other side
+        quicksort(arr, index+1, high);
+    }
 }
 
 #ifndef TESTING
