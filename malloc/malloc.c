@@ -13,17 +13,20 @@
 */
 char *string_dup(char *src)
 {
+    // use the provided string length method to get the length of the src string
     int n = string_length(src);
+    // allocate the memory for the string
     char *str = malloc(n+1);
 
+    // loop over the characters
     for (int i=0; i<n; i++)
     {
+        // duplicate them
         *(str+i) = *(src+i);
-        // str[i] = src[i];
     }
-
+    // finish when the null terminator is reached
     *(str+n) ='\0';
-
+    // return the new string
     return str;
 }
 
@@ -37,11 +40,14 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
+    // assign pointers to arrays
     char *csrc = (char *) src;
     char *cdest = (char *) dest;
 
+    // loop over the array
     for (int i=0; i<n; i++)
-    {
+    {   
+        // copy it
         *(cdest+i) = *(csrc+i);
     }
 

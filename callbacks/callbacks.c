@@ -9,7 +9,8 @@
 */
 int sorted_order(int a, int b)
 {
-
+    // make a greater than b
+    return a > b;
 }
 
 /*
@@ -18,7 +19,8 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    // make b greater than a
+    return a < b;
 }
 
 /*
@@ -29,7 +31,22 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    // allocate memory
+    int *sorted = malloc(n*sizeof(int));
+    // use the provided mem copy function to copy memory
+    mem_copy(sorted, numbers, n*sizeof(int));
+    // loop over n
+    for (int i=0; i<n; i++)
+    {   // loop over j
+        for (int j=0; j<n-1; j++)
+        {// compare?
+            if (cmp(sorted[j], sorted[j+1]))
+            {//swap
+                swap(&sorted[j], &sorted[j+1]);
+            }
+        }
+    }
+    return sorted;
 }
 
 #ifndef TESTING

@@ -19,26 +19,32 @@
 //helper function that creates a pivot point to sort values on either side
 int partition(int *arr, int low, int high)
 {
+    // assign the highest interger in the array to the pivot variable
     int pivot = arr[high];
+    // assign the lowest integer to the variable i
     int i = low;
 
+    // for loop
     for (int j = low; j < high; j++)
-    {
+    {   
+        // if the jth index is less than or equal to the pivot int:
         if (arr[j] <= pivot)
         {
             // swap function comes from lib.h
             swap(&arr[j], &arr[i]);
+            // iterate i
             i++;
         }
     }
-
+    // use the provided swap function to swap low and high
     swap(&arr[i], &arr[high]);
+    //return the new lowest position
     return i;
 }
 
 void quicksort(int *arr, int low, int high)
 {
-    if (low < high) // pretty self explanitorye
+    if (low < high) // pretty self explanitory
     {
         // assign a pivot partition for the quicksort to sort on either side
         int index = partition(arr, low, high);
