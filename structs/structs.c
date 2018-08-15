@@ -8,13 +8,15 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 struct Person {
-
+    char *name;
+    int age;
+    int height;
+    int weight;
 };
 
 /*
     Creates an instance of the Person struct that receives all the relevant
     pieces of data associated with a Person instance.
-
     Allocates the appropriate amount of memory to hold an instance of the 
     Person struct, and then sets the struct's fields with the input data.
     When setting the `name` field, use your previously-built string_dup
@@ -22,7 +24,13 @@ struct Person {
 */
 struct Person *Person_create(char *name, int age, int height, int weight)
 {
+    struct Person *person= malloc(sizeof(struct Person));
+    person->name = string_dup(name);
+    person->age = age;
+    person->height = height;
+    person->weight = weight;
 
+    return person;
 }
 
 /*
@@ -31,7 +39,8 @@ struct Person *Person_create(char *name, int age, int height, int weight)
 */
 void Person_destroy(struct Person *who)
 {
-
+    free(who->name);
+    free(who);
 }
 
 #ifndef TESTING

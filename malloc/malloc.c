@@ -13,7 +13,18 @@
 */
 char *string_dup(char *src)
 {
+    /* The integer src_length is equal to the return from string_length on src
+    char pointer copy equals the pointer for an area in the memory large enough to accomodate the string src */
+    int src_length = string_length(src);
+    char *copy = malloc(src_length);
 
+    /*Starting with i = 0 and before i is greater than the length of the string, 
+    the value of copy at index i is equal to the value of src at index i */
+    for (int i = 0; i <= src_length; i++)
+    {
+        copy[i] = src[i];
+    }
+    return copy;
 }
 
 /*
@@ -26,7 +37,20 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    /* char pointer char_dest is equal to the pointer dest after being
+     cast as a char pointer.
+     char pointer char_src is equal to pointer src after being
+     cast as a char pointer */
+    char *char_dest = (char*)dest;
+    char *char_src = (char*)src;
 
+    /* starting with i = 0 and until i is less than the number of bytes 
+    to copy, set the value of char_dest at index i to be equal to the value of char_src at index i. */
+    for (int i = 0; i < n; i++)
+    {
+        char_dest[i] = char_src[i];
+    }
+    return char_dest;
 }
 
 #ifndef TESTING
