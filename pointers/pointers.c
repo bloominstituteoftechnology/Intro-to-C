@@ -22,13 +22,15 @@ void swap(int *a, int *b)
 */
 int string_length(char *s)
 {
+    //initialize a counter variable
     int counter = 0;
+    // while loop where at the beginning of the loop, *s points to the first character in the string. On the next iteration, it gets incremented and then prints out the second character in the string. This keeps going until the pointer points to the null character, which terminates the loop.
     while (*s != '\0')
     {
-        counter++;
-        s++;
+        counter++; // increment counter
+        s++;       //increment where the pointer is at
     }
-    return counter;
+    return counter; // returns the number of characters
 }
 
 /*
@@ -41,13 +43,15 @@ int string_length(char *s)
 */
 void string_copy(char *x, char *y)
 {
+    // *y points to the first character in the string and will continue until it hits the null character
     while (*y != '\0')
     {
+        // set the value that x points at to be the value of the pointer y
         *x = *y;
-        y++;
-        x++;
+        y++; // increment the position along the string y
+        x++; // increment the position along the string x
     }
-    *x = '\0';
+    *x = '\0'; //x points to a null character at its end to terminate properly
 }
 
 /* 
@@ -66,16 +70,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    while (*m == *n)
+    while (*m == *n) // loop continues while both characters match
     {
-        if (*m == '\0')
+        if (*m == '\0') // if you reach the end of the string and both strings match, return 0
         {
             return 0;
         }
-        m++;
-        n++;
+        m++; // increment the position along the string m
+        n++; // increment the position along the string n
     }
-    return *m - *n;
+    return *m - *n; // as soon as the strings no longer match break out of the loop and return the ascii difference between the value of m and n
 }
 
 #ifndef TESTING
