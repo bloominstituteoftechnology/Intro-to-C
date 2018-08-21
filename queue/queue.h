@@ -9,10 +9,6 @@ typedef struct Queue {
 
 Queue *createQueue(unsigned capacity);
 
-int isFull(Queue *q);
-
-int isEmpty(Queue *q);
-
 void enqueue(Queue *q, int item);
 
 int dequeue(Queue *q);
