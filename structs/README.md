@@ -7,6 +7,7 @@ Enter structs. Structs are basically C's version of a poor man's object. We can 
 ## Initializing structs
 
 Let's look at a simple struct definition:
+
 ```c
     struct Cat {
         char *breed;
@@ -17,14 +18,16 @@ Let's look at a simple struct definition:
 This declares the shape of the Cat struct. Now we'll need to create an instance of it if we want to want to actually use it. Well, what actually defines an instance of something?
 
 In this case, an instance of a struct is some chunk of memory that has been initialized with the shape of said struct. So we'll need to allocate memory for our Cat struct. We can do that with this:
+
 ```c
     struct Cat *a_cat = malloc(sizeof(struct Cat));
 ```
 So we're handed a pointer to a chunk of memory that holds exactly the right amount of data for a single instance of a Cat. We take that and cast it to a pointer with the type of `struct Cat` since that's the type that is being held in this chunk of memory. We'll also need to go and initialize the values of our Cat instance like so:
+
 ```c
     a_cat->breed = NULL;
     a_cat->color = NULL;
-    a_cat->age = -1;
+    a_cat->age = 0;
 ```
 What's with these funky arrows? Coming from JavaScript, you're used to using dot notation for accessing members of an object. Structs are poor man's objects, so shouldn't dot notation work here?
 
@@ -32,12 +35,13 @@ The answer is that dot notation is a thing in C, but because in this case we hav
 
 Basically, you can think of it like this:
 ```c
-    a_cat->breed == *(a_cat).breed
+    a_cat->breed == (*a_cat).breed
 ```
 
 Allocating memory for structs is one of the most important functions that `malloc` serves. Keep in mind though that when we declare a struct, every type in the struct needs to have a known size. Looking at the Cat struct, `char *`s and `int`s all have a known size, so the entire size of the struct can be calculated. However, we don't know the sizes of the data that the `char *`s may be pointing to. 
 
 Let's say we have a function called `name_cat` that will assign a Cat instance with a given input name. It might look like this:
+
 ```c
     void name_cat(struct Cat *cat, char *name)
     {
@@ -51,7 +55,7 @@ That's right, we'll need to call `malloc` to allocate the appropriate amount of 
 
 ## Freeing memory
 
-Yet another abstraction that you're used to from higher-level languages is the garbage collector. A garbage collector is typically part of a language's runtime, and its job is to clean up memory that is used up by your programs. 
+Yet another abstraction that you're used to from higher-level languages is the garbage collector. A garbage collector is typically part of a languages runtime, and its job is to clean up memory that is used up by your programs. 
 
 For example, after you write some JS program that has a bunch of arrays and objects, what happens to the memory that was needed to order to hold those instances? In a high-level language, a garbage collector goes through and figures out that those arrays and objects are no longer being used. It then deallocates or frees up that memory so that it can be reused by other programs. You the programmer never needs to worry about cleaning up after yourself; it's all handled for you automatically!
 
@@ -67,6 +71,7 @@ A couple of common errors that arise when it comes to `free`ing memory are:
 2. Calling `free` on a pointer to memory that has already been `free`'d. This is called a 'double free', and it should be avoided because it may corrupt the state of the memory manager (which is what keeps track of all of the pieces of memory that have been handed out so far), which might cause existing blocks of memory to get corrupted or for future allocations to fail in bizarre ways (for example, the same memory getting handed out on two different successive calls of malloc).
 
 Going back to our Cat struct, we might want to have a `Cat_destroy` function that will handle the cleaning up of a Cat instance for us. It'll free all the memory that was allocated during the Cat instance's lifetime.
+
 ```c
     void Cat_destroy(struct Cat *cat)
     {
@@ -83,3 +88,19 @@ Going back to our Cat struct, we might want to have a `Cat_destroy` function tha
         }
     }
 ```
+
+## The `typedef` Keyword
+
+In all the previous example code, we've had to prepend every type we created with `struct`. That's because `struct` is part of the newly-created type's name, and as of now, we can't leave it out whenever we're using one of our own artificial types. C provides the `typdef` keyword which will ultimately save us some keystrokes. It will allow us to not have to prepend `struct` to any of our created types. Here's how we use it:
+
+```c
+    typedef struct Cat {
+        char *breed;
+        char *color;
+        int age;
+    } Cat;
+```
+
+We'll add the `typedef` keyword in front of our type definition. Then, after the closing brace of our struct, we specify the aliased type we'd like for this user-created type to have. Here we'll just keep it the same as the name of the struct itself, though you could call it something else if you wanted to. 
+
+Now, whenever we want to use our `Cat` type, we don't need to prepend `struct` in front of it. The compiler now knows that when we just specify `Cat` that we're referring to our `struct Cat` type definition. It's a one-time cost that we pay when we define our types, but it'll save us a lot of keystrokes later on, especially if we're using our types a lot!

@@ -1,15 +1,15 @@
 #ifndef structs_h
 #define structs_h
 
-struct Person {
+typedef struct Person {
     char *name;
     int age;
     int height;
     int weight;
-};
+} Person;
 
-struct Person *Person_create(char *name, int age, int height, int weight);
+Person *createPerson(char *name, int age, int height, int weight);
 
-void Person_destroy(struct Person *who);
+void destroyPerson(Person *who);
 
 #endif
