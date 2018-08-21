@@ -25,19 +25,6 @@ char *find_char(char *str, int c)
 }
 
 /*
-    Searches the input string `haystack` for the first instance of
-    the string `needle`. This function returns a pointer that points
-    to the first instance of the string `needle` in the input
-    string `haystack`. 
-
-    Do not use the `strstr` function from the standard library.
-*/
-char *find_string(char *haystack, char *needle)
-{
-
-}
-
-/*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
     is necessary here. Also, make sure x points to a null character at its 
@@ -69,6 +56,19 @@ int string_compare(char *m, char *n)
 
 }
 
+/*
+    Searches the input string `haystack` for the first instance of
+    the string `needle`. This function returns a pointer that points
+    to the first instance of the string `needle` in the input
+    string `haystack`. 
+
+    Do not use the `strstr` function from the standard library.
+*/
+char *find_string(char *haystack, char *needle)
+{
+
+}
+
 #ifndef TESTING
 int main(void)
 {
@@ -78,13 +78,18 @@ int main(void)
 
     char *hello = "Hello";
     char *world = "World";
-
     char buffer[1024];
+
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Length is %d\n", string_length(buffer));
     printf("Comparison is %d\n", string_compare(hello, world));
+
+    char *found_char = find_char(hello, 'e');
+    char *found_string = find_string(world, "or");
+
+    printf("Found char: %s\n", found_char);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }
