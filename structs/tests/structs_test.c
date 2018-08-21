@@ -4,7 +4,7 @@
 
 char *test_person_create()
 {
-    struct Person *tony = Person_create("Tony Stark", 32, 64, 140);
+    Person *tony = createPerson("Tony Stark", 32, 64, 140);
 
     mu_assert(check_strings(tony->name, "Tony Stark") == 0, "Person_create struct name field does not match the expected result.");
     mu_assert(tony->age == 32, "Person_create struct age field does not match the expected result.")
@@ -19,8 +19,8 @@ char *test_person_create()
 
 char *test_person_destroy()
 {
-    struct Person *kurt = Person_create("Kurt Hugo Schneider", 29, 63, 130);
-    Person_destroy(kurt);
+    Person *kurt = createPerson("Kurt Hugo Schneider", 29, 63, 130);
+    destroyPerson(kurt);
 
     return NULL;
 }
