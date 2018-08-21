@@ -32,13 +32,16 @@ void *mem_copy(void *dest, const void *src, int n)
 /*
     Given a pointer that `malloc`'d memory, this function will 
     attempt to resize the allocated memory to the new specified
-    (larger) size. Any data that was previously in the old 
-    `malloc`'d memory should be intact in the new resized block
-    of memory. 
+    size. Any data that was previously in the old `malloc`'d 
+    memory should be intact in the new resized block of memory. 
+
+    Some edge cases to consider: how should resizing be handled
+    in the case when old_size < new_size? What about when 
+    old_size > new_size?
 
     Do not use the `realloc` function from the standard libary.
 */
-void *resize_memory(void *ptr, int new_size)
+void *resize_memory(void *ptr, int old_size, int new_size)
 {
 
 }
