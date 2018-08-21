@@ -19,18 +19,6 @@ char *test_swap()
     return NULL;
 }
 
-char *test_string_length()
-{
-    char *string = "Not really a very long string.";
-    char string_arr[] = { 'a', 'b', 'c', '\0' };
-
-    mu_assert(string_length("hello, world") == 12, "Your string_length function did not return the correct length for 'hello, world'.");
-    mu_assert(string_length(string) == 30, "Your string_length function did not return the correct length when passed a char pointer.");
-    mu_assert(string_length(string_arr) == 3, "Your string_length function did not return the correct length when passed a char array.");
-
-    return NULL;
-}
-
 char *test_string_copy()
 {
     char *string = "hello, world";
@@ -60,14 +48,45 @@ char *test_string_compare()
     return NULL;
 }
 
+char *test_find_char()
+{
+    char *str = "LambdaSchool";
+    char *found = find_char(str, 'b');
+    mu_assert(string_compare(found, "bdaSchool") == 0, "Your find_char function did not work as expected.");
+
+    found = find_char(str, 'S');
+    mu_assert(string_compare(found, "School") == 0, "Your find_char function did not work as expected.");
+
+    found = find_char(str, 's');
+    mu_assert(!found, "Your find_char function return a char when it should have returned NULL.");
+
+    return NULL;
+}
+
+char *test_find_string()
+{
+    char *str = "LambdaSchool";
+    char *found = find_string(str, "School");
+    mu_assert(string_compare(found, "School") == 0, "Your find_string function did not find the expected substring.");
+    
+    found = find_string(str, "Lambda");
+    mu_assert(string_compare(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
+
+    found = find_string(str, "lambda");
+    mu_assert(!found, "Your find_string function found a substring when it should have returned NULL.");
+
+    return NULL;
+}
+
 char *all_tests()
 {
     mu_suite_start();
 
     mu_run_test(test_swap);
-    mu_run_test(test_string_length);
     mu_run_test(test_string_copy);
     mu_run_test(test_string_compare);
+    mu_run_test(test_find_char);
+    mu_run_test(test_find_string);
 
     return NULL;
 }
