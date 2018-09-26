@@ -9,6 +9,11 @@
 */
 int string_length(char s[])
 {
+    // NOT WORKING 
+    // int size = sizeof(s);
+    printf("%d\n", strlen(s));
+    // return size;
+    return 0;
 
 }
 
@@ -20,7 +25,13 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int j = 0;
+    for (int i = strlen(s) - 1; i >= 0; i--) {
+        printf("i %d", i);
+        rv[j++] = s[i];
+        printf("HERE:%s", rv);
+    }
+    return rv;
 }
 
 #ifndef TESTING
