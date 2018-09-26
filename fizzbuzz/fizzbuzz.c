@@ -8,16 +8,70 @@
     every time that nothing gets printed and return the counter.
     Don't forget to include newlines '\n' in your printf statements!
 */
-int fizzbuzz(int n)
-{
-
+int fizzbuzz(int n) {
+    // char fizz = "Fizz";
+    // char buzz = "Buzz";
+    // char fizz_buzz = "FizzBuzz";
+    int count = 0;
+    for ( int i = 1; i <= n; i++) {
+        if (i % 3 == 0 && i % 5 == 0) {
+            printf("FizzBuzz, %d\n",i);
+            // printf("%s\n", fizz_buzz);
+            // count++;
+        }
+        else if (i % 3 == 0) {
+            printf("Fizz, %d\n",i);
+            // printf("%s\n", fizz);
+            // count++;
+        }
+        else if (i % 5 == 0) {
+            printf("Buzz, %d\n",i);
+            // printf("%s\n", buzz);
+            // count++;
+        }
+        else count++;
+    }
+    return count;
 }
+    // while (count <= n) {
+    //     if (count == 0) {
+    //         count++;
+    //     }
+    //     if (count % 3 == 0 && count % 5 == 0) {
+    //         printf("FizzBuzz, %d\n",count);
+    //         // printf("%s\n", fizz_buzz);
+    //         count++;
+    //     }
+    //     else if (count % 3 == 0) {
+    //         printf("Fizz, %d\n",count);
+    //         // printf("%s\n", fizz);
+    //         count++;
+    //     }
+    //     else if (count % 5 == 0) {
+    //         printf("Buzz, %d\n",count);
+    //         // printf("%s\n", buzz);
+    //         count++;
+    //     }
+    //     else {
+    //         count++;
+    //     }
+    // }
+// return printf("%d\n",count);
+// return count;
+// }
 
+// int main(void){
+//     fizzbuzz(3);
+//     // fizzbuzz(2);
+//     fizzbuzz(10);
+//     // fizzbuzz(15);
+//     return 0;
+// }
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(20);
-
+    fizzbuzz(20); 
     return 0;
 }
 #endif
+
