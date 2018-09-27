@@ -17,7 +17,17 @@
 */
 void quicksort(int *arr, int low, int high)
 {
-
+    int pivot = arr[low];
+    int j = low;
+    for(int i = high; i > low; i--) {
+        if(arr[i] < arr[j]){
+            swap(&arr[i],&arr[j]);
+            printf("SWAPPING\n");
+        }
+        for (int i = 0; i < 16; i++) {
+            printf("%d ", arr[i]);
+        }
+    }
 }
 
 #ifndef TESTING
