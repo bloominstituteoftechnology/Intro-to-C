@@ -9,12 +9,11 @@
 */
 int string_length(char s[])
 {
-    // NOT WORKING 
-    // int size = sizeof(s);
-    printf("%d\n", strlen(s));
-    // return size;
-    return 0;
-
+    int count = 0;
+    while(s[count] != '\0') {
+        count++;
+    }
+    return count;
 }
 
 /*
@@ -27,10 +26,9 @@ char *reverse_string(char rv[], char s[])
 {
     int j = 0;
     for (int i = strlen(s) - 1; i >= 0; i--) {
-        printf("i %d", i);
         rv[j++] = s[i];
-        printf("HERE:%s", rv);
     }
+    rv[j] = '\0';
     return rv;
 }
 
