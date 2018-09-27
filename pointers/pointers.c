@@ -8,6 +8,10 @@
 */
 void swap(int* a, int* b)
 {
+    int temp_a = *a;
+    int temp_b = *b;
+    *a = temp_b;
+    *b = temp_a;
 
 }
 
@@ -21,7 +25,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    while(*str != '\0'){
 
+        // printf("%s\n",str);
+        if (*str == c) {
+            return str;
+        }
+        str++;
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +46,15 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    // printf("THIS\n");
+    // printf("%s\n",y);
+    // printf("%sHEHEHEH\n",x);
+    while(*y != '\0') {
+        *x = *y;
+        y++;
+        x++;        
+    }
+    *x = '\0';
 }
 
 /* 
