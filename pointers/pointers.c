@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int value = *a;
+    *a = *b;
+    *b = value;
 }
 
 /*
@@ -21,7 +23,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    char *f;
+    while (*str != '\0') {
+        if (*str == c) {
+            return str;
+        } else {
+            str++;
+        }
+    }
+    return 0;
 }
 
 /*
@@ -34,7 +44,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0')
+    {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -52,8 +68,25 @@ void string_copy(char *x, char *y)
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
-{
-
+{   
+    while (*m != '\0')
+    {
+        if (*m > *n)
+        {
+            return 1;
+        }
+        else if (*m < *n)
+        {
+            return -1;
+        }
+        *n++;
+        *m++;
+    }
+    if (*n != '\0')
+    {
+        return -1;
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +99,7 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    return 0;
 }
 
 #ifndef TESTING
