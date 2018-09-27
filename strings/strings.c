@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
-
+    int len = 0;
+    for(int i = 0; s[i] != '\0'; i++ ) {
+        len++;
+    }
+return len;
+// return printf("%d", len);
+// return printf("%c", s[0]);
 }
 
 /*
@@ -20,10 +26,45 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int total_len = string_length(s);
+    int change_len = string_length(s);
+    int count = 0;
+    // rv[0] = 'd';
+    // rv[1] = 'u';
+    // rv[2] = 'm';
+    // rv[3] = 'b';
+    // rv[5] = '\0';
 
+    while(count <= total_len) {
+        rv[count] = s[change_len];
+        count++;
+        change_len--;
+    }
+    total_len++;
+    rv[total_len] = '\0';
+    return rv;
+    // rv[(len+1)] = '\0';
+    // for (int i = 0; i <= len; i++) {
+    //     printf("%c", rv[i]);
+    // }
+    // printf("%s", rv);
+    // for (int i = len; i > 0; i--) {
+    //     for ( int j = 0; j < len; i++) {
+    //         printf("%c\n", s[i]);
+    //         rv[j] = s[i];
+    //     }
+    // }   
+    // rv[len] = '\0';
+    // return rv;
 }
 
-#ifndef TESTING
+// int main(void) {
+//     char string[] = "word";
+//     char rv[512];
+//     reverse_string(rv, string);
+// }
+
+// #ifndef TESTING
 int main(void)
 {
     char quote1[] = "Don't forget to be awesome";
@@ -36,5 +77,5 @@ int main(void)
 
     return 0;
 }
-#endif
+// #endif
     
