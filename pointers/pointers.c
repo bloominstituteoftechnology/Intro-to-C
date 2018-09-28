@@ -23,15 +23,22 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-    char *f;
-    while (*str != '\0') {
-        if (*str == c) {
-            return str;
-        } else {
-            str++;
+    for(int i = 0; i <= strlen(str); i++)
+    {
+        if(str[i] == c)
+        {
+            return str + i;
         }
     }
-    return 0;
+    return NULL;
+    // while (*str != '\0') {
+    //     if (*str == c) {
+    //         return str;
+    //     } else {
+    //         str++;
+    //     }
+    // }
+    // return 0;
 }
 
 /*
@@ -44,6 +51,9 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    //y is address
+    //*y is character
+    
     while (*y != '\0')
     {
         *x = *y;
@@ -69,24 +79,32 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {   
-    while (*m != '\0')
-    {
-        if (*m > *n)
-        {
-            return 1;
+    while(*m  == *n){
+        if(*m == '\0'){
+            return 0;
         }
-        else if (*m < *n)
-        {
-            return -1;
-        }
-        *n++;
-        *m++;
+        m++;
+        n++;
     }
-    if (*n != '\0')
-    {
-        return -1;
-    }
-    return 0;
+    return *m - *n;
+    // while (*m != '\0')
+    // {
+    //     if (*m > *n)
+    //     {
+    //         return 1;
+    //     }
+    //     else if (*m < *n)
+    //     {
+    //         return -1;
+    //     }
+    //     *n++;
+    //     *m++;
+    // }
+    // if (*n != '\0')
+    // {
+    //     return -1;
+    // }
+    // return 0;
 }
 
 /*
@@ -98,9 +116,31 @@ int string_compare(char *m, char *n)
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)
-{
-    return 0;
+{   
+    //loop through haystack
+    for(int h = 0; h < strlen(haystack); h++) {
+        if(haystack[h] == needle[0])
+        {
+            char *first = haystack + h;
+            //save position in pointer
+            int n = 1;
+            h++;
+        {
+            while(haystack[h] == needle[n])
+            {
+                h++;
+                n++;
+                if (needle[n] == '\0')
+                {
+                    return first;
+                }
+            }
+        }
+        return NULL;
+        }
+    }
 }
+
 
 #ifndef TESTING
 int main(void)
