@@ -25,20 +25,20 @@ return len;
     the reversed string with a null character. Return the rv array.
 */
 
-char *reverse_string(char rv[], char s[]){
-    int len = string_length(s);
-    for (int j = 0; j <= len; j++) {
-        printf("%c", s[j]);    
-    }
-    for (int i = len; i >= 0; i--) {
-        printf("%c", s[i]);
-    }
-}
-// char *reverse_string(char rv[], char s[])
-// {
-//     int total_len = string_length(s); //26
-//     int change_len = string_length(s); //26
-//     int count = 0;
+// char *reverse_string(char rv[], char s[]){
+//     int len = string_length(s);
+//     for (int j = 0; j <= len; j++) {
+//         printf("%c", s[j]);    
+//     }
+//     for (int i = len; i >= 0; i--) {
+//         printf("%c", s[i]);
+//     }
+// }
+char *reverse_string(char rv[], char s[])
+{
+    int total_len = string_length(s); //26
+    int change_len = string_length(s); //26
+    int count = 0;
 
 //     // rv[0] = 'd';
 //     // rv[1] = 'u';
@@ -46,14 +46,25 @@ char *reverse_string(char rv[], char s[]){
 //     // rv[3] = 'b';
 //     // rv[5] = '\0';
 
-//     while(count <= total_len) {
-//         rv[count] = s[change_len];
-//         count++;
-//         change_len--;
-//     }
-//     // total_len++;
-//     rv[total_len] = '\0';
-//     return rv;
+    while(count <= total_len) {
+        // printf("%c", s[count]);
+        // printf("%c", s[change_len]);
+        rv[count] = s[change_len];
+        // printf("%c", rv[count]);
+        count++;
+        change_len--;
+    }
+    total_len++;
+    rv[total_len] = '\0';
+    // int count1 = 0;
+    // while (count1 <= total_len) {
+    //     printf("%c", rv[count1]);
+    //     count1++;
+
+    // }
+    return rv;
+    // return 0;
+}
 //     // rv[(len+1)] = '\0';
 //     // for (int i = 0; i <= len; i++) {
 //     //     printf("%c", rv[i]);
@@ -84,8 +95,8 @@ int main(void)
     char rv[512];
 
     printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
-    // printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
-    reverse_string(rv, quote2);
+    printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
+    // reverse_string(rv, quote2);
     // printf("%s\n", reverse_string(rv, quote2));
     return 0;
 }
