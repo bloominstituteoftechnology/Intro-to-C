@@ -17,10 +17,69 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    // if( arr[low] > arr[high]) {
+    //     swap(&arr[low], &arr[high]);
+    //     high--;
+    //     quicksort(arr, 0, high);
 
+    // }
+    if(arr[low] > arr[high]){
+        swap(&arr[low], &arr[high]);
+        low++;
+        quicksort(arr, low, high);
+    }
+    else if (arr[low] < arr[high]) {
+        high--;
+        quicksort(arr, low, high);
+    }
+
+    // while (arr[low] > arr[high]){
+    //     if (arr[low] < arr[high]){
+    //         high--;
+    //         quicksort(arr, low, high);
+    //     }
+    //     else {
+    //         swap(&arr[low], &arr[high]);
+    //         quicksort(arr, low, high);
+    //     }
+    // }
 }
 
-#ifndef TESTING
+    // for(int i = high; i >= 0; i--) {
+    //     if (arr[low] > arr[i]){
+    //         swap(&arr[low], &arr[i]);
+    //         quicksort(arr, 0, high);
+    //     }
+    //     else {
+    //         swap(&arr[low], &arr[i]);
+    //     }
+    // }
+
+    // while(start < end) {
+    //     if (start < end) {
+    //         high--;
+    //         end = arr[high];
+    //         printf("%d\n", end);
+    //     }
+    //     else {
+    //         quicksort(arr, 0, n-1 );
+    //     }
+    // }
+    // printf('%d\n', low);
+    // printf('%d\n', high);
+    // while( arr[low] < arr[high]) {
+    // if (arr[low] < arr[high]) {
+    //     high--;
+    // }
+    // else {
+    //     // void swap(arr[low], arr[high]);
+    //     // void quicksort(arr, low, high);
+    //     return 0;
+    // }
+// }
+
+
+// #ifndef TESTING
 int main(void)
 {
     int arr1[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
@@ -35,4 +94,4 @@ int main(void)
 
     return 0;
 }
-#endif
+// #endif
