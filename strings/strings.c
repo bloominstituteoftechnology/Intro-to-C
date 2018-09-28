@@ -37,7 +37,8 @@ return len;
 char *reverse_string(char rv[], char s[])
 {
     int total_len = string_length(s); //26
-    int change_len = string_length(s); //26
+    int change_len = string_length(s);
+    change_len = (change_len -1); //26
     int count = 0;
 
 //     // rv[0] = 'd';
@@ -54,7 +55,7 @@ char *reverse_string(char rv[], char s[])
         count++;
         change_len--;
     }
-    total_len++;
+    // total_len++;
     rv[total_len] = '\0';
     // int count1 = 0;
     // while (count1 <= total_len) {
@@ -86,11 +87,11 @@ char *reverse_string(char rv[], char s[])
 //     reverse_string(rv, string);
 // }
 
-// #ifndef TESTING
+#ifndef TESTING
 int main(void)
 {
     char quote1[] = "Don't forget to be awesome";
-    char quote2[] = "Sa man a plan a canal panamaE";
+    char quote2[] = "a man a plan a canal panama";
 
     char rv[512];
 
@@ -100,5 +101,5 @@ int main(void)
     // printf("%s\n", reverse_string(rv, quote2));
     return 0;
 }
-// #endif
+#endif
     
