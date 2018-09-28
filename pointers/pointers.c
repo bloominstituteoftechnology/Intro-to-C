@@ -8,7 +8,14 @@
 */
 void swap(int* a, int* b)
 {
-
+    // printf("%d\n", a);
+    // printf("%d\n", *a);
+    // printf("%d\n", b);
+    // printf("%d\n", *b);
+    int x = *a;
+    int y = *b;
+    *a = y;
+    *b = x;
 }
 
 /*
@@ -21,7 +28,20 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    int count = 0;
+    char search = '\0';
+    while (search != c || search == 0) {
+        if (str[count] == c) {
+            search = c;
+            return count;
+        }
+        else if (str[count] == '\0') {
+            search = 0;
+        }
+    return count;
+    }
+    printf('%c\n', str[count]);
+    return str[count];
 }
 
 /*
@@ -69,7 +89,7 @@ char *find_string(char *haystack, char *needle)
 
 }
 
-#ifndef TESTING
+// #ifndef TESTING
 int main(void)
 {
     int x = 10, y = 20;
@@ -93,4 +113,4 @@ int main(void)
 
     return 0;
 }
-#endif
+// #endif
