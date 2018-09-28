@@ -73,7 +73,7 @@ Let's say we have a pointer to a string like so:
 We can loop through the characters in this string by doing this:
 ```c
     while (*str != '\0') {
-        printf("%s", *str);
+        printf("%c", *str);
         str++;
     }
 ```
