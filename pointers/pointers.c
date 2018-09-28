@@ -26,23 +26,28 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
-{
-    int count = 0;
-    char search = '\0';
-    while (search != c || search == 0) {
-        if (str[count] == c) {
-            search = c;
-            return count;
+char *find_char(char *str, int c) {
+    for (int i = 0; i < strlen(str); i++){
+        if (str[i] == c) {
+            return str + i;
         }
-        else if (str[count] == '\0') {
-            search = 0;
-        }
-    return count;
     }
-    printf('%c\n', str[count]);
-    return str[count];
 }
+// {
+//     int count = 0;
+//     char search = '\0';
+//     while (search != c || search == 0) {
+//         if (str[count] == c) {
+//             search = c;
+//             return count;
+//         }
+//         else if (str[count] == '\0') {
+//             search = 0;
+//         }
+//     // printf('%c\n', str[count]);
+//     return str+count;
+//     }
+// }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -54,7 +59,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    // y is an address
+    // *y is a character
+    while(*y != '\0') {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -73,7 +85,21 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    //dereference to compare characters
+    while ( *m == *n) {
+        if ( *m =='\0') {
+            return 0;
+        }
+        m++;
+        n++;
+    }
+    // if (*m > *n) {
+    //     return 1;
+    // }
+    // else {
+    //     return -1;
+    // }
+    return *m - *n;
 }
 
 /*
@@ -86,7 +112,25 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    //loop through haystack
+    for ( int h = 0; h < strlen(haystack); h++) {
+        //char if need is here
+        if (haystack[h] == needle[0]) {
+            //save poisition as a pointer
+            char *first = haystack + h;
+            int n = 1;
+            h++;
+            //find rest of needle
+            while(haystack[h] == needle[n]) {
+                h++;
+                n++;
+                if( needle[n] == '\0') {
+                    return first;
+                }
+            }
+        }
+    }
+    return NULL;
 }
 
 // #ifndef TESTING
