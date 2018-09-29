@@ -15,8 +15,38 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
 void quicksort(int *arr, int low, int high)
 {
+    int i, j, pivot, temp;
+
+    if(low < high){
+        pivot=low;
+        i = low;
+        j = high;
+
+    while(i<j) {
+        while (arr[i] <= arr[pivot] && i < high)
+            i++;
+        while( arr[j] > arr[pivot])
+            j--;
+            if(i<j) {
+                temp=arr[i];
+                arr[i] = arr[j];
+                arr[j]=temp;
+            }
+    }
+
+    temp = arr[pivot];
+    arr[pivot] = arr[j];
+    arr[j] = temp;
+    quicksort(arr, low, j - 1);
+    quicksort(arr, j + 1, high);
+    }
+
+}
+// void quicksort(int *arr, int low, int high)
+// {
     // int 
     // if( arr[low] > arr[high]) {
     //     swap(&arr[low], &arr[high]);
@@ -24,15 +54,15 @@ void quicksort(int *arr, int low, int high)
     //     quicksort(arr, 0, high);
 
     // }
-    if(arr[low] > arr[high]){
-        swap(&arr[low], &arr[high]);
-        low++;
-        quicksort(arr, low, high);
-    }
-    else if (arr[low] < arr[high]) {
-        high--;
-        quicksort(arr, low, high);
-    }
+    // if(arr[low] > arr[high]){
+    //     swap(&arr[low], &arr[high]);
+    //     low++;
+    //     quicksort(arr, low, high);
+    // }
+    // else if (arr[low] < arr[high]) {
+    //     high--;
+    //     quicksort(arr, low, high);
+    // }
 
     // while (arr[low] > arr[high]){
     //     if (arr[low] < arr[high]){
@@ -44,7 +74,7 @@ void quicksort(int *arr, int low, int high)
     //         quicksort(arr, low, high);
     //     }
     // }
-}
+// }
 
     // for(int i = high; i >= 0; i--) {
     //     if (arr[low] > arr[i]){
