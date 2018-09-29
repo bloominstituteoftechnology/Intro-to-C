@@ -11,21 +11,33 @@ typedef struct Queue {
 /*
     Creates a queue by allocating the appropriate amount of memory for an
     instance of the Queue struct, and initializes all of the fields of the
-    struct. Also allocates memory for the queue's storage structure. 
+    struct. Also allocates memory for the queue's storage structure.
 */
 Queue *createQueue(unsigned capacity)
 {
-
+    Queue *q = malloc(sizeof(Queue));
+    q->storage = malloc(sizeof(int) * capacity);
+    q->length = 0;
+    q->capacity = capacity;
+    return q;
 }
 
 /*
     Adds the given item to the end of the queue. If the queue does
-    not have room, expand the queue's available storage so that it 
+    not have room, expand the queue's available storage so that it
     does have room for the additional item.
 */
 void enqueue(Queue *q, int item)
 {
-
+    if (q->length == q->capacity)
+    {
+        printf("Queue is full\n");
+    }
+    else
+    {
+        q->storage[q->length] = item;
+        q->length++;
+    }
 }
 
 /*
@@ -34,16 +46,31 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-
+    if (q->length == 0)
+    {
+        // printf("Queue is empty ");
+        return -1;
+    }
+    else
+    {
+        int item = q->storage[0];
+        for (unsigned int i = 0; i < q->length; i++)
+        {
+            q->storage[i] = q->storage[i+1];
+        }
+        q->length--;
+        return item;
+    }
 }
 
 /*
     Frees the memory used to hold the queue instance and its
-    associated storage. 
+    associated storage.
 */
 void destroyQueue(Queue *q)
 {
-
+    free(q->storage);
+    free(q);
 }
 
 
