@@ -13,7 +13,15 @@
 */
 char *string_dup(char *src)
 {
-
+    void *dup_str = malloc(string_length(src));
+    int count = 0;
+    while (*src != '\0') {
+        *(char *)(dup_str + count) = *src;
+        count++;
+        src++;
+    }
+    *(char *)(dup_str + count) = '\0';
+    return dup_str;
 }
 
 /*
@@ -26,7 +34,11 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    int count = 0;
+    while (count < n) {
+        *(char *)(dest + count) = *(char *)(src + count);
+        count++;
+    }
 }
 
 /*
@@ -43,7 +55,14 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+  void *new_ptr = malloc(new_size);
+  if (new_size > old_size) {
+    mem_copy(new_ptr, ptr, old_size);
+  }
+  else {
+    mem_copy(new_ptr, ptr, new_size);
+  }
+  return new_ptr;
 }
 
 #ifndef TESTING
@@ -53,6 +72,8 @@ int main(void)
     char *dup = string_dup(s);
 
     printf("Duplicated string: %s\n", dup);
+
+    free(dup);
 
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
@@ -66,6 +87,7 @@ int main(void)
         printf("%d ", target[i]);
     }
 
+    free(target);
     printf("\n");
 
     char *url = string_dup("http://lambdaschool.com");
@@ -83,8 +105,11 @@ int main(void)
         path++;
     }
 
+    *p = '\0';
+
     printf("Full path string: %s\n", new_url);
 
+    free(new_url);
     return 0;
 }
 #endif
