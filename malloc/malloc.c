@@ -13,6 +13,22 @@
 */
 char *string_dup(char *src)
 {
+    // printf("string %s\n", src);
+    int len = string_length(src); // tested in main, this still finds the len of the string
+
+    char *dup_str = malloc(len + 1); // pointer reference/ duplicate
+    
+    // itterates then copies string into the duplicate variable
+    for(int i = 0; i < len; i++)
+    {
+        // copy contents
+        dup_str[i] = src[i];
+    }
+    
+    // signify end of string
+    *(dup_str + len) = '\0';
+
+    return dup_str;
 
 }
 
