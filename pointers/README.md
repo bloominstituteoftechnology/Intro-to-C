@@ -80,6 +80,10 @@ We can loop through the characters in this string by doing this:
 This loop will print out each character in the string. Indeed, this loop is pretty much analogous to iterating through an array. More precisely though, on each iteration of this while loop, we're incrementing the spot the pointer points to by one. At the beginning of the loop, `*str` points to the first character in the string, `S`. Then, on the next iteration, it gets incremented and then prints out `o`. This keeps going until the pointer points to the null character, which terminates the loop. 
 
 Armed with this knowledge regarding pointers and pointer arithmetic, we can rewrite the `reverse_string` function from the last module to use pointers instead of allocating additional memory for the reversed string. This has the added benefit of performing the reverse in-place.
+// I have beat my head on the below algorithm for about an hour and still don't grasp...
+// I even tried to write a similar algorithm in JavaScript and Python, but this clearly has 
+// something to do with pointers. I do not grasp...
+
 ```c
     void *reverse_string(char *s)
     {
