@@ -87,11 +87,14 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    char *first = haystack;
     while (*haystack != '\0') {
-        while (*needle == *haystack) {
-            *haystack++;
-            *needle++;
+        char *first;
+        if (*needle == *haystack) {
+            first = haystack;
+            while (*needle == *haystack) {
+                *haystack++;
+                *needle++;
+            }
         }
         if (*needle == '\0'){
             return first;
@@ -112,19 +115,19 @@ int main(void)
     printf("x=%d, y=%d\n", x, y);
 
     char *hello = "Hello";
-    // char *world = "World";
+    char *world = "World";
     char buffer[1024];
 
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    // printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare(hello, world));
 
     char *found_char = find_char(hello, 'e');
-    // char *found_string = find_string(world, "or");
+    char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }
