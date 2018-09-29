@@ -8,7 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
-
+    char *name; // needs to point to tony, char *
+    int age;
+    int height;
+    int weight;
 } Person;
 
 /*
@@ -21,6 +24,15 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
+    // allocated stack/ object memory to person
+    Person *who = malloc(sizeof(struct Person));
+
+    // who->name = name;
+    who->age = age;
+    who->height = height;
+    who->weight = weight;
+
+    return who;
 
 }
 

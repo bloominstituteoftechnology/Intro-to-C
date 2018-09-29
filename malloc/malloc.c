@@ -24,7 +24,7 @@ char *string_dup(char *src)
         // copy contents
         dup_str[i] = src[i];
     }
-    
+
     // signify end of string
     *(dup_str + len) = '\0';
 
@@ -42,6 +42,17 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    // printf("%d\n", n);
+
+    // cast to char pointers
+    char *new_src = src;
+    char *new_dest = dest;
+
+    // copy memory to new dest
+    for(int i = 0; i < n; i++)
+    {
+        *(new_dest + i) = *(new_src + i);
+    }
 
 }
 
