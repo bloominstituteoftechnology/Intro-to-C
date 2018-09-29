@@ -2,10 +2,11 @@
 #include <stdlib.h>
 #include "lib.h"
 
-typedef struct Queue {
+typedef struct Queue
+{
+    int *storage;
     unsigned int length;
     unsigned int capacity;
-    int *storage;
 } Queue;
 
 /*
@@ -15,7 +16,12 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
+    Queue *q = malloc(sizeof(Queue));
+    q->storage = malloc(sizeof(int) * capacity);
+    q->length = 0;
+    q->capacity = capacity;
 
+    return q;
 }
 
 /*
@@ -25,7 +31,15 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
-
+    if (q->length == q->capacity)
+    {
+        printf("Queue full");
+    }
+    else
+    {
+        q->storage[q->length] = item;
+        q->length++;
+    }
 }
 
 /*
@@ -34,7 +48,13 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-
+    if (q->length == 0)
+    {
+        printf("Queue empty");
+        return -1;
+    }
+    q->length--;
+    return q->storage[0];
 }
 
 /*
@@ -43,9 +63,7 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
-
 }
-
 
 #ifndef TESTING
 int main(void)
