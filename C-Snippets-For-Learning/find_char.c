@@ -2,17 +2,13 @@
 
 char *find_char(char *str, int c)
 {
-    printf("%d", c);
-    while(*str != '\0')
+    for (int i = 0; i < strlen(str); i++)
     {
-        printf("%d", malloc(*str));
-        if (malloc(*str) == str[c])
+        if (str[i] == c)
         {
-            return str;
+            return str + i;
         }
-        str++;
     }
-    return NULL;
 }
 
 void main(void) 
