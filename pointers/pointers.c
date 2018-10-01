@@ -4,11 +4,14 @@
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
     address it's referring to) or the value at the address it's 
-    pointing at.
+    pointing at. 
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+    return;
 }
 
 /*
@@ -21,7 +24,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str != '\0') {
+        if (*str == c) {
+            return str;
+        } else {
+            str++;
+        }
+    }
+    return str;
 }
 
 /*
@@ -34,7 +44,18 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    // while (*y != '\0') {
+    //     *x = *y;
+    //     x++;
+    //     y++;
+    // }
+    // *x = '\0';
+    for (unsigned long i = 0; i < (sizeof(x)/sizeof(char)); i++) {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -53,7 +74,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    while (*m != '\0' && *n != '\0') {
+        if (*m > *n) {
+            return 1;
+        }
+        else if (*m < *n) {
+            return -1;
+        }
+        m++;
+        n++;
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +97,28 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    char empty[3];
+    printf("SIZE %lu\n", sizeof(empty));
+    printf("OTHER SIZE %lu\n", sizeof(haystack));
+    string_copy(empty, haystack);
+    printf("HERE %s\n", empty);
+    // while (*haystack != '\0') {
+    //     if (*haystack == *needle) {
+    //         char *found = haystack;
+    //         while (*needle != '\0') {
+    //             needle++;
+    //             printf("1 %c\n", *needle);
+    //             haystack++;
+    //             printf("2 %c\n", *haystack);
+    //             if (*needle != *haystack) {
+    //                 return "Not found";
+    //             }
+    //         }
+    //         return found;
+    //     }
+    //     haystack++;
+    // }
+    // return "Not fooound";
 }
 
 #ifndef TESTING
