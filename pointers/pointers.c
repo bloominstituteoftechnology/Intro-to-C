@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +23,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] == c)
+        {
+            return &str[i];
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +43,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int end = 0;
+    for (int i = 0; y[i] != '\0'; i++)
+    {
+        x[i] = y[i];
+        end++;
+    }
+    x[end] = '\0';
+    return &x;
 }
 
 /* 
@@ -53,7 +69,28 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    for (int i = 0; m[i] != '\0' && n[i] != '\0'; i++)
+    {
+        if (m[i] < n[i])
+        {
+            return -1;
+        }
+        else if (m[i] > n[i])
+        {
+            return 1;
+        }
+    }
 
+    if (strlen(m) != strlen(n))
+    {
+        if (strlen(m) < strlen(n))
+        {
+            return -1;
+        }
+        return 1;
+    }
+
+    return 0;
 }
 
 /*
@@ -66,7 +103,23 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    while (*haystack)
+    {
+        char *Begin = haystack;
+        char *substr = needle;
 
+        while (*haystack && *substr && *haystack == *substr)
+        {
+            haystack++;
+            substr++;
+        }
+
+        if (!*substr)
+            return Begin;
+
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
@@ -76,8 +129,8 @@ int main(void)
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
+    char *hello = "firetruck";
+    char *world = "firetrucks";
     char buffer[1024];
 
     string_copy(buffer, hello);
