@@ -14,7 +14,7 @@ void swap(int* a, int* b)
 }
 
 /*
-    Searches the input string `str` for the first instance of the 
+    Searches the input string `str` for the f instance of the 
     character `c` (an unsigned char). This function returns a pointer
     that points to the first instance of the character `c` in the
     input string `str`.
@@ -66,9 +66,19 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
-int string_compare(char *m, char *n)
-{
-
+int string_compare(char *m, char *n){
+    while(*m != '\0'){
+        if(m > n){
+            return 1;
+        }
+        if(m < n){
+            return -1;
+        }
+    }
+    if(*n != '\0'){
+        return -1;
+    }
+    return 0;
 }
 
 /*
@@ -81,7 +91,21 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    for (int i = 0; i < strlen(haystack); i++){
+        if (haystack[i] == needle[0]){
+            char *first_instance = haystack + i;
+            int n = 1;
+            i++;
+            while (haystack[i] == needle[n]){
+                i++;
+                n++;
+                if (needle[n] == '\0'){
+                    return first_instance;
+                }
+            }
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
@@ -104,7 +128,7 @@ int main(void)
     char *found_string = find_string(world, "or");
 
     printf("Found char: %c\n", *found_char);
-    printf("Found string: %s    \n", found_string);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }

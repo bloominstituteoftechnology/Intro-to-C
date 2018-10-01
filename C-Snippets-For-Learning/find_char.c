@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+
 char *find_char(char *str, int c)
 {
     for (int i = 0; i < strlen(str); i++)
