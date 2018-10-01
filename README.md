@@ -1,4 +1,4 @@
-# Introduction to the C Programming Language
+# Introduction to the C Programming Language 
 
 Welcome to your first C lab! 
 
