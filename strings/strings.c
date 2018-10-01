@@ -9,6 +9,11 @@
 */
 int string_length(char s[])
 {
+    int counter = 0;
+    while (s[counter] != '\0') {
+        counter++;
+    }
+    return counter;
 
 }
 
@@ -19,7 +24,17 @@ int string_length(char s[])
     the reversed string with a null character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[])
-{
+{ 
+    int length = string_length(s);
+    int t = 0;
+    for (int i = length-1; i >= 0; i--) 
+    {
+        char item = s[i];
+        rv[t] = item;
+        t++;
+    }
+    rv[t] = '\0';
+    return rv;
 
 }
 

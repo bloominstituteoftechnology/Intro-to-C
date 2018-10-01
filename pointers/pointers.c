@@ -8,6 +8,10 @@
 */
 void swap(int* a, int* b)
 {
+    int c = *a;
+    *a = *b;
+    *b = c;
+
 
 }
 
@@ -21,6 +25,17 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+  
+  int t = 0;
+  for (int i = 0; i >= 0; i++)
+   {
+       if (i != 'c') {
+           t++;
+       }
+       else if (i == 'c') {
+           return str[t];
+       }
+   }
 
 }
 
