@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
@@ -23,13 +23,12 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-    while(*str != '\0')
+    for(int i = 0; i <= strlen(str); i++)
     {
-        if (*str == c)
+        if(str[i] == c)
         {
-            return str;
+            return str + i;
         }
-        str++;
     }
     return NULL;
 }
@@ -44,7 +43,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+  while (*y != '\0')
+  {
+      *x = *y;
+      x++;
+      y++;
+  }
+  *x = '\0';
 }
 
 /* 
@@ -98,8 +103,8 @@ int main(void)
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    printf("Found char: %c\n", *found_char);
+    printf("Found string: %s    \n", found_string);
 
     return 0;
 }

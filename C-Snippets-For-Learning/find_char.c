@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 char *find_char(char *str, int c)
 {
     for (int i = 0; i < strlen(str); i++)
@@ -9,10 +9,13 @@ char *find_char(char *str, int c)
             return str + i;
         }
     }
+    return NULL;
 }
 
-void main(void) 
+int main(void) 
 {
-    char string[] = "string";
-    printf("This is what we found: %s", find_char(string, "g"));
+    char *string = "string";
+    char *found_char = find_char(string, 'g');
+    printf("Found char: %c\n", *found_char);
+    return 0;
 }
