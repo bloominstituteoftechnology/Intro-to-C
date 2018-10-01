@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 /*
     Given a character array s, return the number of characters 
     held inside it.
@@ -8,8 +8,8 @@
     Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
-{
-
+{	
+	return sizeof(s);
 }
 
 /*
@@ -20,7 +20,13 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+	int count = 0;
+	for(int i = string_length(s); i > 0; --i){
+		rv[count] = s[i];
+	}
+	printf("%s",rv);
+	s = NULL;
+	return rv;
 }
 
 #ifndef TESTING
