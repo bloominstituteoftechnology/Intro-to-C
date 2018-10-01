@@ -10,7 +10,24 @@
 */
 int fizzbuzz(int n)
 {
+    for (int i = 0; i < 100; i++)
+        if (n % 3 == 0 && n % 5 == 0) 
+        {
+            return 'fizzbuzz';
+        }
+        elif (n % 3 == 0)
+        {
+            return 'fizz';
+        }
+        elif (n % 5 ==  0)
+        {
+            return 'buzz';
+        }
 
+        elif (n % 3 != 0 || n % 5 != 0)
+        {
+            return n;
+        }
 }
 
 #ifndef TESTING
