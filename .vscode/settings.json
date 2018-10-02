@@ -5,6 +5,7 @@
         "minunit.h\u0000inunit.h": "c",
         "minunit.h\u0000minunit.h": "c",
         "minunit.h\u0000nunit.h": "c",
-        "utils.h\u0000utils.h": "c"
+        "utils.h\u0000utils.h": "c",
+        "stdlib.h": "c"
     }
 }

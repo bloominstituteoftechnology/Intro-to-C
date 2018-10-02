@@ -88,6 +88,8 @@ char *all_tests()
     mu_suite_start();
 
     mu_run_test(test_queue_creation);
+    mu_run_test(test_enqueue_and_dequeue);
+    mu_run_test(test_queue_expansion);
 
     return NULL;
 }
