@@ -9,9 +9,9 @@
 */
 void swap(int* a, int* b)
 {
-  int b_prev_value = *b;
-  *b = *a;
-  *a = b_prev_value;
+    int b_prev_value = *b;
+    *b = *a;
+    *a = b_prev_value;
 }
 
 /*
@@ -99,21 +99,24 @@ int string_compare(char *m, char *n)
 char *find_string(char *haystack, char *needle)
 {
     unsigned int counter = 0;
-    for (unsigned int out = 0; out < strlen(haystack); out++) {
-
-        if(haystack[out] == needle[0]) {
-            for (unsigned int i = 0; i < strlen(needle); i++) {
-                //hello, world
-                if(haystack[out + i] != needle[i]) {
+    char *hay_copy = haystack;
+    while (*hay_copy != '\0') {
+    // printf("%c, %c\n", *hay_copy, *needle);
+        
+        if (*hay_copy == *needle) {
+            for(unsigned int i = 0; i < strlen(needle); i++) {
+                // printf("%c", *(hay_copy+i));
+                if (*(hay_copy + i) != needle[i]) {
                     break;
                 }
-                    counter++;
+                counter++;
             }
+            // printf("%d", counter);
             if(counter == strlen(needle)) {
-                return haystack;
+                return hay_copy;
             }
-            counter = 0;
         }
+        hay_copy++;
     }
     return NULL;
 }
@@ -126,7 +129,7 @@ int main(void)
     printf("x=%d, y=%d\n", x, y);
 
     char *hello = "Hello";
-    // char *world = "World";
+    char *world = "World";
     char buffer[1024];
 
     string_copy(buffer, hello);
@@ -135,7 +138,7 @@ int main(void)
     printf("Comparison is %d\n", string_compare("hello, world", "hiya"));
 
     char *found_char = find_char(hello, 'e');
-    char *found_string = find_string("LambdaSchool", "Lambda");
+    char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
