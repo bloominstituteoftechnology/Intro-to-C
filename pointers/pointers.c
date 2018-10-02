@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
@@ -8,7 +8,13 @@
 */
 void swap(int* a, int* b)
 {
+    int vala = *a; //Store the value of a
+    // int valb = *b; //Store the value of b
 
+    // Swap
+    // *a = valb;
+    *a = *b;
+    *b = vala;
 }
 
 /*
@@ -21,7 +27,11 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str){
+        if (*str == c) return str;
+        str++;
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +44,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+  int cnt = 0;
+  for (int i = 0; *(y+i) != 0; i++)
+  {
+    x[i] = y[i];
+    cnt++;
+  }
+  x[cnt] = '\0';
 }
 
 /* 
@@ -53,7 +69,42 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    // Get the lengths of the char *'s.
+    int mlen = strlen(m);
+    int nlen = strlen(n);
+    int maxlen;
+    
+    //Get the one that bigger
+    if (mlen > nlen) maxlen = mlen;
+    else maxlen = nlen;
+    
+    //Loop through the one that's bigger
+    for (int i=0; i<maxlen; i++)
+    {          
+        // If the strings are not the same lengths
+        if (mlen != nlen){
 
+            //If i is outside the range of m then return -1
+            if (i == mlen-1) return -1;
+            
+            //If i is outside the range of n then return 1
+            else if (i == nlen-1) return 1;
+            
+            //Not that they are in bounds, compare char for char
+            else {
+                if (m[i] < n[i]) return -1;
+                else if (m[i] > n[i]) return 1;
+            }
+        }
+        else {
+            //Since they are the same length, bounds checking not needed.
+            if (m[i] < n[i]) return -1;
+            else if (m[i] > n[i]) return 1;
+            
+        }
+    }
+    //If the always match, return 0
+    return 0;
 }
 
 /*
@@ -66,7 +117,19 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    // Take the first char of the needle and try and find it
+    char *substring = find_char(haystack,needle[0]);
 
+    printf("Substring is : %s\n", substring);
+
+    if (substring){
+        //Compare needle and substring only for the length of needle
+        for (int n=0; n<strlen(needle); n++){
+            if (substring[n] != needle[n]) return NULL;
+        }
+        return substring;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
