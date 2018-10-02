@@ -8,8 +8,24 @@
     Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
-{
+{   
+    //Initialze the length
+    int len = 0;
 
+    //Using Pointer Arithmentic:
+    //Start at 0, while the value to what it's pointing to is NOT 0, keep going
+    for (int i=0; *(s+i) != 0; i++ )
+    {
+        len++;
+    }
+
+    //Using Arrays
+    // for (int i=0; s[i] != 0; i++ )
+    // {
+    //     len++;
+    // }
+
+    return len;
 }
 
 /*
@@ -20,7 +36,14 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    for (int i=string_length(s)-1; i >= 0; i--){
+        rv[string_length(s)-i-1] = s[i];
+    }
+    rv[string_length(s)] = '\0';
+    
+    printf("reverse order: %s",rv);
+    
+    return rv;
 }
 
 #ifndef TESTING
