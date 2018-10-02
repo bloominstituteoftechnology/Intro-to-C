@@ -86,6 +86,15 @@ int string_compare(char *m, char *n)
     to the first instance of the string `needle` in the input
     string `haystack`. 
 
+    1. loop thru haystack
+    2. look for start of haystack that matches start of needle
+    3. check that whole needle matches 
+    4. if it does, increment elements in haystack and elements in needle
+    5. set a pointer to that location
+    6. use a null terminator to stop
+    7. return pointer
+    8. if needle doesn't exist, return 0
+
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)

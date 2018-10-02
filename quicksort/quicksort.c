@@ -15,9 +15,42 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
+// http://enee351.github.io/discussions/week6/quicksort.c
+
+/* This first function takes the last element as pivot,
+   places the pivot element at its correct position in 
+   a sorted array, and places all smaller elementto left 
+   of pivot and all greater elements to right of pivot */
+
+int partition (int arr[], int low, int high)
+{
+    int pivot = arr[high];
+    int i = (low - 1);
+    
+    int j;
+    for (j = low; j <= high- 1; j++)
+    {
+        if (arr[j] <= pivot)
+        {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
 void quicksort(int *arr, int low, int high)
 {
-
+    if (low < high) {
+        // find partition
+        int part = partition(arr, low, high);
+        // sort elements before partition
+        quicksort(arr, low, part-1);
+        // sort elements after partition
+        quicksort(arr, part+1, high);
+    }
 }
 
 #ifndef TESTING

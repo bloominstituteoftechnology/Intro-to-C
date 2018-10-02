@@ -30,10 +30,10 @@ char *reverse_string(char rv[], char s[])
     int j = 0; // set j to 0
 
     for (int i = len - 1; i >= 0; i--) { // initialize decrementing for loop
-        rv[j++] = s[i]; // increment j in rv as i in s decrements
+        // rv[j++] = s[i]; // increment j in rv as i in s decrements
         // had this before
-        // rv[j] = s[i]
-        // j++
+        rv[j] = s[i];
+        j++;
     }
 
     rv[len] = '\0'; // terminate the reversed string with a null character
