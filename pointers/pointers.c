@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int c = *a;
+    *a = *b;
+    *b = c;
 }
 
 /*
@@ -21,6 +23,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    printf("\n %c \n", c);
+
+    for(int i = 0; str[i] != '\0'; i++) {
+        printf("\n %c \n", str[i]);
+        if(str[i] == c){
+            int *a = str[i];
+            return a;
+        }
+    }
 
 }
 
@@ -34,7 +45,26 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    char xStringStart = *x;
+    char curLetter = 0;
+    int yPosition = y;
+    int xPosition = x;
+    int count = 0;
+    printf("\n%s\n", y);
+    printf("\n%s\n", x); //prints nothing
+    printf("\n%s\n", "start loop");
+    while(y[count]){ //while *y is not \0
+        x[count] = y[count];
+        printf("\n%c\n", x[count]);
+        count++;
 
+        // printf("\n%s\n", x);
+    }
+    // printf("\n%c\n", x[count]);
+    // count++;
+    // printf("\n%c\n", x[count]);
+    // x[count] = '\0';
+    // printf("\n%s\n", x);
 }
 
 /* 
