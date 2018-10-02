@@ -23,15 +23,12 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-    char *p;
-    for (int i = 0; str[i] != '\0'; i++)
+    while (*str)
     {
-        if (str[i] == c)
-        {
-            p = str[i];
-            return *p; 
-        }
+        if (*str == c) return str;
+        str++;
     }
+    return NULL;
 }
 
 /*
@@ -92,11 +89,20 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-  char word[1024];
-  for (int i = 0; haystack[i] != '\0'; i++)
-  {
-
-  } 
+    while (*haystack)
+    {
+        char *start = haystack;
+        char *substr = needle; 
+    
+        while ((*haystack && *substr) && (*haystack == *substr))
+        {
+            haystack++;
+            substr++;
+        }
+        if (!*substr) return start;
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
