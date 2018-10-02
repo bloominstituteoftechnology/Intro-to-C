@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +23,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    for (; *str != '\0'; str++)
+        {
+            if (*str == c)
+            {
+                return str;
+            }
+        }
+        return NULL;
 }
 
 /*
@@ -34,12 +43,16 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while(*y) {
+        *x = *y;
+        y++;
+        x++;
+    }
 }
 
 /* 
     Compares the character strings m and n and returns negative,
-    0, or positive if n is lexicographically less than, equal to,
+    0, or positive if m is lexicographically less than, equal to,
     or greater than n. To calculate lexicographic difference, find
     the difference between the first characters in m and n that differ.
     
@@ -53,7 +66,12 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    for (; *m == *n; m++, n++) {
+        if (*m == '\0') {
+            return 0;
+        }
+    }
+    return *m - *n;
 }
 
 /*
@@ -66,7 +84,25 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    char *p = haystack;
 
+    while (*p != '\0') {
+        char *p_start = p;
+        char *q = needle;
+
+        while (*p != '\0' && *q != '\0' && *p == *q) {
+            p++;
+            q++;
+        }
+
+        if (*q == '\0') {
+            return p_start;
+        }
+
+        p++;
+    }    
+
+    return NULL;
 }
 
 #ifndef TESTING
