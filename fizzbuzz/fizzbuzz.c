@@ -26,7 +26,6 @@ int fizzbuzz(int n)
             // printf("i: %d\n", i);
             // printf("Counter incremented to: %d\n", counter);
         }
-  
     }
 
     return counter;
