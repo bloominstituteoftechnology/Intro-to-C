@@ -10,22 +10,25 @@
 */
 int fizzbuzz(int n)
 {
-    for (n = 1; n <= 100; n++)
-    {
-        if ((n%15) == 0) 
-            printf ("FizzBuzz\t");
+    int counter = 0;
+    for (int i= 1; i <= n; i++){
+      //had n&3 and n%5 yet same as using one number, 15 (both divisible by 15)
+        if ((i%15) == 0){ 
+            printf ("FizzBuzz\n");
+        }
+        else if ((i % 3) == 0){
+            printf ("Fizz\n");
+        }
         
-        else if ((n % 3) == 0)
-            printf ("Fizz\t");
+        else if ((i % 5) == 0){
+            printf ("Buzz\n");
+        }
         
-        else if ((n % 5) == 0)
-            printf ("Buzz\t");
-        
-        else 
-            printf("%d\t", n);
+        else {
+            counter ++;
     }
-
-    return 0;
+    }
+    return counter;
 }
 
 #ifndef TESTING
