@@ -13,7 +13,14 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src); // find length using string_length
+    char *srccopy = malloc(length + 1); // allocate memory for a pointer
 
+    for (int i = 0; i <= length; i++) { // for loop thru elements in src and srccopy
+        srccopy[i] = src[i]; // set values of srccopy at i to src at i
+    }
+
+    return srccopy;
 }
 
 /*
@@ -26,7 +33,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    // cast the input pointers into char pointers
+    char *destptr = dest;
+    char *srcptr = src;
 
+    for (int i = 0; i <= n; i++) { // for loop thru elements in srcptr and destptr
+        destptr[i] = srcptr[i]; // set values of destptr at i to srcptr at i
+    }
 }
 
 /*
