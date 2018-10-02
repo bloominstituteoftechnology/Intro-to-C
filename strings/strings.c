@@ -11,8 +11,9 @@ int string_length(char s[])
 {
     int count;
     count = 0;
-    while (s[count] != '\0') {
+    while (*s) {
         count++;
+        s++;
     }
     return count;
 }
@@ -31,7 +32,6 @@ char *reverse_string(char rv[], char s[])
         count++;
     }
     rv[count] = '\0';
-    printf("here %s \n", rv);
     return rv;
 }
 
