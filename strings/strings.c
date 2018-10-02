@@ -9,7 +9,11 @@
 */
 int string_length(char s[])
 {
-
+    int z = 0;
+    while (s[z] != '\0'){ 
+        z++; //keep incrementing while we dont hit the \0 character (null terminator).
+    }
+    return z;
 }
 
 /*
@@ -20,7 +24,12 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int len = string_length(s) - 1; // getting length of previous string length func (reversed)
+    for (int z = len; z >= 0; z--){ //for loop reverse to add char from the back end --
+        rv[len - z] = s[z];
+    };
+    rv[len + 1] = '\0'; //terminate once we hit null terminator and return rv.
+    return rv;
 }
 
 #ifndef TESTING
