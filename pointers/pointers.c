@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int placeholder = *a;
+    *a = *b;
+    *b = placeholder;
 }
 
 /*
@@ -20,8 +22,16 @@ void swap(int* a, int* b)
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c)
-{
+{   
+    while(*str != '\0')
+    {
+        if(*str == c)
+            return str;
+        str++;
+    }
 
+    return NULL;
+    
 }
 
 /*
@@ -34,6 +44,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    int index = 0;
+    while(y[index] != '\0')
+    {
+        x[index] = y[index];
+        index++;
+    }
+    x[index] = '\0';
 
 }
 
@@ -53,7 +70,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    while(*m != '\0' || *n != '\0')
+    {
+        if(*m != *n)
+        {
+            return m - n;
+        }
+        m++;
+        n++;
+        
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +93,31 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int i = 0, j = 0;
+    int interrupt = 0;
 
+    while(haystack[i] != '\0')
+    {
+        if(haystack[i] == needle[j])
+        {
+            interrupt = 0;
+            while(*(needle + j) != '\0')
+            {
+                if(haystack[i + j] != needle[j])
+                {
+                    j = 0;
+                    interrupt = 1;
+                    break;
+                }
+                j++;
+            }
+            if(!interrupt){
+                return haystack + i;
+            }
+        }
+        i++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
@@ -76,14 +127,19 @@ int main(void)
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
+
+    char *s = "firetruck";
+    char *t = "firetrucks";
+
+
+    char *hello = "hello, world";
     char *world = "World";
     char buffer[1024];
 
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare(s, t));
 
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
