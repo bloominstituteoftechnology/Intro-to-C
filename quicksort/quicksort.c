@@ -41,7 +41,8 @@ void quicksort(int *arr, int low, int high)
       arr[j]=temp;
       quicksort(arr,low,j-1);
       quicksort(arr,j+1,high);
-}}
+    }
+}
 
 #ifndef TESTING
 int main(void)
