@@ -10,24 +10,22 @@
 */
 int fizzbuzz(int n)
 {
-    for (int i = 0; i < 100; i++)
-        if (n % 3 == 0 && n % 5 == 0) 
-        {
-            return 'fizzbuzz';
-        }
-        elif (n % 3 == 0)
-        {
-            return 'fizz';
-        }
-        elif (n % 5 ==  0)
-        {
-            return 'buzz';
-        }
+    for (n = 1; n <= 100; n++)
+    {
+        if ((n%15) == 0) 
+            printf ("FizzBuzz\t");
+        
+        else if ((n % 3) == 0)
+            printf ("Fizz\t");
+        
+        else if ((n % 5) == 0)
+            printf ("Buzz\t");
+        
+        else 
+            printf("%d\t", n);
+    }
 
-        elif (n % 3 != 0 || n % 5 != 0)
-        {
-            return n;
-        }
+    return 0;
 }
 
 #ifndef TESTING
