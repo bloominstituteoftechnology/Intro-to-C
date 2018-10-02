@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int* a, int* b) 
 {
-
+    int temp = *a; // set temp to a 
+    *a = *b; // set a to b
+    *b = temp; // set b to temp (which is a)
 }
 
 /*
@@ -19,9 +21,17 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
+char *find_char(char *str, int c) 
 {
-
+    while (*str != '\0') // while str doesn't equal null terminator
+    {
+        if (*str == c) // if str = c
+        {
+            return str; // return str
+        }
+        str++; // increment the str
+    }
+    return 0; // if it doesn't exist, return 0 (null also works)
 }
 
 /*
@@ -34,7 +44,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0') // while the x pointer is not equal to null terminator
+    {
+        *x = *y; // swap x and y
+        x++; // increment x
+        y++; // increment y
+    
+    }
+    *x = '\0'; // terminate 
 }
 
 /* 
@@ -53,7 +70,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    while (*m == *n) { // while m and n match
+        if (*m == '\0') { // if m equals null terminator
+            return 0; // return 0
+        }
+        m++; // increment m
+        n++; // increment n
+    }
+    return *m - *n; // return the difference between m and n
 }
 
 /*
@@ -66,7 +90,7 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    
 }
 
 #ifndef TESTING
