@@ -23,12 +23,14 @@ void swap(int *a, int *b)
 */
 char *find_char(char *str, int c)
 {
-    for (int i = 0; str[i] != '\0'; i++)
+    // go as long as *str != 0
+    while (*str)
     {
-        if (str[i] == c)
+        if (*str == c)
         {
-            return &str[i];
+            return str;
         }
+        str++;
     }
     return NULL;
 }
@@ -43,13 +45,18 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-    int count = 0;
-    for (int i = 0; y[i] != '\0'; i++)
+    int i = 0;
+    while (*y)
     {
-        x[i] = y[i];
-        count++;
+        // x at i equals the dereferened y char
+        x[i] = *y;
+        // next i
+        i++;
+        // next pointer place for y
+        y++;
     }
-    x[count] = '\0';
+    // always remember to add the null at the end
+    x[i] = '\0';
 }
 
 /* 
@@ -68,15 +75,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    // stops when *m or *n == 0 via &&
-    // keeps looping as long as *m == *n
-    while (*m && *n && *m == *n)
+    // as long as char m == char n and neither is 0
+    while (*m == *n && *m && *n)
     {
-        // ++ goes to the next char
+        // advance both pointers
         m++;
         n++;
     }
-    // - seems to do the trick
+    // if we've iterated to the end of both, then
+    // *m and *n are both 0, so will return 0
+    // otherwise we're at the first place that's difference
+    // and `-` will return the correct value
     return *m - *n;
 }
 
@@ -90,20 +99,22 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    // go as long as char != 0
     while (*haystack)
     {
-        // grab first letter
+        // grab pointer for first letter
         char *start = haystack;
 
-        // If first character of sub string match, check for whole string
+        // If first character of sub-string match, check for whole string
         while (*haystack && *needle && *haystack == *needle)
         {
             haystack++;
             needle++;
         }
-        // we've reached the end of needle
-        // if we get here, we've a match, so return start
+        // have we reached the end of needle?
         if (!*needle)
+            // if we get here, we've a match
+            // so return the start pointer
             return start;
 
         // no match yet, go to next letter
@@ -129,7 +140,7 @@ int main(void)
     printf("Comparison is %d\n", string_compare(hello, world));
 
     char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    // char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
