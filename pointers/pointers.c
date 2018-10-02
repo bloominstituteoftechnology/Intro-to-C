@@ -95,28 +95,21 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    char new_word[1024];
-    int counter = 0;
-    for (int i = 0; haystack[i] != '\0'; i++)
+    while (*haystack)
     {
-        if (haystack[i] == needle[counter])
+        char *first = haystack;
+        while (*haystack && *needle && *haystack == *needle)
         {
-            new_word[counter] = needle[counter];
-            counter++;
+            haystack++;
+            needle++;
         }
-        else
+        if (!*needle)
         {
-            continue;
+            return first;
         }
+        haystack++;
     }
-    if (new_word == needle)
-    {
-        return (needle);
-    }
-    else
-    {
-        return NULL;
-    }
+    return NULL;
 }
 
 #ifndef TESTING
