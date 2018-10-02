@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int val = *a;
+    *a = *b; //swapping values
+    *b = val; //*b now assigned as val
 }
 
 /*
@@ -21,7 +23,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    char *z = str; //input string 'str'
+    while (*z != '\0'){ //as long as pointer z not equal at null character
+        if (*z == c) { //points to first instance of 'c'
+            return z; //returns z
+        }
+        z++;
 
+    }
+    return NULL; // returns NULL if character doesnt exist in input str
 }
 
 /*
@@ -34,7 +44,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0') { //pointer y not equal to null char.
+        *x = *y; // assigning pointer x to pointer y
+        x++; //increment to next element in array
+        y++; // " "
+    }
+    *x = '\0'; //"x points to a null character at its end to terminate it properly "
 }
 
 /* 
@@ -51,9 +66,18 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
+//lexicographic order = alphabetical order
+
 int string_compare(char *m, char *n)
 {
-
+    while (*m == *n){ // if strings match and m is not equal to null character, return 0.
+        if (*m =='\0'){
+            return 0;
+        }
+        m++; //increments in next level of array
+        n++; // " "
+    }
+    return *m - *n; //when values are no longer equal (*m == *n) return difference of values of *m and *n
 }
 
 /*
