@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *b;
+    *b = *a;
+    *a = temp;
 }
 
 /*
@@ -21,7 +23,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] == c)
+        {
+            return &str[i];
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +43,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int count = 0;
+    for (int i = 0; y[i] != '\0'; i++)
+    {
+        x[i] = y[i];
+        count++;
+    }
+    x[count] = '\0';
 }
 
 /* 
@@ -53,7 +68,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    // stops when *m or *n == 0 via &&
+    // keeps looping as long as *m == *n
+    while (*m && *n && *m == *n)
+    {
+        // ++ goes to the next char
+        m++;
+        n++;
+    }
+    // - seems to do the trick
+    return *m - *n;
 }
 
 /*
@@ -66,7 +90,26 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    while (*haystack)
+    {
+        // grab first letter
+        char *start = haystack;
 
+        // If first character of sub string match, check for whole string
+        while (*haystack && *needle && *haystack == *needle)
+        {
+            haystack++;
+            needle++;
+        }
+        // we've reached the end of needle
+        // if we get here, we've a match, so return start
+        if (!*needle)
+            return start;
+
+        // no match yet, go to next letter
+        haystack = start + 1;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
