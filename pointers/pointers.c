@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,9 +23,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    for (int i = 0; str[i] != '\0'; i++)
+    {
+        if (str[i] == c)
+        {
+            return &str[i];
+        }
+    }
 }
-
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -34,7 +41,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int counter = 0;
+    for (int i = 0; y[i] != '\0'; i++)
+    {
+        x[i] = y[i];
+        counter++;
+    }
+    x[counter] = '\0';
 }
 
 /* 
@@ -53,7 +66,6 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
 }
 
 /*
@@ -66,7 +78,6 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
 }
 
 #ifndef TESTING
