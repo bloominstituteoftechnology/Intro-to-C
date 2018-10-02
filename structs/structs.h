@@ -1,7 +1,8 @@
 #ifndef structs_h
 #define structs_h
 
-typedef struct Person {
+typedef struct Person
+{
     char *name;
     int age;
     int height;

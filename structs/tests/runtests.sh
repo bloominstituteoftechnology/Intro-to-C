@@ -1,3 +1,4 @@
+
 echo "Running unit tests:"
 
 for i in tests/*_tests tests/*_tests.exe
