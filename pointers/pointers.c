@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int ph = *a;
+    *a = *b;
+    *b = ph;
 }
 
 /*
@@ -22,6 +24,13 @@ void swap(int* a, int* b)
 char *find_char(char *str, int c)
 {
 
+    while (*str)
+    {
+        if (*str == c)
+            return str;
+        str++;
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +43,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
 
+    *x = *y;
 }
 
 /* 
@@ -53,7 +69,18 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int difference;
+    while (*m != '\0' || *n != '\0')
+    {
+        difference = *m - *n;
+        if (difference != 0)
+            break;
+        m++;
+        n++;
+    }
 
+    difference = *m - *n;
+    return difference;
 }
 
 /*
@@ -66,7 +93,16 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    char *start = find_char(haystack, needle[0]);
+    printf("this is is start:%s, \n", start);
+    for (int i = 0; needle[i] != '\0'; i++)
+    {
+        if (start[i] != needle[i])
+        {
+            return NULL;
+        }
+    }
+    return start;
 }
 
 #ifndef TESTING
