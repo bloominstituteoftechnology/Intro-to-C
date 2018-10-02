@@ -1,7 +1,8 @@
-#ifndef stack_h
-#define stack_h
+#ifndef queue_h
+#define queue_h
 
-typedef struct Queue {
+typedef struct Queue
+{
     unsigned int length;
     unsigned capacity;
     int *storage;
