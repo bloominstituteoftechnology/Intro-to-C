@@ -98,20 +98,17 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    unsigned int counter = 0;
+    unsigned int counter = 1;
     char *hay_copy = haystack;
     while (*hay_copy != '\0') {
-    // printf("%c, %c\n", *hay_copy, *needle);
         
         if (*hay_copy == *needle) {
-            for(unsigned int i = 0; i < strlen(needle); i++) {
-                // printf("%c", *(hay_copy+i));
+            for(unsigned int i = 1; i < strlen(needle); i++) {
                 if (*(hay_copy + i) != needle[i]) {
                     break;
                 }
                 counter++;
             }
-            // printf("%d", counter);
             if(counter == strlen(needle)) {
                 return hay_copy;
             }
