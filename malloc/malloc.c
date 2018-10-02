@@ -59,7 +59,7 @@ void *mem_copy(void *dest, const void *src, int n)
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
     char *ptr_copy = malloc(new_size);
-    mem_copy(ptr_copy, ptr, new_size);
+    mem_copy(ptr_cops, ptr, new_size);
     return ptr_copy;
 }
 

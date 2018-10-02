@@ -129,8 +129,8 @@ int main(void)
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "firetruck";
-    char *world = "firetrucks";
+    char *hello = "Hello";
+    char *world = "World";
     char buffer[1024];
 
     string_copy(buffer, hello);
