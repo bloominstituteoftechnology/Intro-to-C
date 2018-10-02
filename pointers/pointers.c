@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,9 @@
 */
 void swap(int* a, int* b)
 {
-
+  int b_prev_value = *b;
+  *b = *a;
+  *a = b_prev_value;
 }
 
 /*
@@ -21,9 +24,17 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    char *p = str;
 
+    while (*p != '\0') {
+        if (*p == c) {
+            return p;
+        }
+        p++;
+    }
+
+    return NULL;
 }
-
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -34,7 +45,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int len = strlen(y);
+    
+    for (int i = 0; i < len; i++) {
+        x[i] = y[i];
+    }
+    x[len] = '\0';
 }
 
 /* 
@@ -53,7 +69,23 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    //hello, world  || hiya
+    int len;
+    if (strlen(m) > strlen(n)) {
+        len = strlen(m);
+    }
+    else {
+        len = strlen(n);
+    }
+    for (int i = 0; i < len; i++) {
+        if (m[i] < n[i]) {
+            return -1;
+        }
+        if (m[i] > n[i]) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +98,24 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    unsigned int counter = 0;
+    for (unsigned int out = 0; out < strlen(haystack); out++) {
 
+        if(haystack[out] == needle[0]) {
+            for (unsigned int i = 0; i < strlen(needle); i++) {
+                //hello, world
+                if(haystack[out + i] != needle[i]) {
+                    break;
+                }
+                    counter++;
+            }
+            if(counter == strlen(needle)) {
+                return haystack;
+            }
+            counter = 0;
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
@@ -77,16 +126,16 @@ int main(void)
     printf("x=%d, y=%d\n", x, y);
 
     char *hello = "Hello";
-    char *world = "World";
+    // char *world = "World";
     char buffer[1024];
 
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare("hello, world", "hiya"));
 
     char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    char *found_string = find_string("LambdaSchool", "Lambda");
 
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
