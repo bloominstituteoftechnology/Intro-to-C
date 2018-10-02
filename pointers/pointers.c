@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,15 @@
 */
 void swap(int* a, int* b)
 {
+  // printf("a was %d\n", a);
+  // printf("b was %d\n", b);
 
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+  return;
+  // printf("a is now %d\n", a);
+  // printf("b is now %d\n", b);
 }
 
 /*
@@ -21,6 +30,17 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+  char *cp;
+  int counter = 0;
+  while(str[counter] != '\0') {
+    if (str[counter] == c) {
+      cp = str[counter];
+      return cp;
+    }
+    else {
+      counter++;
+    }
+  }
 
 }
 
@@ -34,7 +54,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+  int ct = 0;
+  for(int i = 0; y[i] != '\0'; i++){
+    x[i] = y[i];
+    ct++;
+  }
+  x[ct] = '\0';
+  return;
 }
 
 /* 
@@ -72,25 +98,27 @@ char *find_string(char *haystack, char *needle)
 #ifndef TESTING
 int main(void)
 {
-    int x = 10, y = 20;
-    swap(&x, &y);
-    printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
-    char buffer[1024];
 
-    string_copy(buffer, hello);
+  int x = 10, y = 20;
+  swap(&x, &y);
+  printf("x=%d, y=%d\n", x, y);
 
-    printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+  char *hello = "Hello";
+  char *world = "World";
+  char buffer[1024];
 
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+  string_copy(buffer, hello);
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+  printf("Buffer is %s\n", buffer);
+  printf("Comparison is %d\n", string_compare(hello, world));
 
-    return 0;
+  char *found_char = find_char(hello, 'e');
+  char *found_string = find_string(world, "or");
+
+  printf("Found char: %s\n", found_char);
+  printf("Found string: %s\n", found_string);
+
+  return 0;
 }
 #endif
