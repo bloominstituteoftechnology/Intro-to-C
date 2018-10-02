@@ -12,7 +12,7 @@ int fizzbuzz(int n)
 {
     int counter = 0;
     for (int i= 1; i <= n; i++){
-      //had n&3 and n%5 yet same as using one number, 15 (both divisible by 15)
+      //had i&3 and i%5 yet same as using one number, 15 (both divide into 15)
         if ((i%15) == 0){ 
             printf ("FizzBuzz\n");
         }
