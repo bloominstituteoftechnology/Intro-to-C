@@ -30,6 +30,7 @@ char *find_char(char *str, int c)
             return &str[i];
         }
     }
+    return NULL;
 }
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -66,6 +67,22 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    for (int i = 0; m[i] != '\0' || n[i] != '\0'; i++)
+    {
+        if (m[i] == n[i])
+        {
+            continue;
+        }
+        else if (m[i] < n[i])
+        {
+            return (-2);
+        }
+        else if (m[i] > n[i])
+        {
+            return (2);
+        }
+    }
+    return 0;
 }
 
 /*
@@ -78,6 +95,28 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    char new_word[1024];
+    int counter = 0;
+    for (int i = 0; haystack[i] != '\0'; i++)
+    {
+        if (haystack[i] == needle[counter])
+        {
+            new_word[counter] = needle[counter];
+            counter++;
+        }
+        else
+        {
+            continue;
+        }
+    }
+    if (new_word == needle)
+    {
+        return (needle);
+    }
+    else
+    {
+        return NULL;
+    }
 }
 
 #ifndef TESTING
