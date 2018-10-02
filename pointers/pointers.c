@@ -8,6 +8,9 @@
 */
 void swap(int* a, int* b)
 {
+    int holder = *a;
+    *a = *b;
+    *b = holder;
 
 }
 
@@ -21,8 +24,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    int i = 0;
+     while(*(str + i) != c) {
+        i++;
 
+    }
+    return str;
 }
+
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -34,6 +43,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    while (*y != '\0') {
+        *x = *y;
+        y++;
+        x++;
+    }
+    *x = '\0';
 
 }
 
@@ -53,7 +68,15 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    while (*m == *n) {
+        m++;
+        n++;
+        if (*m == '\0') {
+            return 0;
+        }
+    }
 
+    return *m - *n;
 }
 
 /*
