@@ -17,31 +17,54 @@
 */
 
 
+// void quicksort(int *arr, int low, int high)
+// {
+//     int low_marker, high_marker, pivot;
+
+//     if(low < high)
+//     {
+//         pivot=low;
+//         low_marker=low;
+//         high_marker=high;
+
+//         while(low_marker < high_marker){
+//             while(arr[low_marker] <= arr[pivot] && low_marker < high)
+//                 low_marker++;
+//             while(arr[high_marker] > arr[pivot])
+//                 high_marker--;
+//             if(low_marker < high_marker)
+//             {
+//                 swap(arr + low_marker, arr + high_marker);
+//             }
+//         }
+
+//         swap(arr + pivot, arr + high_marker);
+//         quicksort(arr, low, high_marker - 1);
+//         quicksort(arr, high_marker + 1, high);
+//     }
+// }
+
 void quicksort(int *arr, int low, int high)
 {
-    int low_marker, high_marker, pivot;
-
     if(low < high)
     {
-        pivot=low;
-        low_marker=low;
-        high_marker=high;
+        int pivot = low;
+        int chopping_block = pivot + 1;
 
-        while(low_marker < high_marker){
-            while(arr[low_marker] <= arr[pivot] && low_marker < high)
-                low_marker++;
-            while(arr[high_marker] > arr[pivot])
-                high_marker--;
-            if(low_marker < high_marker)
+        for(int i = chopping_block; i <= high; i++)
+        {
+            if(arr[i] < arr[pivot])
             {
-                swap(arr + low_marker, arr + high_marker);
+                swap(arr + chopping_block, arr + i);
+                chopping_block++;
             }
         }
+        swap(arr + pivot, arr + (chopping_block - 1));
 
-        swap(arr + pivot, arr + high_marker);
-        quicksort(arr, low, high_marker - 1);
-        quicksort(arr, high_marker + 1, high);
+        quicksort(arr, low, chopping_block - 1);
+        quicksort(arr, chopping_block, high);
     }
+    
 }
 
 
