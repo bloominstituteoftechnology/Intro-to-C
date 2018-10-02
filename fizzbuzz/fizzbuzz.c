@@ -21,7 +21,6 @@ int fizzbuzz(int n)
         }else count++;
     }
     return count;
-    
 }
 
 #ifndef TESTING
