@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp=*b;
+    *b = *a;
+    *a = temp;
 }
 
 /*
@@ -21,7 +23,12 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    for (; *str != '\0'; str++) {
+        if (*str == c) {
+            return str;
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -33,8 +40,13 @@ char *find_char(char *str, int c)
     Do not just use the `strcpy` function from the standard library.
 */
 void string_copy(char *x, char *y)
-{
-
+{   
+    int counter = 1;
+    for (int i=0; *(y+i)!=0; i++) {
+        x[i]= *(y+i);
+        counter++;
+    }
+    x[counter] = '\0';
 }
 
 /* 
