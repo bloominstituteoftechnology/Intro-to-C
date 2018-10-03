@@ -1,6 +1,6 @@
 # Quicksort 
 
-For this module, you're going to implement a QuickSort function. Feel free to reference prior implementation(s) and simply transpose the code from one language to the other. Typically this is a good way to practice new languages you're trying to learn: by transposing code you've written from one language to another.
+For this module, you're going to implement a quicksort function. Feel free to reference prior implementation(s) and simply transpose the code from one language to the other. Typically this is a good way to practice new languages you're trying to learn: by transposing code you've written from one language to another.
 
 In case you haven't seen the quicksort algorithm before, here's a Python implementation that you can use as a reference:
 ```python
