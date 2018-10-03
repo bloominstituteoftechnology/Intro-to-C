@@ -30,18 +30,13 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-  char *cp;
-  int counter = 0;
-  while(str[counter] != '\0') {
-    if (str[counter] == c) {
-      cp = str[counter];
-      return cp;
-    }
-    else {
-      counter++;
-    }
+  while (*str)
+  {
+    if (*str == c)
+      return str;
+    str++;
   }
-
+  return NULL;
 }
 
 /*
@@ -113,7 +108,25 @@ for(int i = 0; m[i] != '\0'; i++) {
 */
 char *find_string(char *haystack, char *needle)
 {
+ char *h = haystack;
+ char *n = needle;
+ size_t n_length = strlen(needle);
+ size_t h_length = strlen(haystack);
 
+ char *sub = find_char(h, n[0]); //checks to see if first character is present.
+ printf("sub = %s\n", sub);
+
+ if (n_length == 0 || h_length == 0 || n_length > h_length) {
+   return NULL;
+ }
+if (sub) {
+  for (int i = 0; n[i] != '\0'; i++){
+    if(sub[i] != n[i]) {
+      return NULL;
+    }
+    }
+    return sub;
+  }
 }
 
 #ifndef TESTING
@@ -130,6 +143,8 @@ int main(void)
   char buffer[1024];
 
   string_copy(buffer, hello);
+
+  find_char(hello, 'e');
 
   printf("Buffer is %s\n", buffer);
   printf("Comparison is %d\n", string_compare(hello, world));
