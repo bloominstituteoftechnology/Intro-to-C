@@ -27,6 +27,8 @@ char *find_char(char *str, int c)
     {
         if(str[i] == c)
         {
+            // str is a pointer to the first character
+            // so str + i is a pointer to the first character plus the i
             return str + i;
         }
     }
@@ -43,6 +45,8 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+  // y is an address
+  // *y is a character
   while (*y != '\0')
   {
       *x = *y;
@@ -51,6 +55,7 @@ void string_copy(char *x, char *y)
   }
   *x = '\0';
 }
+
 
 /* 
     Compares the character strings m and n and returns negative,
@@ -66,19 +71,16 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
+
 int string_compare(char *m, char *n){
-    while(*m != '\0'){
-        if(m > n){
-            return 1;
+    while(*m == *n){
+        if(*m == '\0'){
+            return 0;
         }
-        if(m < n){
-            return -1;
-        }
+        m++;
+        n++;
     }
-    if(*n != '\0'){
-        return -1;
-    }
-    return 0;
+    return *m - *n;
 }
 
 /*
@@ -89,18 +91,20 @@ int string_compare(char *m, char *n){
 
     Do not use the `strstr` function from the standard library.
 */
-char *find_string(char *haystack, char *needle)
-{
-    for (int i = 0; i < strlen(haystack); i++){
-        if (haystack[i] == needle[0]){
-            char *first_instance = haystack + i;
+
+// so this is very confusing. Why are we returning 'orld'
+// when the substring we are looking for is simply 'or'?
+char *find_string(char *haystack, char *needle){
+    for(int h = 0; h < strlen(haystack); h++){
+        if(haystack[h] == needle[0]){
+            char *first = haystack + h;
             int n = 1;
-            i++;
-            while (haystack[i] == needle[n]){
-                i++;
+            h++;
+            while(haystack[h] == needle[n]){
+                h++;
                 n++;
-                if (needle[n] == '\0'){
-                    return first_instance;
+                if(needle[n] == '\0'){
+                    return first;
                 }
             }
         }

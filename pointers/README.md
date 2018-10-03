@@ -1,3 +1,4 @@
+
 # Pointers
 
 From the perspective of C, your entire computer is nothing more than a giant array of memory into which values can be written. Given this analogy, when we're dealing with arrays, how do we access some value stored inside of said array? 

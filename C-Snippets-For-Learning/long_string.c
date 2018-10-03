@@ -3,5 +3,5 @@
 int main(void)
 {
     char *str = "thisisareallylongstring";
-    printf("%s\n", str);
+    printf("%s\n",  str);
 }

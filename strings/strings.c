@@ -15,6 +15,16 @@ int string_length(char s[])
   }
   return count;
 }
+// solution lecture
+// int string_length(char s[]){
+//     int i = 0;
+//     char cur = s[i];
+//     while(cur != '\0'){
+//         i++;
+//         cur = s[i];
+//     }
+//     return i;
+// }
 
 /*
     Write a function that reverses the order of string s and outputs 
@@ -22,16 +32,25 @@ int string_length(char s[])
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
 */
-char *reverse_string(char rv[], char s[])
-{
-  int count = 0;
-  for (int j = string_length(s) - 1; j >= 0; j--) 
-  {
-    rv[count] = s[j];
-    count++;
-  }
-  rv[count] = '\0';
-  return rv;
+// char *reverse_string(char rv[], char s[])
+// {
+//   int count = 0;
+//   for (int j = string_length(s) - 1; j >= 0; j--) 
+//   {
+//     rv[count] = s[j];
+//     count++;
+//   }
+//   rv[count] = '\0';
+//   return rv;
+// }
+
+// solution lecture
+char *reverse_string(char rv[], char s[]){
+    for (int i = 0; i < string_length(s); i++){
+        rv[i] = s[string_length(s) - i - 1];
+    }
+    rv[string_length(s)] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
