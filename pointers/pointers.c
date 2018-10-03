@@ -79,7 +79,28 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+if (m == n) {
+  return 0;
+}
 
+for(int i = 0; m[i] != '\0'; i++) {
+  for (int i = 0; n[i] != '\0'; i++) {
+    if (m[i] == n[i]) {
+      printf("same %c, %c\n", m[i], n[i]);
+      continue;
+    }
+    else if (m[i] < n[i]) {
+      printf("m<n %c, %c\n", m[i], n[i]);
+      return -1;
+    } 
+    else if (m[i] > n[i]) {
+      printf("m>n %c, %c\n", m[i], n[i]);
+      return 1;
+    } else {
+      continue;
+    }
+  }
+}
 }
 
 /*
@@ -112,6 +133,10 @@ int main(void)
 
   printf("Buffer is %s\n", buffer);
   printf("Comparison is %d\n", string_compare(hello, world));
+
+  char *aardvark = "aardvark";
+  char *zebra = "zebra";
+  string_compare(aardvark, zebra);
 
   char *found_char = find_char(hello, 'e');
   char *found_string = find_string(world, "or");
