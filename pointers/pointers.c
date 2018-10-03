@@ -92,7 +92,27 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+  while(*haystack)
+    {
+        if (*haystack == *needle)
+        {
+            char *candidate = haystack;
+            char *current = needle;
 
+            while (*candidate == *current && *current && *candidate)
+            {
+                candidate++;
+                current++;
+            }
+
+            if (*current == '\0')
+            {
+                return haystack;
+            }
+        }
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
