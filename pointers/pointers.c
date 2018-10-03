@@ -23,16 +23,16 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-    printf("\n %c \n", c);
+    char *p = str;
 
-    for(int i = 0; str[i] != '\0'; i++) {
-        printf("\n %c \n", str[i]);
-        if(str[i] == c){
-            int *a = str[i];
-            return a;
+    while (*p != '\0') {
+        if (*p == c) {
+            return p;
         }
+        p++;
     }
 
+    return NULL;
 }
 
 /*
@@ -45,26 +45,17 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-    char xStringStart = *x;
-    char curLetter = 0;
-    int yPosition = y;
-    int xPosition = x;
-    int count = 0;
-    printf("\n%s\n", y);
-    printf("\n%s\n", x); //prints nothing
-    printf("\n%s\n", "start loop");
-    while(y[count]){ //while *y is not \0
-        x[count] = y[count];
-        printf("\n%c\n", x[count]);
-        count++;
-
-        // printf("\n%s\n", x);
+    while (*y != '\0') {
+        *x = *y;
+        x++;
+        y++;
     }
-    // printf("\n%c\n", x[count]);
-    // count++;
-    // printf("\n%c\n", x[count]);
-    // x[count] = '\0';
-    // printf("\n%s\n", x);
+
+    *x = '\0';
+
+    //solution code
+    // while ((*x++ = *y++) != '\0')
+    // ;
 }
 
 /* 
@@ -83,6 +74,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    while(*m == *n)
+    {
+        if (*m == '\0') 
+        {
+            return 0;
+        }
+        m++;
+        n++;
+    }
+    return *m - *n;
 
 }
 
@@ -96,7 +97,25 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    char *p = haystack;
 
+    while (*p != '\0') {
+        char *p_start = p;
+        char *q = needle;
+
+        while (*p != '\0' && *q != '\0' && *p == *q) {
+            p++;
+            q++;
+        }
+
+        if (*q == '\0') {
+            return p_start;
+        }
+
+        p++;
+    }    
+
+    return NULL;
 }
 
 #ifndef TESTING
