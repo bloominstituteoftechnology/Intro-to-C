@@ -51,6 +51,15 @@ void string_copy(char *x, char *y)
     cnt++;
   }
   x[cnt] = '\0';
+
+
+//   while (*y != '\0'){
+//       *x = 8y
+//       x++
+//       y++
+//   }
+//   *x = "\0";
+
 }
 
 /* 
