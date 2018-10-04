@@ -24,7 +24,7 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
-    struct Person *who = malloc(sizeof(struct Person)); //why does this line need struct if we used typedef?
+    Person *who = malloc(sizeof(struct Person)); //why does this line need struct if we used typedef?
 
     who->name = string_dup(name);
     who->age = age;
