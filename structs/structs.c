@@ -7,9 +7,15 @@
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
-typedef struct Person {
+struct Person
+{
+    char *name; // char name would just be one character.
+    int age;
+    int height;
+    int weight;
+};
 
-} Person;
+typedef struct Person Person; // Is just an alias so that whenever in our code we say Person we mean struct Person
 
 /*
     Creates an instance of the Person struct that receives all the relevant
@@ -21,7 +27,18 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
-
+    // *createPerson means we want to return a pointer to a person.
+    // Person p; // There is no closure in C, so when this function terminates, the Person goes away. The pointer will point to the address of where the Person WAS. So we need to allocate memory that is persistent, that sticks around after this function returns.
+    // Stack is used to temporarily make memory for functions, like name, age, height, p. When it returns, that space is deallocated from the stack.
+    // The Heap you only allocate and deallocate from explicitly. In order to store something on the heap, we use malloc. Malloc returns a void pointer, which means that pointer can automatically be converted into any pointer type.
+    Person *p = malloc(sizeof(Person));
+    // For the dot operator to work, we can dereference like:
+    // (*p).name = name; // But this visually is clunky.
+    p->name = string_dup(name);
+    p->age = age;
+    p->height = height;
+    p->weight = weight;
+    return p;
 }
 
 /*
@@ -30,7 +47,8 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-
+    free(who->name);
+    free(who);
 }
 
 #ifndef TESTING
