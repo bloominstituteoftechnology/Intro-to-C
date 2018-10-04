@@ -24,7 +24,7 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
-    struct Person *person = malloc(sizeof(struct Person));
+    Person *person = malloc(sizeof(Person));
     person->name = string_dup(name);
     person->age = age;
     person->height = height;
