@@ -55,7 +55,7 @@ char *test_queue_expansion()
     unsigned int capacity = (rand() % 30) + 1;
     unsigned int increased_cap = capacity + 5;
 
-    Queue *q = createQueue(capacity);
+    Queue *q = createQueue(increased_cap);
     int *rand_values = malloc(sizeof(int) * increased_cap);
 
     unsigned int i;

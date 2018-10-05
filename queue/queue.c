@@ -53,8 +53,10 @@ int dequeue(Queue *q)
         printf("Queue empty");
         return -1;
     }
-    q->length--;
-    return q->storage[0];
+    else {
+        q->length--;
+        return q->storage[0];
+    }
 }
 
 /*
@@ -63,6 +65,8 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
+    free(q->storage);
+    free(q);
 }
 
 #ifndef TESTING
