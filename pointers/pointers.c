@@ -8,6 +8,18 @@
 */
 void swap(int* a, int* b)
 {
+    //so here, int* a is the value that the pointer a references, and likewise for b
+    //we want the pointer a to point to the value *b
+    //we want the point b to point to the value *a
+
+    int a_postswap;
+    int b_postswap;
+
+    a_postswap = *b; //  a_postswap (variable of type int) is set to the integer value pointer b is pointing to
+    b_postswap = *a;
+
+    *a = a_postswap; 
+    *b = b_postswap;
 
 }
 
@@ -21,6 +33,18 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    int i;
+    char strVal = *str; //strVal is set to the string value that *str points to
+    char strValEmpty[strlen(*str)]; // setting up array of strings having length of the string the *str pointer points to
+    
+    // for (i = 0; i < strlen(*str); i++)
+    //     if (strVal[i] == c)
+
+    //     strValEmpty[i] = strVal[i];
+    //     if (*str[i] == c)
+
+    
+    //str is a pointer to a string
 
 }
 
