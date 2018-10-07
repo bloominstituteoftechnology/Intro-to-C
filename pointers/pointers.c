@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +23,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str)
+    {
+        if (*str == c)
+        {
+            return str;
+        }
+        str++;
+    }
+    return NULL;
 }
 
 /*
@@ -31,10 +41,17 @@ char *find_char(char *str, int c)
     end to terminate it properly. 
     
     Do not just use the `strcpy` function from the standard library.
+    char * strcpy ( char * destination, const char * source );
+    Copies the C string pointed by source into the array pointed by destination, including the terminating null character 
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y)
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
 }
 
 /* 
@@ -50,10 +67,24 @@ void string_copy(char *x, char *y)
     value.
     
     Do not just use the `strcmp` function from the standard library.
+    int strcmp ( const char * str1, const char * str2 );
 */
 int string_compare(char *m, char *n)
 {
-
+    while (*m)
+    {
+        if (*m < *n)
+        {
+            return -1;
+        }
+        else if (*m > *n)
+        {
+            return 1;
+        }
+        m++;
+        n++;
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +97,10 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    // char *while (*heystack)
+    // {
+    //     if ()
+    // }
 }
 
 #ifndef TESTING
