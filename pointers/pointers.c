@@ -36,9 +36,7 @@ char *find_char(char *str, int c)
 void string_copy(char *x, char *y)
 {
   while (*y != '\0') {
-    *x = *y;
-    y++;
-    x++;
+    *x++ = *y++;
   }
   *x = '\0';
 }
@@ -80,7 +78,7 @@ char *find_string(char *haystack, char *needle)
     pointer2 = needle;
     if (*haystack == *needle) {
       while (*pointer2 != '\0') {
-        printf("%c\n", *pointer1);
+        // printf("%c\n", *pointer1);
         if (*pointer1 != *pointer2) {
           break;
         }
