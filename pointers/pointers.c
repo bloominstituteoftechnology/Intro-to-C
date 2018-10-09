@@ -97,34 +97,48 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    // char *while (*heystack)
-    // {
-    //     if ()
-    // }
-}
+    printf("needle: %c\n", *needle);
+    printf("haystack: %c\n", *haystack);
+
+    for (int i = 0; haystack[i]; i++)
+    {
+        //     if (haystack[i] == *needle)
+        //     {
+        //         for (int j = 1; needle[j]; j++)
+        //         {
+        //             if (haystack[i + j] != needle[j])
+        //             {
+        //                 break;
+        //             }
+        //             printf("haystack in return %c\n", (haystack + i));
+        //             return (haystack + i);
+        //         }
+        //     }
+        // }
+    }
 
 #ifndef TESTING
-int main(void)
-{
-    int x = 10, y = 20;
-    swap(&x, &y);
-    printf("x=%d, y=%d\n", x, y);
+    int main(void)
+    {
+        int x = 10, y = 20;
+        swap(&x, &y);
+        printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
-    char buffer[1024];
+        char *hello = "Hello";
+        char *world = "World";
+        char buffer[1024];
 
-    string_copy(buffer, hello);
+        string_copy(buffer, hello);
 
-    printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+        printf("Buffer is %s\n", buffer);
+        printf("Comparison is %d\n", string_compare(hello, world));
 
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+        char *found_char = find_char(hello, 'e');
+        char *found_string = find_string(world, "or");
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+        printf("Found char: %s\n", found_char);
+        printf("Found string: %s\n", found_string);
 
-    return 0;
-}
+        return 0;
+    }
 #endif
