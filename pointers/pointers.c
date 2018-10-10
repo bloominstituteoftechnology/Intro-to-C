@@ -121,8 +121,7 @@ char *find_string(char *haystack, char *needle)
                 {
                     break;
                 }
-                // printf ("haystack: %c\n", haystack[i+j]);
-                // printf ("needle: %c\n", needle[j]);
+
                 return (haystack + i);
             }
         }
