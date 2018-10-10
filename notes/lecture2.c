@@ -48,3 +48,6 @@ int main(void)
     b * 2; // error, no pointer multiply
     // *****
 }
+
+// (sleep 60; echo 'hi!') &
+// kill()
