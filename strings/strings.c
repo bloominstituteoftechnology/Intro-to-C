@@ -1,5 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
+// Header file for Standard Input Output
+    // contains printf() and scanf()
+    // contains header info for 'File related Input/Output' functions
+    // ("As  a basic principle, in C (due to its association with UNIX history), keyboard and display are also treated as ‘files’! ")
+#include <stdio.h> 
+// Header file for Standard Library.
+    // contains malloc() and free()
+    // contains header info for 'Memory Allocation/Freeing' functions
+#include <stdlib.h>  
 
 /*
     Given a character array s, return the number of characters 
@@ -7,11 +14,12 @@
     
     Do not just use the `strlen` function from the standard libary.
 */
-int string_length(char s[])
+
+int string_length(char s[]) // declares s to be an array holding values of type char
 {
     int i;
 
-    while (s[i] != '\0')
+    while (s[i] != '\0') // The '\0' is the null character. It's put at end of array to mark the end of the string of chars.
         ++i;
     return i;
 
