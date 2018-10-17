@@ -31,20 +31,14 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
+char *find_char(char *str, int c)  // ***QQQQQQQQQQQ: Why is the second argument of type int?
 {
-    int i;
-    char strVal = *str; //strVal is set to the string value that *str points to
-    char strValEmpty[strlen(*str)]; // setting up array of strings having length of the string the *str pointer points to
-    
-    // for (i = 0; i < strlen(*str); i++)
-    //     if (strVal[i] == c)
+    // `str`: input string 
+    // `c`: character 
+    // Find first instance of `c` in `str` and return pointer to that first instance.
 
-    //     strValEmpty[i] = strVal[i];
-    //     if (*str[i] == c)
+    printf("%c\n",*str);
 
-    
-    //str is a pointer to a string
 
 }
 
@@ -58,8 +52,9 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    // printf("%d\n", *y);
 }
+
 
 /* 
     Compares the character strings m and n and returns negative,
