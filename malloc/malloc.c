@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -13,7 +14,14 @@
 */
 char *string_dup(char *src)
 {
+    char *dup = malloc(strlen(src));
 
+    int i = 0;
+    for (i = 0; i < strlen(src); i++) {
+        *(dup+i) = *(src+i); 
+    }
+    printf("%c\n", *(dup+i));
+    return dup;
 }
 
 /*
