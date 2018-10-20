@@ -33,7 +33,25 @@ char *string_dup(char *src)
     Do not use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
-{
+{   
+    // char *src;
+    // char *dest;
+    // n = sizeof(src);
+    // int i;
+    // for (i = 0; i < n; i++) {
+    //     // char*(*(dest+i)) = char*(*(src+i));
+    //     *(dest+i) = *(src+i);
+
+    // }
+    n = sizeof(src);
+    char*dest = malloc(n);
+    int i;
+    for (i = 0; i < n; i++) {
+        char *(dest+i) = *(src+i);
+    }
+
+    printf("%d\n", n);
+    printf("%p\n", dest);
 
 }
 
