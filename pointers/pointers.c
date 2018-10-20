@@ -56,9 +56,18 @@ char *find_char(char *str, int c) {
     
     Do not just use the `strcpy` function from the standard library.
 */
-void string_copy(char *x, char *y)
+void string_copy(char *x, char *y)  //buffer , hello
 {
-    // printf("%d\n", *y);
+    int i = 0;
+    while (*(y+i) != '\0') {
+        *(x+i) = *(y+i);
+        printf("%c\n", *(y+i));
+        i++;
+    }
+    // printf("%d\n", i);
+    // printf("%c\n", *(x+1));
+    *(x+i+1) = '\0';
+     
 }
 
 
