@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -31,16 +32,21 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)  // ***QQQQQQQQQQQ: Why is the second argument of type int?
-{
-    // `str`: input string 
-    // `c`: character 
-    // Find first instance of `c` in `str` and return pointer to that first instance.
+char *find_char(char *str, int c) {
+    int i;
+    for (i = 0; i < strlen(str); i++) {
+        if (*(str+i) == c) {
+            printf("%d\n", i);
+            printf("%p\n", &str[i]);
+            return &str[i];
+        }
+        if (*(str+i) == '\0') {
+            return 0; //QQQQQQQ? Should I be returning zero here if/when function reaches end of string without finding a match
+        }
+    }
 
-    printf("%c\n",*str);
+}  
 
-
-}
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -113,3 +119,67 @@ int main(void)
     return 0;
 }
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ////////////////// FAILED ATTEMPT TO REVIEW LATER ///////////////////
+// /*
+//     Searches the input string `str` for the first instance of the 
+//     character `c` (an unsigned char). This function returns a pointer
+//     that points to the first instance of the character `c` in the
+//     input string `str`.
+
+//     Do not use the `strchr` function from the standard library.
+// */
+// char *find_char(char *str, int c)  // **Q: Why is the second argument of type int? -->
+// // "A character constant is an integer, written as one character within single quotes
+// // such as 'x'. The value of a character const is the numeric value in the machine's 
+// // character set." It only takes up one bit. We use int here instead of char because
+// // type c doesn't put aside enough bytes handle the number of bytes required to
+// // write the EOF (End of File) and save. 
+
+// // The character constant '\0' represents the char with value zero, the null charac.
+
+// // "Be careful to distinguish b/t a charac. const and a string that contains a single char:
+// // 'x' is not the same as "x". The former is an integer, used to produce the numeric val
+// // of the letter x in the machine's character set. The latter is an array of chars that 
+// // contains one char (the letter x) and a '\0'."
+// {
+//     // `str`: input string 
+//     // `c`: character 
+//     // Find first instance of `c` in `str` and return pointer to that first instance.
+
+// // we're given the string and the numeric value of the character we're looking for
+
+// // how do I approach this if:
+//     printf("%d\n", c); // prints 101 in the test at bottom
+//     printf("%c\n", *str); //prints H in the test at bottom
+// //
+// // 101 is the numerical 
+// // If the numerical of *str[i] == numerical of c, return str[i] (the pointer).
+
+// // i want to get the numeric value of str
+
+//     // int i;
+
+//     // for (i = 0; i < 10; i++) {
+//     //     if (str[i] != 0) {
+//     //         printf("%d\n", i);
+//     //         printf("%c\n", str[i]);
+//     //     }
+//     // }
+
+
+// }
+
+// /////////////////////////////////////////////////////////////////
