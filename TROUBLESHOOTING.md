@@ -1,4 +1,4 @@
-## `runtests.sh: 4: Syntax error: word unexpected (expecting "do")
+## `runtests.sh: 4: Syntax error: word unexpected (expecting "do")`
 
 _Chief. Windows_
 
