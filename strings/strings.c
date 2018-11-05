@@ -35,6 +35,8 @@ char *reverse_string(char rv[], char s[])
     for(int i = 0; i < len; i ++){
         rv[i] = s[len - 1];
         len--;
+        printf("%d\n", i);
+        printf("%s\n", rv);
     }
     return rv;
 }
