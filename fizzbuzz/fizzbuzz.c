@@ -10,7 +10,26 @@
 */
 int fizzbuzz(int n)
 {
-
+  int result = 0;
+  int counter = 0;
+  char fzz[] = "Fizz";
+  char bzz[] = "Buzz";
+  char fzzbzz[] = "FizzBuzz";
+  for(int i = 0; i <=n; i++) {
+    if (i % 3 == 0 && i % 5 == 0) {
+      printf("%s\n", fzzbzz);
+    }
+    else if (i % 3 == 0) {
+      printf("%s\n", fzz);
+    }
+    else if (i % 5 == 0) {
+      printf("%s\n", bzz);
+    }
+    else {
+      counter += 1;
+    }
+  }
+  return counter;
 }
 
 #ifndef TESTING
