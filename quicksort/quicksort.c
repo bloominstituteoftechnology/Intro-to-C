@@ -17,7 +17,20 @@
 */
 void quicksort(int *arr, int low, int high)
 {
+    if (high > low){
+        int joint = arr[low], ll = low, hh = high +1;
 
+        while (ll < hh){
+            if (arr[ll] <= joint){
+                ll++;
+            } else {
+                swap(&arr[ll], &arr[--hh]);
+            }
+        }
+        swap(&arr[--ll], &arr[low]);
+        quicksort(arr, low, --ll);
+        quicksort(arr,hh, high);
+    }
 }
 
 #ifndef TESTING
