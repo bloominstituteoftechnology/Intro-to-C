@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +23,17 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    char *p = str;
 
+    while (*p != '\0')
+    {
+        if (*p == c)
+        {
+            return p;
+        }
+        p++;
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +46,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -53,7 +71,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    for (; *m == *n; m++, n++)
+    {
+        if (*m == '\0')
+        {
+            return 0;
+        }
+    }
+    return *m - *n;
 }
 
 /*
@@ -66,7 +91,28 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    char *p = haystack;
 
+    while (*p != '\0')
+    {
+        char *p_start = p;
+        char *q = needle;
+
+        while (*p != '\0' && *q != '\0' && *p == *q)
+        {
+            p++;
+            q++;
+        }
+
+        if (*q == '\0')
+        {
+            return p_start;
+        }
+
+        p++;
+    }
+
+    return NULL;
 }
 
 #ifndef TESTING
