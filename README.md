@@ -1,5 +1,9 @@
 # Introduction to the C Programming Language
 
+Trello Board: 
+https://trello.com/b/sgH4qRn5/intro-c
+
+
 Welcome to your first C lab!
 
 The two main goals of this sprint are as follows. The first goal is to give
