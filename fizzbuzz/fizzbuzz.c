@@ -10,7 +10,30 @@
 */
 int fizzbuzz(int n)
 {
+int count = 0;
 
+  for(int a = 1; a < n; a++){
+    if(a%3==0 && a%5==0){
+      printf("fizzbuzz\n");
+      //printf("%d if 3\n",a);
+    }
+    else if(a%5==0){
+      printf("buzz\n");
+      //printf("%d if 5\n",a);
+    }
+    else if (a%3==0){
+      printf("fizz\n");
+      //printf("%d if both\n",a);
+    }
+    else
+    {
+      //return a;
+      count = count + 1;
+
+      printf("%d\n", count);
+    }
+  }
+return count;
 }
 
 #ifndef TESTING
