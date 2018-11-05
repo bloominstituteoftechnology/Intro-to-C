@@ -13,7 +13,15 @@
 */
 char *string_dup(char *src)
 {
+    int str_length = string_length(src);
+    char *coppied = malloc(str_length);
 
+    for (int i = 0; i < str_length; i++){
+        coppied[i] = src[i];
+    }
+
+    coppied[str_length] = '\0';
+    return coppied;
 }
 
 /*
@@ -26,7 +34,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *source = (char *) src;
+    char *destination = (char *) dest;
 
+    for (int i = 0; i < n; i++){
+        destination[i] = source[i];
+    }
+    return destination;
 }
 
 /*
