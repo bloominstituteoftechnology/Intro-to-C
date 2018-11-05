@@ -33,6 +33,7 @@ for (int i = 0; i <= n; i++)
 return counter;
 }
 
+
 #ifndef TESTING
 int main(void)
 {
