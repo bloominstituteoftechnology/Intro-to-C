@@ -9,7 +9,18 @@
 */
 int string_length(char s[])
 {
-
+    //establish two integer objects that each begin at 0
+    int counter = 0; 
+    int i = 0; 
+    //loop through the charater array s and find each item(i)
+    //which will equate the item to a number. 
+    //while s[i] is not equal to 0 keep looping through.
+    while(s[i] != '\0'){
+        counter++;
+        i++;
+    }
+    //when finished looping through the array return the counter.
+    return counter; 
 }
 
 /*
@@ -20,7 +31,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int 
 }
 
 #ifndef TESTING

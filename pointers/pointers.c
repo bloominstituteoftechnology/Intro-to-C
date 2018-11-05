@@ -36,7 +36,9 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    *x  = *y;
+    x++;
+    y++;
 }
 
 /* 
