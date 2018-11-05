@@ -8,10 +8,31 @@
     every time that nothing gets printed and return the counter.
     Don't forget to include newlines '\n' in your printf statements!
 */
+
 int fizzbuzz(int n)
 {
+    int counter = 0;    
+    int whileCounter = 0;
 
+    while(whileCounter < n) {
+      whileCounter = whileCounter + 1; 
+
+
+      if(whileCounter % 3 == 0 && whileCounter % 5 == 0) {
+        printf("%s\n", "fizzbuzz");
+      } else if(whileCounter % 5 == 0){
+        printf("%s\n", "buzz");
+      } else if(whileCounter % 3 == 0){
+        printf("%s\n", "fizz");
+      } else {
+        counter = counter + 1;
+        continue;
+      }
+    }
+
+return counter; 
 }
+
 
 #ifndef TESTING
 int main(void)
