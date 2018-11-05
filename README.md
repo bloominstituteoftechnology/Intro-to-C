@@ -1,7 +1,7 @@
 # Introduction to the C Programming Language
 
 Welcome to your first C lab!
-
+- for PR
 The two main goals of this sprint are as follows. The first goal is to give
 students the experience of learning a different programming language. This is
 important because it is _very_ rarely the case where you are familiar and
