@@ -9,7 +9,11 @@
 */
 int string_length(char s[])
 {
-
+    int counter=0;
+    for (int i=0; s[i]!='\0';i++){
+        counter+=1;
+    }
+    return counter;
 }
 
 /*
@@ -20,7 +24,18 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int counter=string_length(s)-1;
+    int rv_count=0;
+    while (counter>=0) {
+        rv[rv_count]=s[counter];
+        if (s[counter]==' '){
+            rv[rv_count]=' ';
+        }
+        counter-=1;
+        rv_count+=1;
+    }
+    rv[rv_count]='\0';
+    return rv;
 }
 
 #ifndef TESTING
