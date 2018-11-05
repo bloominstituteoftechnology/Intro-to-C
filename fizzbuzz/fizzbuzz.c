@@ -10,7 +10,21 @@
 */
 int fizzbuzz(int n)
 {
-int *p = &n
+    // SUDOCODE
+    // int count = 0
+    // if n / 3 
+    //   if n / 5
+    //   printf("%c\n", "fizzbuzz");
+    //     return 0;
+    //    printf("%c\n", "fizz")
+    //    return 0
+    // if n/ 5
+    //   printf("%c\n", "buzz")
+    //   return 0
+    // count + 1
+    // return count
+int *p = &n;
+printf("%d\n", *p );
 }
 
 #ifndef TESTING
