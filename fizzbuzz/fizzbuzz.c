@@ -10,7 +10,7 @@
 */
 int fizzbuzz(int n)
 {
-
+int *p = &n
 }
 
 #ifndef TESTING
