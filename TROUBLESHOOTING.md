@@ -1,4 +1,4 @@
-## `runtests.sh: 4: Syntax error: word unexpected (expecting "do")`
+﻿## `runtests.sh: 4: Syntax error: word unexpected (expecting "do")`
 
 _Chief. Windows_
 
@@ -35,3 +35,5 @@ If you see this error:
   ```
   git config --global core.autocrlf false
   ```
+
+
