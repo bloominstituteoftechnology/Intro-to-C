@@ -1,5 +1,5 @@
 # Introduction to the C Programming Language
-
+#woo
 Welcome to your first C lab!
 
 The two main goals of this sprint are as follows. The first goal is to give
