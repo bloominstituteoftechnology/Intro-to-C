@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +24,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    int i = 0;
+    while (str[i] != '\0') {
+        if (str[i] == c) {
+            return &str[i];
+        }
+        i++;
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +44,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+   int len = strlen(y);
+    int i = 0;
+    while (y[i] != '\0') {
+        x[i] = y[i];
+        i++;
+    }
+    x[len] = '\0';
 }
 
 /* 
@@ -53,7 +69,19 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+   while (*m != '\0' || *n != '\0')
+    {
+        if (*m > *n) {
+        return 1;
+        }
+        else if (*m < *n) {
+        return -1;
+        }
+        m++;
+        n++;
+    }
 
+    return 0;
 }
 
 /*
@@ -66,7 +94,20 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+     int count1 = 0, count2 = 0, i, j;
+ 
+    while (haystack[count1] != '\0')
+        count1++;
+    while (needle[count2] != '\0')
+        count2++;
+    for (i = 0; i <= count1 - count2; i++)
+    {
+        for (j = i; j < i + count2; j++)
+        {
+            return NULL;
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
