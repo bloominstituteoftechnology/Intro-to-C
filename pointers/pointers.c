@@ -24,9 +24,12 @@ void swap(int* a, int* b)
 char *find_char(char *str, int c)
 {
     int len = sizeof(str) / sizeof(char);
-    for (int i = 0; i < len; i++) {
-        if (str[i] == c) {
-            return &(str[i]);
+    char character = 'a';
+    int count = 0;
+    while (character != '\0') {
+        character = *(str + count);
+        if (str[count] == c) {
+            return &str[count];
         }
     }
     return str;
@@ -93,12 +96,15 @@ int string_compare(char *m, char *n)
 char *find_string(char *haystack, char *needle)
 {
     int len = sizeof(haystack) / sizeof(char);
-    int len2 = sizeof(needle) / sizeof(char);
         for (int i = 0; i < len; i++) {
-            if ((*(haystack + i) * len2) == needle) {
-                return &(*(haystack + i));
+            if (*(haystack + i) == needle) {
+                return haystack + i;
             }
         }
+
+    while (*haystack != '\0') {
+        
+    }
 }
 
 #ifndef TESTING
