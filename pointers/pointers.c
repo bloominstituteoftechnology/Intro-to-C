@@ -8,7 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+    //temp is holding the value that a points to
+    int temp = *a;
+    //set a to point to the value that b is pointing to
+    *a = *b;
+    //set b to point to the value that temp is holding
+    *b = temp;
 }
 
 /*
@@ -21,7 +26,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    int s_len;
+    int i;
+    s_len = strlen(str);
+    for (i = 0; i < s_len; i++) {
+        if ((char) c == str[i]) {
+            return (const char*) &str[i];
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +47,15 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    //walk along y until we reach the end of the string
+    while (*y != '\0') {
+        //copy the current char we're at to x
+        *x = *y;
+        //increment x and y pointers
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -53,7 +74,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    //iterate over both char pointers
+    while(*m == *n) {
+        //check to see if we've reached the end of one of the strings
+        if (*m == '\0') {
+        return 0;
+    }
+    //increment both pointers
+    m++;
+    n++;
+    }
+    return *m - *n;
 }
 
 /*
@@ -66,7 +97,21 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    int i = 0, j = 0;
+    while ((*(haystack + j) != '\0')&&(*(needle + i) != '\0')) {
+        if (*(needle + i) != *(haystack + j)) {
+            j++;
+            i = 0;
+        }
+        else {
+            i++;
+            j++;
+        }
+    }
+    if (*(needle + i) == '\0')
+        return 1;
+    else
+        return -1;
 }
 
 #ifndef TESTING
