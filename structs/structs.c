@@ -2,13 +2,23 @@
 #include <stdlib.h>
 #include "lib.h"
 
+
+int string_length(char s[])
+{
+    int i;
+    for(i = 0; s[i] != '\0'; ++i);
+    return i;
+}
 /* 
     Define the Person struct by specifying the fields that make up the
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
-
+    char *name;
+    int age;
+    int height;
+    int weight;
 } Person;
 
 /*
@@ -19,9 +29,22 @@ typedef struct Person {
     When setting the `name` field, use your previously-built string_dup
     function, which handles the allocation of memory for the new string.
 */
-Person *createPerson(char *name, int age, int height, int weight)
+ Person *createPerson(char *name, int age, int height, int weight)
 {
+    printf("%s \n", "test");
 
+    struct Person *a_person = malloc(sizeof( Person));
+
+    a_person->name = malloc(string_length(name));
+    a_person->name = strdup( name);
+
+    a_person->age =  age;
+
+    a_person->height=  height;
+
+    a_person->weight = weight;
+    
+    return a_person;
 }
 
 /*
@@ -30,7 +53,13 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
+        if (who->name != NULL) {
+            free(who->name);
+        }
 
+        if (who != NULL) {
+            free(who);
+        }
 }
 
 #ifndef TESTING
