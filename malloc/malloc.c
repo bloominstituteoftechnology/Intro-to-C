@@ -44,8 +44,6 @@ void *mem_copy(void *dest, const void *src, int n)
     {
         *(cdest + i) = *(csrc + i);
     }
-
-    return cdest;
 }
 
 /*
