@@ -57,7 +57,15 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    void *resized = malloc(new_size);
 
+    if(new_size < old_size){
+        mem_copy(resized, ptr, new_size);
+    } else {
+        mem_copy(resized, ptr, old_size);
+    }
+    free(ptr);
+    return resized;
 }
 
 #ifndef TESTING
