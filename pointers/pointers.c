@@ -24,8 +24,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-  int len = strlen(*str);
-  printf("%d <<< length \n", len);
+  int len = strlen(str);
+  for(int i=0; i<len; i++){
+    if(str[i] == c){
+      return &str[i];
+    } else {
+      return NULL;
+    }
+  }
 }
 
 /*
