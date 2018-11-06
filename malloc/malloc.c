@@ -64,18 +64,16 @@ void *mem_copy(void *dest, const void *src, int n)
 void *resize_memory(void *ptr, int old_size, int new_size)
 {   int sizetocopy;
 
-    if (old_size > new_size){
+    if (old_size < new_size){
         sizetocopy = old_size;
     }
     else{
         sizetocopy = new_size;
     }
-    printf("%s \n", (char*)&ptr);
 
-    void *newptr = malloc(new_size+1);
+    void *newptr = malloc(new_size + 1);
 
     mem_copy(newptr,ptr,sizetocopy);
-    printf("%s \n", (char*)&newptr);
     return newptr;
 }
 
