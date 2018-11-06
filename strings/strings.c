@@ -26,16 +26,16 @@ int string_length(char s[]) {
 */
 char *reverse_string(char rv[], char s[]) {
 
-  strcpy(rv, "TEST");
-
-  for(int i = strlen(s) - 2; i >= 0; i--) {
-
-    strcat(rv, s[i]);
+  for(int i = strlen(s) - 1; i >= 0; i--) {
+    *rv = s[i];
+    
+    printf("%c", *rv);
   }
-
-  printf("%s", rv);
+  return rv;
+  //i don't understand the pointers here and type assignments. prints the answer fine, but unable to return correct version.
 
 }
+
 
 #ifndef TESTING
 int main(void)

@@ -13,6 +13,14 @@
 */
 char *string_dup(char *src)
 {
+  char *x = src;
+
+  char *chars = malloc(strlen(x));
+
+  chars = x;
+
+  return chars;
+}
 
 }
 
@@ -26,7 +34,7 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    
 }
 
 /*
