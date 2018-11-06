@@ -27,7 +27,8 @@ for (int i = 0; i < n; i++) {
                    //but also when I try the tests it gets closer with some combination of the count thing
          // that is a weird error, but also we wouldn't need continue, right?
         // because all the logic is in if/if else/else, there's no danger of code you don't want to be running running 
-        // My count was set to 1 because how I was handling it before. I don't know how I made this problem that crazy.
+        // My count was set to 1 because how I was handling it before. I don't know how I made this problem that crazy. 
+        // R: Don't worry about it XD We lived, learned, and now get to go to the next problem which is strings rite m8? yes m8 alright well meet you there
     }
     else {
         count++;
