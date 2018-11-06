@@ -8,11 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-  int temp = a;
-  char *pntr = &a;
-  char *pntrb = &b;
-  *pntr = b;
-  *pntrb = temp;
+  int temp = *a;
+  *a = *b;
+  *b = temp;
 }
 
 /*
@@ -25,7 +23,16 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-  
+  while (*str != '\0')
+  {
+    if (*str == c)
+    {
+      return str;
+    }
+    str++;
+  }
+  printf("POINTER: %p\n", str);
+  return NULL;
 }
 
 /*
@@ -38,7 +45,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+  while (*y != '\0')
+  {
+    *x = *y;
+    y++;
+    x++;
+  }
+  *(x) = '\0';
 }
 
 /*
@@ -55,9 +68,46 @@ void string_copy(char *x, char *y)
 
     Do not just use the `strcmp` function from the standard library.
 */
+// int string_compare(char *m, char *n)
+// {
+//   int len = sizeof(m) / sizeof(char);
+//   int i;
+//   for (i = 0; i < len; i++) {
+//     if (*(m+i) != '\0') {
+//       if (*(m+i) != *(n+i)) {
+//         if (*(m+i) > *(n+i)) {
+//           return 1;
+//         } else {
+//           return -1;
+//         }
+//       }
+//     } else if (*(n+i) != '\0') {
+//       return -1;
+//     }
+//   }
+//   return 0;
+// }
+
 int string_compare(char *m, char *n)
 {
-
+    while (*m != '\0') {
+        if (*n == '\0') {
+            return 1;
+        }
+        if (*m > *n) {
+            return 1;
+        }
+        if (*n > *m) {
+            return -1;
+        }
+        m++;
+        n++;
+    }
+     if(*n != '\0') {
+        return -1;
+    }
+    printf("POINTER N: %p\n", n);
+    return 0;
 }
 
 /*
@@ -68,9 +118,40 @@ int string_compare(char *m, char *n)
 
     Do not use the `strstr` function from the standard library.
 */
+// char *find_string(char *haystack, char *needle)
+// {
+//   while (*haystack != '\0') {
+//     char *start;
+//     if (*haystack == *needle) {
+//       start = haystack;
+//       while (*haystack == *needle) {
+//         haystack++;
+//         needle++;
+//       }
+//     }
+//   }
+// }
+
 char *find_string(char *haystack, char *needle)
 {
-
+    while(*haystack != '\0') {
+        char *first;
+        if(*haystack == *needle){
+            first = haystack;
+            while(*haystack == *needle) {
+                haystack++;
+                needle++;
+            }
+        }
+        if(*needle == '\0') {
+            return first;
+        }
+        if(*haystack == '\0') {
+            return NULL;
+        }
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
