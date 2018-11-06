@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "lib.h"
 
 /*
@@ -43,6 +44,8 @@ void *mem_copy(void *dest, const void *src, int n)
     {
         *(cdest + i) = *(csrc + i);
     }
+
+    return cdest;
 }
 
 /*
