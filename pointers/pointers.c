@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -65,7 +66,23 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int max;
+    if (strlen(m) > strlen(n)){
+        max = strlen(m);
+    }
+    else {
+        max = strlen(n);
+    }
 
+    for (int i = 0; i<max; i++){
+        if (m[i] < n[i]) {
+            return -1;
+        }
+        if (m[i] > n[i]) {
+            return 1;
+        }
+    }
+    return 0;
 }
 
 /*
