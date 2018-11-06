@@ -56,7 +56,7 @@ Person *createPerson(char *name, int age, int height, int weight)
   char *new_name = (char *)malloc (sizeof(char) * length);
 
   string_copy(new_name, name);
-  printf("%s\n", new_name); 
+  
 
   
   p->name = new_name; 
@@ -74,8 +74,9 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
+//   free(who);
+  free(who->name);
   free(who);
-  free(&who);
    
 }
 
@@ -94,3 +95,6 @@ int main(void)
     return 0;
 }
 #endif
+
+
+// https://repl.it/@codejoncode/Structs-intro-to-C  replit tests pass not sure why its not here

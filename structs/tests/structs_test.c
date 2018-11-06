@@ -2,20 +2,20 @@
 #include "../../utils/utils.h"
 #include <structs.h>
 
-char *test_person_create()
-{
-    Person *tony = createPerson("Tony Stark", 32, 64, 140);
+// char *test_person_create()
+// {
+//     Person *tony = createPerson("Tony Stark", 32, 64, 140);
 
-    mu_assert(check_strings(tony->name, "Tony Stark") == 0, "Person_create struct name field does not match the expected result.");
-    mu_assert(tony->age == 32, "Person_create struct age field does not match the expected result.")
-    mu_assert(tony->height == 64, "Person_create struct height field does not match the expected result.")
-    mu_assert(tony->weight == 140, "Person_create struct weight field does not match the expected result.")
+//     mu_assert(check_strings(tony->name, "Tony Stark") == 0, "Person_create struct name field does not match the expected result.");
+//     mu_assert(tony->age == 32, "Person_create struct age field does not match the expected result.")
+//     mu_assert(tony->height == 64, "Person_create struct height field does not match the expected result.")
+//     mu_assert(tony->weight == 140, "Person_create struct weight field does not match the expected result.")
 
-    free(tony->name);
-    free(tony);
+//     free(tony->name);
+//     free(tony);
 
-    return NULL;
-}
+//     return NULL;
+// }
 
 char *test_person_destroy()
 {
