@@ -78,6 +78,7 @@ int string_compare(char *m, char *n)
                         return -1;
                 }
 	}
+	return 0;
 }
 
 /*
