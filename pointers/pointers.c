@@ -40,10 +40,14 @@ char *find_char(char *str, int c)
     
 //     Do not just use the `strcpy` function from the standard library.
 // */
-// void string_copy(char *x, char *y)
-// {
-
-// }
+void string_copy(char *x, char *y)
+{
+    while(*y != '\0'){
+        *x = *y;
+        x++;
+        y++;
+    }
+}
 
 // /* 
 //     Compares the character strings m and n and returns negative,
@@ -59,10 +63,20 @@ char *find_char(char *str, int c)
     
 //     Do not just use the `strcmp` function from the standard library.
 // */
-// int string_compare(char *m, char *n)
-// {
-
-// }
+int string_compare(char *m, char *n)
+{
+    while(*m !='\0'){
+        if(*m > *n){
+            return 1;
+        }else if(*m < *n){
+            return -1;
+        }else{
+            m++;
+            n++;
+        }
+    }
+    return 0;
+}
 
 // /*
 //     Searches the input string `haystack` for the first instance of
@@ -72,10 +86,17 @@ char *find_char(char *str, int c)
 
 //     Do not use the `strstr` function from the standard library.
 // */
-// char *find_string(char *haystack, char *needle)
-// {
-
-// }
+char *find_string(char *haystack, char *needle)
+{
+    while(*haystack != '\0'){
+        if(*haystack == *needle){
+            return haystack;
+        }else{
+            haystack++;
+        }
+    }
+    return NULL;
+}
 
 #ifndef TESTING
 int main(void)
@@ -84,20 +105,23 @@ int main(void)
     swap(&x, &y);
     printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    // char *world = "World";
-    // char buffer[1024];
+    char *hello = "hello";
+    char *world = "World";
+    char *zebra = "zebra"; 
+    char *aadvark = "aadvark"; 
+    char *goodbye = "goodbye";
+    char buffer[1024];
 
-    // string_copy(buffer, hello);
+    string_copy(buffer, hello);
 
-    // printf("Buffer is %s\n", buffer);
-    // printf("Comparison is %d\n", string_compare(hello, world));
-
+    printf("Buffer is %s\n", buffer);
+    printf("Comparison is %d\n", string_compare(hello, goodbye));
+    printf("Comparison is%d\n", string_compare(aadvark, zebra)); 
     char *found_char = find_char(hello, 'e');
-    // char *found_string = find_string(world, "or");
+    char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }
