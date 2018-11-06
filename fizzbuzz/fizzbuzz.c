@@ -10,19 +10,20 @@
 */
 int fizzbuzz(int n)
 {
-    int i;
-    for (i = 1; i <= 100; ++i)
+    int counter = 0;
+    int i = 0;
+    for (i = 1; i <= n; i++)
     {
         if (i % 3 == 0)
             printf("Fizz");
         if (i % 5 == 0)
             printf("Buzz");
         if ((i % 3 != 0) && (i % 5 != 0))
-            printf("number=%d", i);
+            printf("Fizzbuzz");
+        else
+            counter += 1;
         printf("\n");
     }
-
-    return 0;
 }
 
 #ifndef TESTING

@@ -8,6 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
+    char *name;
+    int age;
+    int height;
+    int weight;
 
 } Person;
 
@@ -21,6 +25,7 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
+    
 
 }
 
