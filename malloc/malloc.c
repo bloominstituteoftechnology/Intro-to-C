@@ -13,7 +13,18 @@
 */
 char *string_dup(char *src)
 {
+    // char *dup = malloc(string_length(src)+1);
+    // while (*src != '\0') {
+    //     *dup = *src;
+    //     dup++;
+    //     src++;
+    // }
+    // *dup = '\0';
+    // return dup;
 
+    char *dup = malloc(string_length(src)+1);
+    string_copy(dup, src);
+    return dup;
 }
 
 /*
