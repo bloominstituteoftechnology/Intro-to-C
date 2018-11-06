@@ -41,7 +41,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0'){
+    *x = *y;
+    x++;
+    y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -60,7 +65,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    while (*m == *n)
+    {
+        if (*m == '\0')
+        {
+            return 0;
+        }
+        m++;
+        n++;
+    }
+    return *m - *n;
 }
 
 /*
