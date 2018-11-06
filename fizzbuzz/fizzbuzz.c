@@ -10,26 +10,31 @@
 */
 int fizzbuzz(int n)
 {
-int count = 1;
+int count = 0;
 for (int i = 0; i < n; i++) {
-    if (i % 3 == 0) {
+    
+    if (i % 3 ==  0) { // if (i % 3 == 0 && i % 5 == 0) { works too
         if (i % 5 == 0 ) {
-            printf("%s FizzBuzz\n");
-            count--;
-            continue;
+            printf("FizzBuzz\n");
+            // count--;
         }
-        printf("%s Fizz\n");
-        count--;
-        continue;
+        printf("Fizz\n");
+        // count--;
     }
-    if (i % 5 == 0 ) {
-        printf("%s Buzz\n");
-        count--;
-        continue;
+    else if (i % 5 == 0 ) {
+        printf("Buzz\n");
+        // count--; // why count--? before I had the count switched to the else it would keep the count from actually going up.
+                   //but also when I try the tests it gets closer with some combination of the count thing
+         // that is a weird error, but also we wouldn't need continue, right?
+        // because all the logic is in if/if else/else, there's no danger of code you don't want to be running running 
+        // My count was set to 1 because how I was handling it before. I don't know how I made this problem that crazy.
     }
-    count++;
+    else {
+        count++;
+    } // this probably should be in an else. The counter should only be incremented if neither Fizz AND/OR Buzz is printed
+    // But as it is now, the count is going to increment in every iteration, right?
 }
-printf("%d\n", count);
+printf("%d\n", count); // ZzzzzZzzzzzZZZzzz 1 sec over here
 return count;
 }
 
