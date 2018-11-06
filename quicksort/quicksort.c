@@ -14,10 +14,36 @@
     parameters to circumvent this issue.
     
     Do not just use the `qsort` function from the standard library.
-*/
-void quicksort(int *arr, int low, int high)
-{
 
+    https://www.geeksforgeeks.org/quick-sort/
+*/
+
+int partition(int arr[], int low, int high){
+
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++){
+        //check if current element is smaller than or equal to the pivot
+        if (arr[j] <= pivot) {
+            i++; //increment the index of the smaller element
+            swap(&arr[i], &arr[j]);
+        }
+    } 
+    swap(&arr[i+1], &arr[high]);
+    return(i+1);
+}
+
+void quicksort(int arr[], int low, int high)
+{
+    if (low < high){
+    //set up p as a partitioning index
+    int pi = partition(arr, low, high);
+
+    //sort elements before and after partition
+    quicksort(arr, low, pi-1);
+    quicksort(arr, pi+1, high);
+    }
 }
 
 #ifndef TESTING

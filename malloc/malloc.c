@@ -15,7 +15,7 @@
 char *string_dup(char *src)
 {
     int length = string_length(src);
-    char *copy = malloc(length+1);
+    char *copy = malloc(length+1); // why length + 1? 
 
     for(int i = 0; i<=length; i++){
         copy[i] = src[i];
@@ -35,9 +35,11 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    // make pointers
     char *pdest = (char *)dest;
-    char *psrc = (char *)src;
+    char *psrc = (char *)src;  // what is (char *) ?
 
+    // loop over pointers
     for (int i = 0; i<=n; i ++) {
         pdest[i] = psrc[i];
     }
