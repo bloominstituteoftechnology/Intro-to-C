@@ -88,18 +88,16 @@ char *find_string(char *haystack, char *needle)
 {
     while(*haystack != '\0') {
         char *first;
-        if(*haystack == *needle){
+        char *find = needle;
+        if(*needle == *haystack){
             first = haystack;
-            while(*haystack == *needle) {
+            while(*haystack == *find && *haystack != '\0' && *find != '\0') {
                 haystack++;
-                needle++;
+                find++;
             }
         }
-        if(*needle == '\0') {
+        if(*find == '\0') {
             return first;
-        }
-        if(*haystack == '\0') {
-            return NULL;
         }
         haystack++;
     }
