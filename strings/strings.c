@@ -9,7 +9,12 @@
 */
 int string_length(char s[])
 {
+    int n=0;
 
+    while () {
+
+    }
+    return n;
 }
 
 /*
