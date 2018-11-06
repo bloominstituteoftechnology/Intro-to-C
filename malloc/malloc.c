@@ -13,7 +13,23 @@
 */
 char *string_dup(char *src)
 {
+    int string_length(char str[]){
+        int count = 0; 
+        while(str[count] != '\0'){
+            count = count + 1; 
+        }
+        return count; 
+    }
 
+    int len = string_length(src);
+    char *dup = malloc(len * sizeof(char)); 
+
+    for(int i = 0; i < len; i++){
+        dup[i] = *src; 
+        src++;
+    }
+    dup[len] = '\0';
+    return dup; 
 }
 
 /*
