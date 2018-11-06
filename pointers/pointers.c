@@ -47,7 +47,11 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-  *x = y;
+  for(int i =0; x[i] != '\0';  i++)
+  {
+    x[i] = y[i];
+  }
+  return *x;
 }
 
 /*
