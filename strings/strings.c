@@ -9,15 +9,12 @@
 */
 int string_length(char s[])
 {
-    // \0
     int count = 0;
-    // printf("s => %c \n", s[26]);
     for (int i = 0; ; i++){
         if(s[i] == '\0'){
             return count;
         }
         count += 1;
-        // printf(" %d -- %c\n", count, s[i]);
     };
 }
 
@@ -30,20 +27,13 @@ int string_length(char s[])
 
 char *reverse_string(char rv[], char s[])
 {
-    // printf("3 => %d\n", string_length(s));
     int len = string_length(s);
-    // *rv = s[len-1];
     char new[len]; 
     for(int i = 1; i < len+1; i++){
-        // printf("3 i => %d\n", i);
-        // printf("3 s[len] => %c\n", s[len-i]);
         new[i-1] = s[len-i];
-        printf("3 new => %s\n", new);
     }
     new[len] = '\0';
     rv = new;
-    printf("4 =>%s<=\n", rv);
-    printf("4 =>%s<=\n", string_length(rv));
     return rv;
 }
 

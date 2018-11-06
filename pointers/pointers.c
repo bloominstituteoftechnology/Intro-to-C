@@ -1,14 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-/*
-    Swaps the integer values being pointed at by a and b. Keep in
-    mind when you need to access a pointer's actual value (the 
-    address it's referring to) or the value at the address it's 
-    pointing at.
-*/
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int tempB = *b;
+    int tempA = *a; 
+    *a = tempB;
+    *b = tempA;
 }
 
 /*
@@ -19,9 +17,36 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
-{
 
+int string_length(char s[])
+{
+    int count = 0;
+    for (int i = 0; ; i++){
+        if(s[i] == '\0'){
+            return count;
+        }
+        count += 1;
+    };
+}
+
+
+char *find_char(char *str, int c)
+{   
+    printf("\n%s, %c\n\n", str, c);
+    printf("start\n");
+    int len = string_length(str);
+    printf("len\n");
+    for(int i = 0; i < len; i++){
+        printf("loop %i\n", i);
+        if(str[i] == c){
+            printf("%p this is the memory slot in ram\n", str);
+            str += i;
+            printf("%p this is the memory slot in ram now\n", str);
+            printf("%i <- is the index of %c in %s\n\n", i, c, str);
+            return str;
+        };
+    };
+    return NULL;
 }
 
 /*
@@ -34,7 +59,8 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    char somecharacter = *y;
+    printf('%c', somecharacter);
 }
 
 /* 
