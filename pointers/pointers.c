@@ -64,13 +64,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    for ( ; *m == *n; ++m, ++n){
-        if (*m == '\0'){
+    while (*m == *n) {
+        if (*m == '\0') {
             return 0;
-        } else {
-            return m - n;
         }
+        m++;
+        n++;
     }
+    return *m - *n;
 }
 
 /*

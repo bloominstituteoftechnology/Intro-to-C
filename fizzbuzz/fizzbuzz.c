@@ -18,7 +18,7 @@ int fizzbuzz(int n)
         else if (i % 5 == 0) {
             printf("Buzz\n");
         }
-        else if(i % 3 == 0) {
+        else if (i % 3 == 0) {
             printf("Fizz\n");
         }
         else {
@@ -26,7 +26,8 @@ int fizzbuzz(int n)
         }
     };
 
-    printf("%d \n", count);
+    printf("Nothing got printed: %d times\n", count);
+    //return count;
     
 }
 

@@ -57,14 +57,15 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-    void *resized = malloc(new_size);
+    char *resized = (char *) malloc(new_size * sizeof(char));
+    char *point = ptr;
 
-    if(new_size < old_size){
-        mem_copy(resized, ptr, new_size);
-    } else {
-        mem_copy(resized, ptr, old_size);
+    for (int i = 0; i <= old_size; i++) {
+        if (i == new_size) {
+            break;
+        }
+        resized[i] = point[i];
     }
-    free(ptr);
     return resized;
 }
 
