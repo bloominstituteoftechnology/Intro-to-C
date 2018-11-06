@@ -26,7 +26,22 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-  
+  char compare = 'a';
+  int counter = 0;
+  for (int i = 0; compare != 0; i++) {
+    compare = s[i];
+    counter += 1;
+  }
+
+  int i = 0;
+  for (int j = counter - 1; j >= 0; j -= 1) {
+    rv[i] = s[j];
+    i += 1;
+    //printf("%c\n", s[j]);
+    printf("%c\n", rv[i]);
+  }
+  printf("%s\n", rv);
+  return rv;
 }
 
 #ifndef TESTING
