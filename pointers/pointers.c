@@ -8,9 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-    *a += *b;
-    *b = *a - *b;
-    *a -= *b;
+    int store = *b;
+    *b = *a;
+    *a = store;
 }
 
 /*
@@ -84,27 +84,21 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    while (*haystack != '\0'){
-        char *first;
-
-        if (*needle == *haystack) {
-            first = haystack;
-            while (*needle == *haystack) {
-                *haystack ++;
-                *needle ++;
-            }
+        while (*haystack) {
+        char *start = haystack;
+        char *find = needle;
+         while (*haystack && *find && *haystack == *find) {
+            haystack++;
+            find++;
         }
-
-        if (*needle == '\0'){
-            return first;
+         if (!*find) {
+            return start;
         }
-        if (*haystack == '\0'){
-            return NULL;
-        }
-        *haystack++;
+        haystack = start + 1;
     }
     return NULL;
-}
+}	
+
 
 #ifndef TESTING
 int main(void)
