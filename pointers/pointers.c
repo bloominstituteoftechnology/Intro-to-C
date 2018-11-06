@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+  int c = *a;
+  *a = *b;
+  *b = c;
 }
 
 /*
@@ -21,7 +23,7 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+  
 }
 
 /*
