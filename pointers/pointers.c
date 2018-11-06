@@ -23,20 +23,33 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str != '\0') {
+        if(*str == c){
+            return str;
+        }
+        str++;
+    }
 }
+
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
-    copies the character contents of y over to x. Again, pointer arithmetic
+    copy the character contents of y over to x. Again, pointer arithmetic
     is necessary here. Also, make sure x points to a null character at its 
     end to terminate it properly. 
     
     Do not just use the `strcpy` function from the standard library.
 */
+
 void string_copy(char *x, char *y)
 {
-
+    while(*y != '\0') {
+      *x = *y;
+      
+      *x++;
+      *y++;
+      //how do i add the '\0' in for the last pointer of x? 
+    }
 }
 
 /* 
@@ -55,7 +68,26 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+  int mLength = 0; 
+  int nLength = 0;
 
+  while(*m != '\0') {
+    mLength++; 
+    *m++;
+  }
+  
+  while(*n != '\0') {
+    nLength++; 
+    *n++;
+  }
+
+  if(mLength == nLength) {
+    return 0;
+  } else if(mLength > nLength) {
+    return 1;
+  } else {
+    return -1;
+  }
 }
 
 /*
