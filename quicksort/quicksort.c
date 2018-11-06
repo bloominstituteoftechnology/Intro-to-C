@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "lib.h" 
+#include "lib.h"
 
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
@@ -7,18 +7,40 @@
     already being included for you in this file).
 
     The `low` and `high` parameters indicate the lowest and highest indices
-    of the array that is getting passed in. This is necessary because the 
+    of the array that is getting passed in. This is necessary because the
     function is being passed a pointer to the array, not the contents of the
-    array. We can't easily figure out the length of the array through the 
+    array. We can't easily figure out the length of the array through the
     pointer, so the function receives the highest and lowest indices as
     parameters to circumvent this issue.
-    
+
     Do not just use the `qsort` function from the standard library.
 */
+int partition(int *arr, int low, int high)
+{
+  int pivot = arr[high];
+  int pIndex = low;
+  for(int i = low; i < high; i++)
+  {
+    if(arr[i] < pivot)
+    {
+      swap(&arr[i], &arr[pIndex]);
+      pIndex++;
+    }
+  }
+  swap(&arr[high], &arr[pIndex]);
+  return pIndex;
+}
+
 void quicksort(int *arr, int low, int high)
 {
-
+  if(low < high)
+  {
+    int pIndex = partition(arr, low, high);
+    quicksort(arr, low, pIndex-1);
+    quicksort(arr, pIndex + 1, high);
+  }
 }
+
 
 #ifndef TESTING
 int main(void)
