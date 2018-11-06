@@ -8,7 +8,11 @@
 */
 void swap(int* a, int* b)
 {
-
+  int holdb =*b;
+  int holda = *a;
+  
+  *b = holda;
+  *a = holdb;
 }
 
 /*
@@ -21,7 +25,16 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+  char *pointer;
+  
+  for(int i = 0; str[i] != '\0'; i++){
+    if(str[i] == c){
+      pointer = &str[i];
+    }
+  }
+  
+  
+  return pointer; 
 }
 
 /*
@@ -34,7 +47,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+  int i; 
+  for(i = 0; y[i] != '\0'; i++){
+    
+    x[i] = y[i];
+  }
 
+  i++;
+  x[i] = '\0';
 }
 
 /* 
@@ -53,7 +73,24 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+  int i; 
+  for(i = 0; m[i] != '\0' || n[i] != '\0'; i++){
+    //while we have not reached the end of a string keep going. 
+    if(m[i] < n[i]){
+      return 22;
+    } else if (m[i] > n[i]){
+      return -22;
+    }
+  }
+  //check for if both strings matched up until one ended before other
+  if (m[i] == '\0' && n[i] != '\0'){
+    return -22; // m would be greater 
+  } else if (m[i] != '\0' && n[i] == '\0'){
+    return 22; // m would be less
+  } else {
+    //ended without returning and both are '\0' strings are equal 
+    return 0; 
+  }
 }
 
 /*
@@ -64,6 +101,7 @@ int string_compare(char *m, char *n)
 
     Do not use the `strstr` function from the standard library.
 */
+
 char *find_string(char *haystack, char *needle)
 {
 
