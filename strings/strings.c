@@ -28,9 +28,6 @@ char *reverse_string(char rv[], char s[])
     int rv_count=0;
     while (counter>=0) {
         rv[rv_count]=s[counter];
-        if (s[counter]==' '){
-            rv[rv_count]=' ';
-        }
         counter-=1;
         rv_count+=1;
     }
