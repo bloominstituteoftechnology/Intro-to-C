@@ -9,9 +9,13 @@
 */
 int string_length(char s[])
 {
+    int count = 0;
 
+    while(s[count] != '\0') {
+        count++;
+    }
+    return count;
 }
-
 /*
     Write a function that reverses the order of string s and outputs 
     the reversed string to the input array rv. The rv array will have 
@@ -20,7 +24,13 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int count = 0;
+    for(int i = string_length(s) - 1; i >= 0; i--){ // using previous function to get the length. -1 starting from the end until reaching 0.
+    rv[count] = s[i];
+    count++;
+    }
+    rv[count] = '\0'; // adding \0 after finishing reversing the string.
+    return rv; // returning reverse
 }
 
 #ifndef TESTING
