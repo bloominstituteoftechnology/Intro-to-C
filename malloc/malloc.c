@@ -42,7 +42,12 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *ndest = dest;
+    char *nsrc = src;
 
+    for(int i = 0; i < n; i++){
+        *(ndest + 1) = *(nsrc + 1);
+    }
 }
 
 /*
