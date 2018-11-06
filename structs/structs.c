@@ -8,9 +8,36 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
-
+  char *name;
+  int age; 
+  int height; 
+  int weight;
 } Person;
+void string_copy(char *x, char *y)
+{
+  int i; 
+  for(i = 0; y[i] != '\0'; i++){
+    
+    x[i] = y[i];
+  }
 
+  
+  x[i] = '\0';
+}
+int string_length(char s[])
+{
+  int length = 0;
+  int i = 0;
+  //initialize both length and i at zero 
+  
+  
+  for(i = 0; s[i] != '\0'; i++){
+    length++;
+  } 
+  
+
+  return length;
+}
 /*
     Creates an instance of the Person struct that receives all the relevant
     pieces of data associated with a Person instance.
@@ -21,7 +48,24 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
+  struct Person *p = malloc(sizeof(Person));
+  
+  //set fields 
+  // char *new_name = string_dup(name);
+  int length = string_length(name);
+  char *new_name = (char *)malloc (sizeof(char) * length);
 
+  string_copy(new_name, name);
+  printf("%s\n", new_name); 
+
+  
+  p->name = new_name; 
+  p->age = age; 
+  p->height = height; 
+  p->weight = weight; 
+
+  
+  return p;  
 }
 
 /*
@@ -30,7 +74,9 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-
+  free(who);
+  free(&who);
+   
 }
 
 #ifndef TESTING

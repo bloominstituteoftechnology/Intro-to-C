@@ -8,6 +8,7 @@ typedef struct Queue {
     int *storage;
 } Queue;
 
+
 /*
     Creates a queue by allocating the appropriate amount of memory for an
     instance of the Queue struct, and initializes all of the fields of the
@@ -43,7 +44,7 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
-
+    free(q); 
 }
 
 
