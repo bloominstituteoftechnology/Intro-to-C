@@ -31,6 +31,7 @@ We'll talk later on about how to handle dynamically-sized data.
 So what do arrays have to do with strings? Everything, as it turns out. Strings in C are actually nothing more than arrays of characters. In fact, when declaring a string, you might do it like this:
 ```c
     char[] = "Hello world!";
+    
 ```
 Under the hood, this declaration becomes
 ```c
