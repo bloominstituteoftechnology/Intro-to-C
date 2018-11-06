@@ -6,9 +6,33 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+// 	int x = 0;   // Set x to 0
+
+// 	int *p = &x; // Set p to point to x, set to address of x
+
+// 	*p = 3490;   // Set the thing that p points to to 3490
+
+// 	printf("x is %d\n", x);  // 3490
+// 	printf("x is %d\n", *p); // 3490 
+// printf("p is %d\n", &p);
+// printf("x is %d\n", &x);
+
+// 	return 0;
+// }
+
+
 void swap(int* a, int* b)
 {
+    *a = &b;
+    *b = &a;
 
+    printf("a is %d\n", *a);
+    printf("b is %d\n", *b);
 }
 
 /*
@@ -21,7 +45,11 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    if(str == 0);
+        printf("The character %c was not found.", %p);
+    else
+        printf("The character %c was found at position %d. \n", %p, str);
+    return 0;
 }
 
 /*
