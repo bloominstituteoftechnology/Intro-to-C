@@ -15,9 +15,34 @@
     
     Do not just use the `qsort` function from the standard library.
 */
+
+int order(int *arr, int low, int high)
+{
+    int move = arr[high];
+    int i = (low - 1); //index of the smaller element
+
+    for(int j = low; j <= high-1; j++){
+        //if current element is smaller than
+        //of equal to move
+        if(arr[j] <= move){
+            i++; //increment the index of the smaller element
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return(i + 1);
+}
 void quicksort(int *arr, int low, int high)
 {
-
+    if(low < high)
+    {
+        //p is ordering the items in the index's
+        int p = order(arr, low, high);
+        //sort the elements individuallly before
+        //order and after order.
+        quicksort(arr, low, p - 1);
+        quicksort(arr, p + 1, high);
+    }
 }
 
 #ifndef TESTING
