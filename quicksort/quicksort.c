@@ -17,7 +17,27 @@
 */
 void quicksort(int *arr, int low, int high)
 {
-
+    int again = 1;
+    int count = low;
+    int noswap = 0;
+    while (again == 1){
+        if (count == high ){
+            count = low;
+            if ((high-low) == noswap){
+                again = 0;
+            }
+            else{
+                noswap = 0;
+            }
+        }
+        if (arr[count] > arr[count + 1]){
+            swap(&arr[count], &arr[count +1]);
+        }
+        else{
+            noswap +=1;
+        }
+        count += 1;
+    }
 }
 
 #ifndef TESTING
