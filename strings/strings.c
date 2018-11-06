@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 /*
@@ -9,7 +10,11 @@
 */
 int string_length(char s[])
 {
-
+    int length = 0;
+    for (int i=0; s[i] != '\0'; i++){
+        ++length;
+    }
+    return length;
 }
 
 /*
@@ -20,7 +25,12 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int length = strlen(s);
+    for (int i=0; i<length; i++){
+        rv[length-(i+1)] = s[i];
+    }
+    rv[length] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
