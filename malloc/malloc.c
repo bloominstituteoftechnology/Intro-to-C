@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "lib.h"
 
+
 /*
     Duplicates the input string by dynamically allocating memory for 
     the duplicate string using `malloc` and then copying the string
@@ -13,7 +14,27 @@
 */
 char *string_dup(char *src)
 {
+  int length_of_src = string_length(src);
+  char *new_src = malloc(sizeof(char) * length_of_src +1);
+  int i; 
 
+  if(!new_src)
+  {
+    return NULL; 
+  }
+  
+  i = 0; 
+  while(src[i])
+  {
+    new_src[i] = src[i];
+    i++; 
+    
+  }
+
+  new_src[i] = '\0';
+  
+  return new_src;
+  free(new_src); 
 }
 
 /*
@@ -26,7 +47,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+  int i; 
+  char *new_src = (char *)src; 
+  char *new_dest = (char *)dest; 
 
+  for(i = 0; i <n; i++){
+    new_dest[i] = new_src[i]; 
+  }
+  return new_dest;
 }
 
 /*
@@ -43,7 +71,19 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+  int pickSize;
 
+  if(old_size < new_size){
+    pickSize = old_size;
+  } else {
+    pickSize = new_size; 
+  }
+
+  void *newptr = malloc(new_size +1);
+
+  mem_copy(newptr, ptr, pickSize);
+
+  return newptr; 
 }
 
 #ifndef TESTING

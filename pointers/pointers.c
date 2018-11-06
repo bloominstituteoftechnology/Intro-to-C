@@ -1,3 +1,8 @@
+/*
+Author: Jonathan Jamel Holloway
+Purpose: To practice pointers in C programming language
+Date: 11-5-18
+*/
 #include <stdio.h>
 
 /*

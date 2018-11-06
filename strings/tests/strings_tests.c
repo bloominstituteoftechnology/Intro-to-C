@@ -1,3 +1,9 @@
+/*
+Author: Jonathan Jamel Holloway
+Purpose: To practice string usuage and functions associated with them in C programming language
+Date: 11-5-18
+*/
+
 #include <strings.h>
 #include "../../utils/minunit.h"
 #include "../../utils/utils.h"

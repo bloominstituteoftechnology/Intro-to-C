@@ -1,3 +1,8 @@
+/*
+Author Jonathan Jamel Holloway
+Purpose to practice using conditonal statements in C programming language 
+Date 11-5-18
+*/
 #include <stdio.h>
 
 /*
