@@ -65,7 +65,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int value; 
+    while(*m != '\0' || *n != '\0'){
+        value = *m - *n;
+        printf("%d value \n", value);
+        if(value != '\0')
+            break;
+        m++;
+        n++;
+    }
+    value = *m - *n;
+    return value;
 }
 
 /*
