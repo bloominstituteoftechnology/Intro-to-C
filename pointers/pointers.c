@@ -25,7 +25,7 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-  char *pointer;
+  char *pointer = NULL;
   
   for(int i = 0; str[i] != '\0'; i++){
     if(str[i] == c){
@@ -53,7 +53,7 @@ void string_copy(char *x, char *y)
     x[i] = y[i];
   }
 
-  i++;
+  
   x[i] = '\0';
 }
 
@@ -77,16 +77,16 @@ int string_compare(char *m, char *n)
   for(i = 0; m[i] != '\0' || n[i] != '\0'; i++){
     //while we have not reached the end of a string keep going. 
     if(m[i] < n[i]){
-      return 22;
-    } else if (m[i] > n[i]){
       return -22;
+    } else if (m[i] > n[i]){
+      return 22;
     }
   }
   //check for if both strings matched up until one ended before other
   if (m[i] == '\0' && n[i] != '\0'){
-    return -22; // m would be greater 
+    return 22; // m would be greater 
   } else if (m[i] != '\0' && n[i] == '\0'){
-    return 22; // m would be less
+    return -22; // m would be less
   } else {
     //ended without returning and both are '\0' strings are equal 
     return 0; 
@@ -104,7 +104,31 @@ int string_compare(char *m, char *n)
 
 char *find_string(char *haystack, char *needle)
 {
+  char *pointer;
+  int i = 0, j = 0; 
 
+  while(haystack[i] != '\0'){
+    if(haystack[i] != needle[j]){
+      i++;
+      j = 0; 
+    } else {
+      pointer = &haystack[i];
+      while(needle[j] != '\0'){
+        i++;
+        j++;
+        if(needle[j] == '\0'){
+          return pointer; 
+        }
+        if(haystack[i] != needle[j]){
+          break;//no need to move forward
+        }
+      if(needle[j] == '\0'){
+        return pointer; 
+      }
+      }
+    }
+  }
+  return NULL; 
 }
 
 #ifndef TESTING
