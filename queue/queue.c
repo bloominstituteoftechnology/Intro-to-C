@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 typedef struct Queue {
@@ -15,10 +16,10 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
-    Queue* queue = malloc (sizeof(Queue));
+    Queue *queue = malloc(sizeof(Queue));
     queue -> length = 0;
     queue -> capacity = capacity;
-    queue -> storage = malloc (sizeof(int) * capacity);
+    queue -> storage = malloc(sizeof(int) * capacity);
 
     return queue;
 
