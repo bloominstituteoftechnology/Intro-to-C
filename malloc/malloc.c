@@ -2,6 +2,18 @@
 #include <stdlib.h>
 #include "lib.h"
 
+
+void string_copy(char *x, char *y)
+{   
+  int c = 0;
+
+    while (y[c] != '\0') {
+    x[c] = y[c];
+    c++;
+  }
+    x[c] = '\0';
+
+}
 /*
     Duplicates the input string by dynamically allocating memory for 
     the duplicate string using `malloc` and then copying the string
@@ -13,6 +25,9 @@
 */
 char *string_dup(char *src)
 {
+    char *dupString = malloc(string_length(src) + 1);
+    string_copy(dupString, src);
+    return dupString;
 
 }
 
@@ -25,25 +40,43 @@ char *string_dup(char *src)
     Do not use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
-{
-
+{  
+    char *copysrc = (char *)src; 
+    char *copydest = (char *)dest; 
+    for (int i = 0; i != n; ++i){
+        copydest[i] = copysrc[i];
+    }
+    return NULL;
 }
 
-/*
-    Given a pointer that `malloc`'d memory, this function will 
-    attempt to resize the allocated memory to the new specified
-    size. Any data that was previously in the old `malloc`'d 
-    memory should be intact in the new resized block of memory. 
+// /*
+//     Given a pointer that `malloc`'d memory, this function will 
+//     attempt to resize the allocated memory to the new specified
+//     size. Any data that was previously in the old `malloc`'d 
+//     memory should be intact in the new resized block of memory. 
 
-    Some edge cases to consider: how should resizing be handled
-    in the case when old_size < new_size? What about when 
-    old_size > new_size?
+//     Some edge cases to consider: how should resizing be handled
+//     in the case when old_size < new_size? What about when 
+//     old_size > new_size?
 
-    Do not use the `realloc` function from the standard libary.
-*/
+//     Do not use the `realloc` function from the standard libary.
+// */
 void *resize_memory(void *ptr, int old_size, int new_size)
-{
+{   int sizetocopy;
 
+    if (old_size > new_size){
+        sizetocopy = old_size;
+    }
+    else{
+        sizetocopy = new_size;
+    }
+    printf("%s \n", (char*)&ptr);
+
+    void *newptr = malloc(new_size+1);
+
+    mem_copy(newptr,ptr,sizetocopy);
+    printf("%s \n", (char*)&newptr);
+    return newptr;
 }
 
 #ifndef TESTING

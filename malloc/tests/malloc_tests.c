@@ -54,7 +54,7 @@ char *test_resize_memory()
     }
 
     *p = '\0';
-
+    printf("%s \n", p);
     mu_assert(check_strings(new_url, "http://lambdaschool.com/students/") == 0, "Your resize_memory function did not increase the size of the given string correctly.");
     
     char *new_new_url = resize_memory(new_url, new_length, 8);
