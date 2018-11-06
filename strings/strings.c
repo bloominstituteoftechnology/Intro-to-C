@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
+    int charCount = 0;
+    
+    while (s[charCount] != '\0') {
+        charCount ++;
+    }
 
+    return charCount;
 }
 
 /*
