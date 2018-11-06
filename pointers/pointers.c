@@ -71,16 +71,21 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    int len = sizeof(m) / sizeof(char);
-    int i;
-    for (i = 0; i < len; i++) {
+    int mlen = sizeof(m);
+    int nlen = sizeof(n);
+    for (int i = 0; i < mlen || i < nlen; i++) {
         if (m[i] != n[i]) {
-            if (m[i] > n[i]) {
-                return 1;
-            } else {
+            if (m[i] < n[i]) {
                 return -1;
+            } else {
+                return 1;
             }
         }
+    }
+    if (mlen > nlen) {
+        return 1;
+    } else if (nlen > mlen)  {
+        return -1;
     }
     return 0;
 }
@@ -95,16 +100,20 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    int len = sizeof(haystack) / sizeof(char);
-        for (int i = 0; i < len; i++) {
-            if (*(haystack + i) == needle) {
-                return haystack + i;
-            }
-        }
+    while (*haystack) {
+        char *start = haystack;
+        char *find = needle;
 
-    while (*haystack != '\0') {
-        
+        while (*haystack && *find && *haystack == *find) {
+            haystack++;
+            find++;
+        }
+        if (!*find) {
+            return start;
+        }
+        haystack++;
     }
+    return NULL;
 }
 
 #ifndef TESTING
