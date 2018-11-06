@@ -6,9 +6,12 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
+    int temp = *a;
 
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +24,17 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] == c)
+        {
+            return &str[i];
+        }
+        i++;
+    }
 
+    return NULL;
 }
 
 /*
@@ -34,7 +47,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
 
+    *x = *y;
 }
 
 /* 
@@ -53,7 +73,22 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    for (int i = 0; m[i] != '\0'; i++)
+    {
+        if (m[i] > n[i])
+        {
+            return 1;
+        }
+        else if (m[i] < n[i])
+        {
+            return -1;
+        }
+    }
+    if (strlen(n) > strlen(m))
+    {
+        return -1;
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +101,29 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    int nLength = strlen(needle);
+    int count = 0;
+    char *found = NULL;
+    for (int i = 0; i < strlen(haystack); i++)
+    {
+        if (haystack[i] == needle[0])
+        {
+            found = &haystack[i];
+            ++count;
+            for (int j = 1; j < nLength; j++)
+            {
+                if (haystack[i + j] == needle[j])
+                {
+                    ++count;
+                }
+            }
+        }
+    }
+    if (count == nLength)
+    {
+        return found;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
