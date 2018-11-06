@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -13,7 +14,13 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src);
+    char *copy = malloc(length+1);
 
+    for(int i = 0; i<=length; i++){
+        copy[i] = src[i];
+    }
+    return copy;
 }
 
 /*
@@ -23,10 +30,17 @@ char *string_dup(char *src)
     pointers to char pointers first before performing the copying. 
     
     Do not use the `memcpy` function from the standard library.
+
+    https://stackoverflow.com/questions/36931022/what-does-char-0-mean
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *pdest = (char *)dest;
+    char *psrc = (char *)src;
 
+    for (int i = 0; i<=n; i ++) {
+        pdest[i] = psrc[i];
+    }
 }
 
 /*
