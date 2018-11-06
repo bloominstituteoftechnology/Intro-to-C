@@ -42,7 +42,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int j = 0;
+    for(int i = 0; y[i] != '\0'; i++) {
+        x[j] = y[i];
+        j++;
+    }
+    x[j] = '\0';
+    return &x;
 }
 
 /* 
