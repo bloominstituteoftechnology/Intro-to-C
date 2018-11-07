@@ -30,38 +30,38 @@ char *test_string_copy()
     return NULL;
 }
 
-// char *test_string_compare()
-// {
-//     char *s = "hello, world";
-//     char *t = "hiya";
-//     char *m = "goodbye";
-//     char *n = "see ya";
-
-//     char *firetruck = "firetruck";
-//     char *firetrucks = "firetrucks";
-
-//     mu_assert(string_compare(s, s) == 0, "Your string_compare did not return 0 for matching strings.");
-//     mu_assert(string_compare(s, t) < 0, "Your string_compare did not return a negative value where it was expected.");
-//     mu_assert(string_compare(n, m) > 0, "Your string_compare did not return a positive value where it was expected.");
-//     mu_assert(string_compare(firetruck, firetrucks) < 0, "Your string_compare did not return a negative value where it was expected.");
-
-//     return NULL;
-// }
-
-char *test_find_char()
+char *test_string_compare()
 {
-    char *str = "LambdaSchool";
-    char *found = find_char(str, 'b');
-    mu_assert(string_compare(found, "bdaSchool") == 0, "Your find_char function did not work as expected.");
+    char *s = "hello, world";
+    char *t = "hiya";
+    char *m = "goodbye";
+    char *n = "see ya";
 
-    found = find_char(str, 'S');
-    mu_assert(string_compare(found, "School") == 0, "Your find_char function did not work as expected.");
+    char *firetruck = "firetruck";
+    char *firetrucks = "firetrucks";
 
-    found = find_char(str, 's');
-    mu_assert(!found, "Your find_char function return a char when it should have returned NULL.");
+    mu_assert(string_compare(s, s) == 0, "Your string_compare did not return 0 for matching strings.");
+    mu_assert(string_compare(s, t) < 0, "Your string_compare did not return a negative value where it was expected.");
+    mu_assert(string_compare(n, m) > 0, "Your string_compare did not return a positive value where it was expected.");
+    mu_assert(string_compare(firetruck, firetrucks) < 0, "Your string_compare did not return a negative value where it was expected.");
 
     return NULL;
 }
+
+// char *test_find_char()
+// {
+//     char *str = "LambdaSchool";
+//     char *found = find_char(str, 'b');
+//     mu_assert(string_compare(found, "bdaSchool") == 0, "Your find_char function did not work as expected.");
+
+//     found = find_char(str, 'S');
+//     mu_assert(string_compare(found, "School") == 0, "Your find_char function did not work as expected.");
+
+//     found = find_char(str, 's');
+//     mu_assert(!found, "Your find_char function return a char when it should have returned NULL.");
+
+//     return NULL;
+// }
 
 // char *test_find_string()
 // {
@@ -85,7 +85,7 @@ char *all_tests()
     mu_run_test(test_swap);
     mu_run_test(test_string_copy);
     // mu_run_test(test_string_compare);
-    mu_run_test(test_find_char);
+    // mu_run_test(test_find_char);
     // mu_run_test(test_find_string);
 
     return NULL;

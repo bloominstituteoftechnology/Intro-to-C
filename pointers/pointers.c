@@ -23,19 +23,19 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
-{
-  int len = strlen(str);
-  char found = NULL;
-  for(int i=0; i<len; i++){
-    if(str[i] == c){
-      found = str[i];
-    } else {
-      return NULL;
-    }
-  }
-  return &found;
-}
+// char *find_char(char *str, int c)
+// {
+//   int len = strlen(str);
+//   char *found = NULL;
+//   for(int i=0; i<len; i++){
+//     if(str[i] == c){
+//       found = &str[i];
+//     } else {
+//       printf("shucks");
+//     }
+//   }
+//   return found;
+// }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -48,11 +48,8 @@ char *find_char(char *str, int c)
 void string_copy(char *x, char *y)
 {
   char len = strlen(y);
-  printf(">>>%d\n", len);
   for(int i=0; i<len; i++){
     x[i] = y[i];
-    printf("%c xXxXXx\n", x[i]);
-    printf("iiiii iii ii %d\n", i);
   }
 }
 
