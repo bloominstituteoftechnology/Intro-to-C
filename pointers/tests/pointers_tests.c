@@ -30,23 +30,23 @@ char *test_string_copy()
     return NULL;
 }
 
-char *test_string_compare()
-{
-    char *s = "hello, world";
-    char *t = "hiya";
-    char *m = "goodbye";
-    char *n = "see ya";
+// char *test_string_compare()
+// {
+//     char *s = "hello, world";
+//     char *t = "hiya";
+//     char *m = "goodbye";
+//     char *n = "see ya";
 
-    char *firetruck = "firetruck";
-    char *firetrucks = "firetrucks";
+//     char *firetruck = "firetruck";
+//     char *firetrucks = "firetrucks";
 
-    mu_assert(string_compare(s, s) == 0, "Your string_compare did not return 0 for matching strings.");
-    mu_assert(string_compare(s, t) < 0, "Your string_compare did not return a negative value where it was expected.");
-    mu_assert(string_compare(n, m) > 0, "Your string_compare did not return a positive value where it was expected.");
-    mu_assert(string_compare(firetruck, firetrucks) < 0, "Your string_compare did not return a negative value where it was expected.");
+//     mu_assert(string_compare(s, s) == 0, "Your string_compare did not return 0 for matching strings.");
+//     mu_assert(string_compare(s, t) < 0, "Your string_compare did not return a negative value where it was expected.");
+//     mu_assert(string_compare(n, m) > 0, "Your string_compare did not return a positive value where it was expected.");
+//     mu_assert(string_compare(firetruck, firetrucks) < 0, "Your string_compare did not return a negative value where it was expected.");
 
-    return NULL;
-}
+//     return NULL;
+// }
 
 char *test_find_char()
 {
@@ -63,27 +63,27 @@ char *test_find_char()
     return NULL;
 }
 
-char *test_find_string()
-{
-    char *str = "LambdaSchool";
-    char *found = find_string(str, "School");
-    mu_assert(string_compare(found, "School") == 0, "Your find_string function did not find the expected substring.");
+// char *test_find_string()
+// {
+//     char *str = "LambdaSchool";
+//     char *found = find_string(str, "School");
+//     mu_assert(string_compare(found, "School") == 0, "Your find_string function did not find the expected substring.");
     
-    found = find_string(str, "Lambda");
-    mu_assert(string_compare(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
+//     found = find_string(str, "Lambda");
+//     mu_assert(string_compare(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
 
-    found = find_string(str, "lambda");
-    mu_assert(!found, "Your find_string function found a substring when it should have returned NULL.");
+//     found = find_string(str, "lambda");
+//     mu_assert(!found, "Your find_string function found a substring when it should have returned NULL.");
 
-    return NULL;
-}
+//     return NULL;
+// }
 
 char *all_tests()
 {
     mu_suite_start();
 
     mu_run_test(test_swap);
-    // mu_run_test(test_string_copy);
+    mu_run_test(test_string_copy);
     // mu_run_test(test_string_compare);
     mu_run_test(test_find_char);
     // mu_run_test(test_find_string);
