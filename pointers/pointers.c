@@ -92,10 +92,27 @@ int string_compare(char *m, char *n)
     string `haystack`. 
 
     Do not use the `strstr` function from the standard library.
+    
+    http://www.firmcodes.com/write-c-code-to-implement-the-strstr-function-to-search-for-a-substring/
+
 */
 char *find_string(char *haystack, char *needle)
 {
+    while (*haystack != '\0') {
+        char *start = haystack;
+        char *find = needle;
 
+        while (*haystack && *find && *haystack == *find){
+            haystack++;
+            find++;
+        }
+
+        if (!*find)
+            return start;
+
+        haystack = start + 1;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
