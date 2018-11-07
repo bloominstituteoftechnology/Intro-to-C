@@ -8,7 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+ if (a != b)
+  {
+    *a += *b;
+    *b = *a - *b;
+    *a -= *b; 
+  }   
 }
 
 /*
@@ -21,7 +26,13 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    int counter = 0;
+    while(*str[counter] != c)
+    {
+        counter += 1;
+    }
 
+    return *str[counter];
 }
 
 /*
@@ -34,7 +45,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    if (x != y)
+  {
+    *x += *y;
+    *y = *x - *y;
+    *x -= *y;
+    *x += '0/'
+    return 0; 
+  } 
 }
 
 /* 
@@ -52,8 +70,24 @@ void string_copy(char *x, char *y)
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
-{
 
+typedef int bool;
+#define true 1;
+#define false 0;
+
+{
+    if (m == n)
+    {
+        return 0;
+    }
+    else if(m - n < 0)
+    {
+        return false;
+    }
+    else if (m - n > 0)
+    {
+        return true;
+    }
 }
 
 /*
