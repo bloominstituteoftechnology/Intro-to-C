@@ -68,17 +68,14 @@ void swap(int* a, int* b)
 
 char *find_char(char *str, int c)
 {
-
     for (int i = 0; i < strlen(str); i++) {
 
         if(str[i] == c)  {
-            printf("The character %c was found.\n", str[i]);
-        }
-        else {
-            printf("The character %c was not found at position %d. \n", str);
+            // printf("The character %c was found.\n", str);
+            return &str[i]; 
         }
     }
-    return str;   
+    return NULL;
 }
 
 /*
@@ -87,11 +84,27 @@ char *find_char(char *str, int c)
     is necessary heres Also, make sure x points to a null character at its 
     end to terminate it properly. 
     
-    Do not just use the `strcpy` function from the standard library.
+    Do not just ;use the `strcpy` function from the standard library.
 */
 void string_copy(char *x, char *y)
 {
-
+    // printf(x, y);
+    for (int i = 0; i < strlen(y); i++){
+        x[i] = y[i];
+        printf(x);
+    }
+    x[strlen(x) - 1] = '\0';
+    printf("STRINGS x: %s y: %s\n", x, y);
+    /*
+    char str[] = "ass";
+    str[0] == 'a'
+    str[1] == 's'
+    str[2] == 's'
+    str[3] == '\0'
+    str[2] = 'l'
+    str == "asl"
+    */
+    return x;
 }
 
 
@@ -108,9 +121,34 @@ void string_copy(char *x, char *y)
     value.
     
     Do not just use the `strcmp` function from the standard library.
+
 */
 int string_compare(char *m, char *n)
 {
+ /*
+    So try to solve the simplest problem. What should this function return?
+    Ex. string_compare('a', 'd') < 0 : That is, the output of this function call should be less than 0
+        string_compare('s', 's') == 0
+        string_compare("hello world", "goodbye") > 0 : output of this should be more than 0
+        string_compare("firetruck", "firetrucks") < 0 : output of this function should be less than 0
+    ---
+    Remember, you can "subtract" characters. Like 'd' > 'a', so 'a' - 'd' < 0
+    like 'b' - 'a' == 1
+    You wanna zoom? 
+    
+ */
+// 
+
+    int i = 0;
+    printf("m: %c n: %c\n", *m, *n);
+    if (*m - *n != 0) {
+        return *m - *n;
+    } else if (*m == '\0' || *n == '\0') {
+        return *m - *n;
+    }else {
+        return string_compare(m + 1, n + 1);
+    }
+    return *m - *n;
 
 }
 
@@ -138,7 +176,6 @@ int main(void)
     char *world = "World";
     char buffer[1024];
 
-    string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world));
@@ -149,6 +186,7 @@ int main(void)
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
 
+    string_copy(buffer, hello);
     return 0;
 }
 #endif
