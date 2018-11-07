@@ -16,7 +16,12 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
+    struct Queue* q = (struct Queue*) malloc(sizeof(struct Queue));
+    q->capacity = capacity;
+    q->storage = (int*) malloc(q->capacity * sizeof(int));
+    q->length = 0; 
 
+  return q; 
 }
 
 /*
@@ -44,6 +49,7 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
+    free(q->storage);
     free(q); 
 }
 
