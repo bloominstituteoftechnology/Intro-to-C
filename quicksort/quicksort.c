@@ -17,15 +17,7 @@
 */
 void quicksort(int *arr, int low, int high)
 {
-    int *start = arr[low];
-    int *to_increment = low;
-    for( int i = low+1; i < arr[high]; i++){
-        if(start > arr[i]){
-            swap(&arr[i], &start);
-            to_increment++;
-        }
-    }
-    return arr;
+
 }
 
 #ifndef TESTING

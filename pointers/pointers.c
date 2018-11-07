@@ -80,7 +80,7 @@ int string_compare(char *m, char *n)
         m++;
         n++;
     }
-     if(*n != '\0') {
+    if(*n != '\0') {
         return -1;
     }
     return 0;
