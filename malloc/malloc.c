@@ -17,7 +17,7 @@ char *string_dup(char *src)
     int length = string_length(src);
     char *copy = malloc(length+1); // why length + 1? 
 
-    for(int i = 0; i<=length; i++){
+    for(int i = 0; i<length; i++){
         copy[i] = src[i];
     }
     return copy;
@@ -37,10 +37,10 @@ void *mem_copy(void *dest, const void *src, int n)
 {
     // make pointers
     char *pdest = (char *)dest;
-    char *psrc = (char *)src;  // what is (char *) ?
+    char *psrc = (char *)src;  // what is (char *)?
 
     // loop over pointers
-    for (int i = 0; i<=n; i ++) {
+    for (int i = 0; i<n; i ++) {
         pdest[i] = psrc[i];
     }
 }
@@ -59,7 +59,31 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    if (new_size == 0){
+        free(ptr);
+        return NULL;
+    }
 
+    else if (!ptr) {
+        return malloc(new_size);
+    }
+
+    else if (old_size == new_size) {
+        return ptr;
+    }
+
+    void *new_block = malloc(new_size);
+
+    if (new_size < old_size) {
+        mem_copy(new_block, ptr, new_size);
+    }
+
+    else {
+        mem_copy(new_block, ptr, old_size);
+    }
+
+    free(ptr);
+    return new_block;
 }
 
 #ifndef TESTING
