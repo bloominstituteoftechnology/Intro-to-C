@@ -8,7 +8,13 @@
 */
 void swap(int* a, int* b)
 {
-
+printf("\n before a & b: %d %d", *a , *b);
+    // printf("\n before b is:", *b);
+     int temp = *a;
+    *a = *b;
+    *b = temp;
+     printf("\n after a is: %d", *a);
+    printf("\n after b is: %d\n", *b);
 }
 
 /*
@@ -21,7 +27,13 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+while (*str != c || *str != '\0') {
+        str++;
+    }
+    if (*str == 0) {
+        return NULL;
+    }
+    return str;
 }
 
 /*
@@ -34,7 +46,7 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    *x =+ *y
 }
 
 /* 
