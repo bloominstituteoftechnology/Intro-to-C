@@ -17,7 +17,11 @@
 */
 void quicksort(int *arr, int low, int high)
 {
-
+    if(low < high) {
+        int pIndex = Partition(arr, low, high);
+        quicksort(arr, low, pIndex - 1);
+        quicksort(arr, pIndex + 1, high);
+    }
 }
 
 #ifndef TESTING
