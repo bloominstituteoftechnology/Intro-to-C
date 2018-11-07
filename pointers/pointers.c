@@ -22,16 +22,27 @@ void swap(int* a, int* b)
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c)
+// {
+//   int len = strlen(str);
+//   int i;
+//   for (i=0; i<len; i++) {
+//     printf("POINTER: %p\n", str+i);
+//     if (*(str+i) == c) {
+//       return str+i;
+//     }
+//   }
 {
-  while (*str != '\0')
+  int len = strlen(str);
+  int counter = 0;
+  while (counter < len)
   {
-    if (*str == c)
+    if (*(str+counter) == c)
     {
-      return str;
+      printf("POINTER: %p\n", str+counter);
+      return str+counter;
     }
-    str++;
+    counter++;
   }
-  printf("POINTER: %p\n", str);
   return NULL;
 }
 
@@ -68,47 +79,52 @@ void string_copy(char *x, char *y)
 
     Do not just use the `strcmp` function from the standard library.
 */
-// int string_compare(char *m, char *n)
-// {
-//   int len = sizeof(m) / sizeof(char);
-//   int i;
-//   for (i = 0; i < len; i++) {
-//     if (*(m+i) != '\0') {
-//       if (*(m+i) != *(n+i)) {
-//         if (*(m+i) > *(n+i)) {
-//           return 1;
-//         } else {
-//           return -1;
-//         }
-//       }
-//     } else if (*(n+i) != '\0') {
-//       return -1;
-//     }
-//   }
-//   return 0;
-// }
-
 int string_compare(char *m, char *n)
 {
-    while (*m != '\0') {
-        if (*n == '\0') {
-            return 1;
-        }
-        if (*m > *n) {
-            return 1;
-        }
-        if (*n > *m) {
-            return -1;
-        }
-        m++;
-        n++;
-    }
-     if(*n != '\0') {
+  int lenm = strlen(m);
+  printf("%d\n", lenm);
+  printf("%s\n", m);
+  int i;
+  for (i = 0; i <= lenm; i++) {
+    if (*(m+i) == '\0') {
+      if (*(n+i) != '\0') {
         return -1;
+      }
     }
-    printf("POINTER N: %p\n", n);
-    return 0;
+    if (*(m+i) != '\0') {
+      if (*(m+i) != *(n+i)) {
+        if (*(m+i) > *(n+i)) {
+          return 1;
+        } else {
+          return -1;
+        }
+      }
+    }
+  }
+  return 0;
 }
+
+// int string_compare(char *m, char *n)
+// {
+//     while (*m != '\0') {
+//         if (*n == '\0') {
+//             return 1;
+//         }
+//         if (*m > *n) {
+//             return 1;
+//         }
+//         if (*n > *m) {
+//             return -1;
+//         }
+//         m++;
+//         n++;
+//     }
+//      if(*n != '\0') {
+//         return -1;
+//     }
+//     printf("POINTER N: %p\n", n);
+//     return 0;
+// }
 
 /*
     Searches the input string `haystack` for the first instance of
@@ -118,41 +134,41 @@ int string_compare(char *m, char *n)
 
     Do not use the `strstr` function from the standard library.
 */
-// char *find_string(char *haystack, char *needle)
-// {
-//   while (*haystack != '\0') {
-//     char *start;
-//     if (*haystack == *needle) {
-//       start = haystack;
-//       while (*haystack == *needle) {
-//         haystack++;
-//         needle++;
-//       }
-//     }
-//   }
-// }
-
 char *find_string(char *haystack, char *needle)
 {
-    while(*haystack != '\0') {
-        char *first;
-        if(*haystack == *needle){
-            first = haystack;
-            while(*haystack == *needle) {
-                haystack++;
-                needle++;
-            }
-        }
-        if(*needle == '\0') {
-            return first;
-        }
-        if(*haystack == '\0') {
-            return NULL;
-        }
+  while (*haystack != '\0') {
+    char *start;
+    if (*haystack == *needle) {
+      start = haystack;
+      while (*haystack == *needle) {
         haystack++;
+        needle++;
+      }
     }
-    return NULL;
+  }
 }
+
+// char *find_string(char *haystack, char *needle)
+// {
+//     while(*haystack != '\0') {
+//         char *first;
+//         if(*haystack == *needle){
+//             first = haystack;
+//             while(*haystack == *needle) {
+//                 haystack++;
+//                 needle++;
+//             }
+//         }
+//         if(*needle == '\0') {
+//             return first;
+//         }
+//         if(*haystack == '\0') {
+//             return NULL;
+//         }
+//         haystack++;
+//     }
+//     return NULL;
+// }
 
 #ifndef TESTING
 int main(void)
