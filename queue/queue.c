@@ -31,7 +31,21 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
+    if(q->capacity == q->length){
+    // increase the size of the queue 
+    //add the item to the q 
+    q->storage =  (int*)realloc(q->storage, q->capacity+5*(sizeof(int)));
+    q->capacity = q->capacity + 1; 
+    q->storage[q->length + 1] = item; // add item to the q. 
+    q->length = q->length + 1; //increase length 
+  } else {
+    //q->storage[q->length + 1] = item; // add item to the q. 
+    
+    q->length = q->length + 1; // increase length 
+    q->storage = q->storage + 1; 
+    q->capacity = q->capacity + 1; 
 
+  }
 }
 
 /*
@@ -40,7 +54,13 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-
+    if(q->length == 0){
+    return -1; 
+  } else {
+    q->storage[0] = q->storage[1];
+    q->length = q->length - 1; 
+    return q->length; 
+  }
 }
 
 /*
