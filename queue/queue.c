@@ -30,13 +30,11 @@ Queue *createQueue(unsigned capacity)
 void enqueue(Queue *q, int item)
 {
     if (q->length == q->capacity){
-        q->capacity = q->capacity*2;
-        int *updated_storage = malloc(sizeof(int) * q->capacity);
-        memcpy(&updated_storage, &q->storage, q->length);
-        q->storage = updated_storage;
+        q->storage = resize_memory(q, q->capacity, q->capacity*2);
+    } else {
+        q->storage[q->length] = item;
+        q->length++;
     }
-    q->storage[q->length] = item;
-    q->length++;
 }
 
 /*
