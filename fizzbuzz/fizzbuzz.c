@@ -15,7 +15,7 @@ int fizzbuzz(int n)
         b= if n%%5 return BUZZ
         if a && b then FIZZBUZZ */
     int counter = 0;
-    for (int i = 0; i <= n; i++)
+    for (int i = 1; i <= n; i++)
     {
         if (i % 15 == 0)
         {
@@ -31,6 +31,7 @@ int fizzbuzz(int n)
         }
         else
         {
+            printf("%d\n", i);
             counter += 1;
         }
     }
