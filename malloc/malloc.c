@@ -19,8 +19,10 @@ char *string_dup(char *src)
     //     dup++;
     //     src++;
     // }
-    // *dup = '\0';
+    // // *dup = '\0';
+    // dup[string_length(src)+1] = '\0';
     // return dup;
+    // return src;
 
     char *dup = malloc(string_length(src)+1);
     string_copy(dup, src);
