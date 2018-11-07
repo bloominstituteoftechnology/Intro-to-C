@@ -23,6 +23,7 @@ int fizzbuzz(int n)
             printf("Buzz\n");
         }
         else {
+            printf("%d\n", i);
             count++;
         }
     }

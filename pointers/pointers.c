@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+int string_length(char s[])
+{
+    int count = 0;
+
+    while(s[count] != '\0') {
+        count++;
+    }
+    return count;
+}
+
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
@@ -8,7 +18,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    *a += *b;
+    *b = *a - *b;
+    *a -= *b;
 }
 
 /*
@@ -21,7 +33,13 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str != '\0') {
+        if (*str == c) {
+            return str;
+        }
+        str++;
+    }
+    return NULL;
 }
 
 /*
@@ -33,8 +51,12 @@ char *find_char(char *str, int c)
     Do not just use the `strcpy` function from the standard library.
 */
 void string_copy(char *x, char *y)
-{
-
+{   
+    while ((*x = *y) != '\0') {
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -51,9 +73,26 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
+
 int string_compare(char *m, char *n)
 {
+    int lenM = string_length(m);
+    int lenN = string_length(n);
 
+    int biggerLen;
+
+    if(lenM > lenN) {
+        biggerLen = lenM;
+    } else {
+        biggerLen = lenN;
+    }
+
+    for (int i=0; i < biggerLen ; i++) {
+        if (m[i] != n[i]) {
+            return m[i] - n[i];
+        }
+    }
+    return 0;
 }
 
 /*
