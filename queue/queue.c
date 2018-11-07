@@ -59,7 +59,7 @@ int dequeue(Queue *q)
     return -1; 
   } else {
     item = q->storage[0];
-    q->storage++;
+    q->storage++;//since it starts at the first index increase it to get to the next. 
     q->length = q->length - 1; 
     return item;
   }
