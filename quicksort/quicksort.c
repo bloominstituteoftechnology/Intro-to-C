@@ -18,21 +18,22 @@
 
 int partition (int arr[], int low, int high) 
 { 
-    int pivot = arr[high];    
-    int i = (low - 1);  // Index of smaller element 
+    int pivot = arr[high];   
+    int partition_index = low;  //start at low and increase as you go
+
   
-    for (int j = low; j <= high- 1; j++) 
+    for (int i = low; i <= high-1; i++) 
     { 
-        // If current element is smaller than or 
-        // equal to pivot 
-        if (arr[j] <= pivot) 
-        { 
-            i++;   
-            swap(&arr[i], &arr[j]); 
+        // If current element is smaller than or equal to pivot 
+
+        if (arr[i] <= pivot) 
+        {    
+            swap(&arr[i], &arr[partition_index]); 
+	    partition_index++;
         } 
     } 
-    swap(&arr[i + 1], &arr[high]); 
-    return (i + 1); 
+    swap(&arr[partition_index], &arr[high]); 
+    return (partition_index); 
 } 
 
 
@@ -41,10 +42,10 @@ void quicksort(int *arr, int low, int high)
 {
 if (low < high) 
     { 
-        int p = partition(arr, low, high); 
+        int p = partition(arr, low, high); //return the partition_index
   
-        quicksort(arr, low, p - 1);     //sort elements before partition 
-        quicksort(arr, p + 1, high);     //sort elements after partition
+        quicksort(arr, low, p - 1);     //sort elements before partition_index 
+        quicksort(arr, p + 1, high);     //sort elements after partition_index
     } 
 }
 
