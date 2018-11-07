@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -28,11 +31,30 @@
 
 void swap(int* a, int* b)
 {
-    *a = &b;
-    *b = &a;
+    
+    // int a;
+    // int b;
+    printf("before --- a: %d b: %d\n", *a, *b);
+    int c = *a;
+    *a = *b;
+    *b = c;
+    /*
+    We got:
+    a = 10;
+    b = 20;
+    We want:
+    a = 20;
+    b = 10;
 
-    printf("a is %d\n", *a);
-    printf("b is %d\n", *b);
+    i
+    *a = *b;
+    // the value of a now is 20 
+    *b = *a;
+    // the value of b is still 20
+    */
+
+    printf("after --- a is %d\n", *a);
+    printf("after --- b is %d\n", *b);
 }
 
 /*
@@ -43,19 +65,26 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
+
 char *find_char(char *str, int c)
 {
-    if(str == 0);
-        printf("The character %c was not found.", %p);
-    else
-        printf("The character %c was found at position %d. \n", %p, str);
-    return 0;
+
+    for (int i = 0; i < strlen(str); i++) {
+
+        if(str[i] == c)  {
+            printf("The character %c was found.\n", str[i]);
+        }
+        else {
+            printf("The character %c was not found at position %d. \n", str[i], str);
+        }
+    }
+    return str;   
 }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
-    is necessary here. Also, make sure x points to a null character at its 
+    is necessary heres Also, make sure x points to a null character at its 
     end to terminate it properly. 
     
     Do not just use the `strcpy` function from the standard library.
@@ -64,6 +93,7 @@ void string_copy(char *x, char *y)
 {
 
 }
+
 
 /* 
     Compares the character strings m and n and returns negative,

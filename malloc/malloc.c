@@ -13,6 +13,17 @@
 */
 char *string_dup(char *src)
 {
+    // string_length(*src)
+    
+    // duplicate the string using the malloc function
+
+    // copy the string into the allocated memory
+
+    // return the pointer 
+
+    
+
+
 
 }
 
