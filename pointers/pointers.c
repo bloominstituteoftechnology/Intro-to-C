@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -23,6 +24,11 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+  // for (int i = 0; str[i] != '\0'; i++) {
+  //   if (*(str + i) == c) {
+  //     return &*(str + i);
+  //   }
+  // }
   for (int i = 0; i != '\0'; i++) {
     if (str[i] == c) {
       return &str[i];
@@ -41,7 +47,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+  int len = strlen(y);
+  for(int i = 0; i < len; i++)
+  {
+    x[i] = y[i];
+  }
+  x[len] = '\0';
 }
 
 /* 
@@ -60,7 +71,26 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+  int mlen = strlen(m);
+  int nlen = strlen(n);
+  int *biggest;
+  if(mlen > nlen) {
+    *biggest = mlen;
+  }
+  else {
+    *biggest = nlen;
+  }
+  for(int i = 0; i < *biggest; i++) {
+    if(m[i] != n[i]) {
+      if(m[i] > n[i]) {
+        return 1;
+      }
+      else if(m[i] < n[i]) {
+        return -1;
+      }
+    }
+  }
+  return 0;
 }
 
 /*
