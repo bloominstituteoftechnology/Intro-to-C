@@ -34,7 +34,7 @@ void enqueue(Queue *q, int item)
         q->length+=1;
     } else {
         q->capacity+=1;
-        q->storage=resize_memory(q->storage,sizeof(int)*q->capacity-1,sizeof(int)*q->capacity);
+        q->storage=resize_memory(q->storage,sizeof(int)*q->capacity);
         q->storage[q->length]=item;
         q->length+=1;
     }
@@ -49,7 +49,7 @@ int dequeue(Queue *q)
     if (q->length==0){
         return -1;
     } else{
-        int i=0; 
+        unsigned int i=0; 
         int placeholder=q->storage[0];
         while (i<q->capacity) {
             q->storage[i]=q->storage[i+1];
