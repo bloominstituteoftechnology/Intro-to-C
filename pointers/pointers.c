@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,10 @@
 */
 void swap(int* a, int* b)
 {
-
+    int *x = a;
+    int *y = b;
+    y = a;
+    x = b;
 }
 
 /*
@@ -19,8 +23,14 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
+char *find_char(char *str, char *c)
 {
+    while (*str != *c) {
+        c = str;
+        str++;
+    }
+    return c;
+
 
 }
 
@@ -34,6 +44,8 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    x = y;
+    x = NULL;
 
 }
 
@@ -53,7 +65,8 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int d = m - n;
+    return d;
 }
 
 /*
@@ -66,7 +79,11 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    int y = 0;
+    for(int i = 0; &haystack[i] != &needle; i++){
+        y = i;
+    }
+    return haystack[y];
 }
 
 #ifndef TESTING
