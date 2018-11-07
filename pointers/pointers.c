@@ -72,7 +72,7 @@ void string_copy(char *x, char *y)//x is a pointer to a first character it is no
     // printf("somecharacter => %s\n", somecharacter);
     // *x = *y; //x should now be the value of somecharacter
    
-        // *(y+1)
+    // *(y+1)
 
     int i;
     for (i=0; y[i] != '\0'; i++){
@@ -80,12 +80,6 @@ void string_copy(char *x, char *y)//x is a pointer to a first character it is no
     } 
     x[i] = '\0';
 
-    // while(*y != '\0'){
-    //     x[i] = y[i];
-
-    // }
-
-    // x = *y; //x is now y
     // printf("x end => %s\n", x);
     // printf("*x end => %d\n", *x);
 }
@@ -104,9 +98,31 @@ void string_copy(char *x, char *y)//x is a pointer to a first character it is no
     
     Do not just use the `strcmp` function from the standard library.
 */
+
 int string_compare(char *m, char *n)
 {
 
+    //loop through and compare the nth index of each until there is a difference.  
+    //if the value of n is closer to a than m return 1 // m=aaaa
+    //if the value of m is closer to a than n return -1 // n=aaaab
+    //if the value of each is the same throughout return 0
+    int lenM = string_length(m);
+    int lenN = string_length(n);
+
+    int biggerLen;
+
+    if(lenM > lenN){
+        biggerLen = lenM;
+    } else {
+        biggerLen = lenN;
+    }
+
+    for ( int i = 0; i < biggerLen ; i++){
+        if(m[i] != n[i]){
+            return m[i] - n[i];
+        };
+    }
+    return 0;
 }
 
 /*
@@ -119,7 +135,29 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int lenH = string_length(haystack);
+    int lenN = string_length(needle);
 
+    if(lenH < lenN){
+        return NULL
+    } 
+    
+    int count = 0;
+
+    for(int i = 0; haystack[i] != '\0'; i++){
+        if (haystack[i] == needle[count]){
+            //for loop that compares haystack[i + k] == needle[k]
+            //if needle[k + 1] == '\0' and 
+                //return  
+            for (int k = 1; needle[k] != '\0'; k++){
+                if (haystack[i + k] == needle[k]){
+                    
+                    //return *haystack[i]
+                }
+            }
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
