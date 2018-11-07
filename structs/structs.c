@@ -21,7 +21,14 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
+    int a;
+    struct Person b;
+    struct Person c = { }
 
+    b.name = "William"
+    b.age;
+    height;
+    weight;
 }
 
 /*

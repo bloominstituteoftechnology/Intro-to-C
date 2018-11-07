@@ -26,13 +26,18 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-    int counter = 0;
-    while(*str[counter] != c)
+    //* for dereference for initializing pointer
+    char *v = 0;
+    while(*str != '\0')
     {
-        counter += 1;
+        // * gives us the value, dereferences from the address
+        if(*str == c)
+        {
+            v = str;
+        }
+        str++;       
     }
-
-    return *str[counter];
+    return v;
 }
 
 /*
@@ -43,16 +48,18 @@ char *find_char(char *str, int c)
     
     Do not just use the `strcpy` function from the standard library.
 */
+
+//void first, returns nothing, changes are global
 void string_copy(char *x, char *y)
 {
-    if (x != y)
-  {
-    *x += *y;
-    *y = *x - *y;
-    *x -= *y;
-    *x += '0/'
-    return 0; 
-  } 
+   int counter = 0;
+   for(; y[counter] != '\0'; counter++)
+   // below only allowed because of line 55 initialization 
+   // for(counter = 0; y[counter] != '\0'; counter++)
+   {
+       x[counter] = y[counter];
+   }
+   x[counter] = '\0';
 }
 
 /* 
@@ -70,25 +77,39 @@ void string_copy(char *x, char *y)
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
-
-typedef int bool;
-#define true 1;
-#define false 0;
-
 {
-    if (m == n)
+    // typedef int bool;
+    // #define true 1;
+    // #define false -1;
+
+    int count = 0;
+    for(; m[count] != '\0' || n[count] != '\0'; count++)
+    {
+        if(m[count] < n[count])
+        {
+            return -1;
+        }
+        else if (m[count] > n[count])
+        {
+            return 1;
+        }
+    }
+    // count is saved because it's initialized outside of the for loop on line 85 and we use those values below
+    if(m[count] == '\0' && n[count] != '\0')
+    {
+        return 1;
+    }
+    else if (n[count] == '\0' && m[count] != '\0')
+    {
+        return -1;
+    }
+    else 
     {
         return 0;
     }
-    else if(m - n < 0)
-    {
-        return false;
-    }
-    else if (m - n > 0)
-    {
-        return true;
-    }
+
 }
+
 
 /*
     Searches the input string `haystack` for the first instance of
@@ -100,7 +121,41 @@ typedef int bool;
 */
 char *find_string(char *haystack, char *needle)
 {
+    //counter for haystack, count for needle
+    int counter = 0, count = 0;
+    char *result = NULL;
 
+    while(haystack[counter])
+    {
+        if(haystack[counter] != needle[count])
+        {
+            counter++;
+            count = 0;
+        }
+        else 
+        {
+            result = &haystack[counter];
+            while(needle[count] != '\0')
+            {
+                counter++;
+                count++;
+                if(needle[count] == '\0')
+                {
+                    return result;
+                }
+                if(haystack[counter] != needle[count])
+                {
+                    count = 0;
+                    break;
+                }
+            }
+            if(needle[count] == '\0')
+            {
+                return result;
+            }
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING

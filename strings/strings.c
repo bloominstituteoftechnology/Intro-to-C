@@ -7,7 +7,8 @@
     
     Do not just use the `strlen` function from the standard libary.
 */
-int string_length(char s[])
+
+int string_length(char s[]) //s = ["h", "e", "l", "l", "o", '\0'] rv = [ 'o', 'l', 'l', 'e', 'h', '/0']
 {
     int counter = 0;
     while(s[counter] != '\0')
@@ -35,6 +36,11 @@ char *reverse_string(char rv[], char s[])
     rv[string_length(s)] = '\0';
     return rv;
 }
+
+
+
+
+
 
 #ifndef TESTING
 int main(void)
