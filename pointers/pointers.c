@@ -36,18 +36,20 @@ char *find_char(char *str, int c)
     printf("start\n");
     int len = string_length(str);
     printf("len\n");
-    for(int i = 0; i < len; i++){
-        printf("loop %i\n", i);
+    char *new = NULL;
+    for(int i = 0; str[i]!= '\0'; i++){
+        printf("loop %i -- str%s\n", i, str[i]);
         if(str[i] == c){
-            printf("%p this is the memory slot in ram\n", str);
-            str += i;
-            printf("%p this is the memory slot in ram now\n", str);
-            printf("%i <- is the index of %c in %s\n\n", i, c, str);
-            return str;
+            // printf("%p this is the memory slot in ram\n", str);
+            new = &str[i];//returns the address not the value
+            // printf("%p this is the memory slot in ram now\n", str);
+            printf("new -> %s\n\n",  new);
         };
     };
-    return NULL;
+    return new;
 }
+
+
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -57,10 +59,35 @@ char *find_char(char *str, int c)
     
     Do not just use the `strcpy` function from the standard library.
 */
-void string_copy(char *x, char *y)
+void string_copy(char *x, char *y)//x is a pointer to a first character it is not a complete string it just goes until it it hits that null value
 {
-    char somecharacter = *y;
-    printf('%c', somecharacter);
+    printf("*x start (value) => %c\n", *x);
+    printf("x start (pointer) => %p\n", x);
+    printf("*y start (value) => %c\n", *y);
+    printf("y start (pointer) => %p\n\n", y);
+
+    // int *somecharacter; //pointer to a char
+    // printf("*somecharacter => %c\n", *somecharacter);
+    // somecharacter = &y; //somecharacter now points to y
+    // printf("somecharacter => %s\n", somecharacter);
+    // *x = *y; //x should now be the value of somecharacter
+   
+        // *(y+1)
+
+    int i;
+    for (i=0; y[i] != '\0'; i++){
+        x[i] = y[i];
+    } 
+    x[i] = '\0';
+
+    // while(*y != '\0'){
+    //     x[i] = y[i];
+
+    // }
+
+    // x = *y; //x is now y
+    // printf("x end => %s\n", x);
+    // printf("*x end => %d\n", *x);
 }
 
 /* 
@@ -117,6 +144,10 @@ int main(void)
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
 
+    char *found = "LambdaSchool";
+    find_char(found, "bdaSchool");
+
     return 0;
+
 }
 #endif
