@@ -24,8 +24,14 @@ typedef struct Person {
     function, which handles the allocation of memory for the new string.
 */
 Person *createPerson(char *name, int age, int height, int weight)
-{
+{  
+    Person *p = malloc(sizeof(Person));
+    p -> name = string_dup(name);
+    p -> age = age; 
+    p -> height = height; 
+    p -> weight = weight;
 
+    return p;
 }
 
 /*
@@ -34,7 +40,8 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-
+    free(who -> name);
+    free(who); 
 }
 
 #ifndef TESTING
