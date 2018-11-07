@@ -71,8 +71,8 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
-	if(q->storage) free(q->storage);
-	if(q) free(q);
+	free(q->storage);
+	free(q);
 }
 
 
