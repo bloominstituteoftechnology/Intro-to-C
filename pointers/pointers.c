@@ -53,7 +53,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+for (int i=0; m[i]!= '\0'; i++){
+    if (m[i]>n[i]){
+        return 1;
+    } else if (m[i] < n[i]){
+        return -1;
+    }
+}
+    return 0;
 }
 
 /*
