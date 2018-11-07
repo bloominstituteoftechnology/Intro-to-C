@@ -8,7 +8,7 @@ Those funky asterisks you might have seen already indicate a pointer. Let's look
 ```c
 char *reverse_string(char s[])
 {
-    ...
+    ...`
 }
 ```
 The `char *` that is in the spot where the return type of the function usually goes is saying that this function will return a pointer to an array of characters.

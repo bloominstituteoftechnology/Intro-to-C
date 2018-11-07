@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -31,8 +32,9 @@ char *find_char(char *str, int c)
         if (str[count] == c) {
             return &str[count];
         }
+        count++;
     }
-    return str;
+    return NULL;
 }
 
 /*
@@ -71,8 +73,8 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    int mlen = sizeof(m);
-    int nlen = sizeof(n);
+    int mlen = strlen(m);
+    int nlen = strlen(n);
     for (int i = 0; i < mlen || i < nlen; i++) {
         if (m[i] != n[i]) {
             if (m[i] < n[i]) {
@@ -81,11 +83,6 @@ int string_compare(char *m, char *n)
                 return 1;
             }
         }
-    }
-    if (mlen > nlen) {
-        return 1;
-    } else if (nlen > mlen)  {
-        return -1;
     }
     return 0;
 }
@@ -100,18 +97,17 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    while (*haystack) {
-        char *start = haystack;
-        char *find = needle;
-
-        while (*haystack && *find && *haystack == *find) {
-            haystack++;
-            find++;
+    int len = strlen(haystack);
+    int len2 = strlen(needle);
+    for (int i = 0; i < len; i++) {
+        if (*(haystack + i) == *needle) {
+            for (int j = 0; j < len2; j++) {
+                if (*(haystack + i + j) != *(needle + j)) {
+                    return NULL;
+                }
+            }
+            return haystack + i;
         }
-        if (!*find) {
-            return start;
-        }
-        haystack++;
     }
     return NULL;
 }
