@@ -15,7 +15,11 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
-
+    Queue *q = malloc(sizeof(Queue));
+    q->length = 0;
+    q->capacity = capacity;
+    q->storage = malloc(sizeof(int) * capacity);
+    return q;
 }
 
 /*
