@@ -75,7 +75,7 @@ char *find_char(char *str, int c)
             printf("The character %c was found.\n", str[i]);
         }
         else {
-            printf("The character %c was not found at position %d. \n", str[i], str);
+            printf("The character %c was not found at position %d. \n", str);
         }
     }
     return str;   
