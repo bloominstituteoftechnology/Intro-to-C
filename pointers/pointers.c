@@ -144,16 +144,23 @@ char *find_string(char *haystack, char *needle)
 
     for (int i = 0; haystack[i] != '\0'; i++){
         printf("haystack i = %d /", i);
-        printf(" haystack[i] = %c /", haystack[i]);
-        printf(" needle[0] = %c\n", needle[0]);
         if (haystack[i] == needle[0]){
+            printf(" haystack[i] = %c /", haystack[i]);
+            printf(" needle[0] = %c\n", needle[0]);
             for (int k = 0; k < lenN ; k++){
                 printf("needle[k] = %c\n", needle[k]);
+                if (needle[k] != haystack[i +k]){
+                    break;
+                }
                 if (k+1 == lenN){
                     printf("found needle\n");
                     return &haystack[i];
                 }
             }
+        } else {
+            printf(" they are not equal");
+            printf(" haystack[i] = %c /", haystack[i]);
+            printf(" needle[0] = %c\n", needle[0]);
         }
     }
     printf(" no needle found\n\n");
