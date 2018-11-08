@@ -23,19 +23,19 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-// char *find_char(char *str, int c)
-// {
-//   int len = strlen(str);
-//   char *found = NULL;
-//   for(int i=0; i<len; i++){
-//     if(str[i] == c){
-//       found = &str[i];
-//     } else {
-//       printf("shucks");
-//     }
-//   }
-//   return found;
-// }
+char *find_char(char *str, int c)
+{
+  int len = strlen(str);
+  char *found = NULL;
+  for(int i=0; i<len; i++){
+    if(str[i] == c){
+      found = &str[i];
+    } else {
+      printf("shucks");
+    }
+  }
+  return found;
+}
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -48,9 +48,12 @@ void swap(int* a, int* b)
 void string_copy(char *x, char *y)
 {
   char len = strlen(y);
+  
   for(int i=0; i<len; i++){
     x[i] = y[i];
   }
+  
+  x[len] = '\0';
 }
 
 /* 
@@ -67,10 +70,38 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
-// int string_compare(char *m, char *n)
-// {
+int string_compare(char *m, char *n){
+  int val_n = 0;
+  int val_m = 0;
+  int return_val = NULL;
+  for(int i=0; i<strlen(m); i++){
+    val_m = val_m + (int) m[i];
+  }
+  for(int i=0; i<strlen(n); i++){
+    val_n = val_n + (int) n[i];
+  }
+  printf("mVal >> %d .. vVal >> %d \n", val_m, val_n);
+  if (val_m == val_n){
+    return_val = 0;
+  } else if (val_m < val_n){
+    return_val = -1;
+  } else if (val_m > val_n){
+    return_val = 1;
+  } else {
+    printf("Something is wrong, here.");
+  }
+  printf("return val >> %d\n", return_val);
+  return return_val;
+}
 
-// }
+int calc_value(int *str){
+  int len = strlen(str), val=0;
+  for (int i=0; i<len;i++){
+    val = val + (int) str[i];
+    printf("val >> %d", val);
+  }
+  return val;
+}
 
 /*
     Searches the input string `haystack` for the first instance of
@@ -80,10 +111,10 @@ void string_copy(char *x, char *y)
 
     Do not use the `strstr` function from the standard library.
 */
-// char *find_string(char *haystack, char *needle)
-// {
+char *find_string(char *haystack, char *needle)
+{
 
-// }
+}
 
 #ifndef TESTING
 int main(void)
