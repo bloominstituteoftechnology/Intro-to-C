@@ -46,7 +46,7 @@ void string_copy(char *x, char *y)
         x[i] = y[i];
     }
     x[strlen(y)] = '\0';
-}
+ }
 
 /* 
     Compares the character strings m and n and returns negative,

@@ -51,17 +51,26 @@ void *mem_copy(void *dest, const void *src, int n)
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
     char *newptr = ptr;
-    char *new = malloc(new_size*sizeof(ptr[0]));
+    char *new = malloc(new_size);
     if (new_size < old_size) {
         for (int i=0; i < new_size; i++){
+            if (i == new_size-1){
+                new[i] = '\0';
+                printf("sup %s\n", new);
+                return new;
+            }
+            else {
             new[i] = newptr[i];
             if (newptr[i] == '\0'){
+                printf("hi %s\n", new);
                 return new;
+            }
             }
         }
 
     }
     strcpy(new, ptr);
+    printf("%s\n", new);
     return new;
 }
 
