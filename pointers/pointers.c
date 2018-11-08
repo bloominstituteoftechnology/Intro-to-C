@@ -73,11 +73,13 @@ void string_copy(char *x, char *y)
 int string_compare(char *m, char *n){
   int val_n = 0;
   int val_m = 0;
-  int return_val = NULL;
-  for(int i=0; i<strlen(m); i++){
+  int len_M = strlen(m);
+  int len_N = strlen(n);
+  int return_val = 0;
+  for(int i=0; i < len_M; i++){
     val_m = val_m + (int) m[i];
   }
-  for(int i=0; i<strlen(n); i++){
+  for(int i=0; i < len_N; i++){
     val_n = val_n + (int) n[i];
   }
   printf("mVal >> %d .. vVal >> %d \n", val_m, val_n);
@@ -92,15 +94,6 @@ int string_compare(char *m, char *n){
   }
   printf("return val >> %d\n", return_val);
   return return_val;
-}
-
-int calc_value(int *str){
-  int len = strlen(str), val=0;
-  for (int i=0; i<len;i++){
-    val = val + (int) str[i];
-    printf("val >> %d", val);
-  }
-  return val;
 }
 
 /*
@@ -128,6 +121,10 @@ int main(void)
     char buffer[1024];
 
     string_copy(buffer, hello);
+
+    char *a = "aardvark";
+    char *z = "zebra";
+    string_compare(a, z);
 
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world));
