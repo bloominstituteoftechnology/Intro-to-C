@@ -34,11 +34,11 @@ char *find_char(char *str, int c)
 {   
     printf("\n%s, %c\n\n", str, c);
     printf("start\n");
-    int len = string_length(str);
+    // int len = string_length(str);
     printf("len\n");
     char *new = NULL;
     for(int i = 0; str[i]!= '\0'; i++){
-        printf("loop %i -- str%s\n", i, str[i]);
+        printf("loop %i -- str%d\n", i, str[i]);
         if(str[i] == c){
             // printf("%p this is the memory slot in ram\n", str);
             new = &str[i];//returns the address not the value
@@ -139,24 +139,24 @@ char *find_string(char *haystack, char *needle)
     int lenN = string_length(needle);
 
     if(lenH < lenN){
-        return NULL
-    } 
-    
-    int count = 0;
+        return NULL;
+    };
 
-    for(int i = 0; haystack[i] != '\0'; i++){
-        if (haystack[i] == needle[count]){
-            //for loop that compares haystack[i + k] == needle[k]
-            //if needle[k + 1] == '\0' and 
-                //return  
-            for (int k = 1; needle[k] != '\0'; k++){
-                if (haystack[i + k] == needle[k]){
-                    
-                    //return *haystack[i]
+    for (int i = 0; haystack[i] != '\0'; i++){
+        printf("haystack i = %d /", i);
+        printf(" haystack[i] = %c /", haystack[i]);
+        printf(" needle[0] = %c\n", needle[0]);
+        if (haystack[i] == needle[0]){
+            for (int k = 0; k < lenN ; k++){
+                printf("needle[k] = %c\n", needle[k]);
+                if (k+1 == lenN){
+                    printf("found needle\n");
+                    return &haystack[i];
                 }
             }
         }
     }
+    printf(" no needle found\n\n");
     return NULL;
 }
 
