@@ -32,14 +32,14 @@ char *find_char(char *str, int c)
     int len = counter;
     for (int i = 0; i < len; i++)
     {
-        printf("%c\n", str[i]);
         if (str[i] == c)
         {
-            pointer = &c;
+            pointer = &str[i];
+            return pointer;
         }
     }
 
-    return pointer;
+    return NULL;
 }
 
 /*
@@ -52,6 +52,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    int count = 0;
+
+    while (y[count] != '\0')
+    {
+        x[count] = y[count];
+        count++;
+    }
+    x[count] = '\0';
 }
 
 /* 
@@ -70,6 +78,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int i = 0;
+
+    while (m[i] == n[i])
+    {
+        if (m[i] == '\0' && n[i] == '\0')
+        {
+            break;
+        }
+        i++;
+    }
+    return m[i] - n[i];
 }
 
 /*
