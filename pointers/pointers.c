@@ -101,6 +101,86 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    // int i = 0, j = 0;
+    // int first;
+
+    // while ((haystack[i] != '\0') && (needle[j] != '\0'))
+    // {
+    //     if (haystack[i] != needle[j])
+    //     {
+    //         i++;
+    //         j = 0;
+    //     }
+    //     else
+    //     {
+    //         first = j;
+    //         i++;
+    //         j++;
+    //     }
+    // }
+    // if (needle[j] == '\0')
+    // {
+    //     return &haystack[first];
+    // }
+    // else
+    // {
+    //     return NULL;
+    // }
+
+    while (*haystack)
+    {
+        if (*haystack == *needle)
+        {
+            char *candidate = haystack;
+            char *current = needle;
+
+            while (*candidate == *current && *current && *candidate)
+            {
+                candidate++;
+                current++;
+            }
+
+            if (*current == '\0')
+            {
+                return haystack;
+            }
+        }
+        haystack++;
+    }
+    return NULL;
+
+    // int i = 0, j = 0;
+    // int first = 0;
+
+    // while ((haystack[i] != '\0') && (needle[j] != '\0'))
+    // {
+    //     if (haystack[i] != needle[j])
+    //     {
+    //         i++;
+    //         j = 0;
+    //     }
+    //     else
+    //     {
+    //         if ((first == 0) && (i != 0))
+    //         {
+    //             first = i;
+    //         }
+    //         else if ((first == 0) && (i == 0))
+    //         {
+    //             first = 0;
+    //         }
+    //         i++;
+    //         j++;
+    //     }
+    // }
+    // if (needle[j] == '\0')
+    // {
+    //     return &haystack[first];
+    // }
+    // else
+    // {
+    //     return NULL;
+    // }
 }
 
 #ifndef TESTING
