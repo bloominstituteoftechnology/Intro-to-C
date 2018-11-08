@@ -1,4 +1,7 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <ctype.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -43,13 +46,15 @@ char *find_char(char *str, int c)
 
 void string_copy(char *x, char *y)
 {
-    while(*y != '\0') {
-      *x = *y;
-      
-      *x++;
-      *y++;
-      //how do i add the '\0' in for the last pointer of x? 
-    }
+  int i;
+  
+  int end = strlen(y) - 1; 
+
+  for(i = 0; i <= end; i++) {
+    x[i] = y[i];
+  }
+
+  x[i] = '\0';
 }
 
 /* 
@@ -68,26 +73,34 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-  int mLength = 0; 
-  int nLength = 0;
+  char *alphabet = "abcdefghijklmnopqrstuvwxyz";
+  int alphaCount = 0; 
+  int mCheck = 0; 
+  int nCheck = 0; 
+  char mLower = tolower(m[0]);
+  char nLower = tolower(n[0]);
 
-  while(*m != '\0') {
-    mLength++; 
-    *m++;
-  }
-  
-  while(*n != '\0') {
-    nLength++; 
-    *n++;
-  }
+    if(m[0] == n[0]){
+        return 0;
+    }
 
-  if(mLength == nLength) {
-    return 0;
-  } else if(mLength > nLength) {
-    return 1;
-  } else {
-    return -1;
-  }
+    while(*alphabet != '\0') {
+        alphaCount++;
+        
+        if(mLower == *alphabet)  {
+        mCheck = alphaCount;  
+        } else if(nLower == *alphabet) {
+        nCheck = alphaCount;
+        }
+        
+        alphabet++;
+    }
+    
+    if(mCheck > nCheck) {
+        return 1;
+    } else if(mCheck < nCheck){
+        return -1;
+    }
 }
 
 /*

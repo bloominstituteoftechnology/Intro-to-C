@@ -25,15 +25,17 @@ int string_length(char s[]) {
     the reversed string with a null character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[]) {
-
-  for(int i = strlen(s) - 1; i >= 0; i--) {
-    *rv = s[i];
-    
-    printf("%c", *rv);
+  int i;
+  int end = strlen(s)-1;
+  
+  for(i = 0; i < end; i++) {
+    rv[i] = s[end];
+    s--;
   }
-  return rv;
-  //i don't understand the pointers here and type assignments. prints the answer fine, but unable to return correct version.
 
+  rv[i] = '\0';  
+  
+  return rv;
 }
 
 
