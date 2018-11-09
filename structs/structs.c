@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /* 
@@ -26,7 +27,8 @@ Person *createPerson(char *name, int age, int height, int weight)
 {
     struct Person *person = malloc(sizeof(struct Person));
 
-    person->name = name;
+    person->name = malloc(strlen(name));
+    strcpy(person->name, name);
     person->age = age;
     person->height = height;
     person->weight = weight;
@@ -39,7 +41,8 @@ Person *createPerson(char *name, int age, int height, int weight)
     Person's name as well as the memory that holds the Person instance.
 */
 void destroyPerson(Person *who)
-{
+{   
+    free(who->name);
     free(who);
 }
 
