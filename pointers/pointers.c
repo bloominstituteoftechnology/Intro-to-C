@@ -94,17 +94,19 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-     int count1 = 0, count2 = 0, i, j;
- 
-    while (haystack[count1] != '\0')
-        count1++;
-    while (needle[count2] != '\0')
-        count2++;
-    for (i = 0; i <= count1 - count2; i++)
+    for(int i = 0; haystack[i] != '\0'; i++)
     {
-        for (j = i; j < i + count2; j++)
+        if(haystack[i] == needle[0])
         {
-            return NULL;
+            for(int j = 0; needle[j] != '\0'; j++)
+            {
+                if (needle[j] != haystack[j+i])
+                {
+                    return NULL;
+                }
+               
+            }
+            return &haystack[i];
         }
     }
     return NULL;

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -13,7 +14,16 @@
 */
 char *string_dup(char *src)
 {
+    int len = string_length(src);
+    char *d = malloc(len);
 
+    int i = 0;
+    while (src[i] != '\0') {
+        d[i] = src[i];
+        i++;
+    }
+    d[len] = '\0';
+    return d;
 }
 
 /*
@@ -26,7 +36,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *s = (char *) src; 
+    char *d = (char *) dest;
+    
+    for (int i = 0; i < n; i++){
+        d[i] = s[i];
+    }
+    return NULL;
 }
 
 /*
@@ -43,7 +59,15 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+    char *new = (char *) malloc(new_size);
+    char *pointer = ptr;
+    for (int i = 0; i < old_size; i++) {
+        if (i == new_size) {
+            break;
+        }
+        new[i] = pointer[i];
+    }
+    return new;
 }
 
 #ifndef TESTING
