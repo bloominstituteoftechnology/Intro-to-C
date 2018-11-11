@@ -32,7 +32,7 @@ Person *createPerson(char *name, int age, int height, int weight)
     p->height = height;
     p->weight = weight;
 
-    // Return pointer to animal
+    // Return pointer
     return p;
 }
 
