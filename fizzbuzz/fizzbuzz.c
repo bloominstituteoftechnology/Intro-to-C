@@ -13,14 +13,15 @@ int fizzbuzz(int n)
     int count = 0;
 
     for (int i = 0; i < n; i++) {
+        //can also be ((i % 3 == 0) && (i % 5 == 0))
         if (i % 3 == 0 && i % 5 == 0) {
-            printf("FizzBuzz");
+            printf("\nFizzBuzz\n");
         }
     else if (i % 5 == 0) {
-        printf("Buzz");
+        printf("\nBuzz\n");
     }
     else if (i % 3 == 0) {
-        printf("Fizz");
+        printf("\nFizz\n");
     }
     else {
         count++;

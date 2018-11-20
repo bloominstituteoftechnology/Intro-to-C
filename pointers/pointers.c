@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -6,7 +7,7 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
     //temp is holding the value that a points to
     int temp = *a;
@@ -26,13 +27,25 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-    int s_len;
-    int i;
-    s_len = strlen(str);
-    for (i = 0; i < s_len; i++) {
-        if ((char) c == str[i]) {
-            return (const char*) &str[i];
+    // int s_len;
+    // int i;
+    // s_len = strlen(str);
+    // for (i = 0; i < s_len; i++)
+    // {
+    //     if ((char)c == str[i])
+    //     {
+    //         return (const char *)&str[i];
+    //     }
+    // }
+    // return NULL;
+    //alternative solution
+    while (*str)
+    {
+        if (*str == c)
+        {
+            return str;
         }
+        str++;
     }
     return NULL;
 }
@@ -48,7 +61,8 @@ char *find_char(char *str, int c)
 void string_copy(char *x, char *y)
 {
     //walk along y until we reach the end of the string
-    while (*y != '\0') {
+    while (*y != '\0')
+    {
         //copy the current char we're at to x
         *x = *y;
         //increment x and y pointers
@@ -75,16 +89,36 @@ void string_copy(char *x, char *y)
 int string_compare(char *m, char *n)
 {
     //iterate over both char pointers
-    while(*m == *n) {
+    while (*m == *n)
+    {
         //check to see if we've reached the end of one of the strings
-        if (*m == '\0') {
-        return 0;
-    }
-    //increment both pointers
-    m++;
-    n++;
+        if (*m == '\0')
+        {
+            return 0;
+        }
+        //increment both pointers
+        m++;
+        n++;
     }
     return *m - *n;
+    //alternative solutions
+    // while (*m != '\0')
+    // {
+    //     if (*m > *n)
+    //     {
+    //         return 1;
+    //     }
+    //     else if (*m < *n)
+    //     {
+    //         return -1;
+    //     }
+    //     else
+    //     {
+    //         m++;
+    //         n++;
+    //     }
+    // }
+    // return 0;
 }
 
 /*
@@ -98,44 +132,63 @@ int string_compare(char *m, char *n)
 char *find_string(char *haystack, char *needle)
 {
     int i = 0, j = 0;
-    while ((*(haystack + j) != '\0')&&(*(needle + i) != '\0')) {
-        if (*(needle + i) != *(haystack + j)) {
-            j++;
-            i = 0;
+    while ((*(haystack + j) != '\0') && (*(needle + i) != '\0'))
+    {
+        //     if (*(needle + i) != *(haystack + j))
+        //     {
+        //         j++;
+        //         i = 0;
+        //     }
+        //     else
+        //     {
+        //         i++;
+        //         j++;
+        //     }
+        // }
+        // if (*(needle + i) == '\0')
+        //     return 1;
+        // else
+        //     return -1;
+        //alternative solutions
+        while (*haystack != '\0')
+        {
+            if (*haystack == *needle)
+            {
+                return haystack;
+            }
+            else
+            {
+                haystack++;
+            }
         }
-        else {
-            i++;
-            j++;
-        }
+        return NULL;
     }
-    if (*(needle + i) == '\0')
-        return 1;
-    else
-        return -1;
-}
 
 #ifndef TESTING
-int main(void)
-{
-    int x = 10, y = 20;
-    swap(&x, &y);
-    printf("x=%d, y=%d\n", x, y);
+    int main(void)
+    {
+        int x = 10, y = 20;
+        swap(&x, &y);
+        printf("x=%d, y=%d\n", x, y);
 
-    char *hello = "Hello";
-    char *world = "World";
-    char buffer[1024];
+        char *hello = "hello";
+        char *world = "World";
+        char *zebra = "zebra";
+        char *aadvark = "aadvark";
+        char *goodbye = "goodbye";
+        char buffer[1024];
 
-    string_copy(buffer, hello);
+        string_copy(buffer, hello);
 
-    printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+        printf("Buffer is %s\n", buffer);
+        printf("Comparison is %d\n", string_compare(hello, goodbye));
+        printf("Comparison is%d\n", string_compare(aadvark, zebra));
+        char *found_char = find_char(hello, 'e');
+        char *found_string = find_string(world, "or");
 
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+        printf("Found char: %s\n", found_char);
+        printf("Found string: %s\n", found_string);
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
-
-    return 0;
-}
+        return 0;
+    }
 #endif
