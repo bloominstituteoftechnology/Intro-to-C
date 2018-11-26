@@ -14,9 +14,10 @@
 char *string_dup(char *src)
 {
     // string_length(*src)
-    
-    // duplicate the string using the malloc function
+    int n = string_length(src);
 
+    // duplicate the string using the malloc function
+    int *100_int = malloc(100 * sizeof(n));
     // copy the string into the allocated memory
 
     // return the pointer 
