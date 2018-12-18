@@ -19,7 +19,7 @@ int fizzbuzz(int n)
 {
     int i;
 
-    for (i = 1; i < n; ++i)
+    for (i = 1; i <= n; ++i)
         if (i % 3 == 0 && i % 5 == 0)
             // First arg to printf() is string of chars to be printed, w/ each % indicating where
             // one of the arguments is to be subbed. When this prints, %d (decimal integer)
@@ -29,12 +29,15 @@ int fizzbuzz(int n)
             printf("%d Fizz\n", i);
         else if (i % 5 == 0)
             printf("%d Buzz\n", i);
+        else return i;   // TESTS DON'T PASS. NOT SURE WHAT I'M DOING WRONG HERE. 
+        // else printf("%d <--count:\n", i);
+
 }
 
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(50);
+    fizzbuzz(3);
 
     return 0;
 }
