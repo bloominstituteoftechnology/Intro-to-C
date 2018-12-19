@@ -94,3 +94,51 @@ int main(void)
     printf("%lf", km);
     return 0;
 }
+
+// division
+#include <stdio.h>
+int main(void)
+{
+    // integer division
+    printf("5/2 equals %d\n", 5 / 2); // 2
+    // floating point division
+    printf("5.0/2.0 equals %lf\n", 5.0 / 2.0); // 2.500000
+    printf("5/2.0 equals %lf\n", 5 / 2.0);     // 2.500000
+    printf("5.0/2 equals %lf\n", 5.0 / 2);     // 2.500000
+    return 0;
+}
+
+// reads a decimal number representing a temperature in degrees Celsius and prints out the corresponding temperature in degrees Fahrenheit with 1 decimal place.
+// Temperature (°F) = Temperature (°C) × 9.0 / 5.0 + 32.0
+#include <stdio.h>
+int main(void)
+{
+    int user_n;
+    scanf("%d", &user_n);
+    printf("%.1lf", user_n * 9.0 / 5.0 + 32.0);
+    return 0;
+}
+
+#include <stdio.h>
+int main(void)
+{
+    // pay 166 dollars using 20-dollar bills, rest with 1-dollar bills
+    int twenties = 166 / 20;
+    int rest = 166 % 20;
+    printf("I will pay %d dollars with 20-dollar bills.\n", twenties * 20);
+    printf("I will then pay %d dollars with 1-dollar bills.\n", rest);
+    return 0;
+}
+
+// take as input the number of matches to be boxed up followed by the size of a each box.
+// print out the number of full boxes followed by the number of remaining matches.
+#include <stdio.h>
+int main(void)
+{
+    int matches, boxes;
+    scanf("%d", &matches);
+    scanf("%d", &boxes);
+    int m_boxes = matches / boxes;
+    printf("%d\n", m_boxes);
+    printf("%d", matches % boxes);
+}
