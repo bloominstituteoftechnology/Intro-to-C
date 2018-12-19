@@ -2,6 +2,7 @@
 // 1x8 = 8
 // ...
 // 10x8 = 80
+
 #include <stdio.h>
 int main(void)
 {
