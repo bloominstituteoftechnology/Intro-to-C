@@ -22,6 +22,18 @@ char *string_dup(char *src)
     //     duplicate[i] = src[i];
     // }
     // return duplicate;
+
+    // solution
+    // int size = strlen(src);
+    // char *dest = malloc(size);
+    // char *current = dest;
+    // while(*src != '\0')
+    // {
+    //     *current = *src;
+    //     src++; current++;
+    // }
+    // *current = '\0';
+    // return dest;
 }
 
 /*
@@ -40,6 +52,12 @@ void *mem_copy(void *dest, const void *src, int n)
     // {
     //     p_dest[i] = p_src[i]; // values to values
     // }
+
+    // solution
+    // for (int i = 0; i < n; i++)
+    // {
+    //     ((char *)dest)[i] = ((char *)src)[i];
+    // }
 }
 
 /*
@@ -56,6 +74,13 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    // void *dest = malloc(new_size);
+    // for (int i = 0; i < old_size && i < new_size; i++)
+    // {
+    //     // *((char *)(dest + i)) = *((char *)(ptr + i));
+    //     ((char *)dest)[i] = ((char *)ptr)[i];
+    // }
+    // return dest;
 }
 
 #ifndef TESTING
