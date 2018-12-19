@@ -57,3 +57,40 @@ int main(void)
     printf("%c%c%c%c%c%c%c%c%c\n", user_input, user_input, user_input, user_input, user_input, user_input, user_input, user_input, user_input);
     return 0;
 }
+
+// Read integers and doubles with scanf()
+#include <stdio.h>
+int main(void)
+{
+    int age;
+    double height;
+    printf("What is your age?");
+    scanf("%d", &age);
+    printf("What is your height?");
+    scanf("%lf", &height);
+    printf("You are %d years old and %.2lf meters tall.", age, height);
+    return 0;
+}
+
+#include <stdio.h>
+int main(void)
+{
+    int age;
+    double height;
+    printf("What is your age and height (separate with spaces)?");
+    scanf("%d %lf", &age, &height);
+    printf("You are %d years old and %.2lf meters tall.", age, height);
+    return 0;
+}
+
+// convert between units (km to miles), a program that reads a decimal number representing a distance in kilometers and prints out the corresponding distance in miles with 6 decimal places.
+// one kilometer equals 0.621371 miles.
+#include <stdio.h>
+int main(void)
+{
+    double dist;
+    scanf("%lf", &dist);
+    double km = dist * 0.621371;
+    printf("%lf", km);
+    return 0;
+}
