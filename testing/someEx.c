@@ -17,3 +17,14 @@ int main(void)
     }
     return 0;
 }
+
+// Read integer user input using scanf()
+#include <stdio.h>
+int main()
+{
+    int age; //DECLARE
+    printf("How old are you ?\n");
+    scanf("%d", &age);
+    printf("You are %d years old\n", age); //USE
+    return 0;
+}
