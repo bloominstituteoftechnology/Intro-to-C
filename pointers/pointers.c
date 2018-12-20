@@ -63,7 +63,7 @@ void string_copy(char *x, char *y)  //buffer , hello
         printf("%c\n", *(y+i));
         i++;
     }
-    
+
     *(x+i+1) = '\0';     
 }
 
@@ -84,6 +84,24 @@ void string_copy(char *x, char *y)  //buffer , hello
 */
 int string_compare(char *m, char *n)
 {
+    int i;
+    for (i = 0; i < strlen(m); i++) {
+        if (*(n+i) > *(m+i)) {
+            return 1;
+        }
+        if (*(n+i) < *(m+i)) {
+            return -1;
+        }
+        if (*(n+i) == *(m+i) && i == strlen(m)-1 && strlen(m) == strlen(n)) {
+            return 0;
+        }
+        if (*(n+i) == *(m+i) && i == strlen(m)-1 && strlen(m) < strlen(n)) {
+            return 1;
+        }
+        if (*(n+i) == *(m+i) && i == strlen(m)-1 && strlen(m) > strlen(n)) {
+            return -1;
+        }
+    }
 
 }
 
@@ -114,7 +132,15 @@ int main(void)
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    // printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare(hello, world)); // output = 1
+    
+    // // CUSTOM TEST for string_compare
+    // char *zello = "Zello"; 
+    // char *worldwide = "Worldwide"; 
+    // printf("Comparison is %d\n", string_compare(zello, world)); // (output = -1)
+    // printf("Comparison is %d\n", string_compare(worldwide, world)); // (output = -1)
+    // printf("Comparison is %d\n", string_compare(world, worldwide)); // (output = 1)
+    // printf("Comparison is %d\n", string_compare(worldwide, worldwide)); // (output = 0)
 
     char *found_char = find_char(hello, 'e');
     // char *found_string = find_string(world, "or");
