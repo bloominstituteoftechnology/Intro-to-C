@@ -16,12 +16,11 @@ void swap(int* a, int* b)
     int a_postswap;
     int b_postswap;
 
-    a_postswap = *b; //  a_postswap (variable of type int) is set to the integer value pointer b is pointing to
+    a_postswap = *b; // a_postswap (variable of type int) is set to the integer value pointer b is pointing to
     b_postswap = *a;
 
     *a = a_postswap; 
     *b = b_postswap;
-
 }
 
 /*
@@ -36,15 +35,14 @@ char *find_char(char *str, int c) {
     int i;
     for (i = 0; i < strlen(str); i++) {
         if (*(str+i) == c) {
-            printf("%d\n", i);
-            printf("%p\n", &str[i]);
+            // printf("%d\n", i);  // prints value of counter i in which int c is encountered
+            // printf("%p\n", &str[i]); // prints the address of pointer pointing towards first match to int c
             return &str[i];
         }
         if (*(str+i) == '\0') {
             return 0; //QQQQQQQ? Should I be returning zero here if/when function reaches end of string without finding a match
         }
     }
-
 }  
 
 
@@ -59,22 +57,21 @@ char *find_char(char *str, int c) {
 void string_copy(char *x, char *y)  //buffer , hello
 {
     int i = 0;
+
     while (*(y+i) != '\0') {
         *(x+i) = *(y+i);
         printf("%c\n", *(y+i));
         i++;
     }
-    // printf("%d\n", i);
-    // printf("%c\n", *(x+1));
-    *(x+i+1) = '\0';
-     
+    
+    *(x+i+1) = '\0';     
 }
 
 
 /* 
     Compares the character strings m and n and returns negative,
     0, or positive if n is lexicographically less than, equal to,
-    or greater than n. To calculate lexicographic difference, find
+    or greater than m. To calculate lexicographic difference, find
     the difference between the first characters in m and n that differ.
     
     For example, given matching strings, this function should 
@@ -117,13 +114,13 @@ int main(void)
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+    // printf("Comparison is %d\n", string_compare(hello, world));
 
     char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    // char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
