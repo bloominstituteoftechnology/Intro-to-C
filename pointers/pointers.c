@@ -102,7 +102,6 @@ int string_compare(char *m, char *n)
             return -1;
         }
     }
-
 }
 
 /*
@@ -115,7 +114,13 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    int i;
+    for (i = 0; i < strlen(haystack); i++) {
+        if (*(haystack + i) == *needle && strlen(haystack)-i >= strlen(needle)) {
+            return (haystack+i);
+        }
+    }
+    return 0;
 }
 
 #ifndef TESTING
@@ -134,7 +139,7 @@ int main(void)
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world)); // output = 1
     
-    // // CUSTOM TEST for string_compare
+    // // (additional) CUSTOM TEST for string_compare
     // char *zello = "Zello"; 
     // char *worldwide = "Worldwide"; 
     // printf("Comparison is %d\n", string_compare(zello, world)); // (output = -1)
@@ -143,10 +148,14 @@ int main(void)
     // printf("Comparison is %d\n", string_compare(worldwide, worldwide)); // (output = 0)
 
     char *found_char = find_char(hello, 'e');
-    // char *found_string = find_string(world, "or");
+    char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    printf("Found string: %s\n", found_string);
+
+    // // (additonal) CUSTOM TEST for find_string
+    // char *found_stringA = find_string(world, "orlds");
+    // printf("Found stringA: %s\n", found_stringA);
 
     return 0;
 }
