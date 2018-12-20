@@ -142,3 +142,58 @@ int main(void)
     printf("%d\n", m_boxes);
     printf("%d", matches % boxes);
 }
+
+// Convert integers to double
+#include <stdio.h>
+int main(void)
+{
+    int iOne;
+    int iTwo;
+    double dOne;
+    printf("Please enter two integers: ");
+    scanf("%d %d", &iOne, &iTwo);
+    dOne = (double)iOne;
+    printf("dOne/iTwo equals %lf\n", dOne / iTwo);
+    return 0;
+}
+
+// Convert double to integers
+#include <stdio.h>
+int main(void)
+{
+    double dOne, dTwo;
+    int iOne, iTwo;
+    printf("Please enter two decimals: ");
+    scanf("%lf %lf", &dOne, &dTwo);
+    printf("I read dOne = %lf, dTwo = %lf.\n", dOne, dTwo);
+    iOne = (int)dOne;
+    iTwo = (int)dTwo;
+    printf("iOne = %d, iTwo = %d.\n", iOne, iTwo);
+    printf("%d / %d = %d.\n", iOne, iTwo, iOne / iTwo);
+    return 0;
+}
+
+#include <stdio.h>
+int main(void)
+{
+    double dOne, dTwo;
+    int iOne, iTwo, result;
+    scanf("%lf %lf", &dOne, &dTwo);
+    iOne = (int)dOne;
+    iTwo = (int)dTwo;
+    result = iOne / iTwo;
+    printf("%d", result);
+    return 0;
+}
+
+#include <stdio.h>
+
+int main(void)
+{
+    double cement;
+    int bags;
+    scanf("%lf", &cement);
+    bags = cement / 120 + 1; //we know that the amount of cement is not a multiple of 120
+    printf("%d", bags * 45);
+    return (0);
+}
