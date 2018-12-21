@@ -124,3 +124,55 @@ int main(void)
     printf("%d", count);
     return 0;
 }
+
+// nested for loops
+// #include <stdio.h>
+// int main(void){
+//     int nbThrows = 0;
+//     int nbDice = 0;
+//     int diceValue = 0;
+//     int throwSum = 0;
+//     int throw = 0;
+//     int dice = 0;
+//     scanf("%d %d", &nbThrows, &nbDice);
+//     for(throw = 0; throw<nbThrows; throw++){
+//         for(dice = 0; dice<nbDice; dice++){
+//             scanf("%d", &diceValue);
+//             throwSum = throwSum + diceValue;
+//         }
+//         printf("throw %d sum equals %d\n", throw, throwSum);
+//         throwSum = 0;
+//     }
+//     return 0;
+// }
+// output
+// 5 4
+// 1 4 2 3
+// 3 2 6 4
+// 2 4 1 4
+// 2 2 1 4
+// 3 6 1 2
+
+// print a square of stars using nested loops
+#include <stdio.h>
+int main(void)
+{
+    int n, i, j;
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
+    {
+        for (j = 0; j < n; j++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+// 5
+// *****
+// *****
+// *****
+// *****
+// *****
