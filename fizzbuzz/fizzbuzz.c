@@ -14,30 +14,25 @@
     Don't forget to include newlines '\n' in your printf statements!
 */
 
-// In C, the type of data a variable is must be declared before it's used.
+// TESTS DON'T PASS. NOT SURE WHAT I'M DOING WRONG HERE.
 int fizzbuzz(int n)
 {
     int i;
-
     for (i = 1; i <= n; ++i)
         if (i % 3 == 0 && i % 5 == 0)
-            // First arg to printf() is string of chars to be printed, w/ each % indicating where
-            // one of the arguments is to be subbed. When this prints, %d (decimal integer)
-            // will be replaced by the value i. 
             printf("%d FizzBuzz\n", i);
         else if (i % 3 == 0)
             printf("%d Fizz\n", i);
         else if (i % 5 == 0)
             printf("%d Buzz\n", i);
-        else return i;   // TESTS DON'T PASS. NOT SURE WHAT I'M DOING WRONG HERE. 
-        // else printf("%d <--count:\n", i);
-
+        // else return i;    
+        else printf("%d <--count:\n", i);
 }
 
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(3);
+    fizzbuzz(34);
 
     return 0;
 }
