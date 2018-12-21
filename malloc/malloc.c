@@ -84,7 +84,7 @@ void *resize_memory(void *ptr, int old_size, int new_size)
         // ptr = (void *) malloc(new_size);
         cptr = malloc(new_size);
     }
-    *(cptr+new_size) = "\0"; 
+    *(cptr+new_size) = '\0'; 
 
     // for (int i = 0; i < sizeof(ptr);i++) {
     //     printf("%d\0",(ptr+i));
