@@ -26,3 +26,56 @@ int main(void)
     }
     return 0;
 }
+
+// Find the length of a string
+#include <stdio.h>
+int main(void)
+{
+    //! showArray(word, cursors=[i])
+    char word[30];
+    int i = 0;
+    printf("Please enter a word: ");
+    scanf("%s", word);
+    while (word[i] != '\0')
+        i++;
+    printf("%s has word length %d.\n", word, i);
+    return 0;
+}
+
+// even or odd number of letters in a word
+// student names are less than 50 characters long and contain no spaces. Your program should output an integer value (1 or 2) depending on whether the fan should join line 1 (name has even number of letters) or line 2 (name has odd number of letters).
+#include <stdio.h>
+int main(void)
+{
+    int i = 0;
+    char first[50];
+    scanf("%s", &first);
+    while (first[i] != '\0')
+    {
+        i++;
+    }
+    if (i % 2 == 0)
+    {
+        printf("%d", 1);
+    }
+    else
+    {
+        printf("%d", 2);
+    }
+    return 0;
+}
+// int main(void) {
+//     char name[51];
+//     int i=0;
+
+//     scanf("%s", name);
+//     while(name[i] != '\0')
+//         i++;
+
+//     if (i%2 == 0)
+//         printf("1");
+//     else
+//         printf("2");
+
+//     return 0;
+// }
