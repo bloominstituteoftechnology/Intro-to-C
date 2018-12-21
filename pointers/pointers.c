@@ -11,7 +11,7 @@ void swap(int* a, int* b)
 {
     //so here, int* a is the value that the pointer a references, and likewise for b
     //we want the pointer a to point to the value *b
-    //we want the point b to point to the value *a
+    //we want the pointer b to point to the value *a
 
     int a_postswap;
     int b_postswap;
@@ -32,19 +32,16 @@ void swap(int* a, int* b)
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c) {
-    int i;
-    for (i = 0; i < strlen(str); i++) {
+    for (int i = 0; i < strlen(str); i++) {
         if (*(str+i) == c) {
-            // printf("%d\n", i);  // prints value of counter i in which int c is encountered
-            // printf("%p\n", &str[i]); // prints the address of pointer pointing towards first match to int c
+            printf("i: %d; pointer: %p\n", i, &str[i]);  // prints value of counter i in which int c is encountered, as well as the address of the character.
             return &str[i];
         }
         if (*(str+i) == '\0') {
-            return 0; //QQQQQQQ? Should I be returning zero here if/when function reaches end of string without finding a match
+            return NULL; 
         }
     }
 }  
-
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -54,19 +51,16 @@ char *find_char(char *str, int c) {
     
     Do not just use the `strcpy` function from the standard library.
 */
-void string_copy(char *x, char *y)  //buffer , hello
+void string_copy(char *x, char *y)  
 {
     int i = 0;
-
     while (*(y+i) != '\0') {
         *(x+i) = *(y+i);
-        printf("%c\n", *(y+i));
+        // printf("%c\n", *(y+i));
         i++;
     }
-
     *(x+i+1) = '\0';     
 }
-
 
 /* 
     Compares the character strings m and n and returns negative,
@@ -84,22 +78,21 @@ void string_copy(char *x, char *y)  //buffer , hello
 */
 int string_compare(char *m, char *n)
 {
-    int i;
-    for (i = 0; i < strlen(m); i++) {
+    for (int i = 0; i < strlen(m); i++) {
         if (*(n+i) > *(m+i)) {
-            return 1;
+            return -1;
         }
         if (*(n+i) < *(m+i)) {
-            return -1;
+            return 1;
         }
         if (*(n+i) == *(m+i) && i == strlen(m)-1 && strlen(m) == strlen(n)) {
             return 0;
         }
         if (*(n+i) == *(m+i) && i == strlen(m)-1 && strlen(m) < strlen(n)) {
-            return 1;
+            return -1;
         }
         if (*(n+i) == *(m+i) && i == strlen(m)-1 && strlen(m) > strlen(n)) {
-            return -1;
+            return 1;
         }
     }
 }
@@ -114,13 +107,21 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    int i;
-    for (i = 0; i < strlen(haystack); i++) {
-        if (*(haystack + i) == *needle && strlen(haystack)-i >= strlen(needle)) {
-            return (haystack+i);
+    for (int i = 0; i < strlen(haystack); i++) {
+        if (*(haystack + i) == *needle) {
+            for (int j = 0; j < strlen(needle); j++) {
+                if (*(haystack + i + j) != *(needle + j)) {
+                    // printf("false start\n");
+                    break;
+                }
+                if ((*(haystack + i + j) == *(needle + j)) && j == strlen(needle)-1) {
+                    printf("s: %s, p: %p\n", haystack + i, haystack + i );
+                    return (haystack + i);
+                }
+            }
         }
     }
-    return 0;
+    return NULL;
 }
 
 #ifndef TESTING
@@ -153,9 +154,12 @@ int main(void)
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
 
-    // // (additonal) CUSTOM TEST for find_string
-    // char *found_stringA = find_string(world, "orlds");
-    // printf("Found stringA: %s\n", found_stringA);
+    // (additonal) CUSTOM TEST for find_string
+    char *found_stringA = find_string(world, "rld");
+    printf("Found stringA: %s\n", found_stringA);
+    char *helloAgain = "Hello again. and again. poet. peel. peace.";
+    char *found_stringB = find_string(helloAgain, "peaces");
+    printf("Found stringB: %s\n", found_stringB);
 
     return 0;
 }
