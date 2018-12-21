@@ -18,11 +18,9 @@
 int string_length(char s[]) // declares s to be an array holding values of type char
 {
     int i;
-
     while (s[i] != '\0') // The '\0' is the null character. It's put at end of array to mark the end of the string of chars.
         ++i;
     return i;
-
 }
 
 /*
@@ -33,7 +31,7 @@ int string_length(char s[]) // declares s to be an array holding values of type 
 */
 char *reverse_string(char rv[], char s[])
 {
-    // // first reverse the order of string s
+    // // first reverse the order of input string s
     // // how do you reverse the order of a string? 
         // // you first get its length
     
@@ -44,19 +42,12 @@ char *reverse_string(char rv[], char s[])
        // // meaning that, string[stringlength or stringlength-1 if the '\0' is included in the length]
        // // the first letter in the reversed string is the last letter in the non-reversed string (i.e. reversed[0] = nonreversed[length-1])
        // // and then you subtract one from the counter until the zero indexed string character in the nonreversed string is returned as the last indexed string in the reversed string    
-    
-    // printf("%d\n", length);
-    // printf("%s\n", s);
 
-    int i; 
-    for (i = 0; i < length; i++) 
+    for (int i = 0; i < length; i++) 
         rv[i] = s[length-1-i];
-    // the last character in the reversed string is not a letter, but a '\0' signifying that the string should be terminated
-    rv[length] = '\0';
-    // printf("%s\n", rv);    
+    rv[length] = '\0'; // the last character in the reversed string is not a letter, but a '\0' signifying that the string should be terminated
     
-    // //return the rv array
-    return rv;
+    return rv; //return the rv array
 }
 
 #ifndef TESTING
