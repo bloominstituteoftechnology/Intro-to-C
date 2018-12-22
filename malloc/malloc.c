@@ -13,15 +13,13 @@
     Do not use the `strdup` function from the standard library.
 */
 char *string_dup(char *src)
-{
-    char *dup = malloc(strlen(src));
-    int i;
-    for (i = 0; i < strlen(src); i++) {
-        *(dup+i) = *(src+i); 
-        // printf("%c\n", *(dup+i));
+{   
+    char *dup = malloc(strlen(src) + 1);
+    for (int i = 0; i < strlen(src) + 1; i++) {
+        *(dup + i) = *(src + i);
     }
-    *(dup + strlen(src))='\0'; // QQQQQ?: Do I need this here? I think so but would like to make sure. 
-    free(dup);
+    *(dup + strlen(src)+1) = '\0';
+    // free(dup)
     return dup;
 }
 
@@ -40,18 +38,16 @@ void *mem_copy(void *dest, const void *src, int n)
     
     // QQQQQQ? casting input pointer to char pointer first. doesn't that change mean change dest from void to char?
 
-    // // // ATTEMPT #1     QQQQQQ?: Don't understand why this didn't work
+    // // // ATTEMPT #1     QQQQQQ?: I'm unclear on why this isn't valid. 
     // for (int i = 0; i < n; i++) {
     //     *(&dest + i) = *(&src +i);
     // }
 
-    // // ATTEMPT #2
-    char *cdest = dest;
-    const char *csrc = src;
-
+    char *cdest = dest; // cdest (type char) is a pointer pointing to the pointer dest (type void)
+    const char *csrc = src; // csrc (type char) is a pointer pointing to the pointer src (type void)
     for (int i = 0; i < n; i++) {
-        *(cdest + i) = *(csrc +i);
-    }    
+        *(cdest + i) = *(csrc + i);
+    }   
 }
 
 /*
@@ -68,32 +64,36 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-    // ptr: pointer of type void that just malloc'd memory
+    // // ptr: pointer of type void that just malloc'd memory
     printf("size of input pointer: %d, size of input pointer data type: %d\n", sizeof(ptr),sizeof(ptr[0]));
     printf("size of old_size: %d, size of new_size: %d\n", sizeof(old_size),sizeof(new_size));
 
     // need to `re`-malloc ptr and pass in the new_size
+        // -To do this, I think I have to free the newly malloc'd memory and then re-malloc with the new size.
     // if new_size> old_size, data will be intact in newly malloc'd ptr
-    // if new_size< old_size, data will not stay intact
+    // if new_size< old_size, data will not stay intact. How to address this?
+        // One could malloc another block the size of (old_size-new_size) and have a pointer
+        // at the end of the newly sized down malloc pointing th this other malloc block. 
 
-    char *cptr = ptr;
+    char *cptr = ptr; // cptr is a pointer pointing to the pointer ptr (type void)
     if (new_size<old_size) {
         printf("Error: new_size < old_size, implying that data would be lost if this were to be carried out.\n");
     }
     if (new_size>=old_size) {
+        free(ptr);
+        ptr = malloc(new_size);
         // ptr = (void *) malloc(new_size);
-        cptr = malloc(new_size);
+        // cptr = malloc(new_size);
     }
-    *(cptr+new_size) = '\0'; 
+    // *(cptr+new_size) = '\0';  DONT THINK I NEED THIS.
 
     // for (int i = 0; i < sizeof(ptr);i++) {
     //     printf("%d\0",(ptr+i));
     // }
-    printf("%d\0",sizeof(cptr));
-    printf("cptr:%p (hex), %d (reg); ptr[0]:%p (hex), %d (reg)\0", cptr,cptr,ptr, ptr);
-    printf("cptr:%p, *cptr:%p, ptr:%p\0", cptr,cptr,ptr);
-    
-    free(cptr);
+    printf("%d\n",sizeof(cptr));
+    printf("cptr:%p (hex), %d (dec);\n", cptr,cptr);
+    printf("*cptr:%p (hex), %d (dec);\n", *(&cptr),*(&cptr));
+    printf("ptr[0]:%p (hex), %d (dec)\n",ptr, ptr);
 }
 
 #ifndef TESTING
