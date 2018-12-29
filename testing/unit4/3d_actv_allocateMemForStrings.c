@@ -1,12 +1,9 @@
 // Activity: allocate memory for strings
-
 #include <stdio.h>
 // Be sure to include any other library you may need...
 #include <stdlib.h>
-
 // Write your allocateString() prototype here
 char *allocateString(int numChars);
-
 int main(void)
 {
     int lengthLight, lengthDark;
