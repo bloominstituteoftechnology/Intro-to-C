@@ -22,13 +22,14 @@ void readStudent(struct student *studptr)
 {
     printf("\nEnter a new student record: \n");
     printf("First name: ");
-    scanf("%s", (*studptr).firstName);
+    scanf("%s", (*studptr).firstName); // or: scanf("%s", studptr->firstName);
     printf("Last name: ");
-    scanf("%s", (*studptr).lastName);
+    scanf("%s", (*studptr).lastName); // or: scanf("%s", studptr->lastName);
     printf("Birth year: ");
-    scanf("%d", &(*studptr).birthYear); // in order to modify integer use &;
+    // in order to modify integer use &;
+    scanf("%d", &(*studptr).birthYear); // or: scanf("%d", &studptr->birthYear);
     printf("Average grade: ");
-    scanf("%lf", &(*studptr).aveGrade);
+    scanf("%lf", &(*studptr).aveGrade); //  or: scanf("%lf", &studptr->aveGrade);
 }
 
 void printStudent(struct student stud)
