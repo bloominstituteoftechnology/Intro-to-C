@@ -7,9 +7,14 @@
     
     Do not just use the `strlen` function from the standard libary.
 */
+// Use a counter to loop through input string and count each character
 int string_length(char s[])
 {
-
+    int counter = 0;
+    for (int i = 0; s[i] != '\0'; i++) {
+        counter ++;
+    }
+    return counter;
 }
 
 /*
