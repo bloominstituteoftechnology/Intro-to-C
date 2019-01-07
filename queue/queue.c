@@ -23,15 +23,15 @@ Queue *createQueue(unsigned capacity)
 
 }
 
-int isFull(Queue *q)
-{
-    return q->length ==q->capacity;
+// int isFull(Queue *q)
+// {
+//     return q->length ==q->capacity;
 
-}
-int isEmpty(Queue *q)
-{
-    return q->length == 0;
-}
+// }
+// int isEmpty(Queue *q)
+// {
+//     return q->length == 0;
+// }
 /*
     Adds the given item to the end of the queue. If the queue does
     not have room, expand the queue's available storage so that it 
@@ -39,11 +39,19 @@ int isEmpty(Queue *q)
 */
 void enqueue(Queue *q, int item)
 {
-    if (isFull(q)){
-        q->storage = resize_memory(q->storage, q->capacity, q->capacity * 2);
+    // if (isFull(q)){
+    //     q->storage = resize_memory(q->storage, q->capacity, q->capacity * 2);
+    // }
+    // q->storage[q->length++] = item;
+    if (q->length == q->capacity) {
+        q->capacity = q->capacity * 2;
+        int *new_storage = malloc(sizeof(int) * q->capacity);
+        memcpy(&new_storage, &q->storage, q->length);
+        q->storage = new_storage;
     }
-    q->storage[q->length++] = item;
 
+    q->storage[q->length] = item;
+    q->length++;
 }
 
 /*
@@ -52,18 +60,30 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-    if (isEmpty(q)){
+    // if (isEmpty(q)){
+    //     return -1;
+    // }
+    // int rv=q->storage[0];
+
+    // for (unsigned int i = 1; i < q->length; i++){
+    //     q->storage[i-1]= q->storage[i];
+    // }
+    // q->length--;
+    // return rv;
+    if (q->length == 0) {
         return -1;
     }
-    int rv=q->storage[0];
-
-    for (unsigned int i = 1; i < q->length; i++){
-        q->storage[i-1]= q->storage[i];
+    else {
+        int item = q->storage[0];
+        for (int i = 0; i < q->length; i++) {
+            q->storage[i] = q->storage[i+1];
+        }
+        q->length--;
+        return item;
     }
-    q->length--;
-    return rv;
-
 }
+
+
 
 /*
     Frees the memory used to hold the queue instance and its
