@@ -9,7 +9,10 @@
 */
 int string_length(char s[])
 {
-
+ for (int i = 0; i < sizeof(s); i++) {
+     printf("%c \n", s[i]);
+ }
+ return 0;
 }
 
 /*
