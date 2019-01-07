@@ -9,7 +9,12 @@
 */
 int string_length(char s[])
 {
-
+    int counter = 0;
+    int x;
+    for (x = 0; s[x] != 0; x++){
+        counter += 1;
+    }
+    return counter;
 }
 
 /*
@@ -20,7 +25,23 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+  printf("%s\n", s);
+  int counter = 0;
+  int x;
+  for (x = 0; s[x] != 0; x++){
+    counter += 1;
+  }
+  counter = counter - 1;
+  int i;
+  int j = 0;
+  for (i = counter; i >= 0; i--){
+    rv[j] = s[i];
+    j += 1;
+  }
+  printf("%s\n", rv);
+  printf("\n%i", counter);
 
+  return rv;
 }
 
 #ifndef TESTING
