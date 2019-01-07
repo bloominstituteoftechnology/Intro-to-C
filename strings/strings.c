@@ -30,7 +30,7 @@ char *reverse_string(char rv[], char s[])
     // find the number of chars in the string
     count = string_length(s);
 
-    // leave room for the null pointer at the end
+    // account for the null pointer at the end
     end = count - 1;
 
     for(begin = 0; begin < count; begin++){

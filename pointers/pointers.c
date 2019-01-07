@@ -8,6 +8,10 @@
 */
 void swap(int* a, int* b)
 {
+    int temp = *a;
+
+    *a = *b;
+    *b = temp;
 
 }
 
@@ -21,7 +25,13 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    for(int i = 0; str[i] != '\0'; i++){
+        if(str[i] == c){
+            // returns the pointer in memory that corresponds to the value c
+            return(str+i);
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -34,6 +44,18 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    // tracks how many chars we've passed until reaching the null pointer at the end
+    // this gives us equivalent functionality as strlen
+    int counter = 0;
+
+    // runs until null is reached
+    for(int i = 0; y[i] != '\0'; i++){
+        // looks at the next location in x's string's memory and assigns it the corrseponding y value
+        *(x+i) = y[i];
+        counter++;
+    }
+    // adds a null pointer to the end of the x string
+    *(x + counter) = '\0';
 
 }
 
@@ -53,7 +75,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    for(int i = 0; n[i] != '\0'; i++){
+        if(m[i] > n[i]){ // the < and > operands can compare lexigraphical variance alphabetically
+            return 1;
+        } else if (m[i] < n[i]){
+            return -1;
+        }
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +95,13 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    for(int i = 0; haystack[i] != '\0'; i++){ // iterate over the haystack string
+        int match = string_compare(&haystack[i], needle); // run a string comparison as defined previously
+        if(match == 0){
+            return (haystack+i); // returns the location of the found needle
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
