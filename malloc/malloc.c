@@ -2,15 +2,7 @@
 #include <stdlib.h>
 #include "lib.h"
 
-/*
-    Duplicates the input string by dynamically allocating memory for 
-    the duplicate string using `malloc` and then copying the string
-    into the allocated memory. Returns a pointer to the allocated memory.
-    You may want to use the string_length function to figure out the
-    length of the input string.
-    
-    Do not use the `strdup` function from the standard library.
-*/
+
 char *string_dup(char *src)
 {
 int len = string_length(src);
@@ -61,7 +53,7 @@ void *resize_memory(void *ptr, int old_size, int new_size)
     {
         if (i == new_size)
         {
-            break;
+            break;  //exit
         }
         *(new + i) = *(pointer + 1);
     }
