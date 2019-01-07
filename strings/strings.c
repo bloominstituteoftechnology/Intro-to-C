@@ -31,11 +31,19 @@ char *reverse_string(char rv[], char s[])
   // Get the length of the current string
   int length = string_length(s);
 
+  // Initialize the rv's index
+  int j = 0;
+
   // loop backwards appending the element at s[i] to rv
-  for (int i = length; i >= 0; i--) {
-    rv[i] = s[i];
+  for (int i = length - 1; i >= 0; i--) {
+    // Set the index of rv to the index of s
+    rv[j] = s[i];
+    // Increase the index
+    j++;
   }
 
+  // Add the ending of the string
+  rv[j] = '\0';
   return rv;
 }
 
