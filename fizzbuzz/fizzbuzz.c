@@ -10,7 +10,31 @@
 */
 int fizzbuzz(int n)
 {
+    // for(int i = 0; i < n; i++) {
+    //     if(i % 3 == 0 && i % 5 == 0) {
+    //         printf('%lu\n', 'FizzBuzz')
+    //     }
+    //     else if(i % 3 == 0) {
+    //         printf('%lu\n', 'Fizz')
+    //     } else if(i % 5 == 0) {
+    //         printf('%lu\n', 'Buzz')
+    //     }
+    // }
+    int counter = 0;
+    for(int i = 1; i < n; i++)
+    {
+        if(i % 3 == 0 && i % 5 == 0)
+            printf("%i - FizzBuzz\n", i);
+        else if(i % 3 == 0)
+            printf("%i - Fizz\n", i);
+        else if(i % 5 == 0)
+            printf("%i - Buzz\n");
+        else
+            counter++;
 
+    }
+
+    return counter;
 }
 
 #ifndef TESTING
