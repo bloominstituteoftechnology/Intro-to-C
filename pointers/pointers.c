@@ -8,6 +8,10 @@
 */
 void swap(int* a, int* b)
 {
+    int temp;
+    temp = *b; // dereference b. move the content of address b to temp
+    *b = *a; // dereference a. move the content of address a to b
+    *a = temp;
 
 }
 
