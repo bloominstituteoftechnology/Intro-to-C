@@ -28,7 +28,6 @@ int fizzbuzz(int n)
         else
         {
             count++;
-            printf("%d\n", count);
         }
     }
     return count;
