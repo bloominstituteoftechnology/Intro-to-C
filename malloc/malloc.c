@@ -1,3 +1,11 @@
+//malloc() allocates single block of requested memory
+//calloc() allocates multiple block of requested memory
+//realloc() reallocates the memory occupied by malloc or calloc
+//free() frees the dynamically allocated memory
+
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib.h"
