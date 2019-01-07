@@ -17,16 +17,16 @@ int fizzbuzz(int n)
     {
         if (i % 3 == 0 && i % 5 == 0) {
             printf("FizBuzz\n");
-            count++;
         }
         else if (i % 3 == 0)
         {
             printf("Fizz\n");
-            count++;
         } 
         else if (i % 5 == 0)
         {
             printf("Buzz\n");
+        }
+        else {
             count++;
         }
     }
