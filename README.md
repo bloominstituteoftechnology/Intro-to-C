@@ -1,3 +1,4 @@
+( ⚆ _ ⚆ )
 # Introduction to the C Programming Language
 
 Welcome to your first C lab!
