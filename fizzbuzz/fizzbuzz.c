@@ -11,7 +11,7 @@
 int fizzbuzz(int n)
 {
   int counter = 0;
-  for (int i = 0; i <= n; i++)
+  for (int i = 1; i <= n; i++)
   {
     if (i % 15 == 0)
       printf("%d FizzBuzz\n", i);
@@ -28,7 +28,7 @@ int fizzbuzz(int n)
 #ifndef TESTING
 int main(void)
 {
-  fizzbuzz(20);
+  fizzbuzz(10);
 
   return 0;
 }
