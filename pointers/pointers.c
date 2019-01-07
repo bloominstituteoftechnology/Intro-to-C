@@ -40,6 +40,8 @@ return *str[i];
 */
 void string_copy(char *x, char *y)
 {
+*x = NULL;
+*x = *(x+y)
 
 }
 
@@ -72,6 +74,11 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int i = sizeof(haystack)
+for(int n = 0; n<i; n++ ){
+*(haystack+n)=="needle"
+}
+
 
 }
 
