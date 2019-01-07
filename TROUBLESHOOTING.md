@@ -35,3 +35,22 @@ If you see this error:
   ```
   git config --global core.autocrlf false
   ```
+
+## Mac: `malformed object` error when running `make tests`
+
+This is caused by an older version of the `ar` and `ranlib` packages being installed.
+Sometimes these conflict with the versions installed with xcode.
+
+If running MacPorts:
+
+```
+sudo port selfupdate
+sudo port upgrade cctools
+```
+
+If running Brew:
+
+```
+sudo brew update
+sudo brew upgrade gcc
+```
