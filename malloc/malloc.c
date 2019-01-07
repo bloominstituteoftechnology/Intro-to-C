@@ -9,12 +9,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib.h"
+#include <time.h>
 
 
 char *string_dup(char *src)
 {
-int len = string_length(src);
+    int len = string_length(src);
     char *dup = malloc(len + 1);
+    
     for (int i = 0; i < len; i++)
     {
         *(dup + i) = *(src + i);
@@ -63,7 +65,7 @@ void *resize_memory(void *ptr, int old_size, int new_size)
         {
             break;  //exit
         }
-        *(new + i) = *(pointer + 1);
+        new [i] = pointer[i];
     }
     return new;
 
