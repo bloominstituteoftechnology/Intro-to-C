@@ -8,8 +8,13 @@
     Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
-{
-
+{   
+    int length = 0;
+    // iterates over the string until it hits the null pointer at the end
+    for(int i = 0; s[i] != '\0'; i++){
+        length++;
+    }
+    return length;
 }
 
 /*
@@ -19,7 +24,26 @@ int string_length(char s[])
     the reversed string with a null character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[])
-{
+{  
+    int begin, end, count = 0;
+
+    // find the number of chars in the string
+    count = string_length(s);
+
+    // leave room for the null pointer at the end
+    end = count - 1;
+
+    for(begin = 0; begin < count; begin++){
+        rv[begin] = s[end];
+        end--;
+    }
+    
+    // when begin reaches length, add null pointer
+    rv[begin] = '\0';
+
+    return rv;
+
+    
 
 }
 
