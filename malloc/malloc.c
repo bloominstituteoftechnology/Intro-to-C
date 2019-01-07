@@ -1,49 +1,89 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "lib.h"
 
 /*
-    Duplicates the input string by dynamically allocating memory for 
+    Duplicates the input string by dynamically allocating memory for
     the duplicate string using `malloc` and then copying the string
     into the allocated memory. Returns a pointer to the allocated memory.
     You may want to use the string_length function to figure out the
     length of the input string.
-    
+
     Do not use the `strdup` function from the standard library.
 */
 char *string_dup(char *src)
 {
+  int src_size;
+  static char *dup;
+  char *dup_offset;
 
+  // Allocate memory for duplicate
+  src_size = string_length(src);
+  dup = (char *)malloc(sizeof(char)*src_size+1);
+  if (dup == NULL)
+    return( (char *)NULL);
+
+  // Copy string
+  dup_offset = dup;
+  while(*src)
+  {
+    *dup_offset = *src;
+    dup_offset++;
+    src++;
+  }
+  *dup_offset = '\0';
+
+  return(dup);
 }
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
-    `n` is the number of bytes to copy. You may want to cast the input 
-    pointers to char pointers first before performing the copying. 
-    
+    `n` is the number of bytes to copy. You may want to cast the input
+    pointers to char pointers first before performing the copying.
+
     Do not use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+  // Typecast src and dest addresses to (char *)
+  char *csrc = (char *)src;
+  char *cdest = (char *)dest;
+
+  // Copy contents of src[] to dest[]
+  for (int i = 0; i < n; i++)
+  {
+    cdest[i] = csrc[i];
+  }
+
+  return 0;
 
 }
 
 /*
-    Given a pointer that `malloc`'d memory, this function will 
+    Given a pointer that `malloc`'d memory, this function will
     attempt to resize the allocated memory to the new specified
-    size. Any data that was previously in the old `malloc`'d 
-    memory should be intact in the new resized block of memory. 
+    size. Any data that was previously in the old `malloc`'d
+    memory should be intact in the new resized block of memory.
 
     Some edge cases to consider: how should resizing be handled
-    in the case when old_size < new_size? What about when 
+    in the case when old_size < new_size? What about when
     old_size > new_size?
 
     Do not use the `realloc` function from the standard libary.
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+  // Set destination
+  void *dest = malloc(new_size);
 
+  // Loop and truncate the memory
+  for (int i = 0; i < old_size && i < new_size; i++)
+  {
+    ((char *)dest)[i] = ((char *)ptr)[i];
+  }
+  return dest;
 }
 
 #ifndef TESTING
@@ -57,7 +97,7 @@ int main(void)
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
-    
+
     mem_copy(target, numbers, n * sizeof(int));
 
     printf("Copied array: ");
@@ -72,7 +112,7 @@ int main(void)
     char *path = string_dup("/students/");
     int url_length = string_length(url);
     int path_length = string_length(path);
-    
+
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);
     char *p = new_url + url_length;
