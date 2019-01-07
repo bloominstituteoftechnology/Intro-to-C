@@ -23,16 +23,25 @@ void swap(int* a, int* b)
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c)
-{
-    while  (*str != '0') {
-        if(*str == c){
+// {
+//     int i = 0;
+//     while  (str[i] != '\0') {
+//         if(str[i] == c){
+//             return &str[i];
+//         }
+//         i++;
+//     }
+//     return NULL;
+// }
+    {
+    while (*str != '\0') {
+        if (*str == c) {
             return str;
         }
         str++;
     }
-
+    return NULL;
 }
-
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -87,25 +96,41 @@ int string_compare(char *m, char *n)
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)
+// {
+//     char *p = haystack;
+
+//     while (*p !='\0'){
+//         char *p_start = p;
+//         char *q = needle;
+
+//         while (*p !='0' && *q !='0' && *p == *q){
+//             p++;
+//             q++;
+//             if (*q == '\0'){
+//                 return p_start;
+//             }
+//             p++;
+//         }
+//         return NULL;
+//     }
 {
-    char *p = haystack;
+    while (*haystack) {
+        char *start = haystack;
+        char *find = needle;
 
-    while (*p !='\0'){
-        char *p_start = p;
-        char *q = needle;
-
-        while (*p !='0' && *q !='0' && *p == *q){
-            p++;
-            q++;
-            if (*q == '\0'){
-                return p_start;
-            }
-            p++;
+        while (*haystack && *find && *haystack == *find) {
+            haystack++;
+            find++;
         }
-        return NULL;
-    }
 
+        if (!*find) {
+            return start;
+        }
+        haystack = start + 1;
+    }
+    return NULL;
 }
+
 
 #ifndef TESTING
 int main(void)
