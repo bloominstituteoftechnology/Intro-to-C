@@ -23,14 +23,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-    for(char *p = str; *p=='\0'; p++)
+    printf("string: %s\nchar: %c\n", str, c);
+    for(char *p = str; *p!='\0'; p++)
     {
         if(*p == c)
         {
             return p;
         }
     }
-    return str;
+    return NULL;
 }
 
 /*
@@ -43,7 +44,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    for(; *y!='\0'; y++)
+    {
+        *x = *y;
+        x++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -62,7 +68,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int difference = 0;
+    for(;*m!='\0'||*n!='\0';m++)
+    {
+        difference += (int)*m - (int)*n;
+        if(difference!=0)
+        {
+            return difference;
+        }
+        n++;
+    }
+    return difference;
 }
 
 /*
@@ -75,7 +91,30 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    printf("haystack: %s\nneedle: %s\n", haystack, needle);
+    for(char *p=haystack; *p!='\0'; p++)
+    {
+        int is_same = 0;
+        char *q = p;
+        for(char *o=needle; *o!='\0'; o++)
+        {
+            if(*o==*q)
+            {
+                is_same = 1;
+            }
+            else
+            {
+                is_same = 0;
+                break;
+            }
+            q++;
+        }
+        if(is_same==1)
+        {
+            return p;
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
