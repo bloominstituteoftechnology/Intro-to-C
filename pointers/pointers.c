@@ -25,7 +25,16 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    char *position = NULL;
+    size_t i = 0;
+    for (i = 0; str[i] != '\0'; i++){
+        if(str[i] == c) {
+            position = &str[i];
+            break;
+        }
+        if (str[i] == '\0') break;
+    }
+    return position;
 }
 
 /*
@@ -38,6 +47,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    while (*y != '\0'){
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 
 }
 
