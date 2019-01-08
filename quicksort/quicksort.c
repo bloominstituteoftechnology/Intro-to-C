@@ -17,6 +17,8 @@
 */
 
 int partition(int arr[], int low, int high){
+    // the partition function arranges all elements around it in terms of if they're greater or less than the pivot
+    // as the quicksort function moves its pivot, the array will be sorted from lowest to highest
     int pivot = arr[high]; 
     int i = (low - 1); 
     
@@ -35,6 +37,7 @@ void quicksort(int *arr, int low, int high)
     if(low < high){
         int p_index = partition(arr, low, high);
 
+        // sorts the left and right sides of the pivot index
         quicksort(arr, low, p_index - 1);
         quicksort(arr, p_index + 1, high);
     }
