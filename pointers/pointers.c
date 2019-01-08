@@ -8,8 +8,7 @@
 */
 void swap(int* a, int* b)
 {
-    int temp = 0;
-    temp = *a;
+    int temp = *a;
     *a = *b;
     *b = temp;
 }
@@ -19,16 +18,16 @@ void swap(int* a, int* b)
     character `c` (an unsigned char). This function returns a pointer
     that points to the first instance of the character `c` in the
     input string `str`.
-
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c)
 {
-    int counter = 0;
-    while(str[counter] != '\0') {
-        if(str[counter] == c) {
-            printf("he4llo");
+
+    while (*str != '\0') {
+        if (*str == c) {
+            return str;
         }
+        str++;
     }
     return NULL;
 }
@@ -43,7 +42,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-    printf("%d\n", *y);
+    // loop
+    while(*y != '\0') {
+        // copy each index from y to x
+        *x = *y;
+        ++x;
+        ++y;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -62,7 +68,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    return 0;
+    int first_char = *m;
+    int second_char = *n;
+    if(first_char > second_char) {
+        return first_char - second_char;
+    }
+    else if(first_char < second_char) {
+        return first_char - second_char;
+    }
+    else {
+        return 0;
+    }
 }
 
 /*
@@ -70,12 +86,22 @@ int string_compare(char *m, char *n)
     the string `needle`. This function returns a pointer that points
     to the first instance of the string `needle` in the input
     string `haystack`. 
-
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)
 {
-    return "l";
+    // where first char of needle is found in haystack
+    char *start = find_char(haystack, needle[0]);
+
+    // loop through each index in needle to compare with start
+    for (int i = 0; needle[i] != '\0'; i++)
+    {
+        if (start[i] != needle[i])
+        {
+            return NULL;
+        }
+    }
+    return start;
 }
 
 #ifndef TESTING
