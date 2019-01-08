@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
-
+  char * q;
+  int length = 0;
+  
+  for (q = s; *q !='\0'; q++) {
+    length++;
+  }
+  return length;
 }
 
 /*
@@ -18,9 +24,19 @@ int string_length(char s[])
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
 */
+
 char *reverse_string(char rv[], char s[])
 {
-
+  int start, end, counter = 0;
+  while (s[counter] != '\0')
+    counter++;
+  end = counter - 1;
+  for (start = 0; start < counter; start++) {
+    rv[start] = s[end];
+    end--;
+  }
+  rv[start] = '\0';
+  return rv;
 }
 
 #ifndef TESTING
