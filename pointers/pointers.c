@@ -1,14 +1,17 @@
 #include <stdio.h>
-
+#include <string.h>
+#include <ctype.h>
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int val = *a;
+    *a = *b;
+    *b = val;
 }
 
 /*
@@ -16,12 +19,20 @@ void swap(int* a, int* b)
     character `c` (an unsigned char). This function returns a pointer
     that points to the first instance of the character `c` in the
     input string `str`.
-
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c)
 {
-
+    int x;
+    char d = c;
+    for (x = 0; str[x] != 0; x++)
+    {
+        if (d == str[x])
+        {
+            return &(str[x]);
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -34,9 +45,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y)
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
-
 /* 
     Compares the character strings m and n and returns negative,
     0, or positive if n is lexicographically less than, equal to,
@@ -53,7 +69,43 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int x;
+    for (x = 0; m[x] != 0; x++)
+    {
+        if (m[x] == n[x])
+        {
+            continue;
+        }
+        if (m[x] > n[x])
+        {
+            return 1;
+        }
+        if (m[x] < n[x])
+        {
+            return -1;
+        }
+    }
 
+    int i, j;
+    int count1 = 0;
+    int count2 = 0;
+
+    for (i = 0; m[i]; i++)
+    {
+        count1++;
+    }
+
+    for (j = 0; n[j]; j++)
+    {
+        count2++;
+    }
+
+    if (count1 != count2)
+    {
+        return -1;
+    }
+
+    return 0;
 }
 
 /*
@@ -61,12 +113,43 @@ int string_compare(char *m, char *n)
     the string `needle`. This function returns a pointer that points
     to the first instance of the string `needle` in the input
     string `haystack`. 
-
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)
 {
 
+    int x, i, j, y;
+    int counter = 0;
+
+    for (x = 0; needle[x]; x++)
+    {
+        counter += 1;
+    }
+
+    char compare[counter];
+    int check = isupper(needle[0]);
+
+    for (i = 0; haystack[i]; i++)
+    {
+        if (haystack[i] == needle[0] && check != 0)
+        {
+
+            if (haystack[0] == needle[0] && check != 0)
+            {
+                return haystack;
+            }
+
+            y = i;
+            for (j = 0; needle[j]; j++, y++)
+            {
+                compare[j] = needle[j];
+            }
+        }
+    }
+
+    if (strcmp(compare, needle) == 0)
+        return needle;
+    return NULL;
 }
 
 #ifndef TESTING
