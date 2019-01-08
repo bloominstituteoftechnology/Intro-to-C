@@ -26,17 +26,17 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    int pos = 0;
-    int s_len = string_length(s);
+    int pos = 0; //starting position
+    int s_len = string_length(s); // length of string
 
-    for (int i = s_len -1; i >= 0; i--)
+    for (int i = s_len -1; i >= 0; i--) // length of string minus 1 for 0 index
     {
-        rv[pos] = s[i];
-        pos++;
+        rv[pos] = s[i]; // for each position in reversed string
+        pos++; // move forward in string
     }
-    rv[pos] = '\0';
+    rv[pos] = '\0'; //last position is null
 
-    return rv;
+    return rv; //printf(Reversed String)
 }
 
 #ifndef TESTING
