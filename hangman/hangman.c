@@ -3,15 +3,15 @@
 #include <string.h>
 #include <time.h>
 
-char HANG_STATES[7][10 * 9] =
+ char HANG_STATES[7][10 * 9] =
 {
 	"             +         +----     +----     +----     +----     +----     +----     +----  ",
 	"             |         |         |   O     |   O     |   O     |   O     |   O     |   O  ",
-	"             |         |         |         |   +     | --+     | --+--   | --+--   | --+--",
-	"             |         |         |         |   |     |   |     |   |     |   |     |   |  ",
-	"             |         |         |         |         |         |         |  /      |  / \\ ",
-	"             |         |         |         |         |         |         |         |      ",
-	"/*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   "
+ 	"             |         |         |         |   +     | --+     | --+--   | --+--   | --+--",
+ 	"             |         |         |         |   |     |   |     |   |     |   |     |   |  ",
+ 	"             |         |         |         |         |         |         |  /      |  / \\ ",
+ 	"             |         |         |         |         |         |         |         |      ",
+ 	"/*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   /*****\\   "
 };
 /***********************************
 int main(int argc, char *argv[]) {
@@ -115,7 +115,7 @@ int play(int minlen) {
 
 int main(int argc, char * argv[]) {
 
-	char * path = "/usr/share/wordlist";
+	char * path = "./wordlist/wordlist.txt";
 	long minlen = 3;
 
 	if (argc > 1) {
@@ -150,7 +150,7 @@ int main(int argc, char * argv[]) {
 	}
 	load(path);
 	if (minlen > words->maxlen) {
-		printf("\nsize must not be larger than the longest word, %u\n", words->maxlen);
+		printf("\nsize must not be larger than the longest word, %ld\n", words->maxlen);
 		exit(1);
 	}
 	return play(minlen);
