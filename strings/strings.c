@@ -26,7 +26,17 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    
+    int pos = 0;
+    int s_len = string_length(s);
+
+    for (int i = s_len -1; i >= 0; i--)
+    {
+        rv[pos] = s[i];
+        pos++;
+    }
+    rv[pos] = '\0';
+
+    return rv;
 }
 
 #ifndef TESTING
