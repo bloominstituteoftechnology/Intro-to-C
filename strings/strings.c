@@ -9,7 +9,12 @@
 */
 int string_length(char s[])
 {
-
+    int x;
+    int counter = 0;
+    for (x = 0; s[x] != 0; x++){
+        counter += 1;
+    }
+    return counter;
 }
 
 /*
@@ -17,10 +22,18 @@ int string_length(char s[])
     the reversed string to the input array rv. The rv array will have 
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
+    null = '\0'
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int counter = 0;
+    int length = string_length(s);
+    for (int i = length -1; i >=0; i--) {
+        rv[counter] = s[i];
+        counter =counter + 1;
+    }
+    rv[length] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
