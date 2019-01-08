@@ -13,6 +13,13 @@
 */
 char *string_dup(char *src)
 {
+int x = sizeof(src);
+int length = strlen(src);
+int total = x*length;
+char z = malloc(length*sizeof(x));
+z = *src;
+char *pointer = z;
+return *pointer;
 
 }
 
