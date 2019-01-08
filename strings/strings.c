@@ -24,15 +24,15 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    int i = 0;
-    int j = 0;
-    int count = 0;
+    int i;
+    int j;
+    int length = 0;
 
-    count = string_length(s);
+    length = string_length(s);
 
-    j = count - 1;
+    j = length - 1;
 
-    for(i = 0; i < count; i++){
+    for(i = 0; i < length; i++){
         rv[i] = s[j];
         j--;
     }
