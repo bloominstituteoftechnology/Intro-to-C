@@ -8,8 +8,8 @@
 */
 void swap(int* a, int* b)
 {
-   *a = *b;
-   *b = *a;
+   *a = b;
+   *b = a;
 }
 
 /*
@@ -24,7 +24,7 @@ char *find_char(char *str, int c)
 {
 int n = sizeof(str)
 for(int i=0;i<n;i++){
-    if (str[i]== c){
+    if (str[i]==c){
 return *str[i];
     }
 }
