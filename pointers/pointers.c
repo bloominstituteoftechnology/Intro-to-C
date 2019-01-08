@@ -21,7 +21,7 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    
 }
 
 /*

@@ -9,10 +9,13 @@
 */
 int string_length(char s[])
 {
- for (int i = 0; i < sizeof(s); i++) {
-     printf("%c \n", s[i]);
+    int length = 0; //initiate a counter to track letters of strings
+ for (int i = 0; s[i] != '\0'; i++) // loop until hits null character(terminating condition)
+ {
+     length++; //increments length counter for every letter in string
  }
- return 0;
+ // printf("length of string: %i \n", length); // prints length of the string
+ return length;
 }
 
 /*
@@ -23,7 +26,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    
 }
 
 #ifndef TESTING
