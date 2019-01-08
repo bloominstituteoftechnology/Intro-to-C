@@ -43,7 +43,9 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+  for (int i = 0; ; i++) {
+    x[i] = y[i];
+  }
 }
 
 /*
@@ -62,7 +64,13 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+  for (int i = 0; m[i] == '\0' || n[i] == '\0'; i++) {
+    if (m[i] != n[i]) {
+      return (int) m[i] - (int) n[i];
+    }
+  }
 
+  return 0;
 }
 
 /*
@@ -75,7 +83,20 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+  // printf("h: %s, s: %s", haystack, needle);
+  char *pointer = NULL;
+  pointer = find_char(haystack, needle[0]);
+  for (int i = 0; needle[i] == '\0'; i++) {
+    if (pointer[i] == '\0') {
+      break;
+    } else if (pointer[i] != needle[i]) {
+      pointer = find_char(pointer, needle[0]);
+    } else if (needle[i] == ' ') {
+      return pointer;
+    }
+  }
 
+  return pointer;
 }
 
 #ifndef TESTING
