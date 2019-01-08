@@ -13,7 +13,12 @@
 */
 char *string_dup(char *src)
 {
-
+    char *copy = malloc(strlen(src) + 1);
+    for(int i = 0; i < strlen(src); i++) {
+        copy[i] = src[i];
+    }
+    *(copy + strlen(src)) = '\0';
+    return copy;
 }
 
 /*
@@ -26,7 +31,15 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    // need value type since they are void
+    char *src_copy = (char *)src;
+    char *dest_copy = (char *)dest;
 
+    // loop and push each index to dest_copy from src_copy
+    for(int i = 0; i < n; i++){
+        *(dest_copy + i) = *(src_copy + i);
+        
+    }
 }
 
 /*
@@ -44,6 +57,13 @@ void *mem_copy(void *dest, const void *src, int n)
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
 
+  char *ptr_copy = malloc(new_size);
+  if(old_size < new_size){
+    mem_copy(ptr_copy, ptr, old_size);
+  } else{
+    mem_copy(ptr_copy, ptr, new_size);
+  }
+  return ptr_copy;
 }
 
 #ifndef TESTING
