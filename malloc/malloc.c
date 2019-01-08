@@ -13,7 +13,16 @@
 */
 char *string_dup(char *src)
 {
-
+    char *duplicate_mem = malloc(sizeof(char) * strlen(src));
+    char *current = duplicate_mem;
+    while (*src)
+    {
+        *current = *src;
+        current++;
+        src++;
+    }
+    *current = '\0';
+    return duplicate_mem;
 }
 
 /*
