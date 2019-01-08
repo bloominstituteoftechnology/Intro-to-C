@@ -37,7 +37,11 @@ char *string_dup(char *src){
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *src_cast = (char *) src;
+    char *dest_cast = (char *) dest;
+    for (int i=0; i < n; i++){
+        dest_cast[i] = src_cast[i];
+    }
 }
 
 /*
