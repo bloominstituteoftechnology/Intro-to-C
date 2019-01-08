@@ -43,11 +43,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+  printf("copy from: %s\n", y);
   int i;
   for (i = 0; y[i]; i++) {
     x[i] = y[i];
+    printf("x[i]: %c\n", x[i]);
   }
   x[i] = '\0';
+  printf("copied to: %s\n", x);
 }
 
 /*
@@ -85,25 +88,67 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-  printf("h: %s, n: %s\n", haystack, needle);
-  char *pointer = NULL;
-  pointer = find_char(haystack, needle[0]);
-  for (int i = 0; needle[i] == '\0'; i++) {
-    if (pointer[i] == '\0') {
-      break;
-    } else if (pointer[i] != needle[i]) {
-      pointer = find_char(pointer, needle[0]);
-      printf("shunt: %s\n", pointer);
-    } else if (needle[i] == ' ') {
-      printf("else if: %s\n", pointer);
-      return pointer;
-    } else {
-      printf("else\n");
-      return NULL;
+  int searching = 1;
+  char searchable_storage[100];
+  char *searchable = searchable_storage[0];
+  char result_storage[100];
+  char *result = result_storage[0];
+  string_copy(searchable, haystack);
+  while (searching) {
+    result = find_char(searchable, needle[0]);
+    int i;
+    for (i = 0; needle[i]; i++) {
+      if (needle[i] != result[i]) {
+        result ++;
+        searchable = find_char(result, needle[0]);
+        break;
+      } else if (!result[i]) {
+        return NULL;
+      }
     }
+    result[i] = '\0';
+    searching = string_compare(result, needle);
   }
-  printf("after loop: %s\n", pointer);
-  return pointer;
+
+  return result;
+
+  // printf("h: %s, n: %s\n", haystack, needle);
+  // char *pointer = "";
+  // char *result = NULL;
+  // pointer = find_char(haystack, needle[0]);
+  // printf("pointer: %s\n", pointer);
+  // int i;
+  // for (i = 0; needle[i]; i++) {
+  //   printf("pointer: %s\n", pointer);
+  //
+  //   if (pointer[i] != needle[i]) {
+  //     pointer = &pointer[1]
+  //     find_char(pointer, needle[0])
+  //   }
+  //
+  // }
+  //
+  // pointer[i]
+    // string_copy(result, pointer);
+    // printf("result: %s\n", result);
+    // if you reach the end of needle without discovering a difference, return original pointer
+
+    // if (!pointer[i]) {
+    //   break;
+    // } else if (pointer[i] != needle[i]) {
+    //   pointer = find_char(pointer, needle[0]);
+    //   printf("shunt: %s\n", pointer);
+    // } else if (!needle[i]) {
+    //   printf("else if: %s\n", pointer);
+    //   return pointer;
+    // }
+    // else {
+    //   printf("else\n");
+    //   return NULL;
+    // }
+
+  // printf("after loop: %s\n", pointer);
+  // return pointer;
 }
 
 #ifndef TESTING
