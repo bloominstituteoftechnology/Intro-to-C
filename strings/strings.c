@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>’
 
 /*
     Given a character array s, return the number of characters 
@@ -9,7 +10,11 @@
 */
 int string_length(char s[])
 {
-
+    int total = 0;
+    while (s[total] != '\0') {
+        total++;
+    }
+    return total;
 }
 
 /*
@@ -20,7 +25,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int index = strlen(s);
 }
 
 #ifndef TESTING
@@ -32,7 +37,7 @@ int main(void)
     char rv[512];
 
     printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
-    printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
+    // printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
     return 0;
 }
