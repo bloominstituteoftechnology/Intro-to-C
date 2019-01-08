@@ -15,10 +15,36 @@
     
     Do not just use the `qsort` function from the standard library.
 */
-void quicksort(int *arr, int low, int high)
-{
-
+int partition(int *arr, int low, int high){
+    int pivot = low;
+    int* ptr = arr;
+    for (int i=low+1; i<=high; i++){
+        // for (int i=0; i < (high-low); i++) {
+        //     printf("%d ", arr[i]);
+        // }
+        // printf("\n");         
+        if (arr[i] <= arr[low]){
+            pivot++;
+            swap(ptr+i, ptr+pivot);   
+        }
+    }
+    swap(ptr+pivot, ptr+low);
+    return pivot;
 }
+
+void quicksort(int *arr, int low, int high){
+    // for (int i=0; i < (high-low); i++) {
+    //     printf("%d ", arr[i]);
+    // }
+    if (low < high){
+        int pivot = partition(arr, low, high);
+        // printf("pivot: %d", pivot);
+        quicksort(arr, low, pivot-1);
+        quicksort(arr, pivot+1, high);
+    }
+}
+
+
 
 #ifndef TESTING
 int main(void)
