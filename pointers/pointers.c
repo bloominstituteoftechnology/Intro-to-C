@@ -8,8 +8,20 @@
 */
 void swap(int* a, int* b)
 {
-   *a = b;
-   *b = a;
+ int t = *a;
+    *a = *b;
+    *b = t
+    return;
+}
+int main(void)
+{
+  int a = 16;
+  int b = 12;
+swap(&a,&b);
+printf("%d \n",a);
+printf("%d \n",b);
+return 1;
+
 }
 
 /*
