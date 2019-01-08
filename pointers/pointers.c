@@ -8,7 +8,10 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = 0;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +24,13 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    int counter = 0;
+    while(str[counter] != '\0') {
+        if(str[counter] == c) {
+            printf("he4llo");
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +43,7 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    printf("%d\n", *y);
 }
 
 /* 
@@ -53,7 +62,7 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    return 0;
 }
 
 /*
@@ -66,7 +75,7 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    return "l";
 }
 
 #ifndef TESTING
