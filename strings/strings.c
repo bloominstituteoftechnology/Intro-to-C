@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
-
+    int count = 0;
+    while (s[count] != 0) {
+        printf("%d\n",count);
+        count++;
+    }
+    printf("%d\n", count);
+    return count;
 }
 
 /*
@@ -20,7 +26,19 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int begin, end, count = 0;
 
+    count = string_length(s);
+
+    end = count - 1;
+
+    for(begin = 0; begin < count; begin++) {
+        rv[begin] = s[end];
+        end--;
+    }
+
+    rv[begin] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
