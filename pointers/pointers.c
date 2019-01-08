@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +23,16 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (str[i] == c)
+        {
+            return &str[i];
+        }
+        i++;
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +45,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int i = 0;
+    while (y[i] != '\0')
+    {
+        x[i] = y[i];
+        i++;
+    }
+    x[i] = '\0';
 }
 
 /* 
@@ -53,7 +70,42 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int mLength, nLength, i = 0;
+    char *shortest;
 
+    while (m[i] != '\0')
+    {
+        mLength++;
+        i++;
+    }
+
+    i = 0;
+
+    while (n[i] != '\0')
+    {
+        nLength++;
+        i++;
+    }
+
+    if (nLength < mLength)
+    {
+        shortest = n;
+    } else
+    {
+        shortest = m;
+    }
+
+    for (int i = 0; shortest[i] != '\0'; i++)
+    {
+        if(m[i] > n[i])
+        {
+            return 1;
+        } else if (m[i] < n[i])
+        {
+            return -1;
+        }
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +118,17 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int i = 0;
 
+    while (haystack[i] != '\0')
+    {
+        if (string_compare(&haystack[i], needle) == 0)
+        {
+            return &haystack[i];
+        }
+        i++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
