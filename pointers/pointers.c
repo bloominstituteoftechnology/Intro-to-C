@@ -7,12 +7,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-    int *x = a;
-    int *y = b;
-    y = a;
-    x = b;
+    int x = *a;
+    *a = *b;
+    *b = x;
 }
 
 /*
@@ -25,13 +24,12 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, char *c)
 {
-    while (*str != *c) {
+    while (*str != *c)
+    {
         c = str;
         str++;
     }
     return c;
-
-
 }
 
 /*
@@ -44,9 +42,11 @@ char *find_char(char *str, char *c)
 */
 void string_copy(char *x, char *y)
 {
-    x = y;
-    x = NULL;
-
+    for (int i = 0; y[i] != '\0'; i++)
+    {
+        x[i] = y[i];
+    }
+    x[strlen(y)] = '\0';
 }
 
 /* 
@@ -65,8 +65,18 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    int d = m - n;
-    return d;
+    int d = 0;
+    for (int i = 0; m[i] != '\0'; i++)
+    {
+        d = (m[i] - n[i]);
+        printf("%i\n", (d));
+        if (d != 0)
+            return d;
+    }
+    if (strlen(n) > strlen(m))
+        return -1;
+    else
+        return 0;
 }
 
 /*
@@ -80,7 +90,8 @@ int string_compare(char *m, char *n)
 char *find_string(char *haystack, char *needle)
 {
     int y = 0;
-    for(int i = 0; &haystack[i] != &needle; i++){
+    for (int i = 0; haystack[i] != needle; i++)
+    {
         y = i;
     }
     return haystack[y];

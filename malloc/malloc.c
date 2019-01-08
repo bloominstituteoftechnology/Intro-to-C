@@ -13,7 +13,9 @@
 */
 char *string_dup(char *src)
 {
-
+ char *res = malloc(sizeof(src));
+ *src = *res;
+ return res;
 }
 
 /*
