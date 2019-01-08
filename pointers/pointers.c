@@ -7,8 +7,10 @@
     pointing at.
 */
 void swap(int* a, int* b)
-{
-
+{  
+    int holder = *a;
+    *a = *b;
+    *b = holder; 
 }
 
 /*
@@ -21,7 +23,20 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    int i; // --> create index
+    char holder = c; // --> hold the CHAR of what we're looking for
+    // --> the byte of 'e' is 101 in int form
 
+    for(i = 0; str[i] != 0; i++) // --> as long as the 0'th index of the given string is not null
+    { 
+    printf("str[i] is: %c\n", str[i]); // --> H, e, l, l, o
+
+        if(holder == str[i]) // --> check for comparison of letters
+        {
+        return &str[i]; // --> return pointer of first instance
+        }
+    }
+    return NULL;
 }
 
 /*
@@ -34,7 +49,17 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    printf("char *y is: %c\n", *y);
+    // while there is a valid char *y given...
+    // --> *x = *y;
+    // --> since there is more than one char we increment
+    while(*y)
+    {    
+        *x = *y; // --> copy y to x 
+        x++; // --> increment to next index of buffer array  
+        y++; // --> move to next letter in str       
+    }
+    *x = '\0'; // --> need to add null char at end of string    
 }
 
 /* 
