@@ -48,7 +48,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int i = 0;
+    while (y[i] != '\0')
+    {
+        x[i] = y[i];
+        i++;
+    }
+    x[i] = '\0';
 }
 
 /* 
@@ -65,9 +71,9 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
+
 int string_compare(char *m, char *n)
 {
-
 }
 
 /*
@@ -100,7 +106,7 @@ int main(void)
     printf("Comparison is %d\n", string_compare(hello, world));
 
     char *found_char = find_char("hello", 'e');
-    char *found_string = find_string(world, "or");
+    char *found_string = find_string("world", "or");
 
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
