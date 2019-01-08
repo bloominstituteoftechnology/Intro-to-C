@@ -9,7 +9,14 @@
 */
 int string_length(char s[])
 {
+    int counter = 0;
 
+    while(s[counter] != '\0')
+    {
+        counter++;
+    }
+
+    return counter;
 }
 
 /*
@@ -20,7 +27,30 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int counter = 0;
 
+    for (int i = string_length(s) - 1; i >= 0; i--) 
+    // go backwards from the string_length to start from the end
+    // NOTE: we take strlen - 1 so we can terminate the reversed_str with a null character
+    {
+        rv[counter] = s[i]; // --> Here we can swap!
+        /*
+            rv || s
+            This is if the word were 6 characters since the last character would be null
+            None || '\0'
+            0 || 5
+            1 || 4
+            2 || 3
+            3 || 2
+            4 || 1
+            5 || 0
+
+        */
+        counter++;
+    }
+
+    rv[string_length(s)] = '\0'; // --> Terminate the reversed string with a null char
+    return rv; // --> return rv array
 }
 
 #ifndef TESTING
