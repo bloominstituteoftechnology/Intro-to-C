@@ -63,9 +63,17 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
+// Loop through the input strings, comparing values at index i for each
 int string_compare(char *m, char *n)
 {
-
+    for (int i = 0 ; n[i] != '\0'; i++) {
+        if (m[i] > n[i]) {
+            return 1;
+        } else if (m[i] < n[i]) {
+            return -1;
+        } // If both strings have the same char at an index, then move onto the next index
+    } 
+    return 0; //If neither a 1 or -1 has been returned, both strings must be equal
 }
 
 /*
