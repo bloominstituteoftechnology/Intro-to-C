@@ -45,10 +45,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-  int z;
-  for (z = 0; y[z]; z++){
-    x[z] = y[z];
-  }
+   while(*y) {
+       *x = *y;
+       x++;
+       y++;
+   }
+   *x = '\0';
 }
 /* 
     Compares the character strings m and n and returns negative,
