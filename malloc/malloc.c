@@ -11,9 +11,20 @@
     
     Do not use the `strdup` function from the standard library.
 */
-char *string_dup(char *src)
-{
+// int string_length(char *s){
+//     int count = 0;
+//     while(s[count]){
+//         count++;
+//     }
+//     return count;
+// }
 
+char *string_dup(char *src){ 
+    char *temp_memory = malloc(string_length(src) * sizeof(char));
+    for (int i=0; src[i]; i++){
+        temp_memory[i] = src[i];
+    }
+    return temp_memory;
 }
 
 /*
