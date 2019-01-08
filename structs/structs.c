@@ -29,7 +29,7 @@ Person *createPerson(char *name, int age, int height, int weight)
     who ->name = string_dup(name);
     who->age=age;
     who->height=height;
-    who->weight;
+    who->weight=weight;
 
     return who;
 
