@@ -13,6 +13,14 @@
 */
 char *string_dup(char *src)
 {
+    int length = string_length(src) + 1; // use length + 1 to account for null pointer
+    char *new_string = malloc(length * sizeof(char)); 
+
+    for(int i = 0; i < length; i++){
+        new_string[i] = src[i];
+    }
+
+    return new_string;
 
 }
 
@@ -26,7 +34,16 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    // function copies n chars from src to dest
+    char *char_src = (char*)src; // recast the src as char
 
+    char *char_dest = (char*)dest;
+    
+    for(int i = 0; i < n; i++){
+        char_dest[i] = char_src[i];
+    }
+
+    return char_dest;
 }
 
 /*
@@ -43,7 +60,18 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    char *new_mem = malloc(new_size); // malloc a new chunk of memory
 
+    char *data = ptr; // store the previously malloc'd data
+
+    for(int i = 0; i < old_size; i++){
+        if(i == new_size){
+            break; // end the loop if we reach the new size limit
+        }
+
+        new_mem[i] = data[i]; // copy the old malloc'd data into the new malloc'd memory
+    }
+    return new_mem;
 }
 
 #ifndef TESTING
