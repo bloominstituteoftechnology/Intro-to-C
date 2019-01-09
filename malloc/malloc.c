@@ -42,6 +42,7 @@ void *mem_copy(void *dest, const void *src, int n)
     for (int i=0; i < n; i++){
         dest_cast[i] = src_cast[i];
     }
+    return NULL;
 }
 
 /*
@@ -58,7 +59,16 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+    char *new_ptr = (char *) ptr;
+    char *new_malloc = malloc(new_size*sizeof(char));
+    int max_size = new_size;
+    if (new_size > old_size){
+        max_size = old_size;
+    }
+    for (int i=0; i < max_size; i++){
+        new_malloc[i] = new_ptr[i];
+    }
+    return new_malloc;
 }
 
 #ifndef TESTING
