@@ -20,6 +20,18 @@ char HANG_STATES[7][10 * 9] =
 
 int main(int argc, char *argv[]) {
 
+	// for (int i = 0; i < 7; i++) {
+	// 	for (int j = 0; j < 8; j++) {
+	// 		printf("%c", HANG_STATES[j][i]);
+	// 	}
+	// }
+	//
+
+	printf( "argc = %d\n", argc );
+    for( int i = 0; i < argc; ++i ) {
+        printf( "argv[ %d ] = %s\n", i, argv[ i ] );
+  }
+
 	// Change random's seed
 	srand(time(NULL));
 
@@ -114,6 +126,8 @@ int main(int argc, char *argv[]) {
 				numCorrect++;
 			}
 		}
+
+		// TODO: Fix handling for repeated entries
 
 		// Handle lives
 		if (oldCorrect == numCorrect) {
