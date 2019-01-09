@@ -30,7 +30,7 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
-    if (q->storage < q->capacity) {
+    if (q->length <= q->capacity) {
         unsigned int add_capacity = q->capacity + 1;
         void *add_storage = resize_memory(q->storage, q->capacity, sizeof(int) * add_capacity);
         q->capacity = add_capacity;
@@ -47,7 +47,7 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-    if (q->storage[0] == NULL){
+    if (q->storage[0] == '\0'){
         return -1;
     }
     else {
