@@ -13,7 +13,13 @@
 */
 char *string_dup(char *src)
 {
-
+  size len = strlen(src);
+  char *string = realloc(str, 2*len+1);
+  if(string) {
+    memcpy(string+len, string, len);
+    string[2*len]=0;
+  }
+  return string;
 }
 
 /*
@@ -24,9 +30,13 @@ char *string_dup(char *src)
     
     Do not use the `memcpy` function from the standard library.
 */
+
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+  char *mysrc = (char *)src;
+  char *mydest = (char *)dest;
+  for (int i=0; i<n; i++)
+    mydest[i] = mysrc[i];
 }
 
 /*
@@ -43,7 +53,7 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+  
 }
 
 #ifndef TESTING

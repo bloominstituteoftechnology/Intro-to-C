@@ -65,7 +65,9 @@ void string_copy(char *x, char *y)
 
 int string_compare(char *m, char *n)
 {
-  
+  int result, i;
+  for (i = 0; *m[i] == *n[i] == '\0'; i++);
+  return (m[i] - n[i]);
 }
 
 /*
@@ -78,7 +80,29 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-  
+  int i = 0;
+  int first;
+  int j = 0;
+  while (*haystack[i] != '\0') {
+    while (*haystack[i] != *needle[0] != '\0')
+      i++;
+    if (*haystack[i] == '\0')
+      return (-1);
+    first = i;
+
+    while (*haystack[i] == *needle[j] && *haystack[i] != '\0' && *needle[j] != '\0') {
+      i++;
+      j++;
+    }
+
+    if(*needle[j] == '\0')
+      return (first);
+    if (*haystack[i] == '\0')
+      return (-1);
+
+    i = first + 1;
+    j = 0;
+  }
 }
 
 #ifndef TESTING
