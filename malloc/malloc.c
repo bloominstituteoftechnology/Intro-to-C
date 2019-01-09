@@ -21,9 +21,8 @@ char *string_dup(char *src)
    
     while (*src) // While there is a non-null character (value) at the address that src is pointing to
     {
-        // printf("src[i] = %s \0", src);
-        *current = *src;
-        current++;
+        *current = *src; // set the value at the 'current' pointer address equal to the value at the src pointer address
+        current++; 
         src++;
     }
     *current = '\0';
@@ -61,7 +60,31 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    if (new_size == 0) {
+        free(ptr);
+        return NULL;
+    }
 
+    else if (!ptr) {
+        return malloc(new_size);
+    }
+
+    else if (old_size == new_size) {
+        return ptr;
+    }
+
+    void *new_block = malloc(new_size);
+
+    if (new_size < old_size) {
+        mem_copy(new_block, ptr, new_size);
+    }
+
+    else {
+        mem_copy(new_block, ptr, old_size);
+    }
+
+    free(ptr);
+    return new_block;
 }
 
 #ifndef TESTING
