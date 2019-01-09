@@ -110,7 +110,7 @@ int play(int minlen) {
 
 int main(int argc, char * argv[]) {
 
-	char * path = "wordlist.text";
+	char * path = "wordlist.txt";
 	long minlen = 3;
 
 	if (argc > 1) {
