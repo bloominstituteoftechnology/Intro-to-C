@@ -78,7 +78,36 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+  int x;
+  for (x = 0; m[x] != 0; x++){
+    if (m[x] == n[x]){
+      continue;
+    }
+    if (m[x] > n[x]){
+      return 1;
+    }
+    if (m[x] < n[x]){
+      return -1;
+    }
+  }
 
+  int i, j;
+  int count1 = 0;
+  int count2 = 0;
+
+  for(i = 0; m[i]; i++){
+    count1++;
+  }
+
+  for(j = 0; n[j]; j++){
+    count2++;
+  }
+
+  if(count1 != count2){
+    return -1;
+  }
+
+  return 0;
 }
 
 /*
@@ -92,6 +121,34 @@ int string_compare(char *m, char *n)
 char *find_string(char *haystack, char *needle)
 {
 
+  int x, i, j, y;
+  int counter = 0;
+  
+  for (x = 0; needle[x]; x++){
+    counter += 1;
+  }
+
+  char compare[counter];
+  int check = isupper(needle[0]);
+
+  for (i = 0; haystack[i]; i++){
+    if (haystack[i] == needle[0] && check != 0){
+
+      if (haystack[0] == needle[0] && check != 0){
+        return haystack;
+      }
+
+      y = i;
+      for (j = 0; needle[j]; j++, y++){
+        compare[j] = needle[j];
+      }
+    }
+  }
+
+
+  if (strcmp(compare,needle) == 0)
+    return needle;
+  return NULL;
 }
 
 #ifndef TESTING
