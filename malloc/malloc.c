@@ -13,7 +13,13 @@
 */
 char *string_dup(char *src)
 {
+    char *holder = malloc(strlen(src) + 1); // --> allocate memory to full length of given string
 
+    for (int i = 0; i < strlen(src); i++) { // --> looping through string to swap
+        holder[i] = src[i]; // --> We're dup'ing the memory allocated from holder to the given string
+    }
+    *(holder + strlen(src)) = '\0'; // --> Dereferencing to apply the terminating character at end of string duplication
+    return holder; // return the pointer to our newly allocated memory
 }
 
 /*
