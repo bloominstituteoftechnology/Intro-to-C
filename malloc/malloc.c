@@ -26,8 +26,40 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *s = src;
+    char *d = dest;
 
+    for (int i = 0; i < n; i++) {
+        d[i] = s[i];
+    }
+
+    while (n > 0) {
+
+        for ( ; n > 0; d++, s++, n--) {
+            *d = *s;
+        }
+    }
+    return dest;
 }
+
+struct foo {
+    int x;
+    float y;
+};
+
+int main() {
+    struct foo a, b;
+
+    a.x = 10;
+    a.y = 3.14;
+
+    mem_copy(&b, &a, sizeof a);
+
+    int i = 10;
+
+    return 0;
+}
+
 
 /*
     Given a pointer that `malloc`'d memory, this function will 
