@@ -13,10 +13,15 @@
 */
 char *string_dup(char *src)
 {
-    char *duplicate_mem = malloc(sizeof(char) * strlen(src));
-    char *current = duplicate_mem;
-    while (*src)
+    char *duplicate_mem = malloc(sizeof(char) * strlen(src));   // right side gets run/evaluated first. malloc() allocates some space (multiple blocks) in memory. 
+                                                                // malloc() also returns the memory address of the first block in the allocated memory. 
+                                                                // The pointer *duplicate_mem points at the address of that first block
+
+    char *current = duplicate_mem; // declare a pointer called current pointing at the same address that duplicate_mem is pointing at
+   
+    while (*src) // While there is a non-null character (value) at the address that src is pointing to
     {
+        // printf("src[i] = %s \0", src);
         *current = *src;
         current++;
         src++;
@@ -35,7 +40,11 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *src_cast = (char *) src;
+    char *dest_cast = (char *) dest;
+    for (int i = 0; i < n; i++) {
+        dest_cast[i] = src_cast[i];
+    }
 }
 
 /*
