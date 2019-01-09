@@ -20,6 +20,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    string_length(s);
     char *start = s;
     char *end = start + strlen(s) - 1;
     char temp;
@@ -28,10 +29,10 @@ char *reverse_string(char rv[], char s[])
         temp = *start;
         *start = *end;
         *end = temp;
-
-        ++start;
-        --end;
+        start++;
+        end++;
     }
+    return NULL;
 }
 
 #ifndef TESTING
