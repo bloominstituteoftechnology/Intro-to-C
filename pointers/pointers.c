@@ -45,6 +45,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    int i = 0;
+    while (y[i] != '\0')
+    {
+        x[i] = y[i];
+        i++;
+    }
+    x[i] = '\0';
 }
 
 /* 
