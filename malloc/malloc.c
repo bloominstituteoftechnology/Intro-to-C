@@ -13,7 +13,14 @@
 */
 char *string_dup(char *src)
 {
-
+  int len = strlen(src);
+  char *src2 = malloc(len + 1);
+  int i;
+  for(i = 0; i < len; i++){
+    *(src2 + i) = *(src + i);
+  }
+  *(src2 + len )='\0';
+  return src2;
 }
 
 /*
@@ -26,7 +33,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+  int *p = (int*)dest;
+  int *p2 = (int*)src;
+  while(*p2){
+    *p = *p2;
+    p++;
+    p2++;
+  }
 }
 
 /*
@@ -43,7 +56,8 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+  char *d = (char*)ptr;
+  d = malloc(new_size);
 }
 
 #ifndef TESTING
@@ -76,6 +90,7 @@ int main(void)
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);
     char *p = new_url + url_length;
+
 
     while (*path != '\0') {
         *p = *path;
