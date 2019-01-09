@@ -11,9 +11,15 @@
     
     Do not use the `strdup` function from the standard library.
 */
+
+// DOES NOT PASS TESTS YET
 char *string_dup(char *src)
 {
+    char* dup = (char*)malloc(strlen(src)+1);
 
+    // copy string here
+
+    return dup;
 }
 
 /*

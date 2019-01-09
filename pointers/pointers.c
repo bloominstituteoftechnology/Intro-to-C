@@ -70,9 +70,27 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
-int string_compare(char *m, char *n)
-{
 
+// DOES NOT PASS TESTS YET
+int string_compare(char *m, char *n)
+{  
+   for (int i = 0; m[i] != '\0'; i++){
+        // if (m[i] == n[i]) {
+        //     printf("m[i] = %c\n", m[i]);
+        //     return 0;
+        //} else 
+        if (m[i] > n[i]){
+            printf("m[i] = %c\n", m[i]);
+            return 1; // a positive value
+
+        } else if (m[i] < n[i]){
+            printf("m[i] = %c\n", m[i]);
+            return -1; // a negative value
+        } //else if (m[i] == n[i]) {
+//             printf("m[i] = %c\n", m[i]);
+//             return 0;
+//    }
+   }
 }
 
 /*
