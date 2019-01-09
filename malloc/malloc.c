@@ -57,8 +57,17 @@ void *mem_copy(void *dest, const void *src, int n)
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
   char *d = (char*)ptr;
+  char *d2 = (char*)ptr;
   d = malloc(new_size);
+  int i;
+  for (i = 0; i < old_size; i++){
+    *(d + i) = *(d2 + i);
+  }
+  free(d2);
+  return d;
+
 }
+
 
 #ifndef TESTING
 int main(void)
@@ -84,8 +93,8 @@ int main(void)
 
     char *url = string_dup("http://lambdaschool.com");
     char *path = string_dup("/students/");
-    int url_length = string_length(url);
-    int path_length = string_length(path);
+    int url_length = strlen(url);
+    int path_length = strlen(path) + 1;
     
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);

@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "lib.h"
 
+
 /* 
     Define the Person struct by specifying the fields that make up the
     Person type. Don't forget to specify the type of each field. A 
@@ -25,10 +26,11 @@ typedef struct Person {
 Person *createPerson(char *name, int age, int height, int weight)
 {
   Person *newStack = malloc(sizeof(Person));
-  newStack->name = name;
+  newStack->name = string_dub(name);
   newStack->age = age;
   newStack->height = height;
   newStack->weight = weight;
+  return newStack;
 }
 
 /*
@@ -37,6 +39,7 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
+  free(who->name);
   free(who);
 }
 
