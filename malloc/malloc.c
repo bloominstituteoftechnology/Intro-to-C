@@ -57,7 +57,7 @@ void *mem_copy(void *dest, const void *src, int n)
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
     
-       if (new_size == 0)
+    if (new_size == 0)
    {
       free(ptr);
       return NULL;
