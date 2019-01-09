@@ -11,9 +11,21 @@
     
     Do not use the `strdup` function from the standard library.
 */
+
+// a b c d e 5
+
 char *string_dup(char *src)
 {
+  int len = string_length(src); // finds length of string
+  char *duplicate = malloc(len); // allocates memory based on string length
 
+  for (int i = 0; i < len; i++) // loop based on src's length
+  {
+    *(duplicate+i) = *(src+i); // use pointer arithmetic to move positions and copy
+  }
+
+  *(duplicate + len) = '\0'; // terminate
+  return duplicate; // returns the pointer of the duplicate string
 }
 
 /*
@@ -26,7 +38,15 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+  char *pSrc = (char*) src; // typecast src to char pointer, per instructions
+  char *pDest = (char*) dest; // typecast dest to char pointer to do pointer arithmetic
 
+  for (int i = 0; i < n; i++) // loop over total number of bytes amount
+  {
+    *(pDest+i) = *(pSrc+i); // copy to destination with src
+  }
+  
+  return 0;
 }
 
 /*
@@ -43,7 +63,91 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+  // THREE
+  // "`resize_memory` should return a pointer to a block of memory of the specified `new_size`, 
+  // and that block should contain as much of the data from the old block as it can fit." -per Sean
 
+  // if new size is bigger, it only writes all of old size into it and stops when it gets to new size end
+  // if new size is smaller, it writes only enough old size that fits and breaks there
+  // there are 2 terminating condition in this solution: "i < old_size" and "i == new_size", whichever comes first
+  // we use char type because tests uses letters
+
+  // ^new_size
+  // 1 2 3 4 5 6 7 8 9 10
+  // ^old_size
+
+  char *pOld = ptr; // stores the address of old ptr
+  char *pResized = (char *) malloc(new_size); // make new malloc with new_size
+
+  for (int i=0; i < old_size; i++) // loop over the old size since we want to write it to new pResized
+  {
+    if (i == new_size) break; // if reaches end of new malloc, exit loop
+    pResized[i] = pOld[i]; // write old data into new malloc
+  }
+
+  return pResized;
+
+  // TWO
+  // char *pOld = ptr; // stores the address of ptr
+  // char *pNew = (char *) malloc(new_size); // make new malloc
+  
+  // if (new_size > old_size)
+  // {
+  //   for (int i=0; i < new_size; i++) // loop over new malloc since new_size is bigger
+  //   {
+  //     if (i == old_size) break; // if reaches old malloc size end, exit loop
+  //     pNew[i] = pOld[i]; // write old data into new malloc
+  //   }
+  // }
+  // else if (old_size > new_size)
+  // {
+  //   pNew = (char *) malloc(old_size); // allocate more memory if old size is bigger
+  //   for (int i=0; i < old_size; i++) // loop over old malloc since old_size bigger
+  //   {
+  //     if (i == new_size) break; // if reaches new malloc size end, exit loop
+  //     pNew[i] = pOld[i]; // "contain as much of the data from the old block as it can fit" -per Sean
+  //   }
+  //   return pNew; // return modified pNew
+  // }
+  // return pNew;
+
+  // ONE
+  // if (old_size > new_size)
+  // {
+  //   for (int i = 0; i < old_size; i++)
+  //   {
+  //     if (i == new_size)
+  //     {
+  //       break;
+  //     }
+  //     p1[i] = p0[i];
+  //     // p0[i] = p1[i];
+  //   }
+  // }
+  // return p1;
+
+  // if (new_size > old_size)
+  // {
+  //   p1 = (int *) malloc(new_size);
+  //   for (int i = 0; i < new_size; i++)
+  //   {
+  //     p0[i] = p1[i];
+  //   }
+  //   return p0;
+  // }
+  // else if (new_size < old_size)
+  // {
+  //   p1 = (int *) malloc(old_size);
+  //   for (int i = 0; i < old_size; i++)
+  //   {
+  //     if (i == new_size)
+  //     {
+  //       break;
+  //     }
+  //     p1[i] = p0[i];
+  //   }
+  //   return p1;
+  // }
 }
 
 #ifndef TESTING
