@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "time.h"
+
+#define  MAXNUMWORDS 2048
+#define MAXWORDLENGTH 64
 
 char HANG_STATES[7][10 * 9] =
 {
@@ -20,17 +24,36 @@ int main(int argc, char *argv[]) {
 	srand(time(NULL));
 
 	// Words to guess
-  char guessWords[][16] = {
-		"green",
-		"yellow",
-		"purple",
-		"windows",
-		"linux",
-		"apple"
-	};
+  char guessWords[MAXNUMWORDS][MAXWORDLENGTH];
+	int wordsReadIn = 0;
+
+	// Read the words from the words.txt
+	// Open the file and read it
+	FILE *pToFile = fopen("words.txt", "r");
+
+	if (pToFile == NULL) {
+		printf("Failed To Open File\n");
+		return 0;
+	}
+
+	char input[64];
+
+	// Get the first string(word) and add to guessWords array
+	// The 63 denotes adding 63 spaces to the MAXWORDLENGTH in the array of the
+	// 64 char space
+	while(fgets(input, 63, pToFile)) {
+		sscanf(input, "%s", guessWords[wordsReadIn]);
+		// printf("Scanned: input:%s guessWords[%d]:%s\n", input, wordsReadIn, guessWords[wordsReadIn]);
+		wordsReadIn++;
+	}
+
+	printf("Total words read in:%d\n", wordsReadIn);
+
+	// Close the file
+	fclose(pToFile);
 
 	// Index for random word
-	int randInd = rand() % 6;
+	int randInd = rand() % wordsReadIn;
 
 	int numLives = 8;
 	int numCorrect = 0;
@@ -48,12 +71,12 @@ int main(int argc, char *argv[]) {
 	char letterEntered;
 
 	// Testing purposes
-	printf("guessWords:%s randomIndex:%d lengthOfWord:%d\n", guessWords[randInd], randInd, lengthOfWord);
+	// printf("guessWords:%s randomIndex:%d lengthOfWord:%d\n", guessWords[randInd], randInd, lengthOfWord);
 
 	// Main game loop
 	while(numCorrect < lengthOfWord) {
 
-		printf("\n\nNew Turn....\nHangman Word:");
+		printf("\n\nNew Turn....\nHangman Word: ");
 		for (loopInd = 0; loopInd < lengthOfWord; loopInd++) {
 
 			// Print the characters
@@ -66,7 +89,6 @@ int main(int argc, char *argv[]) {
 
 		printf("\n");
 
-		printf("Number correct so far:%d\n", numCorrect);
 		printf("enter a guess letter:");
 		fgets(guess, 16, stdin);
 
@@ -75,9 +97,7 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 
-		letterEntered = guess[0];
-
-		printf("letterEntered:%c\n", letterEntered);
+		letterEntered = tolower(guess[0]);
 
 		oldCorrect = numCorrect;
 
@@ -89,7 +109,7 @@ int main(int argc, char *argv[]) {
 			}
 
 			// Correct letter guessed
-			if (letterEntered == guessWords[randInd][loopInd]) {
+			if (letterEntered == tolower(guessWords[randInd][loopInd])) {
 				letterGuessed[loopInd] = 1;
 				numCorrect++;
 			}
@@ -98,12 +118,12 @@ int main(int argc, char *argv[]) {
 		// Handle lives
 		if (oldCorrect == numCorrect) {
 			numLives--;
-			printf("Sorry, wrong guess\n");
+			printf("\nSorry, wrong guess\n");
 			if (numLives == 0) {
 				break;
 			}
 		} else {
-			printf("Correct guess\n");
+			printf("\nCorrect guess\n");
 		}
 
 	} // End of Main game loop
@@ -113,7 +133,7 @@ int main(int argc, char *argv[]) {
 	} else if (numLives == 0) {
 		printf("\nSorry you lose, the word was: <%s>\n", guessWords[randInd]);
 	} else {
-		printf("\nHangman Word:");
+		printf("\nHangman Word: ");
 		for (loopInd = 0; loopInd < lengthOfWord; loopInd++) {
 
 			// Print the characters
