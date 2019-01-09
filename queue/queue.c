@@ -15,7 +15,13 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
+    Queue *a_queue = malloc(sizeof(Queue));
 
+    a_queue->length = 0;
+    a_queue->capacity = capacity;
+    a_queue->storage = malloc(sizeof(int) * capacity);
+
+    return a_queue;
 }
 
 /*
@@ -25,7 +31,15 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
-
+    if (q->length <= q->capacity)
+    {
+        unsigned int new_capacity = q->capacity + 1;
+        void *new_storage = resize_memory(q->storage, q->capacity, sizeof(int) * new_capacity);
+        q->storage = new_storage;
+        q->capacity = new_capacity;
+    }
+    q->storage[q->length] = item;
+    q->length++;
 }
 
 /*
@@ -34,7 +48,24 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
+    if (q->length == 0)
+    {
+        return -1;
+    }
 
+    int item = q->storage[0];
+
+    if (q->length > 1)
+    {
+        for (unsigned int i = 0; i < q->length - 1; i++)
+        {
+            q->storage[i] = q->storage[i + 1];
+        }
+    }
+
+    q->length--;
+
+    return item;
 }
 
 /*
@@ -43,7 +74,15 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
+    if (q->storage != NULL)
+    {
+        free(q->storage);
+    }
 
+    if (q != NULL)
+    {
+        free(q);
+    }
 }
 
 
