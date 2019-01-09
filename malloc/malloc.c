@@ -87,6 +87,8 @@ void *resize_memory(void *ptr, int old_size, int new_size)
 
     mem_copy(new_space, ptr, old_size);
 
+    free(ptr);
+
 
     return new_space;
 }
