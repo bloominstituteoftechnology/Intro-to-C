@@ -13,6 +13,12 @@
 */
 char *string_dup(char *src)
 {
+    int str_size = string_length(src);
+    char *copy = malloc(str_size);
+    for (int i = 0; i < str_size; i++){
+        copy[i] = src[i];
+    }
+    return copy;
 
 }
 
@@ -26,23 +32,55 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *csrc = (char *)src; 
+    char *cdest = (char *)dest; 
+    for (int i=0; i<n; i++) {
+    cdest[i] = csrc[i]; 
+    }
+    return cdest;
 }
 
+
+
 /*
-    Given a pointer that `malloc`'d memory, this function will 
+    Given a pointer that `malloc`'d memory, this function will
     attempt to resize the allocated memory to the new specified
-    size. Any data that was previously in the old `malloc`'d 
-    memory should be intact in the new resized block of memory. 
+    size. Any data that was previously in the old `malloc`'d
+    memory should be intact in the new resized block of memory.
 
     Some edge cases to consider: how should resizing be handled
-    in the case when old_size < new_size? What about when 
+    in the case when old_size < new_size? What about when
     old_size > new_size?
 
     Do not use the `realloc` function from the standard libary.
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    
+       if (new_size == 0)
+   {
+      free(ptr);
+      return NULL;
+   }
+   else if (!ptr)
+   {
+      return malloc(new_size);
+   }
+   else if (new_size <= old_size)
+   {
+      return ptr;
+   }
+   else
+   {
+      void *ptrNew = malloc(new_size);
+      if (ptrNew)
+      {
+          memcpy(ptrNew, ptr, old_size);
+          free(ptr);
+      }
+      return ptrNew;
+    }
+    
 
 }
 
