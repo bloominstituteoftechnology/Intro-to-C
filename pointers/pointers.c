@@ -71,26 +71,14 @@ void string_copy(char *x, char *y)
     Do not just use the `strcmp` function from the standard library.
 */
 
-// DOES NOT PASS TESTS YET
 int string_compare(char *m, char *n)
 {  
-   for (int i = 0; m[i] != '\0'; i++){
-        // if (m[i] == n[i]) {
-        //     printf("m[i] = %c\n", m[i]);
-        //     return 0;
-        //} else 
-        if (m[i] > n[i]){
-            printf("m[i] = %c\n", m[i]);
-            return 1; // a positive value
-
-        } else if (m[i] < n[i]){
-            printf("m[i] = %c\n", m[i]);
-            return -1; // a negative value
-        } //else if (m[i] == n[i]) {
-//             printf("m[i] = %c\n", m[i]);
-//             return 0;
-//    }
-   }
+    for (; *m == *n; m++, n++){
+        if (*m == '\0'){
+            return 0;
+        }
+    }
+    return *m - *n;
 }
 
 /*
@@ -103,7 +91,23 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    char *h = haystack;
 
+    while (*h != '\0') {
+        char *h_start = h;
+        char *n = needle;
+
+        while (*h != '\0' && *n != '\0' && *h == *n) {
+            h++;
+            n++;
+        }
+
+        if (*n == '\0'){
+            return h_start;
+        }
+        h++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
