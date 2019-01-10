@@ -57,9 +57,40 @@ void *mem_copy(void *dest, const void *src, int n)
 
     Do not use the `realloc` function from the standard libary.
 */
+// Still getting this error when using either option
+// [ERROR] (tests/malloc_tests.c:63: errno: None) 
+// Your resize_memory function did not truncate the size of the given string correctly.
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    if (new_size == 0){
+        free(ptr);
+        return NULL;
+    } 
+    //else if (!ptr){
+    //     return malloc(new_size);
 
+    // } else if (old_size == new_size){
+    //     return ptr;
+    // }
+
+    void * new_block = malloc(new_size);
+
+    int bytes_to_copy;
+
+    if (new_size < old_size) {
+        //mem_copy(new_block, ptr, new_size);
+        bytes_to_copy = new_size;
+
+    } else {
+        //mem_copy(new_block, ptr, old_size);
+        bytes_to_copy = old_size;
+
+    }
+    mem_copy(new_block, ptr, bytes_to_copy);
+
+    free(ptr);
+
+    return new_block;
 }
 
 #ifndef TESTING
