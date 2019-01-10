@@ -50,6 +50,9 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    void *new_space = malloc(new_size);
+
+    return new_space;
 }
 
 #ifndef TESTING
