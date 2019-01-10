@@ -52,6 +52,21 @@ void *resize_memory(void *ptr, int old_size, int new_size)
 {
     void *new_space = malloc(new_size);
 
+    int bytes_to_copy;
+
+    if (new_size < old_size)
+    {
+        bytes_to_copy = new_size;
+    }
+    else
+    {
+        bytes_to_copy = old_size;
+    }
+
+    mem_copy(new_space, ptr, bytes_to_copy);
+
+    free(ptr);
+
     return new_space;
 }
 
