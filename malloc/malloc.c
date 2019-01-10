@@ -26,7 +26,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *s = src;
+    char *d = dest;
+    //we want to copy the first byte, iterating through
+    for (int i = 0; i < n; i++) {
+        d[i] = s[i];
+    }
+    //what are we returning?
+    return dest;
 }
 
 /*
@@ -43,7 +50,31 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    if (new_size == 0) {
+        // Malloc: we must free up the memory after use or we will have memory leakage which = bad
+        free(ptr);
+        return NULL;
+    }
+    // // what if the new size is smaller than the old size?
+    // if (new_size < old_size) {
+    //     return NULL;
+    // }
+    // Or
+    void *new_space = malloc(new_size);
 
+    int bytes_to_copy;
+
+    if (new_size < old_size) {
+        bytes_to_copy = new_size;
+    } else {
+        bytes_to_copy = old_size;
+    }
+    mem_copy(new_space, ptr, bytes_to_copy);
+
+    // free up the memory
+    free(ptr);
+
+    return new_space;
 }
 
 #ifndef TESTING
