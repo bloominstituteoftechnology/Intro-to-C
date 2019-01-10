@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
-{
-
+void swap(int* a, int* b){
+    int val_a = *a;
+    int val_b = *b; 
+    *a = val_b;
+    *b = val_a;
 }
 
 /*
