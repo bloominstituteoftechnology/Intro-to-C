@@ -27,6 +27,24 @@ char *string_dup(char *src)
 void *mem_copy(void *dest, const void *src, int n)
 {
 
+    char *s = src;
+    char *d = dest;
+
+    for (int i= 0; i < n; i++) {
+        d[i] = s[i];
+    }
+    return dest;
+    // *s = *d;
+    // *(s+1) = *(d+1);
+    // *(s+2) = *(d+2);
+
+    // while (n > 0) {
+    //     *d = *s;
+    //     d++;
+    //     s++;
+    //     n--;
+    // }
+
 }
 
 /*
