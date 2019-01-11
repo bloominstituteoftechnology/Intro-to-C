@@ -18,12 +18,18 @@
 
 int sortHelper (int arr[], int l, int h)
 {
+  //gets us our pivot element
   int pivot = arr[h];
+  //get us the index of the smaller element
   int i = (l - 1);
   for (int j = l; j <= h - 1; j++)
   {
+    //if the element is smaller than or equal to
+    //the current pivot I swap the values
     if(arr[j] <= pivot)
     {
+      //here I increment the 
+      //index of the smaller elemnt by 1
       i++;
       swap(&arr[i], &arr[j]);
     }
@@ -37,9 +43,11 @@ void quicksort(int *arr, int l, int h)
 {
   if (l < h)
   {
+    //makes sure my index is at the currect place
     int p = sortHelper(arr, l, h);
-    quicksort(arr, l, p - 1);
-    quicksort(arr, p + 1, h);
+
+    quicksort(arr, l, p - 1); //after
+    quicksort(arr, p + 1, h); //before
   }
 }
 

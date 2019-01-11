@@ -9,6 +9,8 @@
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
+
+//here I create my struct 
 typedef struct Person {
   char *name;
   int age;
@@ -27,7 +29,11 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
+  //here malloc the space for the new struct
   Person *newStack = malloc(sizeof(Person));
+  //I run the strndup function that duplicates the string,
+  //I pass in the name of the string and its length as
+  //paramenters
   newStack->name = strndup(name, strlen(name));
   newStack->age = age;
   newStack->height = height;
@@ -41,20 +47,22 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-  free(who->name);
+  //here I free the space on the heap
   free(who);
 }
 
 #ifndef TESTING
 int main(void)
 {
+    //here I create my person struct
     Person *tony = createPerson("Tony Stark", 32, 64, 140);
-
+    //here I print up the structs values
     printf("Name: %s\n", tony->name);
     printf("Age: %d\n", tony->age);
     printf("Height: %d\n", tony->height);
     printf("Weight: %d\n", tony->weight);
 
+    //here I destroy the person and free on space on memory
     destroyPerson(tony);
 
     return 0;
