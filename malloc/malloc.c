@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -11,6 +12,7 @@
     
     Do not use the `strdup` function from the standard library.
 */
+
 char *string_dup(char *src)
 {
   int len = strlen(src);
@@ -33,13 +35,25 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-  int *p = (int*)dest;
-  int *p2 = (int*)src;
-  while(*p2){
-    *p = *p2;
-    p++;
-    p2++;
+  //sets pointers to point at dest and src
+  // int *p = (int*)dest;
+  // int *p2 = (int*)src;
+  // //this takes those pointers and copies over thier content
+  // while(*p2){
+  //   *p = *p2;
+  //   p++;
+  //   p2++;
+  // }
+
+  char *s = src;
+  char *d = dest;
+
+  for (int i = 0; i < n; i++){
+    d[i] = s[i];
   }
+
+  return dest;
+
 }
 
 /*
@@ -56,15 +70,36 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-  char *d = (char*)ptr;
-  char *d2 = (char*)ptr;
-  d = malloc(new_size);
-  int i;
-  for (i = 0; i < old_size; i++){
-    *(d + i) = *(d2 + i);
+  // char *d = (char*)ptr;
+  // char *d2 = (char*)ptr;
+  // int i;
+  // for (i = 0; i < old_size; i++){
+  //   *(d + i) = *(d2 + i);
+  // }
+  // return d;
+
+
+  if (new_size == 0){
+    free(ptr);
+    return NULL;
   }
-  free(d2);
-  return d;
+
+  void *new_space = malloc(new_size);
+
+  int bytes_to_copy;
+
+  if (new_size < old_size){
+    bytes_to_copy = new_size;
+  } else {
+    bytes_to_copy = old_size;
+  }
+
+  mem_copy(new_space, ptr, bytes_to_copy);
+
+  free(ptr);
+
+  return new_space;
+
 
 }
 
@@ -94,12 +129,11 @@ int main(void)
     char *url = string_dup("http://lambdaschool.com");
     char *path = string_dup("/students/");
     int url_length = strlen(url);
-    int path_length = strlen(path) + 1;
+    int path_length = strlen(path);
     
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);
     char *p = new_url + url_length;
-
 
     while (*path != '\0') {
         *p = *path;

@@ -9,8 +9,12 @@
 */
 void swap(int* a, int* b)
 {
+  //here I made a variable val that points tot he same pointer as a
   int val = *a;
+  //now I change the pointer a to point at the pointer of b
   *a = *b;
+  //now I change the pointer of b to point at val which is pointing at the old
+  //pointer of a thus both pointers are switched
   *b = val;
 }
 
@@ -25,9 +29,13 @@ void swap(int* a, int* b)
 char *find_char(char *str, int c)
 {
   int x;
+  //here I take d and I made it a char version of c to better look up the character
   char d = c;
   for (x = 0; str[x] != 0; x++){
+    //now that I found the character
+    //I will return its address
     if (d == str[x]){
+      //here I return the address in memory
       return &(str[x]);
     }
   }
@@ -44,11 +52,18 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-   while(*y) {
+  //here I take the dereferance of y and loop through it value in memory
+  //until I find a NULL character at the end showing that I have reached
+  //the end of the string
+   while(*y != '\0') {
+     //here I take the dereferance of x and set it equal to the dereferance of y
        *x = *y;
+    //since I'm only effecting one character with the dereferance I need to push up
+    //the values spot in memory by 1 so each time
        x++;
        y++;
    }
+   //I set the end of the dereranced value of x to be a NULL terminator
    *x = '\0';
 }
 /* 
@@ -68,10 +83,12 @@ void string_copy(char *x, char *y)
 int string_compare(char *m, char *n)
 {
   int x;
+  //here I loop through and check each character
   for (x = 0; m[x] != 0; x++){
     if (m[x] == n[x]){
       continue;
     }
+    //I can compare characters in C based on askii value to know which one is higher or lower
     if (m[x] > n[x]){
       return 1;
     }
@@ -84,6 +101,9 @@ int string_compare(char *m, char *n)
   int count1 = 0;
   int count2 = 0;
 
+  //this is an extra work around I did because one of the tests asked me to compare 
+  //strings if one was a longer length then the other. I did this to return a negative 
+  //value in this particular test.
   for(i = 0; m[i]; i++){
     count1++;
   }
@@ -112,7 +132,7 @@ char *find_string(char *haystack, char *needle)
 
   int x, i, j, y;
   int counter = 0;
-  
+  //this finds the length of the string beeing looked up
   for (x = 0; needle[x]; x++){
     counter += 1;
   }
@@ -121,13 +141,16 @@ char *find_string(char *haystack, char *needle)
   int check = isupper(needle[0]);
 
   for (i = 0; haystack[i]; i++){
+    //this finds the first time the character comes up in the main string
     if (haystack[i] == needle[0] && check != 0){
-
+      //I was not a fan of this work around but the test wanted 
+      //me to return the entire string if the string character matched
       if (haystack[0] == needle[0] && check != 0){
         return haystack;
       }
 
       y = i;
+      //this builds out the sub string that is being looked up in the main string
       for (j = 0; needle[j]; j++, y++){
         compare[j] = needle[j];
       }

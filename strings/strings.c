@@ -11,6 +11,7 @@ int string_length(char s[])
 {
     int counter = 0;
     int x;
+    //here I take the string and I loop until it has no more characters in memory.
     for (x = 0; s[x] != 0; x++){
         counter += 1;
     }
@@ -28,18 +29,19 @@ char *reverse_string(char rv[], char s[])
   printf("%s\n", s);
   int counter = 0;
   int x;
-  for (x = 0; s[x] != 0; x++){
-    counter += 1;
-  }
-  counter = counter - 1;
+  //use the function from before to get the length
+  int len = string_length(s) - 1;
   int i;
   int j = 0;
-  for (i = counter; i >= 0; i--){
+  //now that I have the length I loop backwards from it
+  for (i = len; i >= 0; i--){
+    //here I build out the backwards string with the backwards
+    //characters from the old string
     rv[j] = s[i];
     j += 1;
   }
   printf("%s\n", rv);
-  printf("\n%i", counter);
+  printf("\n%i", len);
 
   return rv;
 }

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 
@@ -15,6 +16,7 @@ typedef struct Person {
   int weight;
 } Person;
 
+
 /*
     Creates an instance of the Person struct that receives all the relevant
     pieces of data associated with a Person instance.
@@ -26,7 +28,7 @@ typedef struct Person {
 Person *createPerson(char *name, int age, int height, int weight)
 {
   Person *newStack = malloc(sizeof(Person));
-  newStack->name = string_dub(name);
+  newStack->name = strndup(name, strlen(name));
   newStack->age = age;
   newStack->height = height;
   newStack->weight = weight;
