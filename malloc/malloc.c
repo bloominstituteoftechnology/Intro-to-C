@@ -44,7 +44,17 @@ void *mem_copy(void *dest, const void *src, int n)
     for (int i = 0; i < n; i++) {
         dest_cast[i] = src_cast[i];
     }
+    return dest;
 }
+// void *mem_copy(void *dest, const void *src, int n)
+// {
+//     char *cdest = dest;
+//     char *csrc = src;
+//     for (int i = 0; i < n; i++) {
+//         cdest[i] = csrc[i];
+//     }
+//     return dest;
+// }
 
 /*
     Given a pointer that `malloc`'d memory, this function will 
@@ -110,12 +120,12 @@ int main(void)
     printf("\n");
 
     char *url = string_dup("http://lambdaschool.com");
-    char *path = string_dup("/students/");
+    char *path = string_dup("/students/"); // this path needs to be appended to the url in the line above
     int url_length = string_length(url);
     int path_length = string_length(path);
     
-    int new_length = url_length - 1 + path_length;
-    char *new_url = resize_memory(url, url_length, new_length);
+    int new_length = url_length - 1 + path_length; // url_length -1 to get rid of null char, then add space for additional path
+    char *new_url = resize_memory(url, url_length, new_length);  // resize memory allocated for url from old length to new length
     char *p = new_url + url_length;
 
     while (*path != '\0') {
