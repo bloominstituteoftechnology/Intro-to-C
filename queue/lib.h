@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-void *resize_memory(void *ptr, int old_size, int new_size)
+void *resize_memory(void *ptr, int new_size) // Delete `int old_size` because kept getting errors
 {
   return realloc(ptr, new_size);
 }

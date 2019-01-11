@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lib.h"
+#include "lib.h" // resize_memory function import
 
 typedef struct Queue {
     unsigned int length;
@@ -15,7 +15,11 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
-
+  Queue *newQueue = malloc(sizeof(Queue)); // allocates memory for size of a struct Queue
+  newQueue->length=0; // current total of items in queue and also position tracker in storage
+  newQueue->capacity=capacity; // max number of items the queue can hold
+  newQueue->storage=malloc(sizeof(int)*capacity); // allocates memory according to capacity needed
+  return newQueue;
 }
 
 /*
@@ -25,7 +29,29 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
+  // TWO
+  if (q->length == q->capacity) // if tracker reaches the capacity (end of queue)
+  {
+    q->capacity++; // update capacity to reflect new increase need
+    q->storage = resize_memory(q->storage, sizeof(int) * (q->capacity)); // resize memory based on need
+  }
+  q->storage[q->length] = item; // insert item at that tracker position
+  q->length++; //advance the tracker position
 
+  // ONE
+  // if (q->length < q->capacity) // if the tracker is not at the end of the queue
+  // {
+  //   q->storage[q->length] = item; // insert the item at that tracker in storage
+  //   q->length++; // advance the tracker
+  // }
+  // else if (q->length == q->capacity) // if tracker reaches the capacity
+  // {
+  //   void *new_storage = resize_memory(q->storage, q->capacity, sizeof(int) * (q->capacity+1)); //create new storage +1 capacity
+  //   q->storage = new_storage; // update the old pointer 
+  //   q->capacity++; // update capacity to reflect increase
+  //   q->storage[q->length] = item; // insert item at that tracker
+  //   q->length++; //advance the tracker
+  // }
 }
 
 /*
@@ -34,7 +60,21 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-
+  if (q->length == 0) // if the queue is empty, tracker position at 0
+  {
+    return -1;
+  }
+  else if (q->length > 0)
+  {
+    int original = q->storage[0]; // necessary to store the original int item before the shift occurs
+    for (unsigned int i=0; i < q->length-1; i++) // advance all the pointers
+    {
+      q->storage[i] = q->storage[i+1]; // moves pointer in storage by 1
+    }
+    q->length--; // decrease length by 1 due to dequeue operation
+    return original; // returns the value that was dequeued
+  }
+  return 0;
 }
 
 /*
@@ -43,7 +83,8 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
-
+  free(q->storage);
+  free(q);
 }
 
 
