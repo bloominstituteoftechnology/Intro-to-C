@@ -41,8 +41,8 @@ This lab is structured very much like how your introductory JavaScript labs are 
   - [x] fizzbuzz
   - [x] strings
   - [x] pointers
-  - [ ] malloc
-  - [ ] structs
+  - [x] malloc
+  - [x] structs
   - [ ] queue
   - [ ] quicksort
   - [ ] [Stretch Goal] hangman

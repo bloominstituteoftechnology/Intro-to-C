@@ -1,0 +1,5 @@
+DEBUG tests/structs_tests.c:38: ----- RUNNING: ./tests/structs_tests
+DEBUG tests/structs_tests.c:32: 
+----- test_person_create
+DEBUG tests/structs_tests.c:33: 
+----- test_person_destroy

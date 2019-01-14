@@ -8,7 +8,7 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
-    char name[50];
+    char *name;
     int age;
     int height;
     int weight;
@@ -22,11 +22,16 @@ typedef struct Person {
     Person struct, and then sets the struct's fields with the input data.
     When setting the `name` field, use your previously-built string_dup
     function, which handles the allocation of memory for the new string.
+    (-> is like dot notation)
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
-
-
+    Person *p = malloc(sizeof(Person)); //allocating memory
+    (*p).name = string_dup(name);
+    p -> age = age;
+    p -> height = height;
+    p -> weight = weight;
+    return p;
 }
 
 /*
@@ -35,7 +40,7 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-
+    free(who);
 }
 
 #ifndef TESTING

@@ -12,10 +12,16 @@ typedef struct Queue {
     Creates a queue by allocating the appropriate amount of memory for an
     instance of the Queue struct, and initializes all of the fields of the
     struct. Also allocates memory for the queue's storage structure. 
+    (-> is like dot notation)
 */
 Queue *createQueue(unsigned capacity)
 {
+    Queue *queue = malloc(sizeof(Queue)); //allocating memory
+    queue -> length = 0; // default setting = 0
+    queue -> capacity = capacity;
+    queue -> storage = malloc(sizeof(int) * capacity);
 
+    return queue;
 }
 
 /*
@@ -25,7 +31,12 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
-
+    if (q -> length == q -> capacity) {
+        q -> capacity = q -> capacity * 2; // allowing for more space/capacity
+        int *storage_space = malloc(sizeof(int) * q -> capacity); // allocating memeory
+        memcpy(&storage_space, &q -> storage, q -> length); // memcpy is a built in that copies the memory for us
+        q -> storage = storage_space;
+    }
 }
 
 /*
@@ -34,7 +45,16 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-
+    if (q -> length == 0) {
+        return -1;
+    } else {
+        int item = q -> storage[0];
+        for (int i = 0; i < q -> length; i++) {
+            q -> storage[i] = q -> storage[i+1];
+        }
+        q -> length--;
+        return item;
+    }
 }
 
 /*
@@ -43,7 +63,7 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
-
+    free(q);
 }
 
 
