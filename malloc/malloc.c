@@ -42,7 +42,7 @@ void *mem_copy(void *dest, const void *src, int n)
         *(chdest+i) = *(chsrc+i);
     }
 
-    return chdest;
+    // return chdest;
 }
 
 /*
