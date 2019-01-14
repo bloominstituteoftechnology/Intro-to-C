@@ -1,0 +1,7 @@
+DEBUG tests/malloc_tests.c:79: ----- RUNNING: ./tests/malloc_tests
+DEBUG tests/malloc_tests.c:72: 
+----- test_string_dup
+DEBUG tests/malloc_tests.c:73: 
+----- test_mem_copy
+DEBUG tests/malloc_tests.c:74: 
+----- test_resize_memory

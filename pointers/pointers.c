@@ -6,7 +6,7 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int * a, int * b)
 {
     int temp = *a;
     *a = *b;
@@ -21,7 +21,7 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
+char * find_char(char * str, int c)
 {
     int i = 0;
     while (str[i] != '\0') {
@@ -66,17 +66,27 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    for (int i = 0; m[i] != '\0'; i++) {
-        if (m[i] > n[i]) {
+    while (*m != '\0' || (*n != '\0')) {
+        if ((*m - *n) > 0) {
             return 1;
-        }
-        else if (m[i] < n[i]) {
+        } else if ((*m - *n) < 0) {
             return -1;
         }
+        m++;
+        n++;
+        
     }
-    if (strlen(n) > strlen(m)) {
-        return -1;
-    }
+    // for (int i = 0; m[i] != '\0'; i++) {
+    //     if (m[i] > n[i]) {
+    //         return 1;
+    //     }
+    //     else if (m[i] < n[i]) {
+    //         return -1;
+    //     }
+    // }
+    // if (strlen(n) > strlen(m)) {
+    //     return -1;
+    // }
     return 0;
 }
 

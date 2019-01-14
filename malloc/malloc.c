@@ -13,7 +13,14 @@
 */
 char *string_dup(char *src)
 {
+    int len = string_length(src); //find length of src
+    char *copy = malloc(len);
 
+    for (int i = 0; i < len; i++) {
+        copy[i] = src[i];
+    }
+    copy[len] = '\0';
+    return copy;
 }
 
 /*
