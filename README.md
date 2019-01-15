@@ -43,7 +43,7 @@ This lab is structured very much like how your introductory JavaScript labs are 
   - [x] pointers
   - [x] malloc
   - [x] structs
-  - [ ] queue
+  - [x] queue
   - [ ] quicksort
   - [ ] [Stretch Goal] hangman
 

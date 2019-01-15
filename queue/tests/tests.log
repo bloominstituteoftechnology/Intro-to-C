@@ -3,4 +3,5 @@ DEBUG tests/queue_tests.c:85:
 ----- test_queue_creation
 DEBUG tests/queue_tests.c:86: 
 ----- test_enqueue_and_dequeue
-[ERROR] (tests/queue_tests.c:43: errno: None) Your queue did not return an expected value.
+DEBUG tests/queue_tests.c:87: 
+----- test_queue_expansion
