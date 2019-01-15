@@ -1,0 +1,3 @@
+DEBUG tests/quicksort_tests.c:31: ----- RUNNING: ./tests/quicksort_tests
+DEBUG tests/quicksort_tests.c:26: 
+----- test_quicksort
