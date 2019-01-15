@@ -68,10 +68,48 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
+
+// find the length of the two strings (m and n), then take the shortest one. then make a loop to compare
+// each letter in the two strings
+
 int string_compare(char *m, char *n)
 {
+    int mLength = 0;
+    int nLength = 0; 
+    int i = 0;
 
+    while (m[i] != '\0') {
+        mLength++;
+        i++;
+    }
+
+    int j = 0; 
+
+    while (n[j] != '\0') {
+        nLength++;
+        j++;
+    }
+
+    char *shortestWord;
+
+    if (mLength < nLength) {
+        shortestWord = m;
+    } else {
+        shortestWord = n;
+    }
+    
+    for ( int k = 0; shortestWord[k] != '\0'; k++) {
+
+        if (m[k] > n[k]) {
+            return 1;
+        } else if (m[k] < n[k]) {
+            return -1;
+        } 
+    }
+
+    return 0;
 }
+
 
 /*
     Searches the input string `haystack` for the first instance of
