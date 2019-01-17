@@ -35,13 +35,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-	char *pdest = (char *)dest;
-	char *psrc = (char *)src;
+	char *pdest = (char *) dest;		// char *pdest = dest;
+	char *psrc = (char *) src;		//char *psrc = src;
 	
 	for (int i = 0; i < n; i++) {
 		*(pdest + i) = *(psrc + i);
 	}
-	return pdest;
+	return dest;
 }
 
 /*
@@ -70,6 +70,31 @@ void *resize_memory(void *ptr, int old_size, int new_size)
 	
 	return new_ptr;
 }
+
+// solution
+// void *resize_memory(void *ptr, int old_size, int new_size)
+// {
+// 	if (new_size == 0) {
+// 		free(ptr);
+// 		return NULL;
+// 	}
+
+// 	void *new_space = malloc(new_size);
+	
+// 	int bytes_to_copy = new_size < old_size? new_size: old_size;
+
+// 	if (new_size < old_size) {
+// 		bytes_to_copy = new_size;
+// 	} else {
+// 		bytes_to_copy = old_size;
+// 	}
+
+// 	mem_copy(new_space, ptr, bytes_to_copy);
+
+// 	free(ptr);		// free old space in memory or else or will cause memory leak
+
+// 	return new_space;
+// }
 
 #ifndef TESTING
 int main(void)
