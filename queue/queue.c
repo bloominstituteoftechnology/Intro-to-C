@@ -32,7 +32,10 @@ Queue *createQueue(unsigned capacity)
 void enqueue(Queue *q, int item)
 {
   if (q->length >= q->capacity) {
-    q->capacity++;
+    int old_cap = q->capacity;
+    int new_cap = q->capacity * 2;
+    q->storage = resize_memory(q->storage, old_cap, new_cap);
+    q->capacity = new_cap;
   }
   q->storage[q->length] = item;
   q->length++;
