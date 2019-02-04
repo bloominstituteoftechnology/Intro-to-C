@@ -4,7 +4,7 @@ From the perspective of C, your entire computer is nothing more than a giant arr
 
 We do it with indices that point to a specific spot in the array. As it turns out, pointers in C are simply just that: indices into the giant array of memory that is your computer. More formally, a pointer is a memory address that tells the program where to go and find some variable value. 
 
-Those funky asterisks you might have seen already indicate a pointer. Let's look at the function signature we had for the `reverse_string` function you wrote in the `strings` module:
+Those funky asterisks you might have seen already indicate a pointer (you might have heard them referred to as _references_ in other languages). Let's look at the function signature we had for the `reverse_string` function you wrote in the `strings` module:
 ```c
 char *reverse_string(char s[])
 {
@@ -94,8 +94,16 @@ Armed with this knowledge regarding pointers and pointer arithmetic, we can rewr
     }
 ```
 
-## When do you pass pointers as function parameters?
+## Use cases of pointers
 
-In C code you'll often see functions that receive pointers as arguments and others that receive normal variables as arguments. So how do you know when your function needs to receive one or the other?
+Lastly, let's talk a bit about why pointers are useful. The number 1 most important reason as to why pointers exists, the motivation for their invention in the first place, is that the C compiler needs every type to have a known size at compile time. This is a pretty big restriction, and it's one that comes with the territory of working in a strongly-typed language. 
 
-The rule of thumb is this: if your function needs to mutate the value(s) of the arguments that it receives, then you'll need to pass those arguments as pointers to the function. Otherwise, if your function simply needs to read the data from those arguments, but not mutate them, then you can simply pass the arguments as 'normal' arguments. 
+But there's lots of data that we won't know the size of until runtime. What if we need to accept user input? How do we know the size of that input before the user even gives it to us? What if we need to add data to some data structure at runtime? These are all valid questions, and the workaround to them is pointers. 
+
+We can not tell the compiler the size of certain types upfront, so what we do instead is use something of a known size to refer to things of unknown size. That is exactly what pointers are. They're a type with a known size that tells us how to access something of an unknown size. 
+
+So whenever we need to hold something like a string or a data structure whose size depends on something that can only be known at runtime, you can bet such structures will be referred to by a pointer. 
+
+A slightly related use case is passing by reference vs. passing by value when we're talking about passing parameters to functions. You've probably at least heard of these terms used in other languages. Passing by value means that we're passing a _copy_ of the value to a function as a parameter. This results in additional work and memory overhead, but means we have a fresh copy of the data to work with, which is desirable in certain scenarios. 
+
+On the flip side, passing by reference means we're passing a pointer to the data. In other words, the function doesn't have access to the data itself, but it is able to find that data in memory via the passed-in pointer. There's no need to copy the data, but then that also means the function doesn't have exclusive access to the data either. 
