@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <malloc.h>
+#include <string.h>
 #include "../../utils/minunit.h"
 #include "../../utils/utils.h"
 #include "../../pointers/pointers.h"
@@ -43,7 +44,7 @@ char *test_resize_memory()
     int url_length = string_length(url);
     int path_length = string_length(path);
     
-    int new_length = url_length - 1 + path_length;
+    int new_length = url_length + path_length + 1; // +1 for the NUL terminator
     char *new_url = resize_memory(url, url_length, new_length);
     char *p = new_url + url_length;
 
@@ -58,9 +59,8 @@ char *test_resize_memory()
     mu_assert(check_strings(new_url, "http://lambdaschool.com/students/") == 0, "Your resize_memory function did not increase the size of the given string correctly.");
     
     char *new_new_url = resize_memory(new_url, new_length, 8);
-    *(p + 9) = '\0';
 
-    mu_assert(check_strings(new_new_url, "http://l") == 0, "Your resize_memory function did not truncate the size of the given string correctly.");
+    mu_assert(memcmp(new_new_url, "http://l", 8) == 0, "Your resize_memory function did not truncate the size of the given string correctly.");
 
     return NULL;
 }
