@@ -10,11 +10,9 @@
 int string_length(char s[])
 {
     int counter = 0;
-    int currentIdx = 0;
-    while (s[currentIdx] != '\0')
+    while (s[counter] != '\0')
     {
         counter++;
-        currentIdx++;
     }
     return counter;
 }
