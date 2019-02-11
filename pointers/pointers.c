@@ -25,6 +25,7 @@ void swap(int *a, int *b)
 */
 char *find_char(char *str, int c)
 {
+
     printf("this should be the string: %s \n", str);
     for (int i = 0; i < strlen(str); i++)
     {
@@ -38,6 +39,8 @@ char *find_char(char *str, int c)
             return temp;
         }
     }
+    printf("we are returning this: %s \n", NULL);
+    return NULL;
 }
 
 /*
