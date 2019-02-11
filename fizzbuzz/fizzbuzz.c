@@ -10,7 +10,13 @@
 */
 int fizzbuzz(int n)
 {
-
+    int i;
+    for (i = 1; i < n; i++)
+    {
+        if (i % 3)
+        {
+        }
+    }
 }
 
 #ifndef TESTING
