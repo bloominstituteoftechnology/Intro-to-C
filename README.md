@@ -1,5 +1,4 @@
 # Introduction to the C Programming Language
-
 Welcome to your first C lab!
 
 The two main goals of this sprint are as follows. The first goal is to give
