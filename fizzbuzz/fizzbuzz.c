@@ -11,27 +11,32 @@
 int fizzbuzz(int n)
 {
       int counter = 0;
-      while(counter < 9) 
+      
+      while(counter < n) 
       {
-           if(counter % 3 == 0)
-           {
+           if(counter % 5 == 0 && counter % 3 == 0) {
+                printf("FizzBuzz : %d\n", counter);
+           }
+           else if(counter % 3 == 0) {
                 printf("Fizz\n");
-                if(counter % 5 == 0)
-                {
-                      printf("FizzBuzz\n");
-                }
            } 
-           else if(counter % 5 == 0) 
-           {
-                printf("Buzz\n")
+           else if(counter % 5 == 0) {}
+                printf("Buzz\n");
            }
-           else {
-               counter ++;
-           }
+           
+           counter ++;
       }
-      return  counter; //as definition return type is int
-
+      return  counter; 
 }
+
+#ifndef TESTING
+int main(void)
+{
+    fizzbuzz(20);
+    
+    return 0;
+}
+#endif
 
 #ifndef TESTING
 int main(void)
