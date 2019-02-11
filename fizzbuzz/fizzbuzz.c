@@ -10,6 +10,7 @@
 */
 int fizzbuzz(int n)
 {
+    int counter = 0;
     int i;
     for (i = 1; i < n; i = i + 1)
     {
@@ -28,8 +29,12 @@ int fizzbuzz(int n)
             // print Fizz
             printf("Fizz\n");
         }
+        else
+        {
+            counter = counter + 1;
+        }
     }
-    return n;
+    return counter;
 }
 #ifndef TESTING
 int main(void)
