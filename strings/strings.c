@@ -9,8 +9,18 @@
 */
 int string_length(char s[])
 {
+    int counter = 0;
+    
+    for (int i = 0; s[i] != '\0'; ++i) 
+    // increment counter for each element in array except '\0' -- null values
+    {
+        counter = counter + 1;
+    }
+    
+    return counter; 
+} 
 
-}
+
 
 /*
     Write a function that reverses the order of string s and outputs 
@@ -19,9 +29,19 @@ int string_length(char s[])
     the reversed string with a null character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[])
-{
-
-}
+{ 
+    int n = string_length(s); // using function above - get the length for iteration loop
+    int index = 0; // create stating position for rv
+  
+    for (int i = n - 1; i >= 0; i--) //iterate backwards through s, starting at last element 
+    {
+        //set current position in rv array to the current index value of s array 
+        rv[index] = s[i]; 
+        index++; // move up one position in rv array (...as we're moving back one position in s)   
+    }
+    rv[index] = '\0';//terminate the reversed string with a null character
+    return rv; // return reversed array 
+} 
 
 #ifndef TESTING
 int main(void)
