@@ -19,7 +19,7 @@ char *test_swap()
     return NULL;
 }
 
-char *test_string_copy()
+/*char *test_string_copy()
 {
     char *string = "hello, world";
     char empty[20];
@@ -47,6 +47,7 @@ char *test_string_compare()
 
     return NULL;
 }
+*/
 
 char *test_find_char()
 {
@@ -62,7 +63,7 @@ char *test_find_char()
 
     return NULL;
 }
-
+/*
 char *test_find_string()
 {
     char *str = "LambdaSchool";
@@ -90,5 +91,5 @@ char *all_tests()
 
     return NULL;
 }
-
+*/
 RUN_TESTS(all_tests);

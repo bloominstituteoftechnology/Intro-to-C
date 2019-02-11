@@ -7,10 +7,13 @@
     pointing at.
 */
 void swap(int* a, int* b)
-{
+{ 
+    int a = *a; // assigning value of pointer to a
+    int b = *b; // assigning value of pointer to b 
+    *a = b;     // sets value at pointer a to value of b variable 
+    *b = a;     // sets value at pointer b to value of a variable
 
 }
-
 /*
     Searches the input string `str` for the first instance of the 
     character `c` (an unsigned char). This function returns a pointer
@@ -19,11 +22,22 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
+
+//*str --- being passed the value of a pointer - aka address 
 char *find_char(char *str, int c)
 {
+    while (*str != '\0')
+    // while not at the end of a string, iterate through str 
+    {
+        if (*str == c)
+        {
+            return str; // return the pointer (sans *)
+        }
 
+        str++; // iterate through str until match is found
+  }
+  return 0;
 }
-
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -33,8 +47,18 @@ char *find_char(char *str, int c)
     Do not just use the `strcpy` function from the standard library.
 */
 void string_copy(char *x, char *y)
-{
 
+{   // while not the end of contents of the value of pointer y
+    while (*y != '\0')
+     
+    {   // copies the character contents of y over to x
+        *x = *y;
+        // increment one in x, and one in y for next loop to copy next value 
+        x++;     
+        y++;     
+    }
+    
+    *x = '\0'; // x points to a null character at its end to terminate it
 }
 
 /* 
@@ -52,9 +76,7 @@ void string_copy(char *x, char *y)
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
-{
 
-}
 
 /*
     Searches the input string `haystack` for the first instance of
@@ -80,10 +102,10 @@ int main(void)
     char *world = "World";
     char buffer[1024];
 
-    string_copy(buffer, hello);
+  //  string_copy(buffer, hello);
 
-    printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+  //  printf("Buffer is %s\n", buffer);
+  //  printf("Comparison is %d\n", string_compare(hello, world));
 
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
