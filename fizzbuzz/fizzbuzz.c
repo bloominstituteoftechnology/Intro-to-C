@@ -10,6 +10,26 @@
 */
 int fizzbuzz(int n)
 {
+      int counter = 0;
+      while(counter < 9) 
+      {
+           if(counter % 3 == 0)
+           {
+                printf("Fizz\n");
+                if(counter % 5 == 0)
+                {
+                      printf("FizzBuzz\n");
+                }
+           } 
+           else if(counter % 5 == 0) 
+           {
+                printf("Buzz\n")
+           }
+           else {
+               counter ++;
+           }
+      }
+      return  counter; //as definition return type is int
 
 }
 
