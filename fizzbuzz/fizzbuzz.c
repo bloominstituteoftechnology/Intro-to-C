@@ -10,7 +10,7 @@
 */
 int fizzbuzz(int n)
 {
-
+    // Counter
 }
 
 #ifndef TESTING
