@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -25,6 +26,18 @@ void swap(int *a, int *b)
 char *find_char(char *str, int c)
 {
     printf("this should be the string: %s \n", str);
+    for (int i = 0; i < strlen(str); i++)
+    {
+        printf("this is the letter we are at: %c \n", str[i]);
+        printf("this is the letter we are at's value: %d \n", str[i]);
+        printf("this is the value we are looking for: %d \n", c);
+        if (str[i] == c)
+        {
+            char *temp = &str[i];
+            printf("we are returning this: %s \n", temp);
+            return temp;
+        }
+    }
 }
 
 /*
@@ -37,6 +50,16 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    int x_counter = 0;
+    for (int i = 0; i <= strlen(y); i++)
+    {
+        x[x_counter] = y[i];
+        x_counter++;
+        if (i == strlen(y))
+        {
+            x[x_counter + 1] = '\0';
+        }
+    }
 }
 
 /* 
@@ -51,10 +74,49 @@ void string_copy(char *x, char *y)
     m = "aardvark" and n = "zebra", should return a negative
     value.
     
+    if n>m return positive
+    if n<m return negative
+    if n==m return 0
+
     Do not just use the `strcmp` function from the standard library.
 */
 int string_compare(char *m, char *n)
 {
+    int length = 0;
+    int counter = 0;
+    // printf("this is a string maybe?: %s \n", m);
+    // printf("this is a string maybe?: %s \n", n);
+
+    if (strlen(m) > strlen(n))
+    {
+        length = strlen(m);
+    }
+    else if (strlen(m) < strlen(n))
+    {
+        length = strlen(n);
+    }
+    else
+    {
+        length = strlen(n);
+    }
+    for (int i = 0; i < length; i++)
+    {
+        if (n[i] > m[i])
+        {
+            // printf("this should be a number?: %d \n", *m);
+            // printf("this should be a number?: %d \n", *n);
+            // printf("Im in a positive \n");
+            return m[i] - n[i];
+        }
+        else if (n[i] < m[i])
+        {
+            // printf("this should be a number?: %d \n", *m);
+            // printf("this should be a number?: %d \n", *n);
+            return m[i] - n[i];
+        }
+    }
+    // printf("this is counter being returned: %d \n", counter);
+    return counter;
 }
 
 /*
@@ -67,6 +129,7 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    printf("we are now finding a string");
 }
 
 #ifndef TESTING
