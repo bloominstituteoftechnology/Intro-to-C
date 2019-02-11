@@ -10,11 +10,14 @@
 int string_length(char s[])
 {
     int length = 0;
-    for (int i = 0; i < sizeof(s); i = i + 1)
-    {
-        length = length + 1;
-    }
-    return length;
+    int array_size = *(&s + 1) - s;
+    printf("%d", array_size);
+    // int array_size = sizeof(s) / sizeof(s[0]);
+    // for (int i = 0; i < array_size; i = i + 1)
+    // {
+    //     length = length + 1;
+    // }
+    return array_size;
 }
 
 /*
@@ -25,13 +28,16 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    printf('%s', s);
+    printf("%s", s);
+
+    return s;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    char quote1[] = "Don't forget to be awesome";
+    // char quote1[] = "Don't forget to be awesome";
+    char quote1[] = "hi";
     char quote2[] = "a man a plan a canal panama";
 
     char rv[512];
