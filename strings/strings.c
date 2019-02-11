@@ -27,11 +27,13 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int to_switch = 0;
     int length = string_length(s);
     for(int i = length-1; i > 0; i--){
-        
+        rv[to_switch] = s[i];
+        to_switch++;
     }
-
+    return rv;
 }
 
 #ifndef TESTING
