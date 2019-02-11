@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "string.h"
+#include "strings.h"
 
 /*
     Given a character array s, return the number of characters 
@@ -13,14 +13,25 @@ int string_length(char s[])
 {
     int count = 0;
     
-    // Notice we don't have a "condition" in the loop. We actually don't know how long the string is, so we will have to loop forever, until the last character is 0 (NULL).
+//    // Notice we don't have a "condition" in the loop. We actually don't know how long the string is, so we will have to loop forever, until the last character is 0 (NULL).
+    // This counts only leters/
+//    for (int index = 0; ; index++) {
+//        char character = s[index];    // Get the character out from the pointer
+//        
+//        if ((character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z')) { 
+//            count += 1; 
+//        } else if (character == 0) {
+//            break;
+//        }
+//    }
+    
     for (int index = 0; ; index++) {
         char character = s[index];    // Get the character out from the pointer
         
-        if ((character >= 'A' && character <= 'Z') || (character >= 'a' && character <= 'z')) { 
-            count += 1; 
-        } else if (character == 0) {
+        if (character == 0) {
             break;
+        } else {
+            count += 1;
         }
     }
     
