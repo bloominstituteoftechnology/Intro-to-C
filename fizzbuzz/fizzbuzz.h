@@ -1,6 +1,6 @@
 #ifndef fizzbuzz_h
 #define fizzbuzz_h
 
-int fizzbuzz(int n);
+void fizzbuzz(int n);
 
 #endif
