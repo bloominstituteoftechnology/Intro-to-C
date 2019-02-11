@@ -23,7 +23,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    int x;
+	char d = c;
+	for(x=0; str[x] != 0; x++){
+        if(d == str[x]) {
+	      return &(str[x]);  	    
+	    }
+    };
+	return NULL;
 }
 
 /*
