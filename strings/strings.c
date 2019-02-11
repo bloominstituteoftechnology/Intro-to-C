@@ -9,7 +9,20 @@
 */
 int string_length(char s[])
 {
+    int counter = 0;
 
+    while (1)
+    {
+        if (s[counter])
+        {
+            counter++;
+        }
+        else
+        {
+            break;
+        }
+    }
+    return counter;
 }
 
 /*
@@ -20,12 +33,29 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int total;
+    int count = 0;
+    printf("%s \n", s);
+    total = string_length(s);
+    while (1)
+    {
+        if (total == 0)
+        {
+            rv[count] = '\0';
+            break;
+        }
+        rv[count] = s[total - 1];
+        count++;
+        total--;
+        }
+    printf("%d", string_length(rv));
+    return rv;
 }
 
 #ifndef TESTING
 int main(void)
 {
+
     char quote1[] = "Don't forget to be awesome";
     char quote2[] = "a man a plan a canal panama";
 
@@ -37,4 +67,3 @@ int main(void)
     return 0;
 }
 #endif
-    
