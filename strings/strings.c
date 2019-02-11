@@ -9,7 +9,12 @@
 */
 int string_length(char s[])
 {
-
+    int length = 0;
+    while(*s != '\0') {
+        length++;
+        s++;
+    }
+    return length;
 }
 
 /*
@@ -20,7 +25,15 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int length = strlen(s) -1;
+    int counter = 0;
+    for(int i  = length; i >= 0; i--) {
+        rv[counter] = s[i];
+        printf("%c ", rv[counter]);
+        counter++;
+    }
+    rv[counter] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
@@ -32,7 +45,7 @@ int main(void)
     char rv[512];
 
     printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
-    printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
+    //printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
     return 0;
 }
