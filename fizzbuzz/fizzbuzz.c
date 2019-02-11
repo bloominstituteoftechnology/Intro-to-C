@@ -10,7 +10,23 @@
 */
 int fizzbuzz(int n)
 {
-
+    int countNotPrinted = 0;
+    int c;
+    for (c = 0; c < n; c++) {
+        int isFizz = c % 3 == 0;
+        int isBuzz = c % 5 == 0;
+        
+        if (isFizz) {
+            printf("Fizz");
+        } else if (isBuzz) {
+            printf("Buzz");
+        } else if (isFizz && isBuzz) {
+            printf("FizzBuzz");
+        } else {
+            countNotPrinted++;
+        }
+    }
+    return countNotPrinted;
 }
 
 #ifndef TESTING
