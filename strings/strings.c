@@ -34,6 +34,7 @@ char *reverse_string(char rv[], char s[])
     for (i = 0; i < length; i++) {
         rv[i] = s[length - 1 - i];
     }
+    
     rv[i] = '\0';
 
     return rv;

@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -19,9 +21,19 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
+
 char *find_char(char *str, int c)
 {
 
+    while (*str != c && *str != '\0') {
+        str++;
+    }
+
+    if (*str == '\0') {
+        return NULL;
+    }
+
+    return str;
 }
 
 /*
@@ -34,7 +46,15 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    char *final = x;
 
+    while (*y != '\0') {
+        *x = *y;
+        x++;
+        y++;        
+    }
+
+    *x = '\0';
 }
 
 /* 
@@ -85,7 +105,7 @@ int main(void)
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world));
 
-    char *found_char = find_char(hello, 'e');
+    char *found_char = find_char(hello, 'l');
     char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
