@@ -8,7 +8,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
 }
 
 /*
@@ -19,10 +21,10 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
-{
+// char *find_char(char *str, int c)
+// {
 
-}
+// }
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -34,40 +36,46 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    int i = 0;
+    while (y[i] != '\0')
+    {
+        x[i] = y[i];
+        i++;
+    }
+    x[i] = '\0';
 }
 
-/* 
-    Compares the character strings m and n and returns negative,
-    0, or positive if n is lexicographically less than, equal to,
-    or greater than n. To calculate lexicographic difference, find
-    the difference between the first characters in m and n that differ.
+// /* 
+//     Compares the character strings m and n and returns negative,
+//     0, or positive if n is lexicographically less than, equal to,
+//     or greater than n. To calculate lexicographic difference, find
+//     the difference between the first characters in m and n that differ.
     
-    For example, given matching strings, this function should 
-    return 0. Given strings m = "hello world" and n = "goodbye",
-    this function should return a positive value. Given strings
-    m = "aardvark" and n = "zebra", should return a negative
-    value.
+//     For example, given matching strings, this function should 
+//     return 0. Given strings m = "hello world" and n = "goodbye",
+//     this function should return a positive value. Given strings
+//     m = "aardvark" and n = "zebra", should return a negative
+//     value.
     
-    Do not just use the `strcmp` function from the standard library.
-*/
-int string_compare(char *m, char *n)
-{
+//     Do not just use the `strcmp` function from the standard library.
+// */
+// int string_compare(char *m, char *n)
+// {
 
-}
+// }
 
-/*
-    Searches the input string `haystack` for the first instance of
-    the string `needle`. This function returns a pointer that points
-    to the first instance of the string `needle` in the input
-    string `haystack`. 
+// /*
+//     Searches the input string `haystack` for the first instance of
+//     the string `needle`. This function returns a pointer that points
+//     to the first instance of the string `needle` in the input
+//     string `haystack`. 
 
-    Do not use the `strstr` function from the standard library.
-*/
-char *find_string(char *haystack, char *needle)
-{
+//     Do not use the `strstr` function from the standard library.
+// */
+// char *find_string(char *haystack, char *needle)
+// {
 
-}
+// }
 
 #ifndef TESTING
 int main(void)
@@ -83,13 +91,13 @@ int main(void)
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+    // printf("Comparison is %d\n", string_compare(hello, world));
 
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    // char *found_char = find_char(hello, 'e');
+    // char *found_string = find_string(world, "or");
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    // printf("Found char: %s\n", found_char);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
