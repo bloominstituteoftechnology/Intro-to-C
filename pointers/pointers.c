@@ -91,7 +91,24 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    int counter = 0;
+    int x, y, z;
+    for(x=0; needle[x] != 0; x++){
+        counter++;
+    }
+    char compare[counter];
+    for(y=0; haystack[y] != 0; y++){
+        if(haystack[y] == needle[0]){
+        for(z = 0; needle[z]; z++){
+            compare[z] = needle[z];
+        }
+        }
+    }
+    if(strcmp(compare, needle) == 0){
+        return needle;
+    }else {
+        return 0;  
+    }
 }
 
 #ifndef TESTING
