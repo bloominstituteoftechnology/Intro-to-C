@@ -9,8 +9,14 @@
 */
 int string_length(char s[])
 {
-
-}
+    int i;
+    int c = 0;
+    for (i = 0; s[i] != 0; i++)
+    {
+        c++;
+    }
+    return (c);
+};
 
 /*
     Write a function that reverses the order of string s and outputs 
@@ -20,7 +26,19 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int i;
+    int c = 0;
+    for (i = 0; s[i] != 0; i++)
+    {
+        c++;
+    }
+    int d = 0;
+    for (i = c; i >= 0; i--)
+    {
+        rv[d] = s[i];
+        d++;
+    }
+    return rv;
 }
 
 #ifndef TESTING
@@ -37,4 +55,3 @@ int main(void)
     return 0;
 }
 #endif
-    
