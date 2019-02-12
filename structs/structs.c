@@ -8,7 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
-
+    char *name;
+    int age;
+    int height;
+    int weight;
 } Person;
 
 /*
@@ -21,17 +24,23 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
-
+    printf("name: %s\n", name);
+    printf("age: %d\n", age);
+    printf("height: %d\n", height);
+    printf("weight: %d\n\n", weight);
+    Person person = {.name = name, .age = age, .height = height, .weight = weight};
+    Person *p = &person;
+    return p;
 }
 
 /*
     Given a pointer to a Person struct, frees up the memory that holds the
     Person's name as well as the memory that holds the Person instance.
 */
-void destroyPerson(Person *who)
-{
-
-}
+// void destroyPerson(Person *who)
+// {
+    
+// }
 
 #ifndef TESTING
 int main(void)
@@ -43,7 +52,7 @@ int main(void)
     printf("Height: %d\n", tony->height);
     printf("Weight: %d\n", tony->weight);
 
-    destroyPerson(tony);
+    // destroyPerson(tony);
 
     return 0;
 }
