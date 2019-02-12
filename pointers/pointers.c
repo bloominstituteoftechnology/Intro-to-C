@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int i = *a;
+    *a = *b;
+    *b = i;
 }
 
 /*
@@ -16,12 +18,10 @@ void swap(int* a, int* b)
     character `c` (an unsigned char). This function returns a pointer
     that points to the first instance of the character `c` in the
     input string `str`.
-
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c)
 {
-
 }
 
 /*
@@ -34,7 +34,6 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
 }
 
 /* 
@@ -53,7 +52,6 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
 }
 
 /*
@@ -61,12 +59,10 @@ int string_compare(char *m, char *n)
     the string `needle`. This function returns a pointer that points
     to the first instance of the string `needle` in the input
     string `haystack`. 
-
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)
 {
-
 }
 
 #ifndef TESTING
