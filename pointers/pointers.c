@@ -125,13 +125,7 @@ char *find_string(char *haystack, char *needle)
     {
         if (haystack[i] == needle[0] && counter >= needle_len)
         {
-            for (int x = 0; x < needle_len; x++)
-            {
-                if (haystack[i] == needle[x])
-                {
-                    return &haystack[i];
-                }
-            }
+            return &haystack[i];
         }
         counter--;
     }
