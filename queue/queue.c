@@ -14,8 +14,14 @@ typedef struct Queue {
     struct. Also allocates memory for the queue's storage structure. 
 */
 Queue *createQueue(unsigned capacity)
+// unsigned values cannot be negative while signed can
 {
-
+    Queue *que = malloc(sizeof(Queue));
+    que->length = 0;
+    que->capacity = capacity;
+    //setting up space on heap for storage
+    que->storage = malloc(sizeof(int)* capacity);
+    return que;
 }
 
 /*
