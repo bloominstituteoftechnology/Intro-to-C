@@ -27,8 +27,8 @@ char *find_char(char *str, int c)
     while(*str){
         if(*str == c){
             return str;
-        str++;
         }
+        str++;
     }
     return("string needs to be given");
 }
@@ -41,9 +41,14 @@ char *find_char(char *str, int c)
     
     Do not just use the `strcpy` function from the standard library.
 */
-void string_copy(char *x, char *y)
-{
-
+void string_copy(char *x, char *y){
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -60,9 +65,22 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
-int string_compare(char *m, char *n)
-{
+int string_compare(char *m, char *n){
 
+    while (*m == *n){
+        if (*m == '\0' && *n == '\0')
+        {
+            return 0;
+        }
+        m++;
+        n++;
+    }
+
+    if (*m < *n){
+        return -1;
+    }
+
+    return 1;
 }
 
 /*
@@ -75,7 +93,7 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    strstr(haystack, needle);
 }
 
 #ifndef TESTING
