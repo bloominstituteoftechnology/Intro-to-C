@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Your fizzbuzz implementation should initialize a counter, then
@@ -10,13 +11,33 @@
 */
 int fizzbuzz(int n)
 {
-    int i;
-    for (i = 1; i < n; i++)
+    int counter = 0;
+
+    for (int i = 1; i < n; i++)
     {
-        if (i % 3)
+        char str[8] = {'\0'};
+
+        if (i % 3 == 0)
         {
+            strcat(str, "Fizz");
+        }
+        if (i % 5 == 0)
+        {
+            strcat(str, "Buzz");
+        }
+
+        if (str[0] != '\0')
+        {
+            printf("%s\n", str);
+        }
+        else
+        {
+            printf("%i\n", i);
+            counter += 1;
         }
     }
+
+    return counter;
 }
 
 #ifndef TESTING
