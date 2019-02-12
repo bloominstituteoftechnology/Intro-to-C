@@ -24,8 +24,6 @@ void swap(int *a, int *b)
 */
 char *find_char(char *str, int c)
 {
-    // iterate along both strings as long as
-    // each corrresponding char matches
 }
 
 /*
@@ -65,6 +63,17 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    // iterate along both strings as long as
+    // each corrresponding char matches
+    for (; *m == *n; m++, n++)
+    {
+        if (*m == '\0')
+        {
+            return 0;
+        }
+    }
+    // there was a mismatch
+    return *m - *n;
 }
 
 /*
@@ -93,7 +102,7 @@ int main(void)
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    // printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare(hello, world));
 
     // char *found_char = find_char(hello, 'e');
     // char *found_string = find_string(world, "or");
