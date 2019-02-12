@@ -68,14 +68,21 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    for (unsigned long i = 0; i <= strlen(m); i++)
-    {
-        if (m[i] != n[i])
-        {
-            return m[i] - n[i];
+    for(; *m == *n; m++, n++) {
+        if (*m == '\0') {
+            return 0;
         }
     }
-    return 0;
+    
+    return *m - *n;
+    //    for (unsigned long i = 0; i <= strlen(m); i++)
+//    {
+//        if (m[i] != n[i])
+//        {
+//            return m[i] - n[i];
+//        }
+//    }
+//    return 0;
 }
 
 /*
