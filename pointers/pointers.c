@@ -8,11 +8,13 @@
 */
 void swap(int* a, int* b)
 {
-    int temp_b = *b;
+    int temp = *a;
+    *a = *b;
+    *b = temp;   
+    /*int temp_b = *b;
     int temp_a = *a;
-  
     *b = temp_a;
-    *a = temp_b;
+    *a = temp_b; */
 }
 
 /*
@@ -25,7 +27,14 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    char *found = NULL;
+  
+    for(int i = 0; str[i] != '\0'; i++) {
+        if(str[i] == c) {
+             found = &str[i];
+        }
+    }  
+    return found; 
 }
 
 /*
@@ -37,8 +46,12 @@ char *find_char(char *str, int c)
     Do not just use the `strcpy` function from the standard library.
 */
 void string_copy(char *x, char *y)
-{
-
+{       
+        int i = 0;
+        for(; y[i] != '\0'; i++) {
+            x[i] = y[i];
+        }
+        x[i] = '\0'; 
 }
 
 /* 
@@ -57,7 +70,23 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    int i = 0;
+    int result;
+    while(m[i] != '\0') {
+        if(m[i] == n[i]) {
+            result = 0;
+            continue;
+        }
+        if(m[i] > n[i]) {
+            result = 1;
+            break;
+        }
+        if(m[i] < n[i]) {
+            result = -1;
+            break;
+        }
+    }
+    return result;
 }
 
 /*
@@ -70,8 +99,23 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int i = 0, j = 0;
+    char *ptr;
 
+    while(haystack[i] != '\0') {
+        if(haystack[i] == needle[j]) {
+            if(needle[j] == '\0') return ptr;
+            else {
+                i++;
+                j++;
+                continue;
+            }
+        }
+        else i++;
+    }
+    return ptr;
 }
+
 
 #ifndef TESTING
 int main(void)
