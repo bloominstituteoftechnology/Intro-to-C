@@ -86,18 +86,32 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    //printf("%s", m);
+    // printf("%s\n", m);
+    // printf("%s\n", n);
     int i = 0;
     int j = 0;
-    while (i < string_length(m))
+    int length = 0;
+    int length_m = string_length(m);
+    int length_n = string_length(n);
+    if (length_m >= length_n)
+    {
+        length = length_m;
+    }
+    else
+        length = length_n;
+    while (i < length)
     {
         char tmp = m[i];
+        // printf("%c", tmp);
+        // printf("%c", n[j]);
+        // printf("\n");
         if (tmp != n[j])
         {
             return m[i] - n[j];
         }
 
         i++;
+        j++;
     }
 
     return 0;
@@ -124,13 +138,15 @@ int main(void)
 
     char *hello = "Hello";
     char *world = "World";
+    // char *hello = "Firetruck";
+    // char *world = "Firetrucks";
     char buffer[1024];
 
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world));
-
+    //printf("Comparison is %d\n", string_compare('hello world', 'hiya'));
     // char *found_char = find_char(hello, 'e');
     // char *found_string = find_string(world, "or");
 
