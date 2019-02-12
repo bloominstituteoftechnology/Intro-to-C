@@ -10,14 +10,17 @@
 int string_length(char s[])
 {
     int length = 0;
-    int array_size = *(&s + 1) - s;
-    printf("%d", array_size);
-    // int array_size = sizeof(s) / sizeof(s[0]);
-    // for (int i = 0; i < array_size; i = i + 1)
-    // {
-    //     length = length + 1;
-    // }
-    return array_size;
+    //int array_size = sizeof(s) / sizeof(s[0]);
+    int i = 0;
+    // printf("Char size: %d\n", sizeof(s[0]));
+    // printf("String (array) size: %d\n", sizeof(s));
+    while (*(s + i) != '\0')
+    {
+        length = length + 1;
+        i++;
+    }
+
+    return length;
 }
 
 /*
@@ -28,21 +31,35 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    printf("%s", s);
+    int length = string_length(s);
+    int j = 0;
 
-    return s;
+    // do i need another string to save?
+    //char *reversed_str = malloc(sizeof(char) * length);
+    printf("%s", rv);
+    for (int i = length; i >= 0; i--)
+    {
+        if (i == 0)
+        {
+            rv[j] = "\0";
+        }
+        rv[j] = *(s + i);
+        j++;
+    }
+
+    return rv;
 }
 
 #ifndef TESTING
 int main(void)
 {
     // char quote1[] = "Don't forget to be awesome";
-    char quote1[] = "hi";
+    char quote1[] = "Don't forget to be awesome";
     char quote2[] = "a man a plan a canal panama";
 
     char rv[512];
 
-    printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
+    //printf("The string 'Don't forget to be awesome' has %d characters.\n", string_length(quote1));
     printf("The string 'a man a plan a canal panama' reversed is: '%s'\n", reverse_string(rv, quote2));
 
     return 0;
