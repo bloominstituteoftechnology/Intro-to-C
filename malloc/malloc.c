@@ -39,18 +39,18 @@ void *mem_copy(void *dest, const void *src, int n)
 {
     // cast dest as char pointer
     char *new_dest = (char *)dest;
+    // cast src as char pointer
+    char *new_src = (char *)src;
     // allocates a new chunk of memory
     new_dest = malloc(n);
-    // cast src as char pointer
-    char *new_src = src;
+    // get length to loop by dividing n (which is bytes) by the size of int
     int length = n / sizeof(int);
-    printf("this is the size of length: %d \n", n);
     // step through src and copy its contents to dest
     for (int i = 0; i < n; i++)
     {
         printf("this is new_src ptr: %d \n", new_src[i]);
         new_dest[i] = new_src[i];
-        }
+    }
     printf("this is a dest ptr after malloc: %d \n", *new_dest);
 }
 
@@ -66,22 +66,7 @@ void *mem_copy(void *dest, const void *src, int n)
 
     Do not use the `realloc` function from the standard libary.
 
-    void *resize_memory(void *ptr, int old_size, int new_size)
-{
-    if (old_size >= new_size)
-    {
-        return ptr;
-    }
-    void *temp = malloc(new_size);
-    if (!temp)
-    {
-        // error allocating memory
-        return NULL;
-    }
-    mem_copy(temp, ptr, old_size);
-    free(ptr);
-    return temp;
-}
+    
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
