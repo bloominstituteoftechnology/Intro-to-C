@@ -110,7 +110,7 @@ char *find_string(char *haystack, char *needle)
             char *ch = h;
             char *cn = n;
             // iterate over needle and haystack
-            while (*ch != '\0' && cn != '\0')
+            while (*ch != '\0' && *cn != '\0')
             {
                 if (*ch == *cn)
                 {
@@ -153,10 +153,10 @@ int main(void)
     printf("Comparison is %d\n", string_compare(hello, world));
 
     char *found_char = find_char(hello, 'e');
-    // char *found_string = find_string(world, "or");
+    char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }
