@@ -24,13 +24,14 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
-    printf("name: %s\n", name);
-    printf("age: %d\n", age);
-    printf("height: %d\n", height);
-    printf("weight: %d\n\n", weight);
-    Person person = {.name = name, .age = age, .height = height, .weight = weight};
-    Person *p = &person;
-    return p;
+    Person *person = malloc(sizeof(Person));
+    person->name = malloc(strlen(name));
+    strcpy(person->name, name);
+    person->height = height;
+    person->weight = weight;
+    person->age = age;
+
+    return person;
 }
 
 /*
