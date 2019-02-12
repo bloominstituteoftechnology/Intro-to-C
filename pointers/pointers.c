@@ -32,6 +32,7 @@ char *find_char(char *str, int c)
         }
         i++;
     }
+    return NULL;
 }
 
 /*
@@ -81,11 +82,11 @@ int string_compare(char *m, char *n)
     }
     while (longest[i])
     {
-        printf("%c, %c\n", m[i], n[i]);
+        // printf("%c, %c\n", m[i], n[i]);
         if (m[i] != n[i])
         {
-            int diff = m[i] - n[i];
-            printf("%d\n", diff);
+            // int diff = m[i] - n[i];
+            // printf("%d\n", diff);
             return m[i] - n[i];
         }
         i++;
@@ -104,6 +105,28 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    for (int i = 0; i < strlen(haystack); i++)
+    {
+        printf("FIRST: %c, %c\n", haystack[i], needle[0]);
+        if (haystack[i] == needle[0])
+        {
+            for (int j = 0; j < strlen(needle); j++)
+            {
+                printf("COMPARE: %c, %c\n", needle[j], haystack[i + j]);
+                if (needle[j] != haystack[i + j])
+                {
+                    break;
+                }
+
+                if (j == strlen(needle) - 1 && needle[j] == haystack[i + j])
+                {
+                    printf("RETURN: %c\n", haystack[i]);
+                    return &haystack[i];
+                }
+            }
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
