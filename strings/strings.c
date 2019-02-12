@@ -31,7 +31,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-    int length = string_length(s);
+    int length = string_length(s) - 1;
     int j = 0;
 
     // do i need another string to save?
