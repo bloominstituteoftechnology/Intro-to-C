@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <structs.h>
 #include <stdlib.h>
 #include "lib.h"
 
@@ -6,11 +7,16 @@
     Define the Person struct by specifying the fields that make up the
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
-*/
-typedef struct Person {
+
+typedef struct Person {//h file already defined struct
+    //define the types of data/values that make up a person struct
+    char *name;
+    int age;
+    int height;
+    int weight;
 
 } Person;
-
+*/
 /*
     Creates an instance of the Person struct that receives all the relevant
     pieces of data associated with a Person instance.
@@ -20,7 +26,17 @@ typedef struct Person {
     function, which handles the allocation of memory for the new string.
 */
 Person *createPerson(char *name, int age, int height, int weight)
-{
+{   //allocate memory for the new instance of person 
+    Person *newPerson = malloc(sizeof(struct Person));
+    
+    //assign values passed in to cooresponding datatypes in person struct
+    
+    newPerson->name=string_dup(name); // allocate memory for string value 
+    newPerson->age=age;
+    newPerson->height=height;
+    newPerson->weight=weight;
+
+    return newPerson;
 
 }
 
@@ -30,7 +46,13 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
+    if (who->name != NULL) {
+        free(who->name); // free up the memory from who name
+    }
 
+    if (who != NULL) {
+        free(who); // free up the memory from who
+    }
 }
 
 #ifndef TESTING
