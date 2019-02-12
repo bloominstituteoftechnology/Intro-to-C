@@ -17,7 +17,7 @@ char *string_dup(char *src)
     int length = string_length(src);
     // Allocates a block of memory the size of src
     int *copy = malloc(length*sizeof(char));
-    // Uses built in function to copy src over to copy
+    // Uses built in function to copy src over to copy / never said we had to do it the hard way so yeah
     strcpy(copy, src);
     // Returns the copied char
     return copy;
@@ -31,10 +31,14 @@ char *string_dup(char *src)
     
     Do not use the `memcpy` function from the standard library.
 */
-void *mem_copy(void *dest, const void *src, int n)
-{
-
-}
+void *mem_copy(void *dest, const void *src, int n){return 0;}
+// {
+//     for (int i = 0; i <= n; i++)
+//     {
+//         dest[i] = src[i];
+//     }
+//     return dest;
+// }   Having problems with this will come back to it
 
 /*
     Given a pointer that `malloc`'d memory, this function will 
@@ -50,7 +54,12 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+    if(old_size>=new_size){
+        int *size = malloc(new_size);
+        
+    }else{
+        int *size = malloc(new_size);
+    }
 }
 
 #ifndef TESTING
