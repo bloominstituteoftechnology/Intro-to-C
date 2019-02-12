@@ -29,8 +29,8 @@ void enqueue(Queue *q, int item)
 }
 
 /*
-    Removes the item at the front of the queue. If the queue is empty,
-    this function should return -1.
+    Removes the item at the front of the queue and returns it. 
+    If the queue is empty, this function should return -1.
 */
 int dequeue(Queue *q)
 {
