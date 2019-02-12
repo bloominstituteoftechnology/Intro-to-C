@@ -71,6 +71,10 @@ void destroyQueue(Queue *q)
     {
         free(q);
     }
+    if (q->storage != NULL)
+    {
+        free(q->storage);
+    }
 }
 
 #ifndef TESTING
