@@ -14,7 +14,7 @@
 */
 char *string_dup(char *src)
 {
-    char *dup = (char *) malloc(sizeof(src));
+    char *dup = (char *) malloc(strlen(src));
     strcpy(dup, src);
     return dup;
 }
@@ -62,8 +62,8 @@ void *resize_memory(void *ptr, int old_size, int new_size)
         // error allocating memory
         return NULL;
     }
-    temp = strdup(ptr);
-    // free(ptr);
+    mem_copy(temp, ptr, old_size);
+    free(ptr);
     return temp;
 }
 
@@ -96,7 +96,6 @@ int main(void)
     
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);
-    printf("Hellooooo");
     char *p = new_url + url_length;
 
     while (*path != '\0') {
