@@ -13,7 +13,14 @@
 */
 char *string_dup(char *src)
 {
-
+    // Gets length of src char
+    int length = string_length(src);
+    // Allocates a block of memory the size of src
+    int *copy = malloc(length*sizeof(char));
+    // Uses built in function to copy src over to copy
+    strcpy(copy, src);
+    // Returns the copied char
+    return copy;
 }
 
 /*
