@@ -22,6 +22,18 @@ void swap(int *a, int *b)
 */
 char *find_char(char *str, int c)
 {
+    int i = 0;
+    char *p;
+    while (1)
+    {
+        if (*(str + i) == c)
+        {
+            p = &str[i];
+            break;
+        }
+        i++;
+    }
+    return p;
 }
 
 /*
@@ -34,6 +46,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -52,6 +71,7 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    return 1;
 }
 
 /*
@@ -63,6 +83,8 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+
+    return 'i';
 }
 
 #ifndef TESTING
@@ -75,17 +97,16 @@ int main(void)
     char *hello = "Hello";
     char *world = "World";
     char buffer[1024];
-
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+    // printf("Comparison is %d\n", string_compare(hello, world));
 
     char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    // char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
