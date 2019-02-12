@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <>
+#include <string.h>
 
 /*
     Given a character array s, return the number of characters 
@@ -11,12 +11,13 @@
 int string_length(char s[])
 {
     int counter = 0;
-    for (int i = 0; s[i] != "\0"; i++) 
+    for (int i = 0; s[i] != '\0'; i++) 
     {
         counter++;
-    } 
+    };
+
     return counter;
-}
+};
 
 /*
     Write a function that reverses the order of string s and outputs 
@@ -28,13 +29,13 @@ char *reverse_string(char rv[], char s[])
 {
     int length = string_length(s);
     int last_index = length - 1;
-
-    for (int i = 0; i < length, i++) 
+    int i;
+    for (i = 0; i < length; i++) 
     {
-        rv[i] = s[last_index];
-        last_index--;
-    }
-    rv[i] = "\0";
+        rv[i] = s[last_index - i];
+    };
+
+    rv[i] = '\0';
     return rv;
 };
 
