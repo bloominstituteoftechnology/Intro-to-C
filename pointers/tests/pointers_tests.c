@@ -68,10 +68,10 @@ char *test_find_string()
 {
     char *str = "LambdaSchool";
     char *found = find_string(str, "School");
-    mu_assert(string_compare(found, "School") == 0, "Your find_string function did not find the expected substring.");
+    mu_assert(strcmp(found, "School") == 0, "Your find_string function did not find the expected substring.");
 
     found = find_string(str, "Lambda");
-    mu_assert(string_compare(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
+    mu_assert(strcmp(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
 
     found = find_string(str, "lambda");
     mu_assert(!found, "Your find_string function found a substring when it should have returned NULL.");

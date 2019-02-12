@@ -26,12 +26,12 @@ void swap(int *a, int *b)
 char *find_char(char *str, int c)
 {
     char *temp = NULL;
-    printf("this should be the string: %s \n", str);
+    // printf("this should be the string: %s \n", str);
     for (int i = 0; i < strlen(str); i++)
     {
-        printf("this is the letter we are at: %c \n", str[i]);
-        printf("this is the letter we are at's value: %d \n", str[i]);
-        printf("this is the value we are looking for: %d \n", c);
+        // printf("this is the letter we are at: %c \n", str[i]);
+        // printf("this is the letter we are at's value: %d \n", str[i]);
+        // printf("this is the value we are looking for: %d \n", c);
         if (str[i] == c)
         {
             temp = &str[i];
@@ -132,7 +132,30 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    printf("we are now finding a string");
+    int j = 0;
+    int count = 0;
+    char *ptr = NULL;
+    for (int i = 0; i < strlen(haystack); i++)
+    {
+        if (haystack[i] == needle[j])
+        {
+            if (j == 0)
+            {
+                ptr = &haystack[i];
+            }
+
+            j++;
+            count++;
+            printf("we are returning this: %d \n", strlen(needle));
+            printf("we are returning this: %d \n", count);
+            if (count == strlen(needle))
+            {
+                printf("we are returning this: %s \n", ptr);
+                return ptr;
+            }
+        }
+    }
+    return NULL;
 }
 
 #ifndef TESTING
