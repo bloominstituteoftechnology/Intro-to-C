@@ -44,8 +44,31 @@ char *find_char(char *str, int c)
     
     Do not just use the `strcpy` function from the standard library.
 */
+int string_length(char s[])
+{
+    int length = 0;
+    //int array_size = sizeof(s) / sizeof(s[0]);
+    int i = 0;
+    // printf("Char size: %d\n", sizeof(s[0]));
+    // printf("String (array) size: %d\n", sizeof(s));
+    while (*(s + i) != '\0')
+    {
+        length = length + 1;
+        i++;
+    }
+
+    return length;
+}
+
 void string_copy(char *x, char *y)
 {
+    printf("string compare:\n\n");
+
+    int i = 0;
+    for (int i = 0; i < string_length(y); i++)
+    {
+        x[i] = y[i];
+    }
 }
 
 /* 
@@ -92,13 +115,13 @@ int main(void)
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+    // printf("Comparison is %d\n", string_compare(hello, world));
 
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    // char *found_char = find_char(hello, 'e');
+    // char *found_string = find_string(world, "or");
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    // printf("Found char: %s\n", found_char);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
