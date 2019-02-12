@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "lib.h"
 
-typedef struct Queue {
+typedef struct Queue
+{
     unsigned int length;
     unsigned int capacity;
     int *storage;
@@ -15,7 +16,12 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
+    struct Queue *new_queue = malloc(sizeof(struct Queue));
+    new_queue->length = 0;
+    new_queue->capacity = capacity;
+    new_queue->storage = malloc(sizeof(int) * capacity);
 
+    return new_queue;
 }
 
 /*
@@ -25,7 +31,28 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
-
+    printf("this is item: %d \n", item);
+    printf("this is capacity: %d \n", q->capacity);
+    // attempt to add item to storage
+    if (q->length != 0)
+    {
+        for (int i = q->length; i > 0; i--)
+        {
+            q->storage[i] = q->storage[i - 1];
+        }
+        q->storage[0] = item;
+        q->length++;
+    }
+    else
+    {
+        q->storage[0] = item;
+        q->length++;
+    }
+    for (int i = 0; i < q->length; i++)
+    {
+        printf("[%d] ", q->storage[i]);
+    }
+    printf("\n this is q->length: %d \n", q->length);
 }
 
 /*
@@ -34,7 +61,28 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-
+    // check if the length of the queue is 0 before dequeue
+    if (q->length != 0)
+    {
+        // take the first item and set it to NULL
+        q->storage[0] = NULL;
+        for (int i = 0; i < q->length; i++)
+        {
+            // Loop through and bring every item down 1 index
+            q->storage[i] = q->storage[i + 1];
+        }
+        // subtract the length by 1
+        q->length--;
+    }
+    else
+    {
+        return NULL;
+    }
+    for (int i = 0; i < q->length; i++)
+    {
+        printf("[%d] ", q->storage[i]);
+    }
+    printf("\n this is q->length: %d \n", q->length);
 }
 
 /*
@@ -43,9 +91,15 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
-
+    if (q->storage != NULL)
+    {
+        free(q->storage);
+    }
+    if (q != NULL)
+    {
+        free(q);
+    }
 }
-
 
 #ifndef TESTING
 int main(void)
