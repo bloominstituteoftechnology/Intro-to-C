@@ -13,7 +13,24 @@
 */
 char *string_dup(char *src)
 {
+    int length = strlen(src);
+    char *copy = malloc(length * sizeof(char));
+    
+    while(*src != '\0') {
+        *copy = *src;
+        printf("%s\n", copy);
+        copy++;
+        src++;
+    }
+    
+    *copy = '\0';
+    
+    return copy;
+}
 
+void testing() {
+    char *s = "Some string to duplicate.";
+    string_dup(s);
 }
 
 /*
@@ -49,6 +66,8 @@ void *resize_memory(void *ptr, int old_size, int new_size)
 #ifndef TESTING
 int main(void)
 {
+    testing();
+    /*
     char *s = "Some string to duplicate.";
     char *dup = string_dup(s);
 
@@ -84,7 +103,7 @@ int main(void)
     }
 
     printf("Full path string: %s\n", new_url);
-
+    */
     return 0;
 }
 #endif
