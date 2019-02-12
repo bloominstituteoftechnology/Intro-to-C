@@ -31,14 +31,17 @@ char *string_dup(char *src)
     
     Do not use the `memcpy` function from the standard library.
 */
-void *mem_copy(void *dest, const void *src, int n){return 0;}
-// {
-//     for (int i = 0; i <= n; i++)
-//     {
-//         dest[i] = src[i];
-//     }
-//     return dest;
-// }   Having problems with this will come back to it
+void *mem_copy(void *dest, const void *src, int n)
+{
+    char *d = dest;
+    char *s = src;
+
+    for (int i = 0; i <= n; i++){
+        // Why did I have to make the variables above to make it work ?
+        d[i] = s[i];
+    }
+    return dest;
+}   //Having problems with this will come back to it
 
 /*
     Given a pointer that `malloc`'d memory, this function will 
@@ -55,10 +58,12 @@ void *mem_copy(void *dest, const void *src, int n){return 0;}
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
     if(old_size>=new_size){
-        int *size = malloc(new_size);
-        
+        int *copied_space = malloc(new_size);
+        mem_copy(copied_space, ptr, old_size);
+        return copied_space;
     }else{
-        int *size = malloc(new_size);
+        return ptr;
+        // Not possible to copy all data to lower space?
     }
 }
 
