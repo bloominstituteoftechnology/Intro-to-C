@@ -55,6 +55,7 @@ void *resize_memory(void *ptr, int old_size, int new_size)
 {
     void *new_ptr = malloc(new_size);
     mem_copy(new_ptr, ptr, new_size);
+    free(ptr);
     return new_ptr;
 }
 
