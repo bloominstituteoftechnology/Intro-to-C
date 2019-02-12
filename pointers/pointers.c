@@ -62,10 +62,9 @@ int string_length(char s[])
 
 void string_copy(char *x, char *y)
 {
-    printf("string compare:\n\n");
 
     int i = 0;
-    for (int i = 0; i < string_length(y); i++)
+    for (int i = 0; i < string_length(y) + 1; i++)
     {
         x[i] = y[i];
     }
@@ -87,8 +86,21 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    printf("%s\n", m);
-    printf("%s\n", n);
+    //printf("%s", m);
+    int i = 0;
+    int j = 0;
+    while (i < string_length(m))
+    {
+        char tmp = m[i];
+        if (tmp != n[j])
+        {
+            return m[i] - n[j];
+        }
+
+        i++;
+    }
+
+    return 0;
 }
 
 /*

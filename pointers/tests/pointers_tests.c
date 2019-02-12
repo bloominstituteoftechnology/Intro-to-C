@@ -4,11 +4,11 @@
 
 char *test_swap()
 {
-    int ints_short[] = { 4, 9 };
+    int ints_short[] = {4, 9};
     swap(&ints_short[0], &ints_short[1]);
     mu_assert((ints_short[0] == 9 && ints_short[1] == 4), "Your swap function did not swap values correctly.");
 
-    int ints_long[] = { 1, 9, 2, 8, 3, 7, 6, 4, 5 };
+    int ints_long[] = {1, 9, 2, 8, 3, 7, 6, 4, 5};
     swap(&ints_long[0], &ints_long[8]);
     swap(&ints_long[3], &ints_long[4]);
     mu_assert((ints_long[0] == 5 && ints_long[8] == 1), "Your swap function did not swap values correctly.");
@@ -23,7 +23,6 @@ char *test_string_copy()
 {
     char *string = "hello, world";
     char empty[20];
-
     string_copy(empty, string);
     mu_assert(check_strings(empty, string) == 0, "Your string_copy did not correctly copy the given string.");
 
@@ -68,7 +67,7 @@ char *test_find_string()
     char *str = "LambdaSchool";
     char *found = find_string(str, "School");
     mu_assert(string_compare(found, "School") == 0, "Your find_string function did not find the expected substring.");
-    
+
     found = find_string(str, "Lambda");
     mu_assert(string_compare(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
 
