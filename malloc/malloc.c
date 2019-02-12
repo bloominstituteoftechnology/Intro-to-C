@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
 #include "lib.h"
 
 /*
@@ -13,7 +14,17 @@
 */
 char *string_dup(char *src)
 {
+  int length = string_length(src); // finds length of string
+  char *copy = malloc(length); // creates a pointer to a block of memory big enough for length of string 
 
+  for (int i = 0; i < length; i++) 
+  {
+    *(copy+i) = *(src+i); // fills empty block of memory with the value of each index in src
+  }
+
+  *(copy + length) = '\0'; // points to a null to terminate it
+
+  return copy; // returns the pointer to the duplicate string
 }
 
 /*
@@ -25,12 +36,23 @@ char *string_dup(char *src)
     Do not use the `memcpy` function from the standard library.
 */
 void *mem_copy(void *dest, const void *src, int n)
-{
+{   
+    //cast the input pointers to char pointers (would have never gotten that without hint)
+    char *pSrc = (char*) src;
+    char *pDest = (char*) dest;
 
+    //same copy logic as found in string_dup
+    for (int i = 0; i < n; i++) 
+    {
+        *(pDest+i) = *(pSrc+i); 
+    }
+
+    *(pDest + n) = '\0'; 
+
+  return dest; 
 }
-
 /*
-    Given a pointer that `malloc`'d memory, this function will 
+    Given a pointer of `malloc`'d memory, this function will 
     attempt to resize the allocated memory to the new specified
     size. Any data that was previously in the old `malloc`'d 
     memory should be intact in the new resized block of memory. 
@@ -41,9 +63,18 @@ void *mem_copy(void *dest, const void *src, int n)
 
     Do not use the `realloc` function from the standard libary.
 */
-void *resize_memory(void *ptr, int old_size, int new_size)
-{
 
+// *ptr = the return value of string_dup function above 
+// old_size = the length of ptr 
+// new_size = the length of old_size + path_length 
+
+void *resize_memory(void *ptr, int old_size, int new_size)
+{   // edge case : how should resizing be handled in the case when old_size < new_size
+   // edge case : What about when old_size > new_size?
+  void *newData = malloc(new_size);
+  mem_copy(newData, ptr, old_size); 
+  free(ptr); // free: deallocates the memory previously allocated by a call to calloc, malloc, or realloc
+  return newData;
 }
 
 #ifndef TESTING
