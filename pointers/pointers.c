@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +24,13 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    while(*str){
+        if(*str == c){
+            return str;
+        str++;
+        }
+    }
+    return("string needs to be given");
 }
 
 /*

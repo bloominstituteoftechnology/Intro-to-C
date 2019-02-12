@@ -30,6 +30,7 @@ char *reverse_string(char rv[], char s[])
     int to_switch = 0;
     int length = string_length(s);
     for(int i = length-1; i > 0; i--){
+        // i = length-1 so it will never hit the /0 character
         rv[to_switch] = s[i];
         to_switch++;
     }
