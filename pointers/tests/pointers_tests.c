@@ -1,4 +1,5 @@
 #include <pointers.h>
+#include <string.h>
 #include "../../utils/minunit.h"
 #include "../../utils/utils.h"
 
@@ -52,10 +53,10 @@ char *test_find_char()
 {
     char *str = "LambdaSchool";
     char *found = find_char(str, 'b');
-    mu_assert(string_compare(found, "bdaSchool") == 0, "Your find_char function did not work as expected.");
+    mu_assert(strcmp(found, "bdaSchool") == 0, "Your find_char function did not work as expected.");
 
     found = find_char(str, 'S');
-    mu_assert(string_compare(found, "School") == 0, "Your find_char function did not work as expected.");
+    mu_assert(strcmp(found, "School") == 0, "Your find_char function did not work as expected.");
 
     found = find_char(str, 's');
     mu_assert(!found, "Your find_char function return a char when it should have returned NULL.");
