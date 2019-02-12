@@ -52,7 +52,7 @@ char *reverse_string(char rv[], char s[])
     5-1-1 = 3 'e' goes to index 3
     */
     
-    int count = strlen(s);
+    int count = string_length(s);
     
     for (int index = 0; index < count; index++) {    // looping count number of times
         char character = s[index];
@@ -67,6 +67,9 @@ char *reverse_string(char rv[], char s[])
     
         rv[count - index - 1] = character;
     }
+    
+    // Make sure the reversed string ends in a null/0 character
+    rv[count] = 0;
     
     return rv;
 
