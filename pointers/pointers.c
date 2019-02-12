@@ -64,7 +64,7 @@ void string_copy(char *x, char *y)
     the difference between the first characters in m and n that differ.
     
     For example, given matching strings, this function should 
-    return 0. Given strings m = "hello world" and n = "goodbye",
+    return 0. Given strings m = "hello world" and n = "goodbye", 
     this function should return a positive value. Given strings
     m = "aardvark" and n = "zebra", should return a negative
     value.
@@ -73,6 +73,15 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    for (int i = 0; m[i] != '\n'; i++) {
+        if (m[i] < n[i]) {
+            return -1;
+        } else if(m[i] > n[i]) {
+            return 1;
+        }
+    }
+    
+    return 0;
 
 }
 
@@ -84,10 +93,29 @@ int string_compare(char *m, char *n)
 
     Do not use the `strstr` function from the standard library.
 */
+
 char *find_string(char *haystack, char *needle)
 {
-
+    char *temp;
+    char *solution;
+    while (*haystack != '\0') {
+        temp = needle;
+        solution = haystack;
+        if (*temp == *haystack) {
+            while (*temp == *haystack) {
+                if (*(temp + 1) == '\0') {
+                    return solution;
+                }
+                temp++;
+                haystack++;
+                }
+                haystack--;
+            }
+        haystack++;
+    }
+    return NULL;
 }
+    
 
 #ifndef TESTING
 int main(void)
@@ -105,7 +133,7 @@ int main(void)
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world));
 
-    char *found_char = find_char(hello, 'l');
+    char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
