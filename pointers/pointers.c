@@ -6,9 +6,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +23,6 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
 }
 
 /*
@@ -34,7 +35,13 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -51,9 +58,23 @@ void string_copy(char *x, char *y)
     
     Do not just use the `strcmp` function from the standard library.
 */
-int string_compare(char *m, char *n)
+char *find_string(char *haystack, char *needle)
 {
-
+    while (*haystack)
+    {
+        if (*haystack == *needle)
+        {
+            while (*needle)
+            {
+                if (*needle == *haystack)
+                {
+                    needle++;
+                }
+            }
+        }
+        haystack++;
+        needle++;
+    }
 }
 
 /*
@@ -66,7 +87,6 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
 }
 
 #ifndef TESTING
