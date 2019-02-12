@@ -6,12 +6,12 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-  int temp;
-  temp = *a;
-  *a = *b;
-  *b = temp;
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -24,7 +24,8 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    // iterate along both strings as long as
+    // each corrresponding char matches
 }
 
 /*
@@ -37,7 +38,15 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    // iterate along y char by char
+    // set the corresponding spot in x to that char
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+    *x = '\0';
 }
 
 /* 
@@ -56,7 +65,6 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
 }
 
 /*
@@ -69,7 +77,6 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
 }
 
 #ifndef TESTING
@@ -86,13 +93,13 @@ int main(void)
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
+    // printf("Comparison is %d\n", string_compare(hello, world));
 
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    // char *found_char = find_char(hello, 'e');
+    // char *found_string = find_string(world, "or");
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    // printf("Found char: %s\n", found_char);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
