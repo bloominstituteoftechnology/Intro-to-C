@@ -87,6 +87,8 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    printf("%s\n", m);
+    printf("%s\n", n);
 }
 
 /*
@@ -115,7 +117,7 @@ int main(void)
     string_copy(buffer, hello);
 
     printf("Buffer is %s\n", buffer);
-    // printf("Comparison is %d\n", string_compare(hello, world));
+    printf("Comparison is %d\n", string_compare(hello, world));
 
     // char *found_char = find_char(hello, 'e');
     // char *found_string = find_string(world, "or");
