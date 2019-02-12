@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -8,7 +9,9 @@
 */
 void swap(int* a, int* b)
 {
-
+    int tmpA = *a;
+    *a = *b;
+    *b = tmpA;
 }
 
 /*
@@ -21,7 +24,15 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    for (unsigned long i = 0; i <= strlen(str); i++)
+    {
+        if (str[i] == c)
+        {
+            return &str[i];
+        }
+    }
+    
+    return 0;
 }
 
 /*
@@ -34,7 +45,11 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    for (unsigned long i = 0; i < strlen(y); i++) {
+        x[i] = y[i];
+    }
+    
+    x[strlen(y)] = '\0';
 }
 
 /* 
@@ -53,7 +68,14 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    for (unsigned long i = 0; i <= strlen(m); i++)
+    {
+        if (m[i] != n[i])
+        {
+            return m[i] - n[i];
+        }
+    }
+    return 0;
 }
 
 /*
@@ -66,7 +88,23 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    for (unsigned long i = 0; i <= strlen(haystack); i++) {
+        if (haystack[i] == needle[0])
+        {
+            for (unsigned long j = 0; j <= strlen(needle); j++)
+            {
+                if (needle[j] != haystack[i+j])
+                {
+                    break;
+                } else if (j == strlen(needle) - 1)
+                {
+                    return &haystack[i];
+                }
+            }
+        }
+    }
+    
+    return 0;
 }
 
 #ifndef TESTING
