@@ -1,5 +1,21 @@
 #include <stdio.h>
 
+int string_length(char s[])
+{
+    int length = 0;
+    //int array_size = sizeof(s) / sizeof(s[0]);
+    int i = 0;
+    // printf("Char size: %d\n", sizeof(s[0]));
+    // printf("String (array) size: %d\n", sizeof(s));
+    while (*(s + i) != '\0')
+    {
+        length = length + 1;
+        i++;
+    }
+
+    return length;
+}
+
 /*
     Swaps the integer values being pointed at by a and b. Keep in
     mind when you need to access a pointer's actual value (the 
@@ -21,21 +37,17 @@ void swap(int *a, int *b)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
+char *find_char(char *str, char c)
 {
-    int i = 0;
-    while (*(str + i) != "\0")
+    for (int i = 0; i < string_length(str); i++)
     {
-        char tmp = *(str + i);
-        if (tmp == c)
+        if (*(str + i) == c)
         {
-            return *(str + i);
+            return (str + i);
         }
-
-        i++;
     }
+    return NULL;
 }
-
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
     copies the character contents of y over to x. Again, pointer arithmetic
@@ -44,26 +56,9 @@ char *find_char(char *str, int c)
     
     Do not just use the `strcpy` function from the standard library.
 */
-int string_length(char s[])
-{
-    int length = 0;
-    //int array_size = sizeof(s) / sizeof(s[0]);
-    int i = 0;
-    // printf("Char size: %d\n", sizeof(s[0]));
-    // printf("String (array) size: %d\n", sizeof(s));
-    while (*(s + i) != '\0')
-    {
-        length = length + 1;
-        i++;
-    }
-
-    return length;
-}
 
 void string_copy(char *x, char *y)
 {
-
-    int i = 0;
     for (int i = 0; i < string_length(y) + 1; i++)
     {
         x[i] = y[i];
@@ -102,9 +97,6 @@ int string_compare(char *m, char *n)
     while (i < length)
     {
         char tmp = m[i];
-        // printf("%c", tmp);
-        // printf("%c", n[j]);
-        // printf("\n");
         if (tmp != n[j])
         {
             return m[i] - n[j];
@@ -127,6 +119,32 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+
+    // printf("haystack: %s\n", haystack);
+    // printf("needle: %s\n", needle);
+    int j = 0;
+    char *instance;
+    for (int i = 0; i < string_length(haystack); i++)
+    {
+        if (haystack[i] == needle[j])
+        {
+            instance = (haystack + i);
+            for (j; j < string_length(needle); j++)
+            {
+                if (haystack[i] == needle[j])
+                {
+                    continue;
+                }
+                else
+                {
+                    // instance = NULL;
+                }
+            }
+            return instance;
+        }
+    }
+
+    return NULL;
 }
 
 #ifndef TESTING
@@ -146,12 +164,12 @@ int main(void)
 
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world));
-    //printf("Comparison is %d\n", string_compare('hello world', 'hiya'));
-    // char *found_char = find_char(hello, 'e');
-    // char *found_string = find_string(world, "or");
 
-    // printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    char *found_char = find_char(hello, 'e');
+    char *found_string = find_string(world, "or");
+
+    //printf("Found char: %s\n", found_char);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }

@@ -40,11 +40,10 @@ char *test_string_compare()
     char *firetrucks = "firetrucks";
 
     mu_assert(string_compare(s, s) == 0, "Your string_compare did not return 0 for matching strings.");
-    //printf("%d\n", string_compare(s, t));
+
     mu_assert(string_compare(s, t) < 0, "Your string_compare did not return a negative value where it was expected.");
     mu_assert(string_compare(n, m) > 0, "Your string_compare did not return a positive value where it was expected.");
 
-    printf("%d\n", string_compare(firetruck, firetrucks));
     mu_assert(string_compare(firetruck, firetrucks) < 0, "Your string_compare did not return a negative value where it was expected.");
 
     return NULL;
@@ -69,12 +68,15 @@ char *test_find_string()
 {
     char *str = "LambdaSchool";
     char *found = find_string(str, "School");
+    printf("%s\n\n", found);
     mu_assert(string_compare(found, "School") == 0, "Your find_string function did not find the expected substring.");
 
     found = find_string(str, "Lambda");
+    printf("%s\n\n", found);
     mu_assert(string_compare(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
 
     found = find_string(str, "lambda");
+    printf("%s\n\n", found);
     mu_assert(!found, "Your find_string function found a substring when it should have returned NULL.");
 
     return NULL;
