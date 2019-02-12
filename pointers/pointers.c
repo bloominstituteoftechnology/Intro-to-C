@@ -95,6 +95,45 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    // init another pointer, pointing to haystack p
+    // init another pointer pointing to the needle q
+    char *h = haystack;
+    char *n = needle;
+    // iterate along p until '\0'
+    // iterate along both p & q deciding if they
+    while (*h != '\0')
+    {
+        if (*h == *n)
+        {
+            // keep a pointer ch cn pr where they start to match
+            char *pr = h;
+            char *ch = h;
+            char *cn = n;
+            // iterate over needle and haystack
+            while (*ch != '\0' && cn != '\0')
+            {
+                if (*ch == *cn)
+                {
+                    // If they match so far and we are at the end
+                    // of the needle
+                    if (*(cn + 1) == '\0')
+                    {
+                        return pr;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+                ch++;
+                cn++;
+            }
+            // match character by character
+            // if we reach '\0' in cn return pr
+        }
+        h++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
