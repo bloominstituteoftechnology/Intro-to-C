@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -15,19 +16,14 @@ char *string_dup(char *src)
 {
     char *return_ptr = NULL;
     int length = strlen(src);
-    printf("this is length: %d \n", length);
     char *malloc_ptr = malloc(length);
     return_ptr = malloc_ptr;
     for (int i = 0; i < length; i++)
     {
         *malloc_ptr = src[i];
-        printf("this is malloc_ptr address: %p \n", malloc_ptr);
-        printf("this is malloc_ptr dereferenced: %c \n", *malloc_ptr);
 
         malloc_ptr = malloc_ptr + 1;
     }
-    printf("this is return_ptr: %p \n", return_ptr);
-    printf("this is return_ptr dereferenced: %c \n", *return_ptr);
     return return_ptr;
 }
 
@@ -41,9 +37,21 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-    printf("this is a ddest ptr: %p \n", dest);
-    printf("this is a src ptr: %p \n", src);
-    printf("this is n: %d \n", n);
+    // cast dest as char pointer
+    char *new_dest = (char *)dest;
+    // allocates a new chunk of memory
+    new_dest = malloc(n);
+    // cast src as char pointer
+    char *new_src = src;
+    int length = n / sizeof(int);
+    printf("this is the size of length: %d \n", n);
+    // step through src and copy its contents to dest
+    for (int i = 0; i < n; i++)
+    {
+        printf("this is new_src ptr: %d \n", new_src[i]);
+        new_dest[i] = new_src[i];
+        }
+    printf("this is a dest ptr after malloc: %d \n", *new_dest);
 }
 
 /*
@@ -57,6 +65,23 @@ void *mem_copy(void *dest, const void *src, int n)
     old_size > new_size?
 
     Do not use the `realloc` function from the standard libary.
+
+    void *resize_memory(void *ptr, int old_size, int new_size)
+{
+    if (old_size >= new_size)
+    {
+        return ptr;
+    }
+    void *temp = malloc(new_size);
+    if (!temp)
+    {
+        // error allocating memory
+        return NULL;
+    }
+    mem_copy(temp, ptr, old_size);
+    free(ptr);
+    return temp;
+}
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
