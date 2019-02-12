@@ -24,16 +24,15 @@ void swap(int *a, int *b)
 */
 char *find_char(char *str, int c)
 {
-    int counter = 0;
 
     for (int i = 0; i < strlen(str); i++)
     {
-        if (str[counter] == c)
+        if (str[i] == c)
         {
-            char *found = &str[counter];
+            char *found = &str[i];
             return found;
         }
-        counter++;
+        // counter++;
     }
 
     return NULL;
@@ -55,7 +54,7 @@ void string_copy(char *x, char *y)
         x[i] = y[i];
     }
     // *x = *y;
-    x[length + 1] = '\0';
+    x[length] = '\0';
 }
 
 /* 
@@ -74,6 +73,31 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
+    int count = 0;
+    int length;
+
+    if (strlen(m) >= n)
+    {
+        length = strlen(m);
+    }
+    else
+    {
+        length = strlen(n);
+    }
+
+    while (length >= count)
+    {
+        if (m[count] - n[count] > 0 || m[count] - n[count] < 0)
+        {
+            return m[count] - n[count];
+        }
+        else
+        {
+            count++;
+        }
+    }
+
+    return 0;
 }
 
 /*
@@ -86,6 +110,28 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int found_match = 1;
+    for (int i = 0; i < strlen(haystack); i++)
+    {
+        if (haystack[i] == needle[0])
+        {
+            char *found = &haystack[i];
+            for (int j = 1; j < strlen(needle); j++)
+            {
+                if (haystack[i + j] != needle[j])
+                {
+                    found_match = 0;
+                    break;
+                }
+            }
+            if (found_match)
+            {
+                return found;
+            }
+        }
+    }
+
+    return NULL;
 }
 
 #ifndef TESTING
