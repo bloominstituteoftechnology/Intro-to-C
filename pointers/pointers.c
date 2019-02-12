@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+#include "pointers.h"
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -6,9 +8,11 @@
     address it's referring to) or the value at the address it's 
     pointing at.
 */
-void swap(int* a, int* b)
+void swap(int *a, int *b)
 {
-
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /*
@@ -21,7 +25,17 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
-
+    int count = strlen(str);
+    
+    for (int index = 0; index < count; index++) {
+        char character = str[index];    // Get the value
+        
+        if (character == c) {
+            return &str[index];    // return a pointer
+        }
+    }
+    
+    return NULL;
 }
 
 /*
@@ -34,7 +48,16 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+//    *x = *y;
+////    *x = 
+    
+    for (int index = 0; ; index++) {
+        x[index] = y[index];    // Get y value at index, and assign it to x at same index
+        
+        if (y[index] == 0) {
+            break;
+        }
+    }
 }
 
 /* 
@@ -53,7 +76,18 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
+    for (int index = 0; ; index++) {
+        char charM = m[index];
+        char charN = n[index];
+        
+        char difference = charM - charN;
+        
+        if (difference != 0) {
+            return difference;
+        } else if (charM == 0) {
+            return 0;
+        }
+    }
 }
 
 /*
@@ -66,7 +100,30 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    // strlen() needs to loop through the entire string to get the length, so if we can skip it, it'll be faster
+//    int count = strlen(haystack);
+//    int needleCount = strlen(needle);
+    int needleIndex = 0;
+    
+    for (int index = 0; /* index < count */; index++) {
+        char character = haystack[index];    // Get the value
+        
+        if (character == needle[needleIndex] && character != 0) { // Check the current letter of the needle
+            needleIndex++;
+        } else if (needle[needleIndex] == 0) { // if they didn't match, but the needle is at it's final index, return the original pointer
+            return &haystack[index - needleIndex];    // return a pointer
+        } else { // if they didn't match because the letters were different, restart the process at the current letter
+            needleIndex = 0;
+            
+            if (character == needle[needleIndex]) { // make sure to check the current letter against the needle's first letter, just incase it matches
+                needleIndex++;
+            }
+        }
+        
+        if (character == 0) { // if we went though the entire haystack and didn't find anything, retutn a NULL pointer because we don't have a condition that would stop the loop for us
+            return NULL;
+        }
+    }
 }
 
 #ifndef TESTING
