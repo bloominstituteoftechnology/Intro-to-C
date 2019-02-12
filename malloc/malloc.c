@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lib.h"
 
 /*
@@ -13,7 +14,9 @@
 */
 char *string_dup(char *src)
 {
-
+    char *dup = (char *) malloc(sizeof(src));
+    strcpy(dup, src);
+    return dup;
 }
 
 /*
@@ -26,7 +29,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *charSrc = (char *) src;
+    char *charDest = (char *) dest;
+    for (int i = 0; i < n; i++)
+    {
+        charDest[i] = charSrc[i];
+    }
+    return dest;
 }
 
 /*
@@ -43,7 +52,19 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+    if (old_size >= new_size)
+    {
+        return ptr;
+    }
+    void *temp = malloc(new_size);
+    if (!temp)
+    {
+        // error allocating memory
+        return NULL;
+    }
+    temp = strdup(ptr);
+    // free(ptr);
+    return temp;
 }
 
 #ifndef TESTING
@@ -75,6 +96,7 @@ int main(void)
     
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);
+    printf("Hellooooo");
     char *p = new_url + url_length;
 
     while (*path != '\0') {
