@@ -13,21 +13,21 @@
 */
 char *string_dup(char *src)
 {
-    char *return_ptr;
+    char *return_ptr = NULL;
     int length = strlen(src);
+    printf("this is length: %d \n", length);
     char *malloc_ptr = malloc(length);
+    return_ptr = malloc_ptr;
     for (int i = 0; i < length; i++)
     {
-        if (i == 0)
-        {
-            char *return_ptr = malloc_ptr;
-            printf("this is return_ptr: %p \n", return_ptr);
-        }
         *malloc_ptr = src[i];
-        printf("this is malloc_ptr: %c \n", *malloc_ptr);
+        printf("this is malloc_ptr address: %p \n", malloc_ptr);
+        printf("this is malloc_ptr dereferenced: %c \n", *malloc_ptr);
 
-        malloc_ptr = malloc_ptr + i;
+        malloc_ptr = malloc_ptr + 1;
     }
+    printf("this is return_ptr: %p \n", return_ptr);
+    printf("this is return_ptr dereferenced: %c \n", *return_ptr);
     return return_ptr;
 }
 
