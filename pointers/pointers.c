@@ -23,6 +23,15 @@ void swap(int *a, int *b)
 */
 char *find_char(char *str, int c)
 {
+    while (*str != '\0')
+    {
+        if (*str == c)
+        {
+            return str;
+        }
+        str++;
+    }
+    return NULL;
 }
 
 /*
