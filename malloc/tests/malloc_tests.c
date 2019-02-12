@@ -71,7 +71,7 @@ char *all_tests()
 
     mu_run_test(test_string_dup);
     mu_run_test(test_mem_copy);
-    // mu_run_test(test_resize_memory);
+    mu_run_test(test_resize_memory);
     
     return NULL;
 }
