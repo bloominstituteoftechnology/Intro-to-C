@@ -9,7 +9,16 @@
 */
 int string_length(char s[])
 {
+    int count = 0;
 
+    // I HAD THE '\' IN '\0' BACKWARDS FOR HOURS
+    // AAAAAAAAAAAAAHHHHHHHHHHHHHHHHHH
+    while (s[count] != '\0')
+    {
+        count++;
+    }
+
+    return count;
 }
 
 /*
@@ -20,7 +29,6 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
 }
 
 #ifndef TESTING
@@ -37,4 +45,3 @@ int main(void)
     return 0;
 }
 #endif
-    
