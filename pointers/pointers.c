@@ -24,6 +24,15 @@ void swap(int *a, int *b)
 */
 char *find_char(char *str, int c)
 {
+    while (*str != '\0')
+    {
+        if (*str == c)
+        {
+            return str;
+        }
+        str++;
+    }
+    return NULL;
 }
 
 /*
@@ -104,10 +113,10 @@ int main(void)
     printf("Buffer is %s\n", buffer);
     printf("Comparison is %d\n", string_compare(hello, world));
 
-    // char *found_char = find_char(hello, 'e');
+    char *found_char = find_char(hello, 'e');
     // char *found_string = find_string(world, "or");
 
-    // printf("Found char: %s\n", found_char);
+    printf("Found char: %s\n", found_char);
     // printf("Found string: %s\n", found_string);
 
     return 0;
