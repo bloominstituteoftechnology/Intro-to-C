@@ -30,7 +30,7 @@ void *mem_copy(void *dest, const void *src, int n)
 }
 
 /*
-    Given a pointer that `malloc`'d memory, this function will 
+    Given a pointer of `malloc`'d memory, this function will 
     attempt to resize the allocated memory to the new specified
     size. Any data that was previously in the old `malloc`'d 
     memory should be intact in the new resized block of memory. 
