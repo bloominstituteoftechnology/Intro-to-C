@@ -10,7 +10,7 @@
 int string_length(char s[])
 {
     int count;
-    for (count = 0; s[count] != '\0'; count += 1){
+    for(count = 0; s[count] != '\0'; count += 1){
     }
     return count;
 }
