@@ -19,13 +19,25 @@ char *string_dup(char *src)
     A generic version of string_copy, mem_copy receives a block of memory
     of any type and copies its contents to the destination pointer (dest).
     You may want to cast the input pointers to char pointers first before
-    performing the copying. 
+    performing the copying. `n` is the amount of data that should be copied
+    from `src` to `dest`. 
 */
 void mem_copy(void *dest, const void *src, int n)
 {
 
 }
 
+/*
+    Given a pointer of `malloc`'d memory, this function will 
+    attempt to resize the allocated memory to the new specified
+    size. Any data that was previously in the old `malloc`'d 
+    memory should be intact in the new resized block of memory. 
+    Some edge cases to consider: how should resizing be handled
+    in the case when old_size < new_size? What about when 
+    old_size > new_size?
+    
+    Do not use the `realloc` function from the standard libary.
+*/
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
 

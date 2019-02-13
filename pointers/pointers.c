@@ -1,6 +1,17 @@
 #include <stdio.h>
 
 /*
+    Given an empty (NULL) character pointer x and a character pointer y,
+    copies the character contents of y over to x. Pointer arithmetic
+    is necessary here. Also, make sure x points to a null terminator at its 
+    end to terminate it properly. 
+*/
+void string_copy(char *x, char *y)
+{
+
+}
+
+/*
     Searches the input string `str` for the first instance of the 
     character `c` (an unsigned char). This function returns a pointer
     that points to the first instance of the character `c` in the
