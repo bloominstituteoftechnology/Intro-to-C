@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "lib.h"
 
+
 /*
     Duplicates the input string by dynamically allocating memory for 
     the duplicate string using `malloc` and then copying the string
@@ -13,7 +14,18 @@
 */
 char *string_dup(char *src)
 {
-
+//    int num_chars = strlen(src) + 1 // for the last character \0
+    char *duplicate = /* (char *) */ malloc(strlen(src) + 1);
+    
+     for (int index = 0; ; index++) {
+        duplicate[index] = src[index];    // Get src value at index, and assign it to duplicate at same index
+        
+        if (src[index] == 0) {
+            break;
+        }
+    }
+    
+    return duplicate;
 }
 
 /*
@@ -26,7 +38,16 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    // Cast dest and src to be type char
+    char *charDest = (char *)dest;
+    char *charSrc = (char *)src;
+    
+    // Copy content of src to dest
+    for (int index = 0; index < n; index++) {
+        charDest[index] = charSrc[index];    
+    }
+    
+    return charDest;
 }
 
 /*
@@ -43,7 +64,37 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-
+    int min_size;
+    
+    if (old_size < new_size) {
+        min_size = old_size;
+    } else {
+        min_size = new_size;
+    }
+    
+//    char *sourcePtr = (char *)ptr;
+//    
+//    // Allocate new piece of memory
+//    char *newData = (char *)malloc(sizeof(new_size));    
+//    // Copy as much data as possible
+//    for (int index = 0; index < min_size; index++) {
+//        newData[index] = sourcePtr[index];
+//    }
+    
+    // Allocate new piece of memory
+    void *newData = malloc(new_size);    
+    // Copy as much data as possible
+    for (int index = 0; index < min_size; index++) {
+        ((char *)newData)[index] = ((char *)ptr)[index];
+//        *(char *)(newData + index) = *(char *)(ptr + index);
+    }
+    
+    // Free existing pointer from pointing to the old_size
+    free(ptr);
+    
+    // Don't need to set the pointer to the new value 
+    
+    return newData;
 }
 
 #ifndef TESTING
