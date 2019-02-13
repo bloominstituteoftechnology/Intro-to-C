@@ -54,6 +54,18 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    //char *new_ptr = (char *)ptr;
+    if (new_size > old_size)
+    {
+        char *new_ptr = malloc(old_size * 2);
+    }
+    else
+    {
+        //what size to allocate if old_size is larger than new_size ?
+        char *new_ptr = malloc(new_size);
+    }
+
+    //do i need to copy to new_ptr block of memory?
 }
 
 #ifndef TESTING
