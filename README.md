@@ -40,10 +40,10 @@ This lab is structured very much like how your introductory JavaScript labs are 
 - [x] fizzbuzz
 - [x] strings
 - [x] pointers
-- [ ] malloc
+- [x] malloc
 - [x] structs
 - [ ] queue
-- [ ] quicksort
+- [x] quicksort
 - [ ] [Stretch Goal] hangman
 
 Inside a module directory, type `make tests` (just like with the `npm install`

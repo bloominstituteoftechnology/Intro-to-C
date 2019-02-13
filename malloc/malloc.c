@@ -41,7 +41,9 @@ void *mem_copy(void *dest, const void *src, int n)
 
     for (int i = 0; i < n; i++)
     {
-        c_dest[i] = c_src[i];
+        // c_dest[i] = c_src[i];
+        // pointer aritmitic
+        *(c_dest + i) = *(c_src + i);
     }
 }
 
@@ -59,12 +61,12 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
-    char *new_ptr = malloc(new_size);
-    char *old_pointer = (char *)ptr;
-    for (int i = 0; i < old_size; i++)
-    {
-        new_ptr[i] = old_pointer[i];
-    }
+    // if (new_size < old_size)
+    // {
+    //     malloc_setsize(ptr, )
+    // }
+    void *new_ptr = malloc(new_size);
+    memcpy(new_ptr, ptr, old_size);
 }
 
 #ifndef TESTING
