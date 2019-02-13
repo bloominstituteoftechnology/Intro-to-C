@@ -8,12 +8,9 @@
 */
 void swap(int* a, int* b)
 { 
-    // int *temp = 0;
-    //     temp = *a;
-    //     *a = *b
-    //     *b = temp
-
-    // return 0;
+    int *temp = a;
+        a = b;
+        b = temp;
 }
 
 /*
@@ -26,7 +23,17 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    while ((*str != c) && (*str != '\0')) 
+    {
+        str++;
+    }
 
+    if (*str == '\0') 
+    {
+        return NULL;
+    }
+
+    return str;
 }
 
 /*
@@ -39,17 +46,17 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-    //iterate along y char-by-char
-    //set the corresponding in x to that char
+    // iterate along y char-by-char
+    // set the corresponding in x to that char
 
-    // while(*y != '\0') {
-    //     *x = *y;
-    //     x++;
-    //     y++;
-    // };
+    while(*y != '\0') {
+        *x = *y;
+        x++;
+        y++;
+    }
     
-    // *x = "\0";
-};
+    *x = '\0';
+}
 
 /* 
     Compares the character strings m and n and returns negative,
@@ -67,19 +74,19 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-    // //iterate along both strings
-    // //as long as each corresponding char matches
-    // for (; *m == *n; m++, n++)
-    // {
-    //     if (*m == '\0') 
-    //     {
-    //         return 0;
-    //     }
-    // };
+    //iterate along both strings
+    //as long as each corresponding char matches
+    for (; *m == *n; m++, n++)
+    {
+        if (*m == '\0') 
+        {
+            return 0;
+        }
+    }
 
-    // //if we find a mismatch
-    // return *m-*n;
-};
+    //if we find a mismatch
+    return *m - *n;
+}
 
 /*
     Searches the input string `haystack` for the first instance of
@@ -92,14 +99,30 @@ int string_compare(char *m, char *n)
 char *find_string(char *haystack, char *needle)
 {
     //iterate along haystack until '\0'
-        //check to see if current haystack char matches 
-        //the first char of needle
-        //if it does, start iterating along needle as well
-        //check if each char matches
+    // check to see if current haystack char matches 
+        // the first char of needle
+    // if it does, start iterating along needle as well
+    // check if each char matches
+    // what happens when not all the needle char match?
+    // how do we continue iterating in that case?
+    
+     char *temp = needle;
 
-    //what happens when not all the needle char match?
-    //how do we continue iterating in that case?
-
+     while(*haystack != '\0') {
+        if(*haystack == *needle) {
+            char *start = haystack;
+            while((*needle == *haystack) && (*needle != '\0')) {
+                needle++;
+                haystack++;
+            }
+            if(*needle == '\0') {
+                return start;
+            }
+            needle = temp;
+        }
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
