@@ -61,8 +61,18 @@ void *resize_memory(void *ptr, int old_size, int new_size)
     char *ptr_copy = (char *)ptr;
     char *new_ptr = malloc(new_size + 1);
     int i = 0;
+    int size = 0;
+    
+    if (old_size < new_size)
+    {
+        size = new_size;
+    }
+    else
+    {
+        size = old_size;
+    }
 
-    for (i = 0; i < new_size; i++)
+    for (i = 0; i < size; i++)
     {
         new_ptr[i] = ptr_copy[i];
     }
