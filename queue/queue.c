@@ -82,14 +82,8 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
-    if (q->storage != NULL)
-    {
-        free(q->storage);
-    }
-    if (q != NULL)
-    {
-        free(q);
-    }
+    free(q->storage);
+    free(q);
 }
 
 #ifndef TESTING
