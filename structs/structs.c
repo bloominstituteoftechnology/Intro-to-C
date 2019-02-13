@@ -46,7 +46,8 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-    // Need to free memory allocated to name, then the struct
+    // Need to free memory allocated to name, then the struct, 
+    // Free in last in, first out order, but the struct is always last
     free(who->name);
     free(who);
 }
