@@ -33,25 +33,22 @@ void enqueue(Queue *q, int item)
 {
     printf("this is item: %d \n", item);
     printf("this is capacity: %d \n", q->capacity);
-    // attempt to add item to storage
-    if (q->length != 0)
+    if (q->length == q->capacity)
     {
-        for (int i = q->length; i > 0; i--)
-        {
-            q->storage[i] = q->storage[i - 1];
-        }
-        q->storage[0] = item;
-        q->length++;
+        q->storage = realloc(q->storage, q->capacity * 2);
+        q->capacity = q->capacity * 2;
     }
     else
     {
-        q->storage[0] = item;
+        // attempt to add item to storage
+        *(q->storage + q->length) = item;
         q->length++;
+        for (int i = 0; i < q->length; i++)
+        {
+            printf("[%d] ", q->storage[i]);
+        }
     }
-    for (int i = 0; i < q->length; i++)
-    {
-        printf("[%d] ", q->storage[i]);
-    }
+
     printf("\n this is q->length: %d \n", q->length);
 }
 
@@ -62,27 +59,21 @@ void enqueue(Queue *q, int item)
 int dequeue(Queue *q)
 {
     // check if the length of the queue is 0 before dequeue
-    if (q->length != 0)
+    if (q->length == 0)
     {
-        // take the first item and set it to NULL
-        q->storage[0] = NULL;
-        for (int i = 0; i < q->length; i++)
-        {
-            // Loop through and bring every item down 1 index
-            q->storage[i] = q->storage[i + 1];
-        }
-        // subtract the length by 1
-        q->length--;
+        return -1;
     }
-    else
-    {
-        return NULL;
-    }
+    // set a int temp to the first item in the queue
+    int temp = q->storage[0];
     for (int i = 0; i < q->length; i++)
     {
-        printf("[%d] ", q->storage[i]);
+        // Loop through and bring every item down 1 index
+        q->storage[i] = q->storage[i + 1];
     }
-    printf("\n this is q->length: %d \n", q->length);
+    // subtract the length by 1
+    q->length--;
+    // return the item dequeued
+    return temp;
 }
 
 /*
