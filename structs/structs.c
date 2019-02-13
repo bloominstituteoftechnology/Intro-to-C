@@ -8,6 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
+    char *name;
+    int age;
+    int height;
+    int weight;
 
 } Person;
 
@@ -21,7 +25,19 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
-
+    // Allocate memory for our struct
+    Person *person = malloc(sizeof(Person));
+    
+    // Initialize the value of the struct
+    // Allocate memrory for the string (dynamic type) bytes varies
+    // Why string_dup name: the name string in passed in from somewhere else and in struct, structs need to own their data inside
+    // If we just pass in the outside string and have a pointer to it, when the outside string is deallocated, struct still thinks it has reference to it and it will cause problem, so we want to duplicate the string so struct can own a copy
+    person->name = string_dup(name);
+    person->age = age;        // int is static type (4 bytes) so don't need memory allocation
+    person->height = height;
+    person->weight = weight;
+    
+    return person;
 }
 
 /*
@@ -30,7 +46,9 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-
+    // Need to free memory allocated to name, then the struct
+    free(who->name);
+    free(who);
 }
 
 #ifndef TESTING
