@@ -15,22 +15,15 @@ char *string_dup(char *src)
 {
     int length = strlen(src);
     char *copy = malloc(length * sizeof(char));
-    
-    while(*src != '\0') {
-        *copy = *src;
-        printf("%s\n", copy);
-        copy++;
-        src++;
+
+    for(int i = 0; i < length; i++) {
+        *(copy + i) = *(src + i);
+        
     }
     
-    *copy = '\0';
+    *(copy + length) = '\0';
     
     return copy;
-}
-
-void testing() {
-    char *s = "Some string to duplicate.";
-    string_dup(s);
 }
 
 /*
@@ -41,9 +34,17 @@ void testing() {
     
     Do not use the `memcpy` function from the standard library.
 */
+
 void *mem_copy(void *dest, const void *src, int n)
 {
-
+    char *source = (char *)src;
+    char *destination = (char *)dest;
+    for(int i = 0; i < n; i++) {
+        *destination = *source;
+        destination++;
+        source++;
+    }
+    return dest;
 }
 
 /*
@@ -58,16 +59,49 @@ void *mem_copy(void *dest, const void *src, int n)
 
     Do not use the `realloc` function from the standard libary.
 */
+
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    char *test = (char *)ptr;
+    char *new = malloc(new_size * sizeof(char));
+    
+    int bytes;
+    if(old_size > new_size) {
+        bytes = new_size;
+    }
+    if(old_size < new_size) {
+        bytes = old_size;
+    }
+    test = mem_copy(new, ptr, bytes);
+    return test;
+}
+
+void testing() {
+    char *url = string_dup("http://lambdaschool.com");
+    char *path = string_dup("/students/");
+    
+    int url_length = string_length(url);
+    int path_length = string_length(path);
+    int new_length = url_length - 1 + path_length;
+    char *new_url = resize_memory(url, url_length, new_length);
+    printf("%s", new_url);
+    char *p = new_url + url_length;
+
+    while (*path != '\0') {
+        *p = *path;
+        p++;
+        path++;
+    }
+
+    printf("Full path string: %s\n", new_url);
 
 }
+
 
 #ifndef TESTING
 int main(void)
 {
-    testing();
-    /*
+    
     char *s = "Some string to duplicate.";
     char *dup = string_dup(s);
 
@@ -103,7 +137,7 @@ int main(void)
     }
 
     printf("Full path string: %s\n", new_url);
-    */
+    
     return 0;
 }
 #endif
