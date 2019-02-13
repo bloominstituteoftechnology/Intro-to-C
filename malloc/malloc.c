@@ -40,6 +40,7 @@ void *mem_copy(void *dest, const void *src, int n)
         // dest++;
         // src++;
     }
+    return dest;
 }
 
 /*
@@ -62,10 +63,9 @@ void *resize_memory(void *ptr, int old_size, int new_size)
     {
         return ptr;
     }
-    int total = old_size + new_size;
 
-    void *ptrNew = malloc(total);
-    mem_copy(ptrNew, ptr, total);
+    void *ptrNew = malloc(new_size);
+    mem_copy(ptrNew, ptr, new_size);
     free(ptr);
     return ptrNew;
 }
