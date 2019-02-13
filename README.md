@@ -43,8 +43,8 @@ This lab is structured very much like how your introductory JavaScript labs are 
   - [x] malloc
   - [x] structs
   - [x] queue
-  - [ ] quicksort
-  - [ ] [Stretch Goal] hangman
+  - [x] quicksort
+  - [x] [Stretch Goal] hangman
 
 Inside a module directory, type `make tests` (just like with the `npm install`
 command needing a `package.json` file, the `make` command requires a
