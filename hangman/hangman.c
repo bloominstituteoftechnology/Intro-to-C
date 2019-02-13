@@ -44,6 +44,7 @@ int main(int argc, char *argv[]) {
 	int guesses_count = 0;
 	int correct_guesses = 0;
 
+	// Convert Word to Lowercase and Store its Length
 	for (int i = 0 ; word[i]; i++) { 
 		word[i] = tolower(word[i]);
 		word_length++;
@@ -58,6 +59,8 @@ int main(int argc, char *argv[]) {
 	
 	// Main Loop
 	while (1) {
+
+		// ** Display **
 
 		// Display Hanging Stage
 		display_stage(stage);
@@ -78,6 +81,8 @@ int main(int argc, char *argv[]) {
 
 		printf("\n\n");
 
+		// ** End Game **
+
 		// Loss Handling
 		if (stage == 8) {
 			printf("\n----\nHANGED!\n----\n");
@@ -90,12 +95,15 @@ int main(int argc, char *argv[]) {
 			break;
 		}
 		
+		// ** Guessing **
+
 		// User Input
 		printf("Enter your guess. You may guess one character, or the whole word (enter _q to quit):\n");
 		scanf("%s", guess);
 
+		// Convert to Lowercase and Keep track of length
 		for (int i = 0; guess[i]; i++) {
-			guess[i] = tolower(guess[i]);
+			guess[i] = tolower(guess[i]); 
 			guess_length++;
 		}
 

@@ -20,15 +20,15 @@ This will start the game loop, which will then continue running until the player
 
 ## How to Tackle the Problem
 This problem can be broken down into many subproblems. Each subproblem can be further broken down into chunks that you can think about how to implement in code. These include, but are not limited to, the following:
- - [ ] Reading input from the user and recording it properly
-    - [ ] Figuring out how to parse command line arguments 
- - [ ] Properly recording game state
-    - [ ] Keeping track of all letters/words that have been inputted
-    - [ ] Recording the incorrect guesses
- - [ ] Printing the proper UI given the game's current state
- - [ ] Implementing the ability to accept both single letter guesses as well as entire word guesses
-    - [ ] Having the game UI respond appropriately when a player makes a correct / incorrect guess
- - [ ] Adding the ability for the user to exit the game by typing in the proper keyword
+ - [x] Reading input from the user and recording it properly
+    - [x] Figuring out how to parse command line arguments 
+ - [x] Properly recording game state
+    - [x] Keeping track of all letters/words that have been inputted
+    - [x] Recording the incorrect guesses
+ - [x] Printing the proper UI given the game's current state
+ - [x] Implementing the ability to accept both single letter guesses as well as entire word guesses
+    - [x] Having the game UI respond appropriately when a player makes a correct / incorrect guess
+ - [x] Adding the ability for the user to exit the game by typing in the proper keyword
 
 ## Rules of Hangman
 Just in case you happen to be someone who _doesn't_ know the rules of Hangman, we'll list them here.
