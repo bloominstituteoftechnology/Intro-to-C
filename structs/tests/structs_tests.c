@@ -5,7 +5,6 @@
 char *test_person_create()
 {
     Person *tony = createPerson("Tony Stark", 32, 64, 140);
-    printf("Name: %s", tony->name);
     mu_assert(check_strings(tony->name, "Tony Stark") == 0, "Person_create struct name field does not match the expected result.");
     mu_assert(tony->age == 32, "Person_create struct age field does not match the expected result.");
     mu_assert(tony->height == 64, "Person_create struct height field does not match the expected result.");
