@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
 	}
 	
 	// Main Loop
-	while (free) {
+	while (1) {
 
 		// Display Hanging Stage
 		display_stage(stage);
