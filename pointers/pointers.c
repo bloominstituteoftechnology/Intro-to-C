@@ -93,7 +93,7 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-    int *p;
+    char *p;
     char *temp = needle;
     while (*haystack)
     {
