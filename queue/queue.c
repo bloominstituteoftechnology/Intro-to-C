@@ -15,7 +15,12 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
-
+    Queue *q = malloc(sizeof(Queue));
+    q->capacity = capacity;
+    q->length = 0;
+    q->storage = malloc(sizeof(int) * capacity);
+    
+    return q;
 }
 
 /*
@@ -26,6 +31,30 @@ Queue *createQueue(unsigned capacity)
 void enqueue(Queue *q, int item)
 {
 
+    printf("lets enqueue: %d\n", item);
+    if (q->capacity <= q->length+1) {
+        //expand the queue
+            //create new q, double capacity
+            int new_capacity = q->capacity*2;
+            Queue *new_q = createQueue(new_capacity);
+            
+            //copy elements in q to new q
+            for (int i =0; i<q->length;i++) {
+                new_q->storage[i] = q->storage[i];
+            }
+            
+            //store new q length
+            new_q->length = q->length;
+
+            //add new element to new queue
+            new_q->storage[new_q->length+1] = item;
+            q->length++;
+        
+
+    } else {
+    q->storage[q->length] = item;
+    q->length++;
+    }
 }
 
 /*
@@ -35,6 +64,21 @@ void enqueue(Queue *q, int item)
 int dequeue(Queue *q)
 {
 
+    if (q->storage == NULL) {
+        return -1;
+    }
+    int item = q->storage[0];
+    
+   
+    for (int i =1; i < q->length ; i++) {
+        printf("item at index %d: %d\n", i-1);
+        q->storage[i-1] = q->storage[i];
+    }
+    q->storage[q->length-1] = NULL;
+    q->length--;
+
+    return item;
+
 }
 
 /*
@@ -43,6 +87,15 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
+    if (q->capacity != NULL) {
+        free(q->capacity);
+    }
+    if (q->length != NULL) {
+        free(q->length);
+    }
+    if (q->storage != NULL) {
+        free(q->storage);
+    }
 
 }
 
@@ -66,7 +119,7 @@ int main(void)
     printf("%d\n", dequeue(q));
     printf("%d\n", dequeue(q));
 
-    destroyQueue(q);
+    //destroyQueue(q);
 
     return 0;
 }
