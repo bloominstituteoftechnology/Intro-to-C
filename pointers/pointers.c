@@ -3,10 +3,10 @@
 #include "pointers.h"
 
 /*
-    Swaps the integer values being pointed at by a and b. Keep in
-    mind when you need to access a pointer's actual value (the 
-    address it's referring to) or the value at the address it's 
-    pointing at.
+    Given an empty (NULL) character pointer x and a character pointer y,
+    copies the character contents of y over to x. Pointer arithmetic
+    is necessary here. Also, make sure x points to a null terminator at its 
+    end to terminate it properly. 
 */
 void swap(int *a, int *b)
 {
@@ -129,19 +129,6 @@ char *find_string(char *haystack, char *needle)
 #ifndef TESTING
 int main(void)
 {
-    int x = 10, y = 20;
-    swap(&x, &y);
-    printf("x=%d, y=%d\n", x, y);
-
-    char *hello = "Hello";
-    char *world = "World";
-    char buffer[1024];
-
-    string_copy(buffer, hello);
-
-    printf("Buffer is %s\n", buffer);
-    printf("Comparison is %d\n", string_compare(hello, world));
-
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 

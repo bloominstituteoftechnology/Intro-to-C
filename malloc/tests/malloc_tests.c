@@ -29,7 +29,7 @@ char *test_mem_copy()
     char src[50] = "http://lambdaschool.com";
     char dest[50];
 
-    mem_copy(dest, src, string_length(src)+1);
+    mem_copy(dest, src, strlen(src)+1);
     mu_assert(check_strings(dest, src) == 0, "Your mem_copy function did not correctly copy an array of characters.");
 
     free(target);
@@ -39,10 +39,10 @@ char *test_mem_copy()
 
 char *test_resize_memory()
 {
-    char *url = string_dup("http://lambdaschool.com");
-    char *path = string_dup("/students/");
-    int url_length = string_length(url);
-    int path_length = string_length(path);
+    char *url = strdup("http://lambdaschool.com");
+    char *path = strdup("/students/");
+    int url_length = strlen(url);
+    int path_length = strlen(path);
     
     int new_length = url_length + path_length + 1; // +1 for the NUL terminator
     char *new_url = resize_memory(url, url_length, new_length);
