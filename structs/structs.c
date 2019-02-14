@@ -2,12 +2,45 @@
 #include <stdlib.h>
 #include "lib.h"
 
+
+
+
+//helper functions for strings
+int string_length(char s[])
+{
+    int length = 0;
+    //int array_size = sizeof(s) / sizeof(s[0]);
+    int i = 0;
+    // printf("Char size: %d\n", sizeof(s[0]));
+    // printf("String (array) size: %d\n", sizeof(s));
+    while (*(s + i) != '\0')
+    {
+        length = length + 1;
+        i++;
+    }
+
+    return length;
+}
+
+void string_copy(char *x, char *y)
+{
+    for (int i = 0; i < string_length(y) + 1; i++)
+    {
+        x[i] = y[i];
+    }
+}
+
 /* 
     Define the Person struct by specifying the fields that make up the
     Person type. Don't forget to specify the type of each field. A 
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
-typedef struct Person {
+typedef struct Person
+{
+    char *name;
+    int age;
+    int height;
+    int weight;
 
 } Person;
 
@@ -21,7 +54,14 @@ typedef struct Person {
 */
 Person *createPerson(char *name, int age, int height, int weight)
 {
+    Person *person = malloc(sizeof(Person));
+    person->name = malloc(string_length(name));
+    string_copy(person->name, name); //add name
+    person->age = age;
+    person->height = height;
+    person->weight = weight;
 
+return person;
 }
 
 /*
@@ -31,6 +71,12 @@ Person *createPerson(char *name, int age, int height, int weight)
 void destroyPerson(Person *who)
 {
 
+    if(who->name != NULL){
+        free(who->name);
+    }
+    else if (who != NULL){
+        free(who);
+    }
 }
 
 #ifndef TESTING
