@@ -2,7 +2,8 @@
 #include <stdlib.h>
 #include "lib.h"
 
-typedef struct Queue {
+typedef struct Queue
+{
     unsigned int length;
     unsigned int capacity;
     int *storage;
@@ -15,7 +16,13 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
+    Queue *queue = malloc(sizeof(Queue));
 
+    queue->length = 0;
+    queue->capacity = capacity;
+    queue->storage = malloc(sizeof(int) * capacity);
+
+    return queue;
 }
 
 /*
@@ -25,7 +32,17 @@ Queue *createQueue(unsigned capacity)
 */
 void enqueue(Queue *q, int item)
 {
+    if (q->length == q->capacity)
+    {
+        unsigned int old_size = sizeof(int) * q->capacity;
 
+        q->capacity *= 2;
+        q->storage = resize_memory(q->storage, old_size, old_size * 2);
+    }
+
+    q->storage[q->length] = item;
+
+    q->length++;
 }
 
 /*
@@ -34,7 +51,16 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
+    int item = q->storage[0];
 
+    for (unsigned int i = 0; i < q->length; i++)
+    {
+        q->storage[i] = q->storage[i + 1];
+    }
+
+    q->length--;
+
+    return item;
 }
 
 /*
@@ -43,9 +69,16 @@ int dequeue(Queue *q)
 */
 void destroyQueue(Queue *q)
 {
+    if (q->storage != NULL)
+    {
+        free(q->storage);
+    }
 
+    if (q != NULL)
+    {
+        free(q);
+    }
 }
-
 
 #ifndef TESTING
 int main(void)
