@@ -104,7 +104,7 @@ char *find_string(char *haystack, char *needle)
     {
         if (*haystack == *needle)
         {
-            int i = 1;
+            int i = 0;
 
             while (*(haystack + i) == *(needle + i))
             {
