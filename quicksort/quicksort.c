@@ -1,6 +1,26 @@
 #include <stdio.h>
 #include "lib.h" 
 
+int partition(int *arr, int low, int high)
+{
+    int pivot = arr[high];
+    
+    int i = low - 1;
+    
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] <= pivot) {
+            i += 1;
+//            printf("Swapping %d - %d\n", arr[i], arr[j]);
+            swap(&arr[i], &arr[j]);
+//            printf("Swapped  %d - %d\n\n", arr[i], arr[j]);
+            
+            // When a function takes a * pointer, and we don't have a pointer, we have a raw value (arr[i]), then pass in a & to pass the address of the raw value
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return i + 1;
+}
+
 /*
     Implement the Quicksort algorithm. You'll likely want to re-use the
     `swap` function you implemented in the pointers module (which is
@@ -17,7 +37,12 @@
 */
 void quicksort(int *arr, int low, int high)
 {
-
+    if (low < high) {
+        int pivot = partition(arr, low, high);
+        
+        quicksort(arr, low, pivot - 1);
+        quicksort(arr, pivot + 1, high);
+    }
 }
 
 #ifndef TESTING
