@@ -13,7 +13,24 @@
 */
 char *string_dup(char *src)
 {
+    char *dup = malloc(string_length(src));
 
+    string_copy(dup, src);
+
+    return dup;
+}
+
+// from pointers module
+void string_copy(char *x, char *y)
+{
+    while (*y != '\0')
+    {
+        *x = *y;
+        x++;
+        y++;
+    }
+
+    *x = '\0';
 }
 
 /*
@@ -26,7 +43,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+    char *dest_char = (char *)dest;
+    char *src_char = (char *)src;
 
+    for (int i = 0; i < n; i++)
+    {
+        dest_char[i] = src_char[i];
+    }
 }
 
 /*
@@ -43,7 +66,13 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    void *new_ptr = malloc(old_size > new_size ? old_size : new_size);
 
+    mem_copy(new_ptr, ptr, old_size);
+
+    free(ptr);
+
+    return new_ptr;
 }
 
 #ifndef TESTING
@@ -57,12 +86,13 @@ int main(void)
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
-    
+
     mem_copy(target, numbers, n * sizeof(int));
 
     printf("Copied array: ");
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
+    {
         printf("%d ", target[i]);
     }
 
@@ -72,12 +102,13 @@ int main(void)
     char *path = string_dup("/students/");
     int url_length = string_length(url);
     int path_length = string_length(path);
-    
+
     int new_length = url_length - 1 + path_length;
     char *new_url = resize_memory(url, url_length, new_length);
     char *p = new_url + url_length;
 
-    while (*path != '\0') {
+    while (*path != '\0')
+    {
         *p = *path;
         p++;
         path++;
