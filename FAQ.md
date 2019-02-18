@@ -83,3 +83,62 @@ as they are with `char`s, people just use `int`s.)
 
 </p></details></p>
 
+<p><details><summary><b>When I pass an array as an argument to a function, when do I use pointer notation and when do I use array notation ?</b></summary><p>
+
+It's a little-known FunFact that C doesn't actually pass entire arrays to
+functions. It only passes pointers to the first element in that array.
+
+```c
+int a[2000];
+
+// "a" is a pointer to the first element in the array.
+// It's the same as &(a[0]).
+foo(a);
+```
+
+So when you declare your function, you can do any of these:
+
+```c
+void foo(int *a)
+```
+```c
+void foo(int a[])
+```
+```c
+void foo(int a[1])
+```
+```c
+void foo(int a[2000])
+```
+```c
+void foo(int a[999999999])
+```
+
+and it treats them all as if you'd used:
+
+```c
+void foo(int *a)
+```
+
+There's a difference if you want to use multidimensional arrays. You must
+declare all the dimensions except the last one, which is optional. The compiler
+needs to know the higher dimensions so it can do its array indexing computations
+correctly.
+
+```c
+int foo(int x[10][])
+{
+    return x[2][4];
+}
+
+int main(void)
+{
+    int a[10][30];
+
+    foo(a);
+```
+
+This only applies for multidimensional arrays. For 1-dimensional arrays, the
+rule still applies; you still need to specify all dimensions except the last
+one... but since there is only one, you never need to specify it.
+</p></details></p>
