@@ -9,7 +9,13 @@
 */
 int string_length(char s[])
 {
-
+  int i = 0;
+  char string = s[i];
+  while (string != '\0') {
+    i++;
+    string = s[i];
+  }
+  return i;
 }
 
 /*
