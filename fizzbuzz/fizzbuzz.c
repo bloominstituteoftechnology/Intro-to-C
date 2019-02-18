@@ -10,7 +10,19 @@
 */
 int fizzbuzz(int n)
 {
-
+int count = 0;
+    for(n = 0; n < 5; n = n + 1){
+        if (n / 3){
+            printf("%s\n Fizz");
+            count = count + 1;
+        }else if(n / 5){
+            printf("%s\n Buzz");
+            count = count + 1;
+        }else if((n / 5) && (n / 3)){
+            count = count + 1;
+            printf("%s\n FizzBuzz");
+        }
+    }
 }
 
 #ifndef TESTING
