@@ -1,5 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <strings.h>
+#include "../../utils/minunit.h"
+#include "../../utils/utils.h"
 
 /*
     Given a character array s, return the number of characters 
