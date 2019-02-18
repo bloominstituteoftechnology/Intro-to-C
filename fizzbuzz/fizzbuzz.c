@@ -10,26 +10,22 @@
 */
 int fizzbuzz(int n)
 {
- int count;
+ int count = 0;
 
- for(count = 1; count <= n; count++) {
-     if(count % 3 == 0) {
-         printf("Fizz\n");
-         count++;
-     }
-     else if(count % 5 == 0) {
-         printf("Buzz\n");
-         count++;
-     }
-     else if( (count % 3 == 0) && (count % 5 == 0) ) {
+ for(int i = 0; i < n; i++) {
+     if((i % 5 == 0) && (i % 3 ==0)) {
          printf("FizzBuzz\n");
-         count++;
+     }
+     else if(i % 5 == 0) {
+         printf("Buzz\n");
+     }
+     else if(i % 3 == 0) {
+         printf("Fizz\n");
      }
      else {
-         return count;
          count++;
      }
- }
+ };
  return count;
 }
 
