@@ -22,10 +22,13 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
-    for (int i = sizeof(s); i >= 0; i--) {
-        strcat( rv, s[i] );
+    int i = string_length(s) - 1;
+    int j = 0;
+    for (i; i >= 0; i--) {
+        rv[j] = s[i];
+        j++;
     }
+    rv[j] = '\0';
     return rv;
 }
 
