@@ -30,15 +30,17 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
 
-    int index_last = string_length(s)-1;
+    int index_last = string_length(s);
     int j;
+    int k = 0;
 
-    for(j = index_last; j >= 0; j--) {
+    for(j = index_last-1; j >= 0; j--) {
 
-            strcat(rv, s[j]);
+            rv[k] = s[j];
+            k++;
 
     }
-    strcat(rv, '\0');
+    rv[k] = '\0';
     return rv;
     
 }
