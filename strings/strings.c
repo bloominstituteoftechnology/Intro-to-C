@@ -42,6 +42,14 @@ char *reverse_string(char rv[], char s[])
     while that length is not -1, compare reverse string at index [count] to the original string
     length should decrement while counter increments
     */
+    rv[length + 1] = '\0';
+
+    while(length > -1) {
+        rv[count] = s[length -1];
+        length--;
+        count++;
+    }
+    return rv;
 }
 
 #ifndef TESTING
