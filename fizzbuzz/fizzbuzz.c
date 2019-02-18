@@ -11,18 +11,18 @@
 int fizzbuzz(int n)
 {
 int count = 0;
-    for(n = 0; n < 5; n = n + 1){
-        if (n / 3){
-            printf("%s\n Fizz");
+    for(int i = 0; i < n; i = i + 1){
+        if (i % 3 == 0){
+            printf("Fizz \n");
+        }else if(i % 5 == 0){
+            printf("Buzz \n");
+        }else if((i % 5 == 0) && (i % 3 == 0)){
+            printf("FizzBuzz \n");
+        }else{
             count = count + 1;
-        }else if(n / 5){
-            printf("%s\n Buzz");
-            count = count + 1;
-        }else if((n / 5) && (n / 3)){
-            count = count + 1;
-            printf("%s\n FizzBuzz");
         }
     }
+    return count;
 }
 
 #ifndef TESTING
