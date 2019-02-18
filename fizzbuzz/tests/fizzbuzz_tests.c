@@ -1,6 +1,7 @@
 #include <fizzbuzz.h>
 #include "../../utils/minunit.h" 
 
+
 char *test_fizzbuzz()
 {
     mu_assert(fizzbuzz(3) == 2, "Your fizzbuzz function did not return 2 for n = 3.");
