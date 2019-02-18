@@ -13,7 +13,7 @@ int fizzbuzz(int n)
     int i;
     for (i = 0; i < n; i++)
     {
-        if (n % 5 == 0 && n % 3 == 0)
+        if ((n % 5 == 0) && (n % 3 == 0))
         {
             printf("FizzBuzz");
         }
