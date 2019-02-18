@@ -10,7 +10,7 @@
 */
 int fizzbuzz(int n)
 {
-
+ /* initial commit */
 }
 
 #ifndef TESTING
