@@ -10,7 +10,27 @@
 */
 int fizzbuzz(int n)
 {
- /* initial commit */
+ int count;
+
+ for(count = 1; count <= n; count++) {
+     if(count % 3 == 0) {
+         printf("Fizz\n");
+         count++;
+     }
+     else if(count % 5 == 0) {
+         printf("Buzz\n");
+         count++;
+     }
+     else if( (count % 3 == 0) && (count % 5 == 0) ) {
+         printf("FizzBuzz\n");
+         count++;
+     }
+     else {
+         return count;
+         count++;
+     }
+ }
+ return count;
 }
 
 #ifndef TESTING
