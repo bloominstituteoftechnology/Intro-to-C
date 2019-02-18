@@ -9,11 +9,11 @@
 */
 int string_length(char s[])
 {
-    int length = 0;
-    while(s[length] !== '\0') {
-
+    int i = 0;
+    while(s[i] != '\0') {
+        i++;
     }
-    return ;
+    return i;
 }
 
 /*
