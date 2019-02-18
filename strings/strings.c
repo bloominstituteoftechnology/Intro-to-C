@@ -10,23 +10,16 @@
 */
 int string_length(char s[])
 {
-    int counter = 0;
-    int found = 0;
+    int count = 0;
+    char cur_char = s[count];
 
-    while (found == 0)
+    while (cur_char != '\0')
     {
-        char str = s[counter];
-        if (str == '\0')
-        {
-            found = 1;
-        }
-        else 
-        {
-            counter++;
-        }
+        count++;
+        cur_char = s[count];
     }
 
-    return counter;
+    return count;
 }
 
 /*
@@ -36,15 +29,16 @@ int string_length(char s[])
     the reversed string with a null character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[])
-{
-    int index = 0;
-    int s_len = strlen(s);
-    for (int j = s_len - 1; j >= 0; j--) {
-        rv[index] = s[j];
-        index++;
+{   
+    int len = strlen(s);
+    int rv_index = 0;
+    for (int i = len - 1; i >= 0; i--)
+    {
+        rv[rv_index] = s[i];
+        rv_index++;
     }
     
-    return rv;
+    return rv; //should return a pointer? so rv is address?  here be confusion
 }
 
 #ifndef TESTING
