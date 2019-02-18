@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <strings.h>
 /*
     Your fizzbuzz implementation should initialize a counter, then
     iterate n times. If the ith iteration is divisible by 3, print
@@ -10,24 +10,27 @@
 */
 int fizzbuzz(int n)
 {
-  int counter = 1;
-  while (counter <= n)
+  int counter = 0;
+  for (int i = 0; i < n; i++)
   {
-    if (counter % 3 == 0)
+    if (i % 3 == 0)
     {
       printf("FizzBuzz\n");
     }
-    else if (counter % 3 == 0)
+    else if (i % 5 == 0)
     {
       printf("Fizz\n");
     }
-    else if (counter % 5 == 0)
+    else if (i % 3 == 0)
     {
       printf("Buzz\n");
     }
-    counter++;
+    else
+    {
+      counter++;
+    }
   }
-  return 0;
+  return counter;
 }
 
 #ifndef TESTING
