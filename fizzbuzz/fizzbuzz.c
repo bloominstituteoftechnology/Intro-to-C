@@ -32,7 +32,7 @@ int fizzbuzz(int n)
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(30);
+    fizzbuzz(20);
 
     return 0;
 }

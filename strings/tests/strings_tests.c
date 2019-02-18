@@ -1,4 +1,4 @@
-#include <string.h>
+#include <strings.h>
 #include "../../utils/minunit.h"
 #include "../../utils/utils.h"
 
