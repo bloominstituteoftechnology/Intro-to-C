@@ -16,9 +16,13 @@ int string_length(char s[])
 
     /* testing with this for "loop" that doesn't need to do anything except count through the string.
     might have to adjust this a bit, just a first idea */
-    
-    for(i = 0; s[i] != '\0'; i++);
 
+    /* for(i = 0; s[i] != '\0'; i++);
+    actually, can just do the above more sensibly with a while loop */
+
+    while(s[i] != '\0') {
+        i++;
+    }
     return i;
 }
 
