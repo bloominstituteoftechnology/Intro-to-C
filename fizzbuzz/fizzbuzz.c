@@ -8,17 +8,42 @@
     every time that nothing gets printed and return the counter.
     Don't forget to include newlines '\n' in your printf statements!
 */
+
+// Run in terminal by these commands:
+// gcc -o fizzbuzz fizzbuzz.c
+// ./fizzbuzz
 int fizzbuzz(int n)
 {
-
-
+  int count = 0;
+  int i;
+  for (i = 0; i < n; i++)
+  {
+    if ((i % 5 == 0) && (i % 3 == 0))
+    {
+      printf("FizzBuzz\n");
+    }
+    else if (i % 3 == 0)
+    {
+      printf("Fizz\n");
+    }
+    else if (i % 5 == 0)
+    {
+      printf("Buzz\n");
+    }
+    else
+    {
+      printf("%i\n", i);
+      count++;
+    }
+  }
+  return count;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(20);
+  fizzbuzz(20);
 
-    return 0;
+  return 0;
 }
 #endif
