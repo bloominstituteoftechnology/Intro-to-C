@@ -9,7 +9,11 @@
 */
 int string_length(char s[])
 {
-
+    int len = 0
+    for (int i = 0; i < sizeof(s); i++) {
+        len++
+    }
+    return len;
 }
 
 /*
@@ -21,6 +25,10 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
 
+    for (int i = sizeof(s); i >= 0; i--) {
+        strcat( rv, s[i] );
+    }
+    return rv;
 }
 
 #ifndef TESTING
