@@ -10,14 +10,29 @@
 */
 int fizzbuzz(int n)
 {
-
+  while (n >= 0)
+  {
+    if ((n % 3 == 0) && (n % 5 == 0))
+    {
+      printf("FizzBuzz\n");
+    }
+    else if (n % 5 == 0)
+    {
+      printf("Buzz\n");
+    }
+    else if (n % 3 == 0)
+    {
+      printf("Fizz\n");
+    }
+    n--;
+  }
 }
 
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(20);
+  fizzbuzz(20);
 
-    return 0;
+  return 0;
 }
 #endif
