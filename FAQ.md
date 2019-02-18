@@ -121,25 +121,25 @@ void foo(int *a)
 ```
 
 There's a difference if you want to use multidimensional arrays. You must
-declare all the dimensions except the last one, which is optional. The compiler
-needs to know the higher dimensions so it can do its array indexing computations
+declare all the dimensions except the first one, which is optional. The compiler
+needs to know the other dimensions so it can do its array indexing computations
 correctly.
 
 ```c
-int foo(int x[10][])
+int foo(int x[][30]) // 30 wide
 {
     return x[2][4];
 }
 
 int main(void)
 {
-    int a[10][30];
+    int a[10][30]; // 30 wide
 
     foo(a);
 ```
 
 This only applies for multidimensional arrays. For 1-dimensional arrays, the
-rule still applies; you still need to specify all dimensions except the last
+rule still applies; you still need to specify all dimensions except the first
 one... but since there is only one, you never need to specify it.
 </p></details></p>
 
