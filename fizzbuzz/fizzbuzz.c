@@ -10,7 +10,12 @@
 */
 int fizzbuzz(int n)
 {
-
+    int count = 0;
+    for (int *i = 0; i <= sizeof(n) / sizeof(int); i++) {
+        if (n[i] % 3 == 0) {
+            
+        }
+    }
 }
 
 #ifndef TESTING
