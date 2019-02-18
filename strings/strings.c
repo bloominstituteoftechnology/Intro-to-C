@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <strings.h>
-#include "../../utils/minunit.h"
-#include "../../utils/utils.h"
+#include "../utils/minunit.h"
+#include "../utils/utils.h"
 
 /*
     Given a character array s, return the number of characters 
@@ -12,7 +12,14 @@
 */
 int string_length(char s[])
 {
+    int i;
 
+    /* testing with this for "loop" that doesn't need to do anything except count through the string.
+    might have to adjust this a bit, just a first idea */
+    
+    for(i = 0; s[i] != '\0'; i++);
+
+    return i;
 }
 
 /*
