@@ -142,3 +142,60 @@ This only applies for multidimensional arrays. For 1-dimensional arrays, the
 rule still applies; you still need to specify all dimensions except the last
 one... but since there is only one, you never need to specify it.
 </p></details></p>
+
+<p><details><summary><b>Why do functions tend to return pointers to structs, and not just copies of the struct?</b></summary><p>
+
+It's possible to do this:
+
+```c
+struct foo my_func(void)
+{
+    struct foo f;
+
+    f.x = 10;
+
+    return f; // Return a copy of f
+}
+```
+
+as opposed to:
+
+```c
+struct foo *my_func(void)
+{
+    struct foo *p = malloc(sizeof(struct foo));
+
+    p->x = 10;
+
+    return p; // Return a copy of p
+}
+```
+
+But in C, it's more idiomatic to return a copy of the pointer to the memory
+allocated than it is to return a copy of the `struct` itself.
+
+Part of the reason for this is that it takes time to copy data. A `struct` can
+be very large depending on how many fields it has in it, but your average
+pointer is only 8 bytes.
+
+Since every time you `return` a thing, a copy of that thing gets made, it is
+faster to copy a pointer than it is to copy a `struct` of any non-trivial size.
+
+Finally, note that this variant always invokes undefined behavior and should
+never be used:
+
+```c
+struct foo *my_func(void)
+{
+    struct foo f;
+
+    f.x = 10;
+
+    return &f; // Return a copy of a pointer to f
+}
+```
+
+The reason is because `f` vaporizes as soon as the function returns (since it's
+just a local variable), so any pointers to it are invalid.
+
+</p></details></p>
