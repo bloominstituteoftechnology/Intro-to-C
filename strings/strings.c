@@ -34,7 +34,14 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    int length = string_length(s);
+    int count = 0;
 
+    /* when setting this up, will need to account for the null character at the end
+    length should be compared to -1 rather than 0 as a result
+    while that length is not -1, compare reverse string at index [count] to the original string
+    length should decrement while counter increments
+    */
 }
 
 #ifndef TESTING
