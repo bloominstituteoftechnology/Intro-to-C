@@ -26,7 +26,22 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+  // int length = string_length(s) - 1;
+  //   for (int i = length; i >= 0; i--)
+  //   {
+  //       rv[length - i] = s[i];
+  //       printf("HERE HERE %s\n", rv);
+  //   };
+  //   rv[length] = '\0';
+  //   return rv;
+  int len = strlen(s);
+  int count = 0;
+  for (int i = len -1; i >= 0; i--) {
+    *(rv + count) = *(s + i);
+    count++;
+  }
+  *(rv + count) = '\0';
+  return rv;
 }
 
 #ifndef TESTING
