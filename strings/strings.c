@@ -9,11 +9,9 @@
 */
 int string_length(char s[])
 {
-    int len = 0
-    for (int i = 0; i < sizeof(s); i++) {
-        len++
-    }
-    return len;
+    int i;
+    for (i = 0; s[i] != '\0'; i++);
+    return i;
 }
 
 /*

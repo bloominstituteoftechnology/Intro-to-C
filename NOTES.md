@@ -30,6 +30,7 @@ C requires variable types to be declared.
 int i = 10;
 float f = 3.24;
 double d = 3.14159265359;
+long double d2 = 3.141592653599999999;
 char c = 'a';
 int arr[5]; //(5 elems are ints of unknown value)
 char str[] = 'hello';
@@ -111,6 +112,9 @@ if( x > 0 || y > 0) {
 # Boolean
 False is 0
 Every other number is True (usually 1 is used for True)
+
+# Struct
+Cannot initialize variables inside a struct
 
 ## Comparing using typedef and not using typedef
 ```c
