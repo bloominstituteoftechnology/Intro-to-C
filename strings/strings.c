@@ -10,6 +10,15 @@
 int string_length(char s[])
 {
 
+    int count = 0;
+    int i;
+
+    for(i = 0; s[i] != '\0'; i++ ) {
+        count++;
+    }
+    
+    return count;
+
 }
 
 /*
@@ -21,6 +30,17 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
 
+    int index_last = string_length(s)-1;
+    int j;
+
+    for(j = index_last; j >= 0; j--) {
+
+            strcat(rv, s[j]);
+
+    }
+    strcat(rv, '\0');
+    return rv;
+    
 }
 
 #ifndef TESTING
