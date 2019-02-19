@@ -15,24 +15,29 @@
 char *string_dup(char *src)
 {   
     int length = strlen(src);
-    char *a = malloc(length * sizeof(char));
+    char *copy = malloc(length * sizeof(char));
     for (int i = 0; i < length; i++) {
-        a[i] = src[i];
+        copy[i] = src[i];
     }
-    printf("\n%s %s\n", a, src);
-    return a;
+    printf("\n%s %s\n", copy, src);
+    return copy;
 }
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
-    of any type and copies its contents to the destination pointer (dest).
+    of any type and copies its contents to the copy pointer (dest).
     You may want to cast the input pointers to char pointers first before
     performing the copying. `n` is the amount of data that should be copied
     from `src` to `dest`. 
 */
 void mem_copy(void *dest, const void *src, int n)
 {
+    char *source = (char *)src;
+    char *copy = dest;
     
+    for (int i = 0; i < n; i++) {
+        copy[i] = source[i];
+    }
 }
 
 /*
