@@ -468,6 +468,74 @@ It's idiomatic to keep the asterisk tucked up next to the variable that's the
 pointer.
 </p></details></p>
 
+<p><details><summary><b>What does the "implicit declaration of function" warning mean?</b></summary><p>
+
+This is the compiler saying "Hey, you're calling a function but I haven't seen a
+declaration for that function yet." Basically you're calling a function before
+you've declared it.
+
+But what does _declared_ mean?
+
+A declaration can either be a function definition, or a function prototype.
+
+Let's look at a broken example:
+
+```c
+#include <stdio.h>
+
+int main(void)
+{
+    foo(); // Implicit declaration warning!!
+}
+
+void foo(void)
+{
+    printf("Foo!\n");
+}
+```
+
+In that example, `main()` calls `foo()`, but the compiler hasn't seen a
+declaration of `foo()` yet. We can fix it by defining `foo()` _before_ `main()`:
+
+```c
+#include <stdio.h>
+
+// Just moved foo()'s definition before main(), that's all
+
+void foo(void)
+{
+    printf("Foo!\n");
+}
+
+int main(void)
+{
+    foo(); // No problem!
+}
+```
+
+You can also use a _function prototype_ to declare a function before it is used,
+like so:
+
+```c
+#include <stdio.h>
+
+void foo(void); // This is the prototype! It's a declaration of foo().
+
+int main(void)
+{
+    foo(); // No problem
+}
+
+void foo(void) // This is the definition of foo()
+{
+    printf("Foo!\n");
+}
+```
+
+Prototypes typically go in header files, but can also be included in source
+files when it's inconvenient to rearrange functions.
+
+</p></details></p>
 <!--
 TODO:
 
