@@ -242,6 +242,124 @@ values by subtracting `'0'` from them.
 
 </p></details></p>
 
+<p><details><summary><b>When do I need a pointer to a pointer?</b></summary><p>
+
+There are a few reasons you might need one, but the most common is when you pass
+a pointer to a function, and the function needs to modify the pointer.
+
+Let's take a step back and see when you just need to use a pointer.
+
+```c
+void foo(int a)
+{
+    a = 12;
+}
+
+int main(void)
+{
+    int x = 30;
+
+    printf("%d\n", x); // prints 30
+
+    foo(x);
+
+    printf("%d\n", x); // prints 30 again--not 12! Why?
+}
+```
+
+In the above example, `foo()` wants to modify the value of `x` back in main.
+But, alas, it can only modify the value of `a`. When you call a function, all
+arguments get _copied_ into their respective parameters. `a` is merely a _copy_
+of `x`, so modifying `a` has no effect on `x`.
+
+What if we want to modify `x` from `foo()`, though? This is where we have to use
+a pointer.
+
+```c
+void foo(int *a)
+{
+    *a = 12; // Set the thing `a` points at to 12
+}
+
+int main(void)
+{
+    int x = 30;
+
+    printf("%d\n", x); // prints 30
+
+    foo(&x);
+
+    printf("%d\n", x); // prints 12!
+}
+```
+
+In this example, `foo()` gets a copy of a pointer to `x`. (Everything gets
+copied into the parameters when you make a call, even pointers.)
+
+Then it changes the thing the pointer points to to `12`. That pointer was
+pointing to `x` back in main, so it changes `x`'s value to `12`.
+
+Great!
+
+So what about pointers to pointers? It's the same idea. Let's do a broken
+example:
+
+```c
+void alloc_ints(int *p, int count)
+{
+    p = malloc(sizeof(int) * count); // Allocate space for ints
+}
+
+int main(void)
+{
+    int *q = NULL;
+
+    alloc_ints(q, 10); // Alloc space for 10 ints
+
+    printf("%p\n", q); // Prints NULL still!!
+
+    q[2] = 10;  // UNDEFINED BEHAVIOR, CRASH?
+}
+```
+
+What happened?
+
+When we call `alloc_ints()`, a _copy_ of `q` is made in `p`. We then assign into
+`p` with the `malloc()`, but since `p` is just a copy of `q`, `q` is unaffected.
+
+It's just like our first version of `foo()`, above.
+
+Solution? We need to pass a pointer to `q` to `alloc_ints()` so that
+`alloc_ints()` can modify the value of `q`.
+
+But `q` is already a pointer! It's an `int *`! So when we take the address-of it
+(AKA get a pointer to it), we'll end up with a pointer to a pointer, or an `int
+**`!
+
+```c
+void alloc_ints(int **p, int count)
+{
+    // Allocate space for ints, store the result in the thing that
+    // `p` points to, namely `q`:
+
+    *p = malloc(sizeof(int) * count);
+}
+
+int main(void)
+{
+    int *q = NULL;
+
+    alloc_ints(&q, 10); // Alloc space for 10 ints
+
+    printf("%p\n", q); // Prints some big number, good!
+
+    q[2] = 10;  // works!
+}
+```
+
+Success!
+</p></details></p>
+
 <!--
 Template:
 
