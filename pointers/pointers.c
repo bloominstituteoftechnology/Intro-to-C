@@ -59,7 +59,24 @@ char *find_string(char *haystack, char *needle)
     while searching through haystack, increment both
     if we reach the end of the search via needle dereference (searching through values), return the first instance
     */
-   
+
+    char *pointer_store = needle;
+
+    while(*haystack != "\0") {
+        if(*haystack == *needle) { /* searching through non-null entries*/
+            char *target = haystack;
+            while(*needle == *haystack && *needle != '\0') {
+                needle++;
+                haystack++;
+            }
+            if(*needle == '\0') {
+                return target;
+            }
+            needle = pointer_store;
+        }
+        haystack++;
+    }
+    return 0;
 }
 
 #ifndef TESTING
