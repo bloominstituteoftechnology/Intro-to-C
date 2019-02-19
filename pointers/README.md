@@ -38,15 +38,14 @@ As showcased above, declaring a pointer is as simple as putting an asterisk afte
 ```c
 /* Declaring two ints x and y, and an int array z */
 int x = 1, y = 2, z[10];
-int *ip;        /* ip is a pointer to an int */
+int *ip;        /* ip is a pointer to an int -- an unknown int but place in memory is reserved*/
 
-ip = &x;        /* ip now points to x */
-y = *ip;        /* y is now 1 */
-*ip = 0;        /* x is now 0 */
+ip = &x;        /* ip now points to address of x */
+y = *ip;        /* y is now 1 => y is still an int & it is now linked to ip, which points to val of x*/
+*ip = 0;        /* x is now 0; => since *ip = 0, x is now 0*/  
 ip = &z[0];     /* ip now points to z[0] */
 ```
 
-There's nothing new going on in the first two lines of this block. Starting at the third line with `ip = &x;`, we see the `&` operator. This means we're grabbing the _address_ of the variable `x`, or in other words, we're asking for the address where the value of `x` (`1` in this case) is being stored. We do this because `ip` is a pointer, which stores an address, not a value. If we did `ip = x;`, that would be saying "store the value of the variable x in the variable `ip`", which would not compile since we've declared `ip` to be an integer pointer, not an integer value. 
 
 In the next line, `y = *ip`, note that when we use the `*` operator not in a declaration, it signifies that we're want to grab the _value_ of the operand. So we're saying "set the variable `y` to be the value of the pointer `ip`". Again, since `ip` is a pointer, it stores an address. When we prepend the `*` operator in front of a pointer, we're asking for the value that that pointer points to. Put another way, we're indexing into the giant array of memory that is our computer and asking for the value at the given index. 
 

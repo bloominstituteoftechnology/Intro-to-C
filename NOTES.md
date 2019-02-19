@@ -239,3 +239,9 @@ for (int i = 0; i < n; i++) {
 }
 ```
 
+# What is a copy?
+Having 2 things point to the same thing is not a copy. It is just 2 pointers to 1 value.
+A copy would be having the same thing twice in memory.
+
+# Sentinal Value
+

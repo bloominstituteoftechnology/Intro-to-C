@@ -14,6 +14,13 @@ void swap(int* a, int* b)
     int temp2 = *b; 
     *a = temp2;
     *b = temp;
+
+    /* better method:
+        int temp = *a;
+        *a = *b;
+        *b = temp;
+    */
+
 }
 
 /*
@@ -29,9 +36,10 @@ void swap(int* a, int* b)
 // unsigned char will be an 8-bit unsigned integer (0 to 255). 
 char *find_char(char *str, int c)
 {
-    int i;
-    for (i = 0; str[i] == c; i++);
-    return str[i];
+    // int i;
+    // for (i = 0; str[i] == c; i++);
+    // return str[i];
+    return 0;
 }
 
 /*
@@ -44,7 +52,12 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
-
+    while (*y != '\0') { // iterate along y char-by-char until null terminator
+       *y = *x;          // set the corresponding x to that char 
+        x++;             // increase x
+        y++;             // increase y
+   }
+   *x = '\0';    // since iteration was up to null terminator add it to the end
 }
 
 /* 
@@ -63,8 +76,16 @@ void string_copy(char *x, char *y)
 */
 int string_compare(char *m, char *n)
 {
-
-}
+        //
+    while (*m != '\0') { // iterate along y char-by-char until null terminator
+        if (*m == *n) { // if strings match compare next strings to each other
+            n++;              // increase x
+            m++;              // increase y
+        } else {    // if strings match compare next strings to each other
+            return (*m>*n) ? *n-*m: *m-*n;
+        }
+   }
+   return 0;    // if while loop doesn't break, return 0
 
 /*
     Searches the input string `haystack` for the first instance of
