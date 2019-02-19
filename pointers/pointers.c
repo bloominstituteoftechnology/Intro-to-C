@@ -30,7 +30,6 @@ void string_copy(char *x, char *y)
 char *find_char(char *str, int c)
 {
     char *ptr = NULL;
-    int len = strlen(str);
 
     for (int i = 0; str[i] != '\0'; i++)
     {
