@@ -7,8 +7,17 @@
     end to terminate it properly. 
 */
 void string_copy(char *x, char *y)
-{
-
+{   
+    char character;
+    int counter = 0;
+    while (character != '\0') {
+        character = *(y+counter);
+        *(x+counter) = *(y+counter);
+        counter++;
+    }
+    *(x+counter) = '\0';
+    
+   
 }
 
 /*
@@ -21,7 +30,12 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    
+    for (int i = 0; *(str != '\0'); i++) {
+        if (str[i] == c ) {
+            return &str[i];
+        }
+    }
 }
 
 /*
