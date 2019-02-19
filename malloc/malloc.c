@@ -12,7 +12,11 @@
 */
 char *string_dup(char *src)
 {
-
+    /* get length of the input string
+    assign a pointer char variable to reference memory allocation to that length block of variable type char
+    loop through the entire length and assign each letter from src to the new variable
+    return this
+    */
 }
 
 /*
