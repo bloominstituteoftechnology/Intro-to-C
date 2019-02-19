@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "minunit.h": "c"
+        "minunit.h": "c",
+        "strings.h": "c"
     }
 }

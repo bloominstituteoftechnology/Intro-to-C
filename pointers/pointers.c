@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <strings.h>
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -51,8 +52,28 @@ char *find_char(char *str, int c)
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)
-{
-    
+{   
+    char *temp = needle;
+
+    while(*haystack != '\0') 
+    {
+        if(*haystack == *needle) 
+        {
+            char *first_inst = haystack;
+            while(*needle == *haystack && *needle != '\0') 
+            {
+                needle++;
+                haystack++;
+            }
+            if(*needle == '\0') 
+            {
+                return first_inst;
+            }
+            needle = temp;
+        }
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
