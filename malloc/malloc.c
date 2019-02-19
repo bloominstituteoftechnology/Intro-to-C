@@ -72,7 +72,23 @@ void *resize_memory(void *ptr, int old_size, int new_size)
     set the old pointer to the new so it references the proper block of memory
     */
 
+    char *ptr_copy = malloc(new_size + 1);
+    char *storage = (char *)ptr;
+    int size;
+
+    if(old_size < new_size) {
+        size = old_size; /* handle the provided edge case */
+    }
+    else {
+        size = new_size; /* else, proceed as normal */
+    }
     
+    for(int i = 0; i < size; i++) {
+        ptr_copy[i] = storage[i]; /* same copying logic as previous problems */
+    }
+    ptr = ptr_copy; /* referencing the newly populated memory block */
+
+    return ptr;
 }
 
 #ifndef TESTING
