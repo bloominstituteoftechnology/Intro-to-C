@@ -1,3 +1,6 @@
+<!-- I have been watching the videos in the videos in training kit.  I have also been working on my problem for the whiteboard pairings tomorrow.  I think that after watching all of these videos I have a pretty good understanding of the project, but I have not gotten much code down.  I will work on getting soem code down before whiteboard parings tomorrow. -->
+
+<!-- https://github.com/LambdaSchool/Intro-to-C/pull/370 -->
 
 # Introduction to the C Programming Language
 
