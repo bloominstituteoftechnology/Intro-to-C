@@ -8,7 +8,7 @@
 */
 void string_copy(char *x, char *y)
 {
-
+    *x = *y;
 }
 
 /*
@@ -21,7 +21,6 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
 }
 
 /*
@@ -34,7 +33,6 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
 }
 
 #ifndef TESTING
