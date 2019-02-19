@@ -437,6 +437,37 @@ points to (namely `f`).
 
 </p></details></p>
 
+<p><details><summary><b>What's the difference between "<tt>int *x</tt>" and "<tt>int* x</tt>"?</b></summary><p>
+
+Syntactically, nothing. They're equivalent.
+
+That said, the recommendation is that you use the form `int *x`.
+
+Here's why. These two lines are equivalent:
+
+```c
+int* x, y;
+```
+
+```c
+int *x, y;
+```
+
+In both of them, `x` is type `int*`, and `y` is type `int`. But by putting the
+asterisk right next to the `int`, it makes it look like both `x` and `y` are of
+type `int*`, when in fact only `x` is.
+
+If we reverse the order of `x` and `y`, we must necessarily move the asterisk
+with `x`:
+
+```c
+int y, *x; // Also equivalent to the previous two examples
+```
+
+It's idiomatic to keep the asterisk tucked up next to the variable that's the
+pointer.
+</p></details></p>
+
 <!--
 TODO:
 
