@@ -63,7 +63,16 @@ void mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    /* create a new variable and malloc it with the new_size and another byte for null terminator
+    reference the initial pointer with another variable 
+    create another variable that handles size
+    when old_size < new_size, assign new size variable to old size
+    if this is not the case, assign new size variable to new size
+    loop and perform a similar copying operation to above examples
+    set the old pointer to the new so it references the proper block of memory
+    */
 
+    
 }
 
 #ifndef TESTING
