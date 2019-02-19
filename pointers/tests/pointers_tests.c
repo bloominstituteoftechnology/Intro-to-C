@@ -27,7 +27,7 @@ char *test_find_string()
     char *found = find_string(str, "School");
 
     mu_assert(strcmp(found, "School") == 0, "Your find_string function did not find the expected substring.");
-    
+
     found = find_string(str, "Lambda");
 
     mu_assert(strcmp(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");

@@ -8,7 +8,13 @@
 */
 void string_copy(char *x, char *y)
 {
-    *x = *y;
+    // *x = *y;
+    int i;
+    for (i = 0; *(y + i) != '\0'; i++)
+    {
+        *(x + i) = *(y + i);
+    }
+    printf("x %s\n", x);
 }
 
 /*
@@ -20,7 +26,17 @@ void string_copy(char *x, char *y)
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, int c)
+
 {
+    while (*str != '\0')
+    {
+        if (*str == c)
+        {
+            return str;
+        }
+        str++;
+    }
+    return NULL;
 }
 
 /*
