@@ -76,7 +76,7 @@ char *find_string(char *haystack, char *needle)
         }
         haystack++;
     }
-    return 0;
+    return NULL;
 }
 
 #ifndef TESTING
