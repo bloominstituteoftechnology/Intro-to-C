@@ -8,9 +8,10 @@
 */
 void string_copy(char *x, char *y)
 {
-
+    for (int i = 0; i < strlen(y) + 1; i++){
+        x[i] = y[i];
+    }
 }
-
 /*
     Searches the input string `str` for the first instance of the 
     character `c` (an unsigned char). This function returns a pointer
@@ -19,10 +20,10 @@ void string_copy(char *x, char *y)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
-{
+// char *find_char(char *str, int c)
+// {
 
-}
+// }
 
 /*
     Searches the input string `haystack` for the first instance of
@@ -32,10 +33,10 @@ char *find_char(char *str, int c)
 
     Do not use the `strstr` function from the standard library.
 */
-char *find_string(char *haystack, char *needle)
-{
+// char *find_string(char *haystack, char *needle)
+// {
 
-}
+// }
 
 #ifndef TESTING
 int main(void)
