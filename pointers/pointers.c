@@ -9,6 +9,7 @@
 void string_copy(char *x, char *y)
 {
  /* doing some research into pointer arithmetic */
+ /* 2/19 attendance commit */
 }
 
 /*
