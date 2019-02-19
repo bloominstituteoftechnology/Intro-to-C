@@ -37,7 +37,11 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
-
+    /* similar to the string_dup solution, make storage for both the source and a copy
+    point the copy to dest so that the value is assigned
+    loop in a similar fashion to previous answer and copy entries
+    */
+   
 }
 
 /*
