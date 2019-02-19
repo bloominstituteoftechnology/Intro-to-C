@@ -25,10 +25,12 @@ int string_length(char s[])
 char *reverse_string(char rv[], char s[])
 {
     int begin, end, count = 0;
-    gets(s);
+    //gets(s);
 
+    //calc string length
     while(s[count] != '\0')
         count++;
+    
     end = count -1;
     for(begin = 0; begin < count; begin++) {
         rv[begin] = s[end];
@@ -37,6 +39,7 @@ char *reverse_string(char rv[], char s[])
     rv[begin] = '\0';
     //printf("%s\n, r");
     return rv;
+
     // int length = string_length(s);
     // printf("%d\n", length);
     // int i;
