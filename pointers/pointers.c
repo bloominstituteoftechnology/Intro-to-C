@@ -7,11 +7,15 @@
     end to terminate it properly. 
 */
 void string_copy(char *x, char *y)
+{
     while(*y != '\0')
     {
-        
-
+        *y = *x;
+        x++;
+        y++;
     }
+    *x = '\0';
+}
 
 /*
     Searches the input string `str` for the first instance of the 
