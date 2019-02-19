@@ -360,6 +360,89 @@ int main(void)
 Success!
 </p></details></p>
 
+<p><details><summary><b>Do other languages use pointers?</b></summary><p>
+
+Most all of them do, but some are more explicit about it than others. In
+languages like Go, C, C++, and Rust, you have to use the proper operators when
+using pointers and references.
+
+But languages like JavaScript and Python do a lot of that stuff behind your
+back. Take this Python example:
+
+```python
+class Foo:
+    def __init__(self, x):
+        self.x = x
+
+def bar(a):
+    a.x = 12 # Sets `f.x` to 12--why?
+
+    a = None # Does NOT destroy `f`--why not?
+
+
+f = Foo(2)
+
+print(f.x) # Prints 2
+
+bar(f)
+
+print(f.x) # Prints 12--why?
+```
+
+Let's look what happened there. We made a new object `f`, and we passed that
+object to function `bar()`, which modified its `x` property.
+
+After enough time with Python, we learn that it passes objects _by reference_.
+This is another way of saying it's using pointers behind your back. Behind the
+scenes in Python, `a` is a pointer to `f`.
+
+That's why when we modify `a.x`, it actually modifies `f.x`.
+
+And it's also why when we set `a` to `None`, it doesn't change `f` at all. `a`
+is just a pointer to `f`, not `f` itself.
+
+Let's look at the C version of that Python program. This works exactly the same way:
+
+```c
+#include <stdio.h>
+
+struct foo {
+    int x;
+};
+
+void bar(struct foo *a)
+{
+    a->x = 12;   // Sets f.x to 12--why?
+
+    a = NULL;    // Does NOT destroy `f`--why not?
+}
+
+int main(void)
+{
+    struct foo f = { 2 };
+
+    printf("%d\n", f.x); // Prints 2
+
+    bar(&f);
+
+    printf("%d\n", f.x); // Prints 12--why?
+}
+```
+
+`a` is a pointer to `f`. So we when do `a->x`, we're saying "set the `x`
+property on the thing that `a` points to".
+
+And when we set `a` to `NULL`, it's just modifying `a`, not the thing that `a`
+points to (namely `f`).
+
+</p></details></p>
+
+<!--
+TODO:
+
+* Why `int* x` vs `int *x`?
+-->
+
 <!--
 Template:
 
