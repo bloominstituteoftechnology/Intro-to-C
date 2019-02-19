@@ -7,8 +7,13 @@
     pointing at.
 */
 void swap(int* a, int* b)
-{
-
+{   
+    // store a value in temp variable
+    int temp = a;
+    // change a address to point to address of b value
+    a = b;
+    b = temp;
+    // change b address to point to temp (a) value
 }
 
 /*
