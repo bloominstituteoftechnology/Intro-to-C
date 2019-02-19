@@ -471,7 +471,6 @@ pointer.
 <!--
 TODO:
 
-* Why `int* x` vs `int *x`?
 -->
 
 <!--
