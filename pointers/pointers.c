@@ -8,8 +8,13 @@
 */
 void string_copy(char *x, char *y)
 {
- /* doing some research into pointer arithmetic */
- /* 2/19 attendance commit */
+    int length = strlen(y); /* we already have the pointers, the value is what length is taken from here */
+    for(int i = 0; i < length; i++) {
+        *x = *y; /* dereference operators so we are copying the values referred to by these pointers */
+        x++; /* incrementing x should eventually point to the null entry */
+        y++;
+    }
+    printf("%s\n%s", x, y);
 }
 
 /*
