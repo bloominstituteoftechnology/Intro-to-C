@@ -41,7 +41,13 @@ void mem_copy(void *dest, const void *src, int n)
     point the copy to dest so that the value is assigned
     loop in a similar fashion to previous answer and copy entries
     */
-   
+
+    char src_copy = (char *)src;
+    char *dest_copy = dest;
+
+    for(int i = 0; i < n; i++) {
+        dest_copy[i] = src_copy[i];
+    } /* will handle general copying */
 }
 
 /*
