@@ -9,7 +9,13 @@
 */
 void string_copy(char *x, char *y)
 {
-    *x = *y;
+    int length = strlen(y);
+
+    for (int i = 0; i < length; i++) {
+        x[i] = y[i];
+    }
+
+    x[length] = '\0';
 }
 
 /*
@@ -23,11 +29,13 @@ void string_copy(char *x, char *y)
 char *find_char(char *str, int c)
 {
     int length = strlen(str);
-    for (int i = 0; i < length-1; i++) {
-        if (*(str+i) == c) {
-            return (str+i);
+    char *ptr = NULL;
+    for (int i = 0; i < length; i++) {
+        if (str[i] == c) {
+            ptr = &str[i];
         }
     }
+    return ptr;
 }
 
 /*
