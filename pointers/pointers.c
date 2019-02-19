@@ -32,6 +32,16 @@ char *find_char(char *str, int c)
     store 'c' value in another variable
     return a pointer to this variable
     */
+
+    while(*str != '\0') {
+        if(*str == c) {
+            char *pointer_store = str;
+            printf("%s", pointer_store);
+            return pointer_store;
+        }
+        str++;
+    }
+    return 0;
 }
 
 /*
@@ -42,10 +52,10 @@ char *find_char(char *str, int c)
 
     Do not use the `strstr` function from the standard library.
 */
-char *find_string(char *haystack, char *needle)
-{
+// char *find_string(char *haystack, char *needle)
+// {
 
-}
+// }
 
 #ifndef TESTING
 int main(void)
