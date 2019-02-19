@@ -9,6 +9,11 @@
 void string_copy(char *x, char *y)
 {
 
+    while(*x != *y) {
+        *x = *y;
+        y++;
+    }
+
 }
 
 /*
@@ -21,6 +26,17 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
+    char *n;
+    int i;
+
+    for( i = 0; i != '\0'; i++) {
+
+        if(str[i] == c) {
+            *n = c;
+        } 
+
+    }
+    return *n;
 
 }
 
