@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <strings.h>
 #include "lib.h"
 
 /*
@@ -11,8 +13,14 @@
     length of the input string.
 */
 char *string_dup(char *src)
-{
-
+{   
+    int length = strlen(src);
+    char *a = malloc(length * sizeof(char));
+    for (int i = 0; i < length; i++) {
+        a[i] = src[i];
+    }
+    printf("\n%s %s\n", a, src);
+    return a;
 }
 
 /*
@@ -24,7 +32,7 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
-
+    
 }
 
 /*
