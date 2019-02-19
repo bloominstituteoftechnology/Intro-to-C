@@ -1,10 +1,5 @@
 # FAQ
 
-<!--
-<p><details><summary><b></b></summary><p>
-</p></details></p>
--->
-
 <p><details><summary><b>Can you have default parameters in the structs?</b></summary><p>
 
 No. The best you can do is have a helper function set the defaults.
@@ -199,3 +194,57 @@ The reason is because `f` vaporizes as soon as the function returns (since it's
 just a local variable), so any pointers to it are invalid.
 
 </p></details></p>
+
+<p><details><summary><b>Why do we subtract '0' from a char to convert it from ASCII to a numeric value?</b></summary><p>
+
+The code typically looks like this:
+
+```c
+char c = '2';  // ASCII '2'
+
+int v = c - '0'; // Convert into numeric value 2
+
+printf("%d\n", v); // prints decimal 2
+```
+
+Remember that in C, a `char` is like a small `int`, and when you have a
+character in single quotes like `'2'`, C replaces that with the
+[ASCII](https://en.wikipedia.org/wiki/ASCII) value of that character.
+
+In the case of our example, the ASCII value of `'2'` is `50`. And we want to
+convert that to the numeric value `2`. So we clearly have to subtract `48` from
+it, since `50 - 48 = 2`. But why the `'0'`, then?
+
+Here's part of the ASCII table, just the numbers:
+
+|Character|ASCII value|
+|:-------:|:---------:|
+|  `'0'`  |    48     |
+|  `'1'`  |    49     |
+|  `'2'`  |    50     |
+|  `'3'`  |    51     |
+|  `'4'`  |    52     |
+|  `'5'`  |    53     |
+|  `'6'`  |    54     |
+|  `'7'`  |    55     |
+|  `'8'`  |    56     |
+|  `'9'`  |    57     |
+
+It's no coincidence it's done this way. Turns out that if you subtract `48` from
+any ASCII character that is a digit, you'll end up with the numeric value of
+that ASCII character.
+
+Example: `'7'` is value `55` (from the table), compute `55 - 48` and you get
+`7`.
+
+And since `'0'` is `48`, it's become idiomatic in C to convert ASCII digits to
+values by subtracting `'0'` from them.
+
+</p></details></p>
+
+<!--
+Template:
+
+<p><details><summary><b></b></summary><p>
+</p></details></p>
+-->
