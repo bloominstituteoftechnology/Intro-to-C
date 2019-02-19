@@ -17,6 +17,15 @@ char *string_dup(char *src)
     loop through the entire length and assign each letter from src to the new variable
     return this
     */
+
+    int length = strlen(src);
+    char *point = malloc(length * sizeof(char));
+    
+    for(int i = 0; i < length; i++) {
+        point[i] = src[i]; /* this should copy the values at particular references in point */
+    }
+    printf("%s\n%s", point, src);
+    return point;
 }
 
 /*
