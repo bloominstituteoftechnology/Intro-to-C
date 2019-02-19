@@ -8,7 +8,12 @@
 */
 void swap(int* a, int* b)
 {
-
+    // a is a pointer to an int.
+    // b is a pointer to an int.
+    int temp = *a; //temp is now a's value
+    int temp2 = *b; 
+    *a = temp2;
+    *b = temp;
 }
 
 /*
@@ -19,9 +24,14 @@ void swap(int* a, int* b)
 
     Do not use the `strchr` function from the standard library.
 */
+
+// signed char will be an 8-bit two's complement number ranging from  -128 to 127, 
+// unsigned char will be an 8-bit unsigned integer (0 to 255). 
 char *find_char(char *str, int c)
 {
-
+    int i;
+    for (i = 0; str[i] == c; i++);
+    return str[i];
 }
 
 /*
