@@ -27,7 +27,11 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    /* reference any memory address that is not null, i.e. contains a char value
+    get the first instance of char 'c' with a dereference operator
+    store 'c' value in another variable
+    return a pointer to this variable
+    */
 }
 
 /*
