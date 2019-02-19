@@ -34,10 +34,10 @@ char *find_char(char *str, int c)
     */
 
     while(*str != '\0') {
-        if(*str == c) {
+        if(*str == c) { /* dereference operator to find 'c' rather than the address at which 'c' is stored */
             char *pointer_store = str;
             printf("%s", pointer_store);
-            return pointer_store;
+            return pointer_store; /* testing this with both the value and the pointer */
         }
         str++;
     }
@@ -52,10 +52,15 @@ char *find_char(char *str, int c)
 
     Do not use the `strstr` function from the standard library.
 */
-// char *find_string(char *haystack, char *needle)
-// {
-
-// }
+char *find_string(char *haystack, char *needle)
+{
+    /* create a variable that can reference needle, deference to find value
+    same as previous function, search through all non-null entires
+    while searching through haystack, increment both
+    if we reach the end of the search via needle dereference (searching through values), return the first instance
+    */
+   
+}
 
 #ifndef TESTING
 int main(void)
