@@ -62,7 +62,7 @@ char *find_string(char *haystack, char *needle)
 
     char *pointer_store = needle;
 
-    while(*haystack != "\0") {
+    while(*haystack != '\0') {
         if(*haystack == *needle) { /* searching through non-null entries*/
             char *target = haystack;
             while(*needle == *haystack && *needle != '\0') {
