@@ -23,28 +23,36 @@ int string_length(char s[])
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
 */
+
+// gcc -o strings strings.c
+// ./strings
+// add -g -Wall for debugging
 char *reverse_string(char rv[], char s[])
 {
-  // int s_length = string_length(s);
-  // int counter = 0;
-  // for (int i = s_length - 1; i >= 0; i--)
-  // {
-  //   rv[counter] = s[i];
-  //   counter++;
-  // }
-  // return rv;
-  // }
-  int length = string_length(s) - 1;
+  int s_length = string_length(s);
   int counter = 0;
-  while (counter < string_length(s))
+  for (int i = s_length - 1; i >= 0; i--)
   {
-    rv[counter] = s[length];
+    // printf("%d %d\n", counter, i);
+    printf("s[i] %c\n", s[i]);
+    rv[counter] = s[i];
+    printf("Rv char %c\n", rv[counter]);
     counter++;
-    length--;
   }
-  rv[counter] = '\0';
+  rv[counter] = '\0'; //terminates the string
   return rv;
 }
+// int length = string_length(s) - 1;
+// int counter = 0;
+// while (counter < string_length(s))
+// {
+//   rv[counter] = s[length];
+//   counter++;
+//   length--;
+// }
+// rv[counter] = '\0';
+// return rv;
+// }
 
 #ifndef TESTING
 int main(void)
