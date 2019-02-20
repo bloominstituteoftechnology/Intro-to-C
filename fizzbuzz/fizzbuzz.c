@@ -10,7 +10,26 @@
 */
 int fizzbuzz(int n)
 {
-
+    // initiate a counter
+    int counter = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        // check if divisible by 5 && 3
+        if (i % 3 == 0 && i % 5 == 0) {
+            printf("FizzBuzz %d\n", i);
+        // check if divisible by 5
+        } else if (i % 5 == 0) {
+            printf("Buzz %d\n", i);
+        // check if divisible by 3
+        } else if (i % 3 == 0) {
+            printf("Fizz %d\n", i);
+        } else {
+            // increment counter
+            counter++;
+        }
+    }
+    // printf("%d\n", counter);
+    return counter;
 }
 
 #ifndef TESTING
