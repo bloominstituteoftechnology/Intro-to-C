@@ -60,9 +60,23 @@ char *find_string(char *haystack, char *needle)
 {
     while (*haystack != '\0')
     {
-        if (*haystack == *needle) {
-            return *needle
+        char *point_to_needle = needle;
+        if (*haystack == *needle) 
+        {
+            //assign new pointer bc have to return pointer
+            char *point_to_haystack = haystack;
+            while (*needle == *haystack && *needle != '\0')
+            {
+                needle++;
+                haystack++;
+            }
+            if (*needle == '\0')
+            {
+                return point_to_haystack;
+            }
+            needle = point_to_needle;
         }
+        //continually increments haystack if no matches
         haystack++;
     }
     return NULL;
