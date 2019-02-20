@@ -8,6 +8,10 @@
 */
 void string_copy(char *x, char *y)
 {
+    for(int i = 0; y[i] != '\0'; i++) {
+        x[i] = y[i];
+    }
+    return x;
 
 }
 
