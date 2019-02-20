@@ -37,6 +37,7 @@ char *reverse_string(char rv[], char s[])
         rv[rev_i] = s[i];
         rev_i++;
     }
+    rv[length] = '\0';
     
     return rv;
 }
