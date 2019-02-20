@@ -37,7 +37,9 @@ char *find_char(char *str, int c)
         if (*str == c)
         {
             //if find the char you're looking for return
-            return (str);  //why return str for c? 
+            return (str);  
+            //why return str for c? bc already know char were searching for 
+            //so that could just return bool this way we return a pointer which could be more useful
         }
         //iterate through str
         str++;
@@ -56,7 +58,14 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    while (*haystack != '\0')
+    {
+        if (*haystack == *needle) {
+            return *needle
+        }
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
