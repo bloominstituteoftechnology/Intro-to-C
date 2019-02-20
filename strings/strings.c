@@ -9,6 +9,16 @@
 */
 int string_length(char s[])
 {
+    // initialize a counter
+    int counter = 0;
+    int i = 0;
+    // iterate through string
+    while(s[i] != 0) {
+        // count each char in string
+        counter++;
+        i++;
+    }
+    return counter;
 
 }
 
@@ -20,7 +30,7 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    return *s;
 }
 
 #ifndef TESTING
