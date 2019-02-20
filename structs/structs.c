@@ -41,7 +41,8 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-
+    free(who->name); /* free up name individually */
+    free(who); /* free up previously-used memory block */
 }
 
 #ifndef TESTING
