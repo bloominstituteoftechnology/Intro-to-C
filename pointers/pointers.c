@@ -9,13 +9,10 @@
 */
 void string_copy(char *x, char *y)
 {
-    int length = strlen(y);
-
-    for (int i = 0; i < length; i++) {
-        x[i] = y[i];
+    for (; *y != '\0'; x++, y++) {
+        *x = *y;
     }
-
-    x[length] = '\0';
+    *x = '\0';
 }
 
 /*
@@ -48,7 +45,20 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    while (*haystack != '\0') {
+        if (*haystack == *needle) {
+            char *ptr = haystack;
+            while (*haystack == *needle && *needle != '\0') {
+                haystack++;
+                needle++;
+            }
+            if (*needle == '\0') {
+                return ptr;
+            }
+        }
+        haystack++;
+    }
+ 
 }
 
 #ifndef TESTING
