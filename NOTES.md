@@ -245,3 +245,14 @@ A copy would be having the same thing twice in memory.
 
 # Sentinal Value
 
+# Bytes etc
+8 buckets
+Initially Content is set to all zeros
+Bucket Contents:   0 0 0 0 0 0 0 0 0 
+Bucket Numbers:    0 1 2 3 4 5 6 7 8
+
+pointer p points to bucket number
+*p is the bucket contents
+p++ goes to the next bucket number
+
+# strtoul

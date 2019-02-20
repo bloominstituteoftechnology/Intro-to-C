@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <string.h>
+
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -11,15 +13,8 @@ void swap(int* a, int* b)
     // a is a pointer to an int.
     // b is a pointer to an int.
     int temp = *a; //temp is now a's value
-    int temp2 = *b; 
-    *a = temp2;
+    *a = *b;
     *b = temp;
-
-    /* better method:
-        int temp = *a;
-        *a = *b;
-        *b = temp;
-    */
 
 }
 
@@ -30,17 +25,29 @@ void swap(int* a, int* b)
     input string `str`.
 
     Do not use the `strchr` function from the standard library.
+    Return NULL if the character is not found.
 */
 
 // signed char will be an 8-bit two's complement number ranging from  -128 to 127, 
 // unsigned char will be an 8-bit unsigned integer (0 to 255). 
 char *find_char(char *str, int c)
 {
-    // int i;
-    // for (i = 0; str[i] == c; i++);
-    // return str[i];
-    return 0;
+    // while (*str != '\0') { // iterate along y char-by-char until null terminator
+    //     if(*str == c) {
+    //         return str;
+    //     }
+    //     str++;
+    // }
+    // return NULL;
+    for (int i = 0; str[i] != '\0'; i++) {
+        if(str[i] == c) {
+            return &str[i];
+        }
+    }
+    return NULL;
 }
+
+
 
 /*
     Given an empty (NULL) character pointer x and a character pointer y,
@@ -53,9 +60,9 @@ char *find_char(char *str, int c)
 void string_copy(char *x, char *y)
 {
     while (*y != '\0') { // iterate along y char-by-char until null terminator
-       *y = *x;          // set the corresponding x to that char 
+        *x = *y;          // set the corresponding x to that char 
+        y++;            // increase y
         x++;             // increase x
-        y++;             // increase y
    }
    *x = '\0';    // since iteration was up to null terminator add it to the end
 }
@@ -78,15 +85,16 @@ int string_compare(char *m, char *n)
 {
         //
     while (*m != '\0') { // iterate along y char-by-char until null terminator
-        if (*m == *n) { // if strings match compare next strings to each other
-            n++;              // increase x
-            m++;              // increase y
-        } else {    // if strings match compare next strings to each other
-            return (*m>*n) ? *n-*m: *m-*n;
+        if (*m == *n) { // if chars match cont. to iterate 
+            n++;    
+            m++;        
+        } else {  // if no match, return positive or negative
+            return (*m>*n) ? 1: -1;
         }
    }
-   return 0;    // if while loop doesn't break, return 0
-
+   // if both *m and *n are null terminator, return 0 else pos or neg
+   return (*m == *n) ? 0: (*m>*n) ? 1: -1; 
+}
 /*
     Searches the input string `haystack` for the first instance of
     the string `needle`. This function returns a pointer that points
@@ -97,7 +105,28 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    int h = strlen(haystack);
+    int n = strlen(needle);
+    if (n > h) {
+        return NULL;
+    }
+    int j = 0;
+    int match = 0;
+    char *first;
+    for(int i=0; i<h && j < n; i++) {
+        if(needle[j] == haystack[i]) {
+            if (!match) {
+                first = &haystack[i];
+            }
+            match = 1;
+            j++;
+            if(needle[j] == '\0') {
+                return first;
+            }
+        }
+        
+    }
+    return NULL;
 }
 
 #ifndef TESTING
