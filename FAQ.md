@@ -195,6 +195,8 @@ just a local variable), so any pointers to it are invalid.
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
 <p><details><summary><b>Why do we subtract '0' from a char to convert it from ASCII to a numeric value?</b></summary><p>
 
 The code typically looks like this:
@@ -241,6 +243,8 @@ And since `'0'` is `48`, it's become idiomatic in C to convert ASCII digits to
 values by subtracting `'0'` from them.
 
 </p></details></p>
+
+<!-- ============================================================================= -->
 
 <p><details><summary><b>When do I need a pointer to a pointer?</b></summary><p>
 
@@ -360,6 +364,8 @@ int main(void)
 Success!
 </p></details></p>
 
+<!-- ============================================================================= -->
+
 <p><details><summary><b>Do other languages use pointers?</b></summary><p>
 
 Most all of them do, but some are more explicit about it than others. In
@@ -437,6 +443,8 @@ points to (namely `f`).
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
 <p><details><summary><b>What's the difference between "<tt>int *x</tt>" and "<tt>int* x</tt>"?</b></summary><p>
 
 Syntactically, nothing. They're equivalent.
@@ -467,6 +475,8 @@ int y, *x; // Also equivalent to the previous two examples
 It's idiomatic to keep the asterisk tucked up next to the variable that's the
 pointer.
 </p></details></p>
+
+<!-- ============================================================================= -->
 
 <p><details><summary><b>What does the "implicit declaration of function" warning mean?</b></summary><p>
 
@@ -536,10 +546,66 @@ Prototypes typically go in header files, but can also be included in source
 files when it's inconvenient to rearrange functions.
 
 </p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What's the difference between <tt>puts()</tt>, <tt>fprintf()</tt>, and <tt>printf()</tt>?</b></summary><p>
+
+`puts()` simply outputs a string. It does no formatting of variables. Its only
+argument is a single string. Additionally, it prints a newline at the end for
+you.
+
+```c
+// This prints "Hello, world %d!" and then a newline:
+puts("Hello, world %d!");
+```
+
+`printf()` does formatted output of variables, and strings as well. It's a
+superset of `puts()`, in that way.
+
+```c
+int x = 12;
+
+// This prints "Hello, world 12!\n":
+printf("Hello, world %d!\n", x);
+```
+
+`fprintf()` is just like `printf()`, except it allows you to print to an open file.
+
+```c
+FILE *fp = fopen("foo.txt", "w");
+int x = 12;
+
+// This writes "Hello, world 12!\n" to the file "foo.txt":
+fprintf(fp, "Hello, world %d!\n", x);
+```
+
+Incidentally, there's already a file open for you called `stdout` (_standard
+output_) which normally prints to the screen. These two lines are equivalent:
+
+```c
+printf("Hello, world!\n");
+fprintf(stdout, "Hello, world!\n"); // Same thing!
+```
+
+There's another already-opened file called `stderr` (_standard error_) that is
+typically used to print error messages. Example:
+
+```c
+if (argc != 2) {
+    fprintf(stderr, "You must specify a command line argument!\n");
+    exit(1);
+}
+```
+
+</p></details></p>
+
 <!--
 TODO:
 
 -->
+
+<!-- ============================================================================= -->
 
 <!--
 Template:
