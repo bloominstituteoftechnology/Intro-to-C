@@ -30,12 +30,23 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-    
-    for (int i = 0; *(str != '\0'); i++) {
-        if (str[i] == c ) {
-            return &str[i];
+    char n = 'a';
+    int count = 0;
+    while (n != '\0') {
+        n = *(str + count);
+        if (str[count] == c) {
+            return &str[count]; 
         }
+        count++;
     }
+    return NULL;   
+
+
+    // for (int i = 0; *(str != '\0'); i++) {
+    //     if (str[i] == c ) {
+    //         return &str[i];
+    //     }
+    // }
 }
 
 /*
