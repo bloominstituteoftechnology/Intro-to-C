@@ -32,13 +32,7 @@ void swap(int* a, int* b)
 // unsigned char will be an 8-bit unsigned integer (0 to 255). 
 char *find_char(char *str, int c)
 {
-    // while (*str != '\0') { // iterate along y char-by-char until null terminator
-    //     if(*str == c) {
-    //         return str;
-    //     }
-    //     str++;
-    // }
-    // return NULL;
+
     for (int i = 0; str[i] != '\0'; i++) {
         if(str[i] == c) {
             return &str[i];

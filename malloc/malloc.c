@@ -11,9 +11,22 @@
     
     Do not use the `strdup` function from the standard library.
 */
+
+int string_length(char s[])
+{
+    int i;
+    for (i = 0; s[i] != '\0'; i++);
+    return i;
+}
+
 char *string_dup(char *src)
 {
-
+    int l = string_length(src)
+    char *dup_str = malloc(128);
+    for (int i = 0; i < l; i++) {
+        dup_str[i] = src[i]
+    }
+    return dup_str[0];
 }
 
 /*
@@ -26,6 +39,14 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
+
+    // First, cast the void pointers to some type we can work with
+    char *cast_src = (char *) src;   // duplicate pointer that is char type since char is 1 byte
+    char *cast_dest = (char * dest); //
+
+    for (int i = 0; i < n; i++) {
+        cast_dest[i] = cast_src[i];// == *(cast_desc + i) = *(cast_src + i);
+    }
 
 }
 

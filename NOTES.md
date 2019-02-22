@@ -27,7 +27,7 @@ C requires variable types to be declared.
 - float: number with only a few numbers after the decimal point
 - double: lengthy number with decimal points
 - char: a string (words need double quotes individual letters need single quotes)
-- arr: arrays require the length and the type of elements to be declared up front
+- arr: arrays require the length and the type of elements to be declared up front; all elements are of the same type
   - arrays of chars: last char is null '\0'
 
 
@@ -185,6 +185,12 @@ int *Pointer_to_easyAs = easyAs;
 ```
 
 ### Sizeof Array and Sizeof Pointer
+sizeof(char) = 1 bytes;
+sizeof(int) = 4 bytes;
+So, when type doesn't matter for a pointer, use char since it is smaller (most granular).
+Length of void items are unknown. So, it is common to have the length (in ints) included as a parameter to a function (see mem_copy).
+
+
 Calling sizeof(easyAs) gets us the total amount of data in the array
 ```c
 sizeof(easyAs);
@@ -256,3 +262,39 @@ pointer p points to bucket number
 p++ goes to the next bucket number
 
 # strtoul
+
+
+## Example of a struct
+```c
+typedef struct Triangle {
+    char *name;
+    int height;
+    int base;
+} Triangle;
+
+Triangle *createTriangle(char *name, int height, int base)
+{
+    Triangle *equilateral = malloc(sizeof(Triangle));
+    equilateral -> name = string_dup(name);
+    equilateral -> base = base;
+    equilateral -> height = height;
+
+    return equilateral;
+}
+
+void destroyTriangle(Triangle *type)
+{
+        if (type->name != NULL) {
+            free(type->name);
+        }
+
+        if (type != NULL) {
+            free(type);
+        }
+}
+
+int main(void)
+{
+    Triangle *right = createTriangle("Right", 5, 4);
+}
+```
