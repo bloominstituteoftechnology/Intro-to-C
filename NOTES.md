@@ -265,13 +265,28 @@ p++ goes to the next bucket number
 
 
 ## Example of a struct
+
+1. Define struct (preferably with typedef so "struct" does not have to be used with each instance)
+2. Create General Instance
+    a. Allocate memory for the struct using malloc
+    b. fill in the values
+    c. allocate memory for all string values (using strdup -- string duplicate)
+3. Create Method to Free/Destroy Instance
+    a. free all string values (don't free int values)
+    b. free instance
+4. Create Specfic Instances as Needed (free/destroy as necessary)
+
+
+
 ```c
+// Define Struct
 typedef struct Triangle {
     char *name;
     int height;
     int base;
 } Triangle;
 
+// Create General Instance
 Triangle *createTriangle(char *name, int height, int base)
 {
     Triangle *equilateral = malloc(sizeof(Triangle));
@@ -282,6 +297,7 @@ Triangle *createTriangle(char *name, int height, int base)
     return equilateral;
 }
 
+// Destroy / Free Instance Method
 void destroyTriangle(Triangle *type)
 {
         if (type->name != NULL) {
@@ -293,8 +309,18 @@ void destroyTriangle(Triangle *type)
         }
 }
 
+
+  // Create Specfic Instances as Needed (free/destroy as necessary)
 int main(void)
 {
+    
     Triangle *right = createTriangle("Right", 5, 4);
+
+    printf("  Name: %s\n", right->name);
+    printf("   Age: %d\n", right->height);
+    printf("Height: %d\n", right->base);
+
+    destroyPerson(right);
+    return 0;
 }
 ```

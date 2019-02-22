@@ -12,21 +12,21 @@
     Do not use the `strdup` function from the standard library.
 */
 
-int string_length(char s[])
-{
-    int i;
-    for (i = 0; s[i] != '\0'; i++);
-    return i;
-}
+// int string_length(char s[])
+// {
+//     int i;
+//     for (i = 0; s[i] != '\0'; i++);
+//     return i;
+// }
 
 char *string_dup(char *src)
 {
-    int l = string_length(src)
-    char *dup_str = malloc(128);
-    for (int i = 0; i < l; i++) {
-        dup_str[i] = src[i]
+    int l = string_length(src);
+    char *dup_str = malloc(l);
+    for (int i = 0; i < l+1; i++) {
+        dup_str[i] = src[i];
     }
-    return dup_str[0];
+    return dup_str;
 }
 
 /*
@@ -39,15 +39,13 @@ char *string_dup(char *src)
 */
 void *mem_copy(void *dest, const void *src, int n)
 {
-
     // First, cast the void pointers to some type we can work with
     char *cast_src = (char *) src;   // duplicate pointer that is char type since char is 1 byte
-    char *cast_dest = (char * dest); //
+    char *cast_dest = dest; //
 
     for (int i = 0; i < n; i++) {
         cast_dest[i] = cast_src[i];// == *(cast_desc + i) = *(cast_src + i);
     }
-
 }
 
 /*
@@ -64,7 +62,13 @@ void *mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    char *dup_dest = malloc(new_size + 1);
+    char *ptr_src = (char *) ptr;
+    int ret_size = old_size < new_size ? old_size: new_size;
 
+    for (int i = 0; i < ret_size; i++) {
+        dup_dest[i] = ptr_src[i];
+    }   
 }
 
 #ifndef TESTING
