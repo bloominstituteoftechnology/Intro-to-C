@@ -20,8 +20,6 @@ char *string_dup(char *src)
         dup[i] = src[i];
     }
 
-    dup[length] = '\0';
-
     return dup;
 }
 
