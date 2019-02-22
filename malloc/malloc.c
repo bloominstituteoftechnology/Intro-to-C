@@ -13,7 +13,7 @@
 */
 char *string_dup(char *src)
 {
-    int length = strlen(src);
+    int length = string_length(src);
     char *dup = malloc(length);
 
     for (int i = 0; i < length; i++) {
