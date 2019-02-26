@@ -484,6 +484,13 @@ This is the compiler saying "Hey, you're calling a function but I haven't seen a
 declaration for that function yet." Basically you're calling a function before
 you've declared it.
 
+If you're calling a library function like `printf()` or a syscall like `stat()`,
+the most common cause of this warning is failure to `#include` the header file
+associated with that function. Check the `man` page for exactly which.
+
+But what if you're getting the error on one of your own functions? Again, it
+means you're calling that function before you've declared it.
+
 But what does _declared_ mean?
 
 A declaration can either be a function definition, or a function prototype.
@@ -542,8 +549,13 @@ void foo(void) // This is the definition of foo()
 }
 ```
 
-Prototypes typically go in header files, but can also be included in source
-files when it's inconvenient to rearrange functions.
+Prototypes for functions that are callable from other source files typically
+go in header files, and then those other source files `#include` them.
+
+For functions that aren't used outside the current `.c` file (e.g. little helper
+functions that no other file will even need to call), those usually are either
+defined at the top of the file before their first call. If that's inconvenient,
+a prototype can be placed at the top of the `.c` file, instead.
 
 </p></details></p>
 
