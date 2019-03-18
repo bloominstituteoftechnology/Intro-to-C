@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /*
     Swaps the integer values being pointed at by a and b. Keep in
@@ -39,7 +40,14 @@ char *find_char(char *str, int c)
 */
 void string_copy(char *x, char *y)
 {
+    int i;
 
+    for (i = 0; y[i]; i++)
+    {
+        x[i] = y[i];
+    }
+
+    x[i] = '\0';
 }
 
 /* 
