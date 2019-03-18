@@ -10,18 +10,25 @@
 */
 int fizzbuzz(int n)
 {
+    // initialize counter to 0
     int counter = 0;
+    // for loop that initialized the incrementer to 0, wil loop until reaches int n
     for (int i = 0; i <= n; i++)
     {
+        // if i is divisible by 3 or 5 print fizzbuzz
         if (i % 15 == 0)
             printf("FizzBuzz\n");
+        // else if i is divisible by 3 print fizz
         else if (i % 3 == 0)
             printf("Fizz\n");
+        // else if i is divisible by 5 print buzz
         else if (i % 5 == 0)
             printf("Buzz\n");
+        // else increment counter
         else
             counter++;
     };
+    // return counter
     return counter;
 }
 
