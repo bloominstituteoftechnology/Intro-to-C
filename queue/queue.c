@@ -15,7 +15,7 @@ typedef struct Queue {
 */
 Queue *createQueue(unsigned capacity)
 {
-    
+    intro
 }
 
 /*

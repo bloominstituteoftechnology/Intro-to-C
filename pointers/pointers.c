@@ -8,7 +8,10 @@
 */
 void swap(int* a, int* b)
 {
-
+  int value_a = *a; // grabs original value of a
+  int value_b = *b; // grabs original value of b
+  *a = value_b;     // sets value at pointer a to value of b
+  *b = value_a;     // sets value at pointer b to value of a
 }
 
 /*
@@ -21,6 +24,8 @@ void swap(int* a, int* b)
 */
 char *find_char(char *str, int c)
 {
+    int value_c = c;
+    char value_a = *str;
     
 }
 
