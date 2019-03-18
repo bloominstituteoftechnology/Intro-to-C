@@ -1,14 +1,31 @@
 #include <stdio.h>
 
 /*
-    Given an empty (NULL) character pointer x and a character pointer y,
-    copies the character contents of y over to x. Pointer arithmetic
-    is necessary here. Also, make sure x points to a null terminator at its 
-    end to terminate it properly. 
+    Given a character pointer x (that points to an array of chars), and a
+    character pointer y, copies the character contents of y over to x. Pointer
+    arithmetic is necessary here. Also, make sure x points to a null terminator
+    at its end to terminate it properly. 
+
+    Example call:
+
+    char buffer[1024];
+
+    string_copy(buffer, "Hello!");
+    printf("%s", buffer); // Prints "Hello!"
 */
 void string_copy(char *x, char *y)
 {
-
+    // loop while the y pointer does not equal null char
+    while (*y != '\0')
+    {
+        // assign pointer x to pointer y
+        *x = *y;
+        // increment x and y
+        x++;
+        y++;
+    };
+    // due to last incrementation, x is in correct position, assign pointer x to null char
+    *x = '\0';
 }
 
 /*
@@ -21,7 +38,6 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
 }
 
 /*
@@ -34,17 +50,23 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
 }
 
 #ifndef TESTING
 int main(void)
 {
+    char *hello = "Hello";
+    char *world = "World";
+    char buffer[1024];
+
+    string_copy(buffer, "hello");
+
     char *found_char = find_char(hello, 'e');
     char *found_string = find_string(world, "or");
 
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
+    printf("Copy of hello: %s\n", buffer);
 
     return 0;
 }
