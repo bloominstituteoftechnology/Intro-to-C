@@ -1,10 +1,17 @@
 #include <stdio.h>
 
 /*
-    Given an empty (NULL) character pointer x and a character pointer y,
-    copies the character contents of y over to x. Pointer arithmetic
-    is necessary here. Also, make sure x points to a null terminator at its 
-    end to terminate it properly. 
+    Given a character pointer x (that points to an array of chars), and a
+    character pointer y, copies the character contents of y over to x. Pointer
+    arithmetic is necessary here. Also, make sure x points to a null terminator
+    at its end to terminate it properly. 
+
+    Example call:
+
+    char buffer[1024];
+
+    string_copy(buffer, "Hello!");
+    printf("%s", buffer); // Prints "Hello!"
 */
 void string_copy(char *x, char *y)
 {
