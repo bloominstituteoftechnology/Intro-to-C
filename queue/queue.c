@@ -34,7 +34,7 @@ void enqueue(Queue *q, int item)
 */
 int dequeue(Queue *q)
 {
-
+    queue test day 1
 }
 
 /*
