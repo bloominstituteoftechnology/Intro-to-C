@@ -8,8 +8,15 @@
     Do not just use the `strlen` function from the standard libary.
 */
 int string_length(char s[])
-{
-
+{   
+    // init counter
+    int counter = 0;
+    // while there is a char, add 1
+    while (s[counter] != '\0')
+    {
+        counter += 1;
+    }
+    return counter;
 }
 
 /*
@@ -20,7 +27,22 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    // get length
+    int s_length = string_length(s);
+    //init counter
+    int counter = 0;
+    // for - decrease
+    for (int i = s_length - 1; i >= 0; i--)
+    {
+    rv[counter] = s[i];
+    // print statement
+    printf("Rv char %c\n", rv[counter]);
+    // counter inc
+    counter++;
+    }
+    //terminates the string
+    rv[counter] = '\0'; 
+    return rv;
 }
 
 #ifndef TESTING
@@ -38,3 +60,6 @@ int main(void)
 }
 #endif
     
+// gcc -o strings strings.c
+// ./strings
+// add -g -Wall for debugging
