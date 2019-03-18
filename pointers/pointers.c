@@ -79,7 +79,40 @@ int string_compare(char *m, char *n)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int i;
+    int hay_len = strlen(haystack);
+    int needle_len = strlen(needle);
 
+    if (needle_len > hay_len)
+    {
+        return NULL;
+    }
+
+    for (i = 0; i < (hay_len - needle_len + 1); i++)
+    {
+        if (haystack[i] == needle[0])
+        {
+            int k = i;
+            k++;
+
+            for (int j = 1; j < needle_len; j++)
+            {
+                if (haystack[k] != needle[j])
+                {
+                    break;
+                }
+                else
+                {
+                    k++;
+                    if (j + 1 == needle_len)
+                    {
+                        return &haystack[i];
+                    }
+                }
+            }
+        }
+        
+    return NULL;
 }
 
 #ifndef TESTING
