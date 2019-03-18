@@ -32,7 +32,7 @@ char *reverse_string(char rv[], char s[])
     for (int i = s_len -1; i >= 0; i--) // length of string minus 1 for 0 index
     {
         rv[pos] = s[i]; // for each position in reversed string
-        pos++; // move forward in string
+        pos++; // move forward in the string
     }
     rv[pos] = '\0'; //last position is null
 
