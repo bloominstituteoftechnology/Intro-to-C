@@ -31,7 +31,17 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
- 
+    int len = string_length(s);
+    int nl = string_length(rv);
+
+    for(int i=0; i < len; i++) {
+        // printf("%d: %d\n", i, nl);
+        // printf("%d: %d\n", i, len - nl - 1);
+        rv[i] = s[len - nl - 1];
+        nl++;
+    };
+    rv[len] = '\0';
+    return rv;
 }
 
 #ifndef TESTING
