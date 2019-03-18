@@ -12,7 +12,7 @@ int string_length(char s[])
     // initialize length variable
     int length = 0;
     // for loop that loops through the string until it his the \0 special char
-    for (int i = 1; s[i] != '\0'; i++)
+    for (int i = 0; s[i] != '\0'; i++)
     {
         // increment length
         length++;
@@ -29,6 +29,26 @@ int string_length(char s[])
 */
 char *reverse_string(char rv[], char s[])
 {
+    // initialize length, begin and end variable to 0
+    int length, begin, end = 0;
+    // loop through until the value of string array is \0 char
+    while (s[length] != '\0')
+        // increment the length variable
+        length++;
+    // update the end int variable to be length -1
+    end = length - 1;
+    // loop through the length of s array, increment begin
+    for (begin = 0; begin < length; begin++)
+    {
+        // assign the value of rv[begin] to the value of the s array at index end
+        rv[begin] = s[end];
+        // decrement end
+        end--;
+    };
+    // reassign the value of rv at index of begin which is the last index, to the null char
+    rv[begin] = '\0';
+    // return the rv array
+    return rv;
 }
 
 #ifndef TESTING
