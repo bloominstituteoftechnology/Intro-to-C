@@ -1,5 +1,68 @@
 # FAQ
 
+<p><details><summary><b>Can I accidentally destroy my computer running C code?</b></summary><p>
+
+Nope! Not with a modern OS.
+
+If you're running MS-DOS, then sure, you can do all kinds of things.
+I once accidentally blew away all my BIOS settings with a program I
+wrote and my computer wouldn't boot.
+
+But Windows, Linux, macOS, BSD, or any other mainstream OS from this century all
+offer memory and resource protection that prevents you from changing memory
+you're not supposed to, or wiping out a disk you're not supposed to, etc.
+
+The worst you'll see is a `Segmentation fault` message which means your program
+tried to do something bad and the OS killed it.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Is a <tt>struct</tt> comparable to something in Python or JS? Is it like a class?</b></summary><p>
+
+It's like a class, except with only data (fields, properties) attached to it.
+There are no methods (functions) associated with it.
+
+If you _really_ want to pretend that you have methods on a `struct`, you can add
+them as fields that are _pointers to functions_. The syntax is pretty obtuse,
+and it's not a natural or idiomatic thing to do in C.
+
+Example:
+
+```c
+struct animal {
+    char *name;
+
+    // make_sound is a pointer to a function with no parameters that returns void
+    void (*make_sound)(void);
+}
+
+// Note how bleat() matches the signature for make_sound(), above
+void bleat(void)
+{
+    printf("Baaaahhhh!\n");
+}
+
+int main(void)
+{
+    struct animal goat;
+
+    // C doesn't have the concept of a constructor, so we have to do it by hand:
+
+    goat.name = "goat";
+    goat.make_sound = bleat;
+
+    // Call the "method":
+
+    goat.make_sound(); // Baaaahhhh!
+}
+```
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
 <p><details><summary><b>Can you have default parameters in the structs?</b></summary><p>
 
 No. The best you can do is have a helper function set the defaults.
@@ -631,6 +694,241 @@ permissions](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notat
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What is the "true dev workflow" in C?</b></summary><p>
+
+There is none.
+
+Initially, it was in a Unix-like system probably using
+[Makefiles](https://en.wikipedia.org/wiki/Makefile) to build the software. This
+is the system we use at Lambda.
+
+And modern C development under Unix still follows this pattern, except maybe
+using [autotools](https://en.wikipedia.org/wiki/GNU_Build_System) or
+[CMake](https://en.wikipedia.org/wiki/CMake).
+
+But dev for specific platforms like Windows probably happens in [Visual
+Studio](https://en.wikipedia.org/wiki/Microsoft_Visual_Studio) instead of using
+`make` and the rest of it.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Does C have garbage collection?</b></summary><p>
+
+Nope!
+
+When it comes to freeing up memory that is no longer needed by the program,
+there are basically two schools of thought:
+
+* Have the programmer manually manage that memory by explicitly allocating and
+  freeing it. (C's `malloc()` and `free()` functions.)
+* Have the runtime automatically manage all that for you. (Garbage collection,
+  automatic reference counting, etc.)
+
+C is too low-level to automatically manage memory usage for you.
+
+One exception is that C automatically allocates and frees _local variables_ just
+like other languages you're used to. You don't have to explicitly call `free()`
+for locals (and it's an error to do so). You must call free for any and all
+pointers to data that you got back from `malloc()` when you're done with them.
+
+Also, when a program exits, all memory associated with it is freed by the OS,
+whether locals or `malloc()`d data.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Why is C code faster than other languages?</b></summary><p>
+
+The big thing is _interpreted_ versus _compiled_.
+
+Python and JavaScript are interpreted languages, which means another program
+runs your program. It's software running software. So you run python code with
+the `python` program and JavaScript code with `node`, for example.
+
+So in that case, we have the CPU running `python`, and the Python running your
+Python program. Python is the middleman, and that takes execution time.
+
+C is a compiled language. The compiler takes your C code, and produces machine
+code. The CPU runs it directly. No middleman, so it's faster.
+
+But other languages are compiled (like Go, Swift, Rust, C++, and so on). Why is
+C faster than them, typically?
+
+It's because C is a no-frills, minimalist language. The code you write in C is
+actually quite close to the machine code that gets produced by the compiler, so
+it doesn't have to do a lot of things behind your back.
+
+Additionally, people have been working on optimizing the output from C compilers
+for over 45 years. That's a big head start over other languages.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What is a segmentation fault and how do I stop it?</b></summary><p>
+
+It means you've accessed some memory you weren't supposed to. The OS killed your
+process to prevent it from doing so.
+
+The trick is to find the line that's causing the problem. If you get a debugger
+installed, this can really help. (But getting a debugger to work in VS Code on
+Windows or Mac can be difficult.)
+
+In lieu of that, use well-positioned `printf` calls to figure out what the last
+thing your program does before it crashes.
+
+The bug almost certainly has to do with pointers or arrays (which are just
+pointers behind syntactic sugar).
+
+Maybe you're accessing a `NULL` pointer, or an array out of bounds, or modifying
+something you're not allowed to modify.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What happens if my program exits but I forgot to <tt>free()</tt> some memory I allocated?</b></summary><p>
+
+All memory associated with a process is freed when the program exits, even if
+you forgot to `free()` it.
+
+It's considered shoddy programming to not `free()` all the things you
+`malloc()`d, though. The OS will free it, but it's bad style to rely on that.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What's the difference between a <tt>float</tt> and a <tt>double</tt>, or between an <tt>int</tt> and a <tt>long</tt>?</b></summary><p>
+
+It's all about the range of numbers you want to be able to store.
+
+`double` can hold a more precise number than a `float`.
+
+A `float` might only be precise up to `3.14159`, but a `double` could hold
+`3.1416925358979`, for example.
+
+Likewise, an `int` might only be able to hold numbers up to 2 billion or so, but
+a `long` could hold much larger numbers.
+
+Use as little as you need. If a `float` or `int` can do the job, use them. If
+you need more precision or larger numbers, step up to the next larger type.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Can you use <tt>+</tt> to concatenate two strings?</b></summary><p>
+
+No.
+
+The reason is that strings are represented as `char*` types, and adding two
+`char*`s together is not a defined operation in C.
+
+Use the `strcat()` function in `<string.h>` to concatenate one string onto
+another.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Are variables automatically initialized to zero when I declare them?</b></summary><p>
+
+No.
+
+Always explicitly initialize your variables, whether they be pointers or regular
+types. If you don't, random garbage will be in them when you use them.
+
+> Exception: local variable declared with `static` storage class (this concept
+> is out of scope for Lambda) and global variables get initialized to zero
+> automatically. But it's still good form to explicitly initialize them.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What type should I use to hold numbers bigger than an <tt>int</tt> can hold?</b></summary><p>
+
+If you don't need negative numbers, try `unsigned int`.
+
+If that's not enough, try `long`.
+
+If that's not big enough, try `long long` (yes, that's a real thing).
+
+If those aren't enough, try `unsigned long long`.
+
+If you just need big numbers, but not a lot of precision, you can use `double` or `long double`.
+
+If you need big numbers _and_ a lot of precision _and_ none of the above are big
+enough, check out the [GNU Multiple Precision library](https://gmplib.org/). It
+does arbitrary precision arithmetic to as much precision as you have RAM.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What VS Code plugins are good for C development?</b></summary><p>
+
+"C/C++ IntelliSense, debugging, and code browsing" by Microsoft is a good one.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What are some additional C resources?</b></summary><p>
+
+A great C book is _The C Programming Language_ Second Edition, by Kernighan [the
+"g" is silent] and Ritchie. It's affectionately referred to simply as _K&R2_.
+
+A less great book that is free online is [Beej's Guide to C
+Programming](https://beej.us/guide/bgc/).
+
+A good, comprehensive FAQ is the [comp.lang.c FAQ](http://c-faq.com/).
+
+There's no "one true source" of C info online, unfortunately.
+
+Googling `printf example`, for example, will get you good results.
+
+Googling `man printf` will bring up the `man` page for `printf`.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>How do I get the debugger working?</b></summary><p>
+
+The commonly-used debugger is called `gdb` (GNU Debugger).
+
+[These
+instructions](https://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/)
+are reported good for WSL on Windows.
+
+[The CS Wiki
+page](https://github.com/LambdaSchool/CS-Wiki/wiki/C-and-Cpp-Debugging-in-VS-Code)
+might help, but it's slightly outdated since VS Code is in heavy development.
+
+We recommend Googling for `vscode gdb setup macos`, substituting whatever
+platform you're on for `macos` and setting the search date range to be recent.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>How do I print a pointer with <tt>printf</tt>?</b></summary><p>
+
+Use the `%p` format specifier. This will print the value of the pointer (i.e.
+the memory address), not what it's pointing to (i.e. the value stored at that
+memory address.)
+
+In practice, pointers are rarely printed except for debugging.
+
+</p></details></p>
+
 <!--
 TODO:
 
@@ -643,4 +941,5 @@ Template:
 
 <p><details><summary><b></b></summary><p>
 </p></details></p>
+
 -->
