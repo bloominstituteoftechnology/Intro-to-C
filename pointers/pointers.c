@@ -15,12 +15,12 @@
 */
 void string_copy(char *x, char *y)
 {
-    // loop while the y pointer does not equal null char
+    // loop while the dereferenced y pointer does not equal null char
     while (*y != '\0')
     {
-        // assign pointer x to pointer y
+        // assign dereferenced x pointer to dereferenced y pointer
         *x = *y;
-        // increment x and y
+        // increment x pointer and y pointer
         x++;
         y++;
     };
@@ -38,6 +38,17 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
+    // loop while dereference of str does not equal null char
+    while (*str != '\0')
+    {
+        // if dereference equals c return pointer
+        if (*str == c)
+            return str;
+        // increment str pointer
+        str++;
+    };
+    // str now points to c
+    return NULL;
 }
 
 /*
@@ -50,6 +61,39 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
+    // initialize a new pointer to the needle pointer
+    char *beginN = needle;
+    int found = 0;
+    // while the deref haystack does not equal null char, increment
+    while (*haystack != '\0')
+    {
+        // if deref haystack equals deref needle
+        if (*haystack == *needle && found == 0)
+        {
+            // initialize new pointer to at haystack pointer
+            char *beginH = haystack;
+            // while value of beginH and beginN are equal and deref beginN does not equal null char
+            while (*beginH == *beginN)
+            {
+                // increment beginN pointer
+                beginN++;
+                // increment beginH pointer
+                beginH++;
+                // if beginN equals null char
+                if (*beginN == '\0')
+                {
+                    // change found to 1
+                    found = 1;
+                    // return haystack
+                    return haystack;
+                }
+            }
+            // reasign the needle pointer to beginN
+            needle = beginN;
+        }
+        haystack++;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
