@@ -29,7 +29,7 @@ char *string_dup(char *src)
     };
     // duplicate now in correct position should have null char
     *copy = '\0';
-    return copy;
+    return copy - length;
 }
 
 /*
