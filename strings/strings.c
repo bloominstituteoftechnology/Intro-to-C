@@ -9,18 +9,31 @@
 */
 int string_length(char s[])
 {
+    int length = 0;
+ for (int i = 0; s[i] != '\0'; i++)
+ {
+     length++; 
+ }
 
+ return length;
 }
 
 /*
-    Write a function that reverses the order of string s and outputs 
-    the reversed string to the input array rv. The rv array will have 
-    enough space for the reversed string. Don't forget to terminate 
+    Write a function that reverses the order of string s and outputs
+    the reversed string to the input array rv. The rv array will have
+    enough space for the reversed string. Don't forget to terminate
     the reversed string with a null character. Return the rv array.
 */
 char *reverse_string(char rv[], char s[])
 {
-
+    int start=0;
+    int len= string_length(s);
+    for(int i= len-1; i>=0; i--){
+        rv[start]=s[i];
+        start++;
+    }
+    rv[len]='\0';
+    return rv;
 }
 
 #ifndef TESTING
