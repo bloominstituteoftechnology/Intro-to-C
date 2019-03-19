@@ -10,9 +10,16 @@
     You may want to use the string_length function to figure out the
     length of the input string.
 */
+//malloc reserves the memory
 char *string_dup(char *src)
 {
-
+    char *copy = malloc(strlen(src) + 1);
+    for (int i = 0; i < strlen(src); i++)
+  {
+    copy[i] = src[i];
+  }
+  *(copy + strlen(src)) = '\0';
+  return copy;
 }
 
 /*
@@ -24,7 +31,13 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
+    char *src_copy = (char *)src;
+    char *dest_copy = (char *)dest;
 
+    for (int i = 0; i < n; i++)
+  {
+    *(dest_copy + i) = *(src_copy + i);
+  }
 }
 
 /*
