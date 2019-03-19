@@ -29,6 +29,7 @@ char *string_dup(char *src)
     };
     // duplicate now in correct position should have null char
     *copy = '\0';
+    // return the the copy pointer which is at the end minus the length
     return copy - length;
 }
 
