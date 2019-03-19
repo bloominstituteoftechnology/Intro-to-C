@@ -8,9 +8,9 @@
 */
 void string_copy(char *x, char *y)
 {
-    if (x == '\0')
+    if (*x == '\0')
     {
-        x = y;
+        *x = *y;
     }
 }
 
@@ -24,6 +24,15 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
+    while (*str != '\0')
+    {
+        if (*str == c)
+        {
+            return str;
+        }
+        str++;
+    }
+    return 0;
 }
 
 /*
