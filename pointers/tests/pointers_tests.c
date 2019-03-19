@@ -3,6 +3,17 @@
 #include "../../utils/minunit.h"
 #include "../../utils/utils.h"
 
+char *test_string_copy()
+{
+    char *string = "hello, world";
+    char empty[20];
+
+    string_copy(empty, string);
+    mu_assert(check_strings(empty, string) == 0, "Your string_copy did not correctly copy the given string.");
+
+    return NULL;
+}
+
 char *test_find_char()
 {
     char *str = "LambdaSchool";

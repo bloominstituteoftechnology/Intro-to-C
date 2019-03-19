@@ -612,6 +612,25 @@ if (argc != 2) {
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Why does <tt>025 == 21</tt>?</b></summary><p>
+
+In C, any time you have a plain leading `0` on front of a number, the compiler
+thinks your number is _base-8_ or _octal_.
+
+Converting `025` to decimal can be done like so:
+
+`2*8 + 5*1 = 16 + 5 = 21`
+
+Octal is rarely used in practice, and it's common for new C programmers to put
+`0` in front of a number in error.
+
+One of the last common places to see octal numbers is in [Unix file
+permissions](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation).
+
+</p></details></p>
+
 <!--
 TODO:
 
