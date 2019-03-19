@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <pointers.h>
 /*
     Given a character pointer x (that points to an array of chars), and a
     character pointer y, copies the character contents of y over to x. Pointer
@@ -15,7 +15,14 @@
 */
 void string_copy(char *x, char *y)
 {
+    int i;
 
+    for (i = 0; y[i]; i++)
+    {
+        x[i] = y[i];
+    }
+
+    x[i] = '\0';
 }
 
 /*
@@ -28,7 +35,15 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    while (*str != '\0')
+    {
+        if (*str == c)
+        {
+            return str;
+        }
+        str++;
+    }
+    return 0;
 }
 
 /*
@@ -41,14 +56,24 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    while(*haystack !='\0' && *needle !='\0'){
+        if(*needle==*haystack){
+            needle++;
+        }
+        else
+        {
+            haystack++;
+        }
+        
+    }
+    return needle;
 }
 
 #ifndef TESTING
 int main(void)
 {
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    char *found_char = find_char("hello", 'e');
+    char *found_string = find_string("world", "or");
 
     printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
