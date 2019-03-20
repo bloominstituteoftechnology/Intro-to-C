@@ -12,7 +12,9 @@
 */
 char *string_dup(char *src)
 {
-
+    char *copy = malloc(strlen(src));
+    copy = src;
+    return copy;
 }
 
 /*
@@ -50,6 +52,7 @@ int main(void)
     char *dup = string_dup(s);
 
     printf("Duplicated string: %s\n", dup);
+    printf("Duplicated string: %s\n", s);
 
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
