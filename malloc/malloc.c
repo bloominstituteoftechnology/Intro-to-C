@@ -42,6 +42,20 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
+    // dest is pointer malloc(n * sizeof(int))
+    // src is pointer value of first index of arr
+    // n is n * sizeof(int), returns amount of mem allocated to that data type
+    // assign new char type copy pointer with void type pointer dest typecasted to char
+    char *copy = (char *)dest;
+    // assign new char type source pointer with void type pointer src typecasted to char
+    char *source = (char *)src;
+    // copy by looping until int variable reaches size of n , which is int type length of numbers array
+    for (int i = 0; i < n; i++)
+    {
+        // value at index i from source pointer, is copied to copy pointer
+        copy[i] = source[i];
+    }
+    // no return, return is void
 }
 
 /*
@@ -57,6 +71,13 @@ void mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    // void type ptr points to h in char array / some arbitrary pointer, have to type cast
+    // int old_size is length of url
+    // int new_size is length of url length -1 and path
+    // assign new char type pointer with void type point ptr typecasted to char
+    char *pointer = (char *)ptr;
+    // allocate memory to allow for length of new_size
+    char *new = malloc(new_size);
 }
 
 // #ifndef TESTING
@@ -68,6 +89,7 @@ int main(void)
     printf("Duplicated string: %s\n", dup);
 
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
+    // memory required for numbers array divided by memory required for first index of array
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
 
