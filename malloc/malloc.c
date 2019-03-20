@@ -74,13 +74,28 @@ void *resize_memory(void *ptr, int old_size, int new_size)
     // void type ptr points to h in char array / some arbitrary pointer, have to type cast
     // int old_size is length of url
     // int new_size is length of url length -1 and path
+
     // assign new char type pointer with void type point ptr typecasted to char
     char *pointer = (char *)ptr;
-    // allocate memory to allow for length of new_size
-    char *new = malloc(new_size);
+    // in the case old_size is smaller than new_size
+    if (old_size < new_size)
+    {
+        // invoke mem_copy, pass in pointer, as new destination pointer, ptr as source pointer,
+        // old_size as length of numbers in array
+        mem_copy(pointer, ptr, old_size);
+    }
+    // in case old_size is greater than new_size
+    else if (old_size > new_size)
+    {
+        // invoke mem_copy, pass in pointer, as new destination pointer, ptr as source pointer,
+        // new_size as length of numbers in array
+        mem_copy(pointer, ptr, new_size);
+    }
+    // return pointer
+    return pointer;
 }
 
-// #ifndef TESTING
+#ifndef TESTING
 int main(void)
 {
     char *s = "Some string to duplicate.";
@@ -124,4 +139,4 @@ int main(void)
 
     return 0;
 }
-// #endif
+#endif
