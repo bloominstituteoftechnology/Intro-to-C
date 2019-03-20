@@ -24,15 +24,15 @@ char *find_char(char *str, int c)
     // printf("%p\n", *str);
     // printf("%s\n", str);
     // printf("%i\n", strlen(str));
-    char *found;
 
     for(int i=0; i < strlen(str); i++) {
         // printf("%c\n", str[i]);
         if (c == str[i]) {
             return &str[i];
         };
-        
     }
+
+    return NULL;
 }
 
 /*
@@ -45,17 +45,36 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int nl = strlen(needle);
 
+    for(int i=0; i < strlen(haystack); i++) {
+        int matches = 0;
+
+        for (int j=0; j < nl; j++) {
+            if(haystack[i + j] == needle[j]) {
+                matches = 1;
+            } else {
+                matches = 0;
+                break;
+            };
+        }
+
+        if (matches) {
+            return &haystack[i];
+        }
+    }
+
+    return NULL;
 }
 
 #ifndef TESTING
 int main(void)
 {
     char *found_char = find_char("hello", 'e');
-    // char *found_string = find_string("world", "or");
+    char *found_string = find_string("world", "or");
 
     printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }
