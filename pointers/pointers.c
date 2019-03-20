@@ -21,7 +21,18 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
+    // printf("%p\n", *str);
+    // printf("%s\n", str);
+    // printf("%i\n", strlen(str));
+    char *found;
 
+    for(int i=0; i < strlen(str); i++) {
+        // printf("%c\n", str[i]);
+        if (c == str[i]) {
+            return &str[i];
+        };
+        
+    }
 }
 
 /*
@@ -40,11 +51,11 @@ char *find_string(char *haystack, char *needle)
 #ifndef TESTING
 int main(void)
 {
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    char *found_char = find_char("hello", 'e');
+    // char *found_string = find_string("world", "or");
 
     printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
