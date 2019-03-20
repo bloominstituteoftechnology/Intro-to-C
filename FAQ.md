@@ -967,6 +967,9 @@ Googling `man printf` will bring up the `man` page for `printf`.
 
 The commonly-used debugger is called `gdb` (GNU Debugger).
 
+Lambda's own Brian Ruff got it working on the Mac, and made a
+[video](https://youtu.be/BgMOqjdpy5Y) covering it.
+
 [These
 instructions](https://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/)
 are reported good for WSL on Windows.
@@ -1043,6 +1046,112 @@ right hand side?
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Are there any other ways besides <tt>malloc()</tt> to store things on the heap?</b></summary><p>
+
+Short answer: no.
+
+(We're assuming that by `malloc()` we mean `malloc()`, `calloc()`, and
+`realloc()`.)
+
+The longer answer is that you can make a syscall and request more RAM from the
+operating system. In practice, this is very rare; people just call `malloc()`.
+
+In Unix, that syscall is `brk()` (or `sbrk()`). The behavior of this call is a bit strange no
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>For string literals like <tt>"Hello"</tt>, are those stored on the stack or heap?</b></summary><p>
+
+Neither.
+
+Consider it to be stored in such a way that it is perpetually accessible from
+the entire program for the entire run and is never freed. So sort of like the
+heap.
+
+This code is just fine:
+
+```c
+char *hello(void)
+{
+    char *s = "hello!";
+
+    return s;
+}
+```
+
+`s` is a local variable that is set to point to the string `"hello!"`, and `s`
+is deallocated as soon as the function returns. But the data `s` points to
+(namely the `"hello!"`) persists for the entire life of the program and is never
+freed.
+
+It's not actually on the heap, though. The C memory map looks like this,
+typically:
+
+```
++--------------------+
+|       Stack        |
+|         |          |
+|         v          |
++- - - - - - - - - - +
+|                    |
+|                    |
+|                    |
++- - - - - - - - - - +
+|         ^          |
+|         |          |
+|        Heap        |
++--------------------+
+| Uninitialized data |
++--------------------+
+|  Initialized data  |
+|    (Read-Write)    |
++--------------------+
+|  Initialized data  |
+|     (Read-Only)    |
++--------------------+
+|    Program code    |
++--------------------+
+```
+
+Constant strings are found in the read-only initialized data section of memory.
+
+If you try to write to one, your program will likely crash:
+
+```c
+char *s = "Hello!";
+
+*s = 'B'; // segfault!
+```
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Is the C stack like the stack data structure?</b></summary><p>
+
+Yup! It's used by C to allocate space for local variables when you call functions.
+
+When you return from a function, all those local variables are popped off the
+stack and thrown away. (Which is why local variables only last as long as the
+function!)
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Is the C heap like a binary heap data structure?</b></summary><p>
+
+No--it's just a name collision.
+
+Just assume the heap is a big, contiguous chunk of memory. It can be used for
+whatever, but in C, it is typically managed by `malloc()` and `free()` so that
+we don't have to worry about it.
+
+</p></details></p>
 
 <!--
 TODO:
