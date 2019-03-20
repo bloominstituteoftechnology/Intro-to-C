@@ -1,5 +1,68 @@
 # FAQ
 
+<p><details><summary><b><tt>runtests.sh: 4: Syntax error: word unexpected (expecting "do")</tt></b></summary><p>
+
+If you see this error:
+
+```shell
+Running unit tests:
+: not foundtests.sh: 2: ./tests/runtests.sh:
+./tests/runtests.sh: 4: ./tests/runtests.sh: Syntax error: word unexpected (expecting "do")
+```
+
+You have two options:
+
+1. Open the file `tests/runtests.sh` in VS Code in whatever subproject folder
+   you’re working in, e.g. `fizzbuzz`. Click on the lower right of the screen
+   where it says `CRLF`. Choose `LF`. Save the file. Then the error should go
+   away.
+
+2. You can do this from the command line with the `tr` command:
+
+```shell
+cd tests
+cat runtests.sh | tr -d '\r' > runtests.tmp
+mv runtests.tmp runtests.sh
+```
+
+The root of the problem is a setting in git that causes all newlines (LF) to
+be converted to carriage-return/newline (CRLF). The script `runtests.sh` is a
+_bash script_ that bash runs, and bash *hates* `\r` and pukes everywhere.
+
+To cause git to _not_ do newline conversion for future clones, run the
+following:
+
+```
+git config --global core.autocrlf false
+```
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Mac: <tt>malformed object</tt> error when running <tt>make tests</tt></b></summary><p>
+
+This is caused by an older version of the `ar` and `ranlib` packages being installed.
+Sometimes these conflict with the versions installed with xcode.
+
+If running MacPorts:
+
+```
+sudo port selfupdate
+sudo port upgrade cctools
+```
+
+If running Brew:
+
+```
+sudo brew update
+sudo brew upgrade gcc
+```
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
 <p><details><summary><b>Can I accidentally destroy my computer running C code?</b></summary><p>
 
 Nope! Not with a modern OS.
@@ -912,6 +975,9 @@ are reported good for WSL on Windows.
 page](https://github.com/LambdaSchool/CS-Wiki/wiki/C-and-Cpp-Debugging-in-VS-Code)
 might help, but it's slightly outdated since VS Code is in heavy development.
 
+[This video](https://www.youtube.com/watch?v=aWIs6Kv1MvE) is reported good, as
+well.
+
 We recommend Googling for `vscode gdb setup macos`, substituting whatever
 platform you're on for `macos` and setting the search date range to be recent.
 
@@ -928,6 +994,55 @@ memory address.)
 In practice, pointers are rarely printed except for debugging.
 
 </p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Does C have closures?</b></summary><p>
+
+No.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>If I look at an uninitialized variable, will the garbage in it ever be leftover data from another process?</b></summary><p>
+
+Not on a modern OS. It would be a security risk, so the OS makes sure this never
+happens.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>How many levels of indirection can you have with pointers? <tt>int******</tt>?</b></summary><p>
+
+It's effectively unlimited. But the more you have, the less readable your code
+is.
+
+In real life:
+
+* 99.8% (roughly) of pointer usage is single indirection, like `int*`.
+* 1.5% (roughly) is double indirection, like `char**`.
+* And the remaining 0.5% is the rest of it.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What's the <tt>incompatible integer to pointer conversion</tt> error?</b></summary><p>
+
+This means you have a type mismatch in your assignment.
+
+One side of the `=` has pointer type, and the other side has integer type.
+
+If you have a pointer in your assignment, both side of the `=` must be the same
+pointer type.
+
+Maybe you meant to take the address of the right hand side? Or dereference the
+right hand side?
+
+</p></details></p>
+
 
 <!--
 TODO:
