@@ -1153,6 +1153,63 @@ we don't have to worry about it.
 
 </p></details></p>
 
+<!-- ===================================================================== -->
+
+<p><details><summary><b>What are <tt>stdin</tt>, <tt>stdout</tt>, and <tt>stderr</tt>?</b></summary><p>
+
+These are the three files that are automatically opened for a process when it is first created.
+
+|Stream           | File Name |  Device  |
+|-----------------|:---------:|:--------:|
+| Standard Input  |  `stdin`  | Keyboard |
+| Standard Output |  `stdout` |  Screen  |
+| Standard Error  |  `stderr` |  Screen  |
+
+`stderr` is typically used specifically for error messages, even though it goes
+to the same place as `stdout`. (The idea is that you can redirect all normal
+output to one place, and all error output to another place. Or suppress normal
+output while allowing error output.)
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>How do I know which header files to <tt>#include</tt> for any particular function?</b></summary><p>
+
+Check the man page for the function in question. It'll show it in the _Synopsis_
+section.
+
+Example for `printf()`:
+
+> **SYNOPSIS**
+> ```c
+>    #include <stdio.h>
+> ```
+> ```c
+>     int
+>     printf(const char * restrict format, ...);
+> ```
+
+Note that if you type `man` on the command line for a particular function, you
+might a manual page for another command that isn't the C function. In that case,
+you have to specify the proper _section_ of the manual for the function.
+
+Try section 3 for library functions, and section 2 for syscalls.
+
+Example looking for `printf()` in section 3:
+
+```shell
+man 3 printf
+```
+
+And section 2 for the `mkdir()` syscall:
+
+```shell
+man 2 mkdir
+```
+
+</p></details></p>
+
 <!--
 TODO:
 
