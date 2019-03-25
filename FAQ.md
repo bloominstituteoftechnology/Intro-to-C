@@ -1210,6 +1210,76 @@ man 2 mkdir
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>When do I have to explicitly cast a type to another type?</b></summary><p>
+
+Barely ever.
+
+C is pretty good about conversions, and you should be able to build almost
+everything without casting.
+
+What if you need constant types?
+
+```c
+// Print a double:
+// (Floating point constants are double by default.)
+printf("%lf\n", 3.14);
+
+// Print a float:
+printf("%f\n", 3.14f);
+
+// Print a long double
+printf("%Lf\n", 3.14L);
+
+// Print a long integer:
+printf("%ld\n", 99L);
+
+// Print a long long integer:
+printf("%lld\n", 99LL);
+
+// Produce a floating result of a calculation by making sure at least
+// one of the operands is a float:
+float sort_of_pi = 22.0f / 7;
+double double_pi = 22.0 / 7;
+```
+
+What if you need to cast a void pointer?
+
+```c
+void foo(void *p)
+{
+    // convert p to a char*
+    char *q = p;
+
+    // Don't need to cast return value from malloc
+    int *z = malloc(sizeof(int) * 100);
+```
+
+Some exceptions:
+
+```c
+void foo(int a)
+{
+    // Cast an unused variable to type void to suppress compiler warnings:
+    (void)a;
+
+    // If the compiler is warning about an unused return value:
+    (void)printf("Hello, world!\n");
+
+    // Cast to a char pointer to iterate over bytes of an object:
+    // (C99 6.3.2.3 paragraph 7 allows this.)
+    float f = 3.14;
+    unsigned char *c = (unsigned char *)&f;
+
+    for (unsigned i = 0; i < sizeof f; i++) {
+        printf("%02x ", c[i]);
+    }
+    printf("\n");
+```
+
+</p></details></p>
+
 <!--
 TODO:
 
