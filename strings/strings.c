@@ -25,9 +25,18 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
+  // printf("%s, pointer: %p\n", rv, &rv);
+  int len_str = string_length(s) - 1;
+
+  for (int i = len_str; i >= 0; i--) {
+    // printf("i: %d, len_str - i: %d\n", i, len_str - i);
+    rv[len_str - i] = s[i];
+  }
+
+  // printf("%d\n", len_str);
+
   return rv;
 }
-
 
 
 #ifndef TESTING
