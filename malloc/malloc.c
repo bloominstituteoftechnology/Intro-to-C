@@ -12,7 +12,11 @@
 */
 char *string_dup(char *src)
 {
-
+    char * outstr = (char*) malloc(strlen(src));
+    for (int i = 0; i < strlen(src); i++) {
+        outstr[i] = src[i];
+    }
+    printf("dupped str: %s ", outstr);
 }
 
 /*
