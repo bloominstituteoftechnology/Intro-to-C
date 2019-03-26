@@ -12,11 +12,12 @@
 */
 char *string_dup(char *src)
 {
-    char * outstr = (char*) malloc(strlen(src));
+    char * outstr = (char*) malloc(sizeof(char) * strlen(src));
     for (int i = 0; i < strlen(src); i++) {
         outstr[i] = src[i];
     }
-    printf("dupped str: %s ", outstr);
+    // printf("dupped str: %s ", outstr);
+    return outstr;
 }
 
 /*
@@ -28,6 +29,15 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
+    // type cast to char
+    char * chardest = (char*) dest;
+    char * charsrc = (char*) src;
+    // get num chars from bytes
+    int length = n / sizeof(char);
+    // copy values
+    for (int i = 0; i < length; i++) {
+        chardest[i] = charsrc[i];
+    }
 
 }
 
