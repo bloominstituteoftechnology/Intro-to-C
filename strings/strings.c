@@ -9,7 +9,12 @@
 */
 int string_length(char *s)
 {
-
+    // Iterating with a while loop until it finds '\0' to denote the end of a string array.
+    int length = 0;
+    while (s[length] != '\0'){
+        length++;
+    }
+    return length;
 }
 
 /*
@@ -20,6 +25,27 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
+    // Finding the length of the array
+    int length = 0;
+    while(s[length] != '\0'){
+        length++;
+    }
+
+    // Assigning the length of the array - 1 and exclude 0 to the variable 'end'
+    int end = length - 1;
+
+    //While the For loop iterate upward on rv, End will decrement backward on s and assign its value to rv.
+    for(int i = 0; i < length; i++){
+        rv[i] = s[end];
+        end--;
+    }
+
+    //Assigning the last value to '\0' to denote the end of a string array.
+    rv[end] = '\0';
+
+    printf("%s\n", rv);
+
+    return rv;
 
 }
 
