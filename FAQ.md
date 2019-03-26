@@ -839,8 +839,7 @@ It means you've accessed some memory you weren't supposed to. The OS killed your
 process to prevent it from doing so.
 
 The trick is to find the line that's causing the problem. If you get a debugger
-installed, this can really help. (But getting a debugger to work in VS Code on
-Windows or Mac can be difficult.)
+installed, this can really help.
 
 In lieu of that, use well-positioned `printf` calls to figure out what the last
 thing your program does before it crashes.
@@ -980,6 +979,13 @@ might help, but it's slightly outdated since VS Code is in heavy development.
 
 [This video](https://www.youtube.com/watch?v=aWIs6Kv1MvE) is reported good, as
 well.
+
+If you're not seeing program output in the `Output` tab, try adding this to your
+debug JSON:
+
+```json
+"externalConsole": true
+```
 
 We recommend Googling for `vscode gdb setup macos`, substituting whatever
 platform you're on for `macos` and setting the search date range to be recent.
@@ -1280,6 +1286,54 @@ void foo(int a)
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Is <tt>realloc()</tt> the same as calling <tt>malloc()</tt>, copying the data over, then calling <tt>free()</tt> on the original pointer?</b></summary><p>
+
+Effectively, yes, it's the same. Practically, you should use `realloc()`.
+
+`realloc()` might be more efficient because in some cases it might not have to
+copy.
+
+If you grow the space and `realloc()` knows there's extra unused memory right
+after the existing space, it will simply tack that addition space onto the end
+of the memory region and not bother moving the data.
+
+Also, if you shrink the space, `realloc()` will likely not copy the data. It'll
+just truncate it.
+
+</p></details></p>
+
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What happens if I <tt>free()</tt> a <tt>NULL</tt> pointer?</b></summary><p>
+
+Nothing. It's a [no-op](https://en.wikipedia.org/wiki/NOP_(code)).
+
+Basically, inside the library code for `free()`, there's something that looks
+like this:
+
+```c
+void free(void *ptr)
+{
+    if (ptr == NULL) {
+        return;
+    }
+```
+
+According to the [C99
+spec](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf) section
+7.20.3.2p2:
+
+> The `free` function causes the space pointed to by `ptr `to be deallocated,
+> that is, made available for further allocation. **If `ptr` is a null pointer,
+> no action occurs**. Otherwise, if the argument does not match a pointer
+> earlier returned by the `calloc`, `malloc`, or `realloc` function, or if the
+> space has been deallocated by a call to `free` or `realloc`, the behavior is
+> undefined.
+
+</p></details></p>
 <!--
 TODO:
 
