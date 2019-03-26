@@ -189,7 +189,7 @@ treats it just like you'd put the number `65` there. (Or `66` for `'B'`, and so
 on.)
 
 The only difference between `unsigned char` and `unsigned int` is the number of
-bytes that are used to represent the number. A `char` is one byte, and an `int`
+bytes that are used to represent the number. A `char` is onGe byte, and an `int`
 is typically 4 bytes (but not always).
 
 You can think of these additional bytes as analogous to adding more digits to
@@ -1334,6 +1334,53 @@ spec](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf) section
 > undefined.
 
 </p></details></p>
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What are bits, bytes, kilobytes, megabytes, and all that?</b></summary><p>
+
+A [_bit_](https://www.youtube.com/watch?v=_fGujzulsas) is a single `1` or `0`.
+That's all the numbers it can represent.
+
+A _nibble_ is 4 bits. It can represent numbers from `0b0000` to `0b1111` (binary
+numbers), which is equivalen to `0` to `15` in decimal.
+
+A _byte_ is 8 bits. It can represent numbers from `0b00000000` to `0b11111111`,
+or `0` to `255` decimal. (Historically, bytes could be other numbers of bits,
+but on all modern systems, it's always 8 bits. _Octet_ is another term for a
+number that is specifically 8 bits long.)
+
+A _kilobyte_ is 1024 bytes. (1024 is 2<sup>10</sup>.)
+
+A _megabyte_ is 1024 kilobytes (1,048,576 bytes).
+
+A _gigabyte_ is 1024 megabytes (1,073,741,824 bytes).
+
+A _terabyte_ is 1024 gigabytes (1,099,511,627,776 bytes).
+
+A _petabyte_ is 1024 terabytes (1,125,899,906,842,624 bytes).
+
+If you're used to [SI unit
+prefixes](https://en.wikipedia.org/wiki/International_System_of_Units#Prefixes),
+you might be wondering why in computers _kilo_ means 1024 instead of 1000 like
+it normally does. In short, it's for historic reasons. 1024 was close enough, so
+computer programmers adopted the SI prefixes, albeit with a slightly different
+value.
+
+And that gets confusing. When I say _kilobyte_, do I mean 1000 bytes or 1024 bytes?
+
+In almost every single case, _kilobyte_ means 1024 bytes. (Hard drive and SSD
+sizes are sometimes an exception to this rule.)
+
+To remove the ambiguity, you can use a [binary
+prefix](https://en.wikipedia.org/wiki/Binary_prefix), where you'd say _kibibyte_
+if you specifically meant 1024 bytes.
+
+That said, in conversation, if someone says _kilobyte_, odds are extremely high
+they mean 1024 bytes, not 1000 bytes. _kibibyte_ is uncommonly used in
+conversation.
+
+</p></details></p>
+
 <!--
 TODO:
 
