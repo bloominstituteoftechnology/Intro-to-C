@@ -981,7 +981,7 @@ might help, but it's slightly outdated since VS Code is in heavy development.
 well.
 
 If you're not seeing program output in the `Output` tab, try adding this to your
-debug JSON:
+`launch.json`:
 
 ```json
 "externalConsole": true
