@@ -69,31 +69,54 @@ int fizzbuzz(int n)
 */
 
 
-int fizzbuzz(int n)
+char * fizzbuzz(int i, char * outstr)
 {
-    for(int i = 0; i <= n; i++) {
         // printf(n);
         // char outstr[12] = "";
 
-        if (i % 3 == 0 && i % 5 == 0)
-          printf("Fizzbuzz!");
-        else if (i % 3 == 0)
-            printf("Fizz");
-        else if (i % 5 == 0)
-            printf("Buzz");
-        else
-            printf("%d", i);
-        printf("\n");
-    }
-    return 0;
+        if (i % 3 == 0 && i % 5 == 0) 
+        {
+          outstr = "Fizzbuzz!";
+          // return "Fizzbuzz!";
+            // printf("Fizzbuzz!");
+          }
+        else if (i % 3 == 0) 
+        {
+          outstr = "Fizz";
+          // return "Fizz";
+            // printf("Fizz");
+
+        }
+
+        else if (i % 5 == 0) 
+        {
+          outstr = "Buzz!";
+          // return "Buzz";
+            // printf("Buzz");
+        }
+
+        else 
+        {
+          outstr = itoa(i, outstr, 10);
+          // return itoa(i, "", 10);
+            // printf("%d", i);
+        }
+        // printf("\n");
+          return outstr;
+    // return 0;
 }
 
 
 #ifndef TESTING
 int main(void)
 {
-    fizzbuzz(20);
-
+    // loop through fizzbuzz
+    int n = 20;
+    char * output = (char*) malloc(20 * sizeof(char));
+    for(int i = 0; i <= n; i++) {
+        fizzbuzz(i, output);
+        printf("i: %d %s %s\n", i, output, fizzbuzz(i, output));
+    }
     return 0;
 }
 #endif

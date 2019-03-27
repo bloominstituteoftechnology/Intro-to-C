@@ -72,29 +72,29 @@ char *find_string(char *haystack, char *needle)
   int count = 0;
   char * substr;
 
-  printf("haystack contains: %s, needle contains: %s \n", haystack, needle);
+  // printf("haystack contains: %s, needle contains: %s \n", haystack, needle);
 
   while(*(haystack+count) != '\0') {
-    printf("%c \n", *(haystack+count-1));
+    // printf("%c \n", *(haystack+count-1));
     // substr = malloc(sizeof(char) * strlen(needle)+1);
     substr = calloc(strlen(needle)+1, sizeof(char));
 
     substring(haystack, substr, count, strlen(needle));
 
-    printf("substr: %s \n", substr);
+    // printf("substr: %s \n", substr);
 
     // loop through needle to compare charaters?
     bool matches = true;
     for (int i = 0; i < strlen(needle); i++) {
-      printf("i: %d \n", i);
-      printf("substr: %s, needle: %s\n", substr, needle);
-      printf("substr: %c, needle: %c\n", *(substr+i), *(needle+i));
+      // printf("i: %d \n", i);
+      // printf("substr: %s, needle: %s\n", substr, needle);
+      // printf("substr: %c, needle: %c\n", *(substr+i), *(needle+i));
     
       if (*(substr+i) != *(needle+i)) {
         matches = false;
         //char ** found_char = &(str+count);
         //return *found_char;
-        printf("\nnope\n");
+        // printf("\nnope\n");
         //break;
       }
     }
@@ -149,5 +149,5 @@ void substring(char s[], char sub[], int p, int l) {
    }
    sub[c] = '\0';
 
-   printf("sub: %s \n", sub);
+  //  printf("sub: %s \n", sub);
 }

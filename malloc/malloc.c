@@ -54,7 +54,6 @@ void mem_copy(void *dest, const void *src, int n)
     for (int i = 0; i < length; i++) {
         chardest[i] = charsrc[i];
     }
-
 }
 
 /*
@@ -78,18 +77,16 @@ void *resize_memory(void *ptr, int old_size, int new_size)
             new_mem[i] = old_mem[i];
         }
         ptr = new_mem;
-        return ptr;
     } else if (new_size < old_size) {
+        // only copy up to new_size
         char * new_mem = malloc((new_size+1) * sizeof(char));
-        for (int i = 0; i < new_size; i++) {
+        for (int i = 0; i < new_size; i++) { // 
             new_mem[i] = old_mem[i];
         }
         new_mem[new_size+1] = '\0';
         ptr = new_mem;
-        return ptr;
-    } else {
-        return ptr;
     }
+    return ptr;
 }
 
 #ifndef TESTING
@@ -104,7 +101,7 @@ int main(void)
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
     
-    mem_copy(target, numbers, n * sizeof(int));
+    mem_copy(target, numbers, sizeof(numbers));
 
     printf("Copied array: ");
 
