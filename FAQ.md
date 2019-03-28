@@ -842,8 +842,7 @@ for over 45 years. That's a big head start over other languages.
 
 <!-- ============================================================================= -->
 
-<a name="what-is-segfault"></a>
-<p><details><summary><b>What is a segmentation fault and how do I stop it?</b></summary><p>
+<p><a name="what-is-segfault"></a><details><summary><b>What is a segmentation fault and how do I stop it?</b></summary><p>
 
 It means you've accessed some memory you weren't supposed to. The OS killed your
 process to prevent it from doing so.
@@ -1429,7 +1428,7 @@ What is "undefined behavior" in C?
 <!--
 Template:
 
-<p><details><summary><b></b></summary><p>
+<p><a name=""></a><details><summary><b></b></summary><p>
 </p></details></p>
 
 -->
