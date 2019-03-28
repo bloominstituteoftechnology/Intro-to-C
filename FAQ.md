@@ -1381,8 +1381,36 @@ conversation.
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>In C, can we assume an <tt>int</tt> is 32 bits?</b></summary><p>
+
+No.
+
+You can assume an `int` is _at least_ 16 bits (2 bytes).
+
+There is only one type that has a guaranteed size: `sizeof(char)` will always be
+`1` byte. (Same for `unsigned char` and `signed char`.)
+
+Never write code that hardcodes or assumes the size of anything other than
+`char`. **Always** use `sizeof` to get the size.
+
+There's a [great Wikipedia article](https://en.wikipedia.org/wiki/C_data_types)
+that lists the minimum sizes of the types. If you want your code to be portable
+to other compilers and systems, choose a type with a minimum size that works for
+the numbers you need to hold.
+
+</p></details></p>
+
 <!--
 TODO:
+
+#include rules, current directory, etc.
+should I declare a pointer to a thing, or just declare a thing?
+exit() vs return from main
+Why does strcmp() return 0 when strings match? Since 0 means false in C, that seems backwards.
+What is "undefined behavior" in C?
+
 
 -->
 
