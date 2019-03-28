@@ -72,6 +72,27 @@ sudo brew upgrade gcc
 
 <!-- ============================================================================= -->
 
+<p><details><summary><b>Should I bother fixing compiler warnings?</b></summary><p>
+
+YES!
+
+In C, a warning is the compiler saying, "I can build that, and I will, but it's
+probably going to do something really messed up that you don't want."
+
+There are only a few warnings you can safely ignore.
+
+If you're _absolutely sure_ the "unused variable" warning is OK, then you could ignore it. Or, better, add a line of code that silences the warning:
+
+```c
+void foo(int a)
+{
+    (void)a; // Do nothing, but at least the compiler will be quiet
+```
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
 <p><details><summary><b>Can I accidentally destroy my computer running C code?</b></summary><p>
 
 Nope! Not with a modern OS.
