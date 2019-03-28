@@ -40,6 +40,15 @@ git config --global core.autocrlf false
 
 <!-- ============================================================================= -->
 
+<p><details><summary><b><tt>runtests.sh: 3: 56059 Segmentation fault: 11  $VALGRIND</tt></b></summary><p>
+
+This means you got a segfault in your program. See [What is a segmentation fault
+and how do I stop it?](#what-is-segfault)
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
 <p><details><summary><b>Mac: <tt>malformed object</tt> error when running <tt>make tests</tt></b></summary><p>
 
 This is caused by an older version of the `ar` and `ranlib` packages being installed.
@@ -833,6 +842,7 @@ for over 45 years. That's a big head start over other languages.
 
 <!-- ============================================================================= -->
 
+<a name="what-is-segfault"></a>
 <p><details><summary><b>What is a segmentation fault and how do I stop it?</b></summary><p>
 
 It means you've accessed some memory you weren't supposed to. The OS killed your
