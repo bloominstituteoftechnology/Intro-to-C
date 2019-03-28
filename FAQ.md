@@ -1411,15 +1411,176 @@ the numbers you need to hold.
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What's the difference between <tt>#include</tt> with double quotes and <tt>#include</tt> with angle brackets?</b></summary><p>
+
+In general, use double quotes for your own header files, and angle brackets for
+built-in system header files like `<stdio.h>`.
+
+When you `#include "foo.h"`, it looks for `foo.h` in the same directory as the
+source file doing the including.
+
+You can also use relative paths, and it'll look relative to the including source file:
+
+```c
+#include "../bar.h"
+#include "somedir/baz.h"
+```
+
+When you `#include <frotz.h>`, it looks in the _system include directories_ for
+the header file. This is where all the built-in header files are installed. On
+Unix machines, this tends to be the `/usr/include` directory, but it depends on
+the OS and compiler.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Should I declare a pointer to a thing, or just declare the thing?</b></summary><p>
+
+It depends on if you want a thing or not, or if you just want to point to
+another, **already-existing** thing.
+
+If there is not an already-existing thing, then making a pointer doesn't make
+sense. There's no existing thing for it to point to.
+
+This does not declare an `int`:
+
+```c
+int *p;
+```
+
+There's no `int` there. We have an `int` pointer, but it's uninitialized, so it
+points to garbage and can't be used.
+
+So the question to ask is, "Do I already have an existing thing that I can point
+to? And if so, do I want to point to it?" If the answer to either is "no", then
+don't use a pointer.
+
+Example:
+
+```c
+int a = 12; // here's an existing thing
+```
+
+So the answer to the first part of the question is yes. And do we want a pointer
+to it? Sure, why not?
+
+```c
+int *p = &a; // and there's a pointer to it
+```
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Is there a difference between <tt>exit()</tt> and <tt>return</tt>?</b></summary><p>
+
+If you're in the `main()` function, then no.
+
+If you're in any other function, then yes.
+
+`exit()` always exits the running process, no matter where you call it from.
+
+If you're in `main()`, `return` also exits the running process.
+
+If you're in any other function, `return` just returns from that function.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Why does <tt>strcmp()</tt> return <tt>0</tt> when strings match? Since <tt>0</tt> means "false" in C, that seems backwards.</b></summary><p>
+
+`strcmp()` returns the _difference_ between two strings. If the strings are the
+same, there is zero difference, so it returns zero.
+
+This gives `strcmp()` a little extra power over just returning a boolean
+true/false value.
+
+For example, if you run this:
+
+```c
+strcmp("Antelope", "Buffalo");
+```
+
+it will return less-than zero because "Antelope" is alphabetically less than
+"Buffalo".
+
+So not only can it tell you if the strings are the same, it can tell you their
+relative sort order. And that means you can pass it in as the comparator
+function to the library built-in `qsort()` function.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<a name="ub"></a><p><details><summary><b>What is "undefined behavior" in C?</b></summary><p>
+
+There are a number of things you're allowed to do in C where the compiler is
+allowed to produce code that can have any indeterminate effect. It could work,
+it could crash, it could sort of work, it could crash sometimes and not others,
+it could crash on some machines and not others.
+
+When you write code that does that, we say the code has _undefined behavior_.
+
+[Wikipedia has a number of practical
+examples](https://en.wikipedia.org/wiki/Undefined_behavior), and if you look in
+the [C99 Language Specification, Annex
+J.2](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf) you can get a
+list of _all_ the things you can do that cause undefined behavior.
+
+At Lambda, the most common things you can do to get UB is using bad pointer references.
+
+* Accessing memory you've already `free()`d.
+* Freeing memory more than once.
+* Accessing an array off the end of its bounds.
+* Dereferencing a pointer that points to garbage.
+* Dereferencing a `NULL` pointer.
+* Returning a pointer to a local variable and dereferencing that.
+
+GCC with `-Wall -Wextra` should warn on a lot of these. This is why it's
+_really_ important to fix all those warnings.
+
+</p></details></p>
+
+<!-- ============================================================================= -->
+
+<p><details><summary><b>When you free a pointer, does it get set to <tt>NULL</tt> automatically?</b></summary><p>
+
+No.
+
+Furthermore, `free()` can't do that even if it wanted to.
+
+```c
+int *p = malloc(100 * sizeof(int));
+
+free(p);
+```
+
+When we call `free()`, it gets a _copy_ of the pointer we pass in. (**All**
+functions **always** get _copies_ of **all** arguments you pass in.) As such,
+`free()` could set its copy of `p` to `NULL`, but that doesn't affect our
+original `p`.
+
+`p` remains whatever value was in it until we set it to something else.
+
+```c
+int *p = malloc(100 * sizeof(int));
+
+free(p);
+
+p = NULL; // NOW p is NULL
+```
+
+(Note that it's [undefined behavior](#ub) to _dereference_ a pointer after
+you've `free()`d it. But it's still OK to change that pointer's value.)
+
+</p></details></p>
+
 <!--
 TODO:
-
-#include rules, current directory, etc.
-should I declare a pointer to a thing, or just declare a thing?
-exit() vs return from main
-Why does strcmp() return 0 when strings match? Since 0 means false in C, that seems backwards.
-What is "undefined behavior" in C?
-
 
 -->
 
