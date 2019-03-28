@@ -1,6 +1,6 @@
 # FAQ
 
-<a name="expected-do"></a><p><details><summary><b><tt>runtests.sh: 4: Syntax error: word unexpected (expecting "do")</tt></b></summary><p>
+<p><details><summary><b><tt>runtests.sh: 4: Syntax error: word unexpected (expecting "do")</tt></b></summary><p>
 
 If you see this error:
 
@@ -40,7 +40,7 @@ git config --global core.autocrlf false
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b><tt>runtests.sh: 3: 56059 Segmentation fault: 11  $VALGRIND</tt></b></summary><p>
+<p><details><summary><b><tt>runtests.sh: 3: 56059 Segmentation fault: 11  $VALGRIND</tt></b></summary><p>
 
 This means you got a segfault in your program. See [What is a segmentation fault
 and how do I stop it?](#what-is-segfault)
@@ -49,7 +49,7 @@ and how do I stop it?](#what-is-segfault)
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Mac: <tt>malformed object</tt> error when running <tt>make tests</tt></b></summary><p>
+<p><details><summary><b>Mac: <tt>malformed object</tt> error when running <tt>make tests</tt></b></summary><p>
 
 This is caused by an older version of the `ar` and `ranlib` packages being installed.
 Sometimes these conflict with the versions installed with xcode.
@@ -72,7 +72,7 @@ sudo brew upgrade gcc
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Can I accidentally destroy my computer running C code?</b></summary><p>
+<p><details><summary><b>Can I accidentally destroy my computer running C code?</b></summary><p>
 
 Nope! Not with a modern OS.
 
@@ -91,7 +91,7 @@ tried to do something bad and the OS killed it.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Is a <tt>struct</tt> comparable to something in Python or JS? Is it like a class?</b></summary><p>
+<p><details><summary><b>Is a <tt>struct</tt> comparable to something in Python or JS? Is it like a class?</b></summary><p>
 
 It's like a class, except with only data (fields, properties) attached to it.
 There are no methods (functions) associated with it.
@@ -135,7 +135,7 @@ int main(void)
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Can you have default parameters in the structs?</b></summary><p>
+<p><details><summary><b>Can you have default parameters in the structs?</b></summary><p>
 
 No. The best you can do is have a helper function set the defaults.
 
@@ -164,7 +164,7 @@ struct foo x = { .a = 10, .b = 20, .c = 30 };
 ```
 </p></details></p>
 
-<a name=""></a><p><details><summary><b>Why does unsigned char type accept a number when it's clearly referring to a character?</b></summary><p>
+<p><details><summary><b>Why does unsigned char type accept a number when it's clearly referring to a character?</b></summary><p>
 
 Deep down, computers just deal in numbers (`1`s and `0`s). They don't know what
 a character is. We humans have come up with a system wherein a number
@@ -213,7 +213,7 @@ as they are with `char`s, people just use `int`s.)
 
 </p></details></p>
 
-<a name=""></a><p><details><summary><b>When I pass an array as an argument to a function, when do I use pointer notation and when do I use array notation ?</b></summary><p>
+<p><details><summary><b>When I pass an array as an argument to a function, when do I use pointer notation and when do I use array notation ?</b></summary><p>
 
 It's a little-known FunFact that C doesn't actually pass entire arrays to
 functions. It only passes pointers to the first element in that array.
@@ -273,7 +273,7 @@ rule still applies; you still need to specify all dimensions except the first
 one... but since there is only one, you never need to specify it.
 </p></details></p>
 
-<a name=""></a><p><details><summary><b>Why do functions tend to return pointers to structs, and not just copies of the struct?</b></summary><p>
+<p><details><summary><b>Why do functions tend to return pointers to structs, and not just copies of the struct?</b></summary><p>
 
 It's possible to do this:
 
@@ -332,7 +332,7 @@ just a local variable), so any pointers to it are invalid.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Why do we subtract '0' from a char to convert it from ASCII to a numeric value?</b></summary><p>
+<p><details><summary><b>Why do we subtract '0' from a char to convert it from ASCII to a numeric value?</b></summary><p>
 
 The code typically looks like this:
 
@@ -381,7 +381,7 @@ values by subtracting `'0'` from them.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>When do I need a pointer to a pointer?</b></summary><p>
+<p><details><summary><b>When do I need a pointer to a pointer?</b></summary><p>
 
 There are a few reasons you might need one, but the most common is when you pass
 a pointer to a function, and the function needs to modify the pointer.
@@ -501,7 +501,7 @@ Success!
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Do other languages use pointers?</b></summary><p>
+<p><details><summary><b>Do other languages use pointers?</b></summary><p>
 
 Most all of them do, but some are more explicit about it than others. In
 languages like Go, C, C++, and Rust, you have to use the proper operators when
@@ -580,7 +580,7 @@ points to (namely `f`).
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What's the difference between "<tt>int *x</tt>" and "<tt>int* x</tt>"?</b></summary><p>
+<p><details><summary><b>What's the difference between "<tt>int *x</tt>" and "<tt>int* x</tt>"?</b></summary><p>
 
 Syntactically, nothing. They're equivalent.
 
@@ -613,7 +613,7 @@ pointer.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What does the "implicit declaration of function" warning mean?</b></summary><p>
+<p><details><summary><b>What does the "implicit declaration of function" warning mean?</b></summary><p>
 
 This is the compiler saying "Hey, you're calling a function but I haven't seen a
 declaration for that function yet." Basically you're calling a function before
@@ -696,7 +696,7 @@ a prototype can be placed at the top of the `.c` file, instead.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What's the difference between <tt>puts()</tt>, <tt>fprintf()</tt>, and <tt>printf()</tt>?</b></summary><p>
+<p><details><summary><b>What's the difference between <tt>puts()</tt>, <tt>fprintf()</tt>, and <tt>printf()</tt>?</b></summary><p>
 
 `puts()` simply outputs a string. It does no formatting of variables. Its only
 argument is a single string. Additionally, it prints a newline at the end for
@@ -749,7 +749,7 @@ if (argc != 2) {
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Why does <tt>025 == 21</tt>?</b></summary><p>
+<p><details><summary><b>Why does <tt>025 == 21</tt>?</b></summary><p>
 
 In C, any time you have a plain leading `0` on front of a number, the compiler
 thinks your number is _base-8_ or _octal_.
@@ -768,7 +768,7 @@ permissions](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notat
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What is the "true dev workflow" in C?</b></summary><p>
+<p><details><summary><b>What is the "true dev workflow" in C?</b></summary><p>
 
 There is none.
 
@@ -788,7 +788,7 @@ Studio](https://en.wikipedia.org/wiki/Microsoft_Visual_Studio) instead of using
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Does C have garbage collection?</b></summary><p>
+<p><details><summary><b>Does C have garbage collection?</b></summary><p>
 
 Nope!
 
@@ -814,7 +814,7 @@ whether locals or `malloc()`d data.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Why is C code faster than other languages?</b></summary><p>
+<p><details><summary><b>Why is C code faster than other languages?</b></summary><p>
 
 The big thing is _interpreted_ versus _compiled_.
 
@@ -863,7 +863,7 @@ something you're not allowed to modify.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What happens if my program exits but I forgot to <tt>free()</tt> some memory I allocated?</b></summary><p>
+<p><details><summary><b>What happens if my program exits but I forgot to <tt>free()</tt> some memory I allocated?</b></summary><p>
 
 All memory associated with a process is freed when the program exits, even if
 you forgot to `free()` it.
@@ -875,7 +875,7 @@ It's considered shoddy programming to not `free()` all the things you
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What's the difference between a <tt>float</tt> and a <tt>double</tt>, or between an <tt>int</tt> and a <tt>long</tt>?</b></summary><p>
+<p><details><summary><b>What's the difference between a <tt>float</tt> and a <tt>double</tt>, or between an <tt>int</tt> and a <tt>long</tt>?</b></summary><p>
 
 It's all about the range of numbers you want to be able to store.
 
@@ -894,7 +894,7 @@ you need more precision or larger numbers, step up to the next larger type.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Can you use <tt>+</tt> to concatenate two strings?</b></summary><p>
+<p><details><summary><b>Can you use <tt>+</tt> to concatenate two strings?</b></summary><p>
 
 No.
 
@@ -908,7 +908,7 @@ another.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Are variables automatically initialized to zero when I declare them?</b></summary><p>
+<p><details><summary><b>Are variables automatically initialized to zero when I declare them?</b></summary><p>
 
 No.
 
@@ -923,7 +923,7 @@ types. If you don't, random garbage will be in them when you use them.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What type should I use to hold numbers bigger than an <tt>int</tt> can hold?</b></summary><p>
+<p><details><summary><b>What type should I use to hold numbers bigger than an <tt>int</tt> can hold?</b></summary><p>
 
 If you don't need negative numbers, try `unsigned int`.
 
@@ -943,7 +943,7 @@ does arbitrary precision arithmetic to as much precision as you have RAM.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What VS Code plugins are good for C development?</b></summary><p>
+<p><details><summary><b>What VS Code plugins are good for C development?</b></summary><p>
 
 "C/C++ IntelliSense, debugging, and code browsing" by Microsoft is a good one.
 
@@ -951,7 +951,7 @@ does arbitrary precision arithmetic to as much precision as you have RAM.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What are some additional C resources?</b></summary><p>
+<p><details><summary><b>What are some additional C resources?</b></summary><p>
 
 A great C book is _The C Programming Language_ Second Edition, by Kernighan [the
 "g" is silent] and Ritchie. It's affectionately referred to simply as _K&R2_.
@@ -971,7 +971,7 @@ Googling `man printf` will bring up the `man` page for `printf`.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>How do I get the debugger working?</b></summary><p>
+<p><details><summary><b>How do I get the debugger working?</b></summary><p>
 
 The commonly-used debugger is called `gdb` (GNU Debugger).
 
@@ -1003,7 +1003,7 @@ platform you're on for `macos` and setting the search date range to be recent.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>How do I print a pointer with <tt>printf</tt>?</b></summary><p>
+<p><details><summary><b>How do I print a pointer with <tt>printf</tt>?</b></summary><p>
 
 Use the `%p` format specifier. This will print the value of the pointer (i.e.
 the memory address), not what it's pointing to (i.e. the value stored at that
@@ -1015,7 +1015,7 @@ In practice, pointers are rarely printed except for debugging.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Does C have closures?</b></summary><p>
+<p><details><summary><b>Does C have closures?</b></summary><p>
 
 No.
 
@@ -1023,7 +1023,7 @@ No.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>If I look at an uninitialized variable, will the garbage in it ever be leftover data from another process?</b></summary><p>
+<p><details><summary><b>If I look at an uninitialized variable, will the garbage in it ever be leftover data from another process?</b></summary><p>
 
 Not on a modern OS. It would be a security risk, so the OS makes sure this never
 happens.
@@ -1032,7 +1032,7 @@ happens.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>How many levels of indirection can you have with pointers? <tt>int******</tt>?</b></summary><p>
+<p><details><summary><b>How many levels of indirection can you have with pointers? <tt>int******</tt>?</b></summary><p>
 
 It's effectively unlimited. But the more you have, the less readable your code
 is.
@@ -1047,7 +1047,7 @@ In real life:
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What's the <tt>incompatible integer to pointer conversion</tt> error?</b></summary><p>
+<p><details><summary><b>What's the <tt>incompatible integer to pointer conversion</tt> error?</b></summary><p>
 
 This means you have a type mismatch in your assignment.
 
@@ -1063,7 +1063,7 @@ right hand side?
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Are there any other ways besides <tt>malloc()</tt> to store things on the heap?</b></summary><p>
+<p><details><summary><b>Are there any other ways besides <tt>malloc()</tt> to store things on the heap?</b></summary><p>
 
 Short answer: no.
 
@@ -1079,7 +1079,7 @@ In Unix, that syscall is `brk()` (or `sbrk()`). The behavior of this call is a b
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>For string literals like <tt>"Hello"</tt>, are those stored on the stack or heap?</b></summary><p>
+<p><details><summary><b>For string literals like <tt>"Hello"</tt>, are those stored on the stack or heap?</b></summary><p>
 
 Neither.
 
@@ -1146,7 +1146,7 @@ char *s = "Hello!";
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Is the C stack like the stack data structure?</b></summary><p>
+<p><details><summary><b>Is the C stack like the stack data structure?</b></summary><p>
 
 Yup! It's used by C to allocate space for local variables when you call functions.
 
@@ -1158,7 +1158,7 @@ function!)
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Is the C heap like a binary heap data structure?</b></summary><p>
+<p><details><summary><b>Is the C heap like a binary heap data structure?</b></summary><p>
 
 No--it's just a name collision.
 
@@ -1170,7 +1170,7 @@ we don't have to worry about it.
 
 <!-- ===================================================================== -->
 
-<a name=""></a><p><details><summary><b>What are <tt>stdin</tt>, <tt>stdout</tt>, and <tt>stderr</tt>?</b></summary><p>
+<p><details><summary><b>What are <tt>stdin</tt>, <tt>stdout</tt>, and <tt>stderr</tt>?</b></summary><p>
 
 These are the three files that are automatically opened for a process when it is first created.
 
@@ -1189,7 +1189,7 @@ output while allowing error output.)
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>How do I know which header files to <tt>#include</tt> for any particular function?</b></summary><p>
+<p><details><summary><b>How do I know which header files to <tt>#include</tt> for any particular function?</b></summary><p>
 
 Check the man page for the function in question. It'll show it in the _Synopsis_
 section.
@@ -1227,7 +1227,7 @@ man 2 mkdir
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>When do I have to explicitly cast a type to another type?</b></summary><p>
+<p><details><summary><b>When do I have to explicitly cast a type to another type?</b></summary><p>
 
 Barely ever.
 
@@ -1297,7 +1297,7 @@ void foo(int a)
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>Is <tt>realloc()</tt> the same as calling <tt>malloc()</tt>, copying the data over, then calling <tt>free()</tt> on the original pointer?</b></summary><p>
+<p><details><summary><b>Is <tt>realloc()</tt> the same as calling <tt>malloc()</tt>, copying the data over, then calling <tt>free()</tt> on the original pointer?</b></summary><p>
 
 Effectively, yes, it's the same. Practically, you should use `realloc()`.
 
@@ -1316,7 +1316,7 @@ just truncate it.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What happens if I <tt>free()</tt> a <tt>NULL</tt> pointer?</b></summary><p>
+<p><details><summary><b>What happens if I <tt>free()</tt> a <tt>NULL</tt> pointer?</b></summary><p>
 
 Nothing. It's a [no-op](https://en.wikipedia.org/wiki/NOP_(code)).
 
@@ -1345,7 +1345,7 @@ spec](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf) section
 </p></details></p>
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>What are bits, bytes, kilobytes, megabytes, and all that?</b></summary><p>
+<p><details><summary><b>What are bits, bytes, kilobytes, megabytes, and all that?</b></summary><p>
 
 A [_bit_](https://www.youtube.com/watch?v=_fGujzulsas) is a single `1` or `0`.
 That's all the numbers it can represent.
@@ -1392,7 +1392,7 @@ conversation.
 
 <!-- ============================================================================= -->
 
-<a name=""></a><p><details><summary><b>In C, can we assume an <tt>int</tt> is 32 bits?</b></summary><p>
+<p><details><summary><b>In C, can we assume an <tt>int</tt> is 32 bits?</b></summary><p>
 
 No.
 
@@ -1428,7 +1428,7 @@ What is "undefined behavior" in C?
 <!--
 Template:
 
-<a name=""></a><p><details><summary><b></b></summary></p>
+<p><details><summary><b></b></summary><p>
 </p></details></p>
 
 -->
