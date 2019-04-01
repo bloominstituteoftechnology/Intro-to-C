@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 /*
     Given a character pointer x (that points to an array of chars), and a
@@ -15,7 +16,9 @@
 */
 void string_copy(char *x, char *y)
 {
-
+    for (int i = 0; i < sizeof(y); i++){
+        x[i] = y[i];
+    }
 }
 
 /*
