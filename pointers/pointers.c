@@ -44,7 +44,16 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-    printf("test\n");
+    int i = 0;
+    int count = 0;
+    char *p = str;
+    for(i=0; i < strlen(str); i = i + 1){
+
+        if( str[i] == c ){
+            printf("string found: %c\n", *(p + i));
+            return (p + i);
+        }
+    }
 }
 
 /*
@@ -57,7 +66,30 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-    printf("test\n");
+    int i = 0;
+    int count = 0;
+    char *p = haystack;
+    char *first_instance;
+    for( i = 0; i < strlen(haystack); i = i + 1 ){
+
+        if(needle[count] == haystack[i]){
+            if(count = 1){
+                first_instance = ( p + i );
+                printf("first instance: %c\n", *( p + i ));
+            }
+            if(count == strlen(needle) - 1){
+                printf("first instance in count: %p\n", first_instance);
+                return first_instance;
+            }
+            count = count + 1;
+            
+        }
+        else if(needle[count] != haystack[i]){
+          count = 0;
+        }
+        
+    }
+    
 }
 
 #ifndef TESTING
@@ -70,8 +102,8 @@ int main(void)
     char *found_char = find_char("hello", 'e');
     char *found_string = find_string("world", "or");
 
-    // printf("Found char: %s\n", found_char);
-    // printf("Found string: %s\n", found_string);
+    printf("Found char: %s\n", found_char);
+    printf("Found string: %s\n", found_string);
 
     return 0;
 }
