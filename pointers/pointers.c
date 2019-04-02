@@ -67,7 +67,7 @@ char *find_string(char *haystack, char *needle)
             while (needle[j] != '\0'){
                 // If true, then return the pointer that reference haystack[i] that matches initially.
                 if (haystack[i] == needle[j]){
-                    printf("%c\n", needle[j]);
+                    // printf("%c\n", needle[j]);
                     i++;
                     j++;
                 }
