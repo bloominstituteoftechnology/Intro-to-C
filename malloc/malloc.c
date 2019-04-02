@@ -12,7 +12,17 @@
 */
 char *string_dup(char *src)
 {
-
+    // figure out length of src
+    int length = strlen(src);
+    // allocate appropriate amount of memory for *src
+    char *duplicate = (char*)malloc(length + 1 * sizeof(*src));
+    // copy over src to the newly created memory
+    int i;
+    for (i = 0; i < length; i++) {
+        duplicate[i] = src[i];
+    }
+    duplicate[length] = '\0';
+    return duplicate;
 }
 
 /*
@@ -24,7 +34,15 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
-
+    // casting the src as a char pointer
+    char *srcs = src;
+    char *dests = dest;
+    // copy src to dest and n determine the size of it
+    int i;
+    for (i = 0; i < n; i++) {
+        dests[i] = srcs[i]; 
+    }
+    return dests; 
 }
 
 /*
@@ -46,11 +64,13 @@ void *resize_memory(void *ptr, int old_size, int new_size)
 #ifndef TESTING
 int main(void)
 {
+    // duplicate test
     char *s = "Some string to duplicate.";
     char *dup = string_dup(s);
 
     printf("Duplicated string: %s\n", dup);
 
+    // mem copy test
     int numbers[] = {100, 55, 4, 98, 10, 18, 90, 95, 43, 11, 47, 67, 89, 42, 49, 79};
     int n = sizeof(numbers) / sizeof(numbers[0]);
     int *target = malloc(n * sizeof(int));
@@ -65,6 +85,7 @@ int main(void)
 
     printf("\n");
 
+    // resize memory test
     char *url = string_dup("http://lambdaschool.com");
     char *path = string_dup("/students/");
     int url_length = string_length(url);

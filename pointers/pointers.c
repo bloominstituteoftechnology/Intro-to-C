@@ -36,8 +36,8 @@ void string_copy(char *x, char *y)
 char *find_char(char *str, int c)
 {
     char *p;
-
-    for (unsigned long i = 0; i < sizeof(*str); i++){
+    int length = strlen(str);
+    for (int i = 0; i < length; i++){
         if (str[i] == c){
             p = &str[i];
         }
