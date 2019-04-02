@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*
     Given a character pointer x (that points to an array of chars), and a
@@ -15,8 +17,22 @@
 */
 void string_copy(char *x, char *y)
 {
+    char *p = y;
+    int count = 0;
+    int con_count = 0;
+    char* str = NULL;
+     
+    for(count=0; count < strlen(y); count = count + 1){
+      printf("printing string y: %c\n", *(p + count));
+      x[count] = *(p + count);
+      if (strlen(y) - 1 == count){
+        x[count + 1] = '\0';
+      }
+    }
+    printf("string x: %s\n", x);
 
 }
+
 
 /*
     Searches the input string `str` for the first instance of the 
@@ -28,7 +44,7 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    printf("test\n");
 }
 
 /*
@@ -41,17 +57,21 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    printf("test\n");
 }
 
 #ifndef TESTING
 int main(void)
 {
-    char *found_char = find_char(hello, 'e');
-    char *found_string = find_string(world, "or");
+    char buffer[1024];
 
-    printf("Found char: %s\n", found_char);
-    printf("Found string: %s\n", found_string);
+    string_copy(buffer, "Hello!");
+    printf("BUFFER: %s\n", buffer); // Prints "Hello!"
+    char *found_char = find_char("hello", 'e');
+    char *found_string = find_string("world", "or");
+
+    // printf("Found char: %s\n", found_char);
+    // printf("Found string: %s\n", found_string);
 
     return 0;
 }
