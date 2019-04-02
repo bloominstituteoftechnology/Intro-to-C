@@ -35,14 +35,14 @@ char *string_dup(char *src)
 void mem_copy(void *dest, const void *src, int n)
 {
     // casting the src as a char pointer
-    char *srcs = src;
+    const char *srcs = src;
+    // char *temp;
     char *dests = dest;
     // copy src to dest and n determine the size of it
     int i;
     for (i = 0; i < n; i++) {
-        dests[i] = srcs[i]; 
+        dests[i] = srcs[i];
     }
-    return dests; 
 }
 
 /*
@@ -58,7 +58,25 @@ void mem_copy(void *dest, const void *src, int n)
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    // ptr is the url itself
+    // old_size reference the length of ptr
+    // new_size is the length of old_size plus new content
 
+    // Assigning ptr to be a char
+    char *ptrs = ptr;
+
+    // making comparison of old_size and new_size to ensure new_size is larger
+    if ( old_size > new_size ) {
+        EXIT_FAILURE;
+    }
+    // declare the new malloc size of new_size 
+    char *new_malloc = (char*)malloc(new_size * sizeof(ptr[0]));
+    // call malloc and output the new size
+    // copy ptr over to the new_size
+    int i;;
+    for (i = 0; i < new_size; i++) {
+        new_malloc[i] = ptrs[i];
+    }
 }
 
 #ifndef TESTING
@@ -103,6 +121,7 @@ int main(void)
 
     printf("Full path string: %s\n", new_url);
 
-    return 0;
+    // return 0;
+    EXIT_SUCCESS;
 }
 #endif
