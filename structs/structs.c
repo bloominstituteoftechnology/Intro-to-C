@@ -8,7 +8,10 @@
     Person should have the fields `name`, `age`, `height`, and `weight`.
 */
 typedef struct Person {
-
+    char *name;
+    int age;
+    int height;
+    int weight;
 } Person;
 
 /*
@@ -20,8 +23,21 @@ typedef struct Person {
     function, which handles the allocation of memory for the new string.
 */
 Person *createPerson(char *name, int age, int height, int weight)
-{
+{   
+    // allocating space for an instance of Person struct
+    Person *p = malloc(sizeof(Person));
+    //allocating memory space for the length of the name passing in and + 1 for null
+    p->name = (char*)malloc(strlen(name) + 1);
+    // copying the name over
+    strcpy(p->name, name);
+    // assigning the age to the createPerson instance age
+    p->age = age;
+    // assigning height to the createPerson instance age
+    p-> height = height;
+    // assigning weight to the createPerson instance age
+    p-> weight = weight;
 
+    return p;
 }
 
 /*
@@ -30,7 +46,8 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
-
+    free((*who).name);
+    free(who);
 }
 
 #ifndef TESTING
