@@ -1600,8 +1600,109 @@ you've `free()`d it. But it's still OK to change that pointer's value.)
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>How do I write preprocessor macros with <tt>#define</tt>?</b></summary><p>
+
+You've probably already seen simple cases of `#define` like this:
+
+```c
+#define antelopes 10
+
+int main(void)
+{
+    printf("Antelopes: %d\n", antelopes); // prints 10
+```
+
+What's actually happening here is the _preprocessor_ runs through the code
+before the compiler ever sees it. It manipulates the above code to read:
+
+```c
+int main(void)
+{
+    printf("Antelopes: %d\n", 10); // prints 10
+```
+
+and _then_ hands it off to the compiler. The compiler itself knows nothing about
+`#define`.
+
+These `#define` _macros_ can also accept parameters that make them behave like
+functions in a way.
+
+Example:
+
+```c
+#define square(x) x * x // Not quite Right. See below.
+
+int main(void)
+{
+    printf("9 squared is %d\n", square(9));
+```
+
+Then the preprocessor generates this code for the compiler:
+
+```c
+int main(void)
+{
+    printf("9 squared is %d\n", 9 * 9);
+```
+
+It just substitutes the parameters in as-is.
+
+Another example:
+
+```c
+#define square(x) x * x // Not quite Right. See below.
+
+int main(void)
+{
+    printf("3 + 2 squared is %d\n", square(3 + 2));
+```
+
+Then the preprocessor generates this code for the compiler, merely substituting
+in exactly what the dev entered as an argument:
+
+```c
+int main(void)
+{
+    printf("3 + 2 squared is %d\n", 3 + 2 * 3 + 2);
+```
+
+Except that prints `11`, when it should print `25` (3 + 2 is 5, and 5 squared is
+25)! We have a bug!
+
+Of course, this has to do with the order of operations. We wrote:
+
+```c
+3 + 2 * 3 + 2
+```
+
+when what we really wanted was:
+
+```c
+(3 + 2) * (3 + 2)
+```
+
+For this reason, you should **always** put extra parentheses around the macro
+body, and around every parameter in the body:
+
+```c
+#define square(x) ((x) * (x))
+```
+
+And now the expansion of our line will be:
+
+```c
+((3 + 2) * (3 + 2))
+```
+
+That will work in all expected cases.
+
+</p></details></p>
+
 <!--
 TODO:
+linker errors, undefined symbols
 
 -->
 
