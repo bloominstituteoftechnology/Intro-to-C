@@ -1,4 +1,4 @@
-# FAQ
+# Intro to C FAQ
 
 <p><details><summary><b><tt>runtests.sh: 4: Syntax error: word unexpected (expecting "do")</tt></b></summary><p>
 
@@ -1700,10 +1700,74 @@ That will work in all expected cases.
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>What is an <tt>undefined symbol</tt> linker error?</b></summary><p>
+
+This happens when you've called a function, and the _linker_ can't find it in
+any of the source files or libraries that you're using.
+
+Do you have a warning about an implicit function declaration from the compiler
+before this error? If so, fix that first.
+
+If not, it could be that you haven't specified all the source files needed on
+the command line. If you have two sources `one.c` and `two.c`, and one calls
+functions that are in the other, then you have to pass both into the compiler:
+
+```
+gcc -Wall -Wextra -o myexe one.c two.c
+```
+
+Alternately, is there a `Makefile` present? If so, the author of the software
+probably intends for you to use that to build the project, rather than trying to
+figure out the command line on your own.
+
+Try just running:
+
+```
+make
+```
+
+and seeing if that works. Make will show you the command lines it's running to
+make the build happen so that you don't have to.
+
+The linker is part of the entire compilation system. Basically, the compiler
+takes your C source files, makes sure they're syntactically correct, and turns
+them into things called _object files_, one per source file. These object files
+might refer to functions that they don't contain, like `printf()`, for example.
+
+Then the linker takes all the object files and libraries and puts them together
+into a single binary executable that you can run. It makes sure that all the
+functions used are present in the files specified.
+
+(Normally this whole process takes place behind the scenes and you don't have to
+think about it. Sometimes Makefiles will generate object files that you might
+see, e.g. `foo.o`. `.o` is the extension for object files on Unix, or `.obj` in
+Windows.)
+
+If the linker can't find a function in any of the object files or libraries, it
+pukes out an error. It can't call a function if it can't find it.
+
+In this example, the code calls a function `foobaz()`, but the linker can't find
+that in any of the object files:
+
+```
+Undefined symbols for architecture x86_64:
+  "_foobaz", referenced from:
+      _main in foo-133c47.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+```
+
+(Ignore the leading underscores on the function names.)
+
+To fix, we need to figure out which file `foobaz()` is defined in, and make sure
+to pass that filename to the compiler when we build.
+
+</p></details></p>
+
 <!--
 TODO:
-linker errors, undefined symbols
-
 -->
 
 <!-- ============================================================================= -->
