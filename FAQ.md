@@ -1966,6 +1966,23 @@ The first letters let you know what speciality each one has:
 
 </p></details></p>
 
+<!-- ============================================================================= -->
+
+<p><details><summary><b>Why is <tt>main()</tt> always at the bottom of the file?</b></summary><p>
+
+C has the feature that you have to _declare_ a function before you can use it.
+So any functions `main()` needs have to be declared before `main()`, which means
+"above" it in the file.
+
+You can also declare functions with _prototypes_ and then put the definition of
+`main()` before the definition of the other functions.
+
+It's more common for C devs to put `main()` at the bottom of the file that
+contains it, and C devs expect it that way, but it's not wrong or frowned upon
+to use prototypes to put it at the top instead.
+
+</p></details></p>
+
 <!--
 TODO:
 
