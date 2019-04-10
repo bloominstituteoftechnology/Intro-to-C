@@ -1922,10 +1922,10 @@ myexecutable: mysource1.c mysource2.c
 ```
 
 `$@` is a make _macro_ that means "substitute whatever is left of the `:` right
-here.
+here" (in this example, `myexecutable`).
 
 `$^` is a make macro that means "substitute whatever is to the right of the `:`
-right here.
+right here" (in this example, `mysource1.c mysource2.c`).
 
 You can also define constants:
 
