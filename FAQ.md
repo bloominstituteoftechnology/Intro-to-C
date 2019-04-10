@@ -1,6 +1,97 @@
 # Intro to C FAQ
 
-<p><details><summary><b><tt>runtests.sh: 4: Syntax error: word unexpected (expecting "do")</tt></b></summary><p>
+## Contents
+
+### Common Errors
+
+* [`runtests.sh: 4: Syntax error: word unexpected (expecting "do")`](#q100)
+* [`runtests.sh: 3: 56059 Segmentation fault: 11  $VALGRIND`](#q200)
+* [Mac: `malformed object` error when running `make tests`](#q300)
+* [What does the "implicit declaration of function" warning mean?](#q1500)
+* [What is a segmentation fault and how do I stop it?](#q2100)
+* [What's the `incompatible integer to pointer conversion` error?](#q3400)
+* [What is an `undefined symbol` linker error?](#q5300)
+* [What is "undefined behavior" in C?](#q5000)
+* [Should I bother fixing compiler warnings?](#q400)
+
+### General C
+
+* [Can I accidentally destroy my computer running C code?](#q500)
+* [Why do we subtract '0' from a char to convert it from ASCII to a numeric value?](#q1100)
+* [What's the difference between `puts()`, `fprintf()`, and `printf()`?](#q1600)
+* [Why does `025 == 21`?](#q1700)
+* [What is the "true dev workflow" in C?](#q1800)
+* [Does C have garbage collection?](#q1900)
+* [Why is C code faster than other languages?](#q2000)
+* [Are variables automatically initialized to zero when I declare them?](#q2500)
+* [What VS Code plugins are good for C development?](#q2700)
+* [What are some additional C resources?](#q2800)
+* [How do I get the debugger working?](#q2900)
+* [Does C have closures?](#q3100)
+* [If I look at an uninitialized variable, will the garbage in it ever be leftover data from another process?](#q3200)
+* [What are `stdin`, `stdout`, and `stderr`?](#q3900)
+* [How do I know which header files to `#include` for any particular function?](#q4000)
+* [What are bits, bytes, kilobytes, megabytes, and all that?](#q4400)
+* [What's the difference between `#include` with double quotes and `#include` with angle brackets?](#q4600)
+* [Is there a difference between `exit()` and `return`?](#q4800)
+* [What is "undefined behavior" in C?](#q5000)
+* [How do I write preprocessor macros with `#define`?](#q5200)
+* [How do I make my own header files and what do I put in them?](#q5400)
+* [How do I make my own Makefile?](#q5500)
+* [Why are there so many `printf()` variants? How do I know which one to use?](#q5600)
+* [Why is `main()` always at the bottom of the file?](#q5700)
+
+### Strings
+
+* [Can you use `+` to concatenate two strings?](#q2400)
+* [For string literals like `"Hello"`, are those stored on the stack or heap?](#q3600)
+* [Why does `strcmp()` return `0` when strings match? Since `0` means "false" in C, that seems backwards.](#q4900)
+
+### Structs
+
+* [Is a `struct` comparable to something in Python or JS? Is it like a class?](#q600)
+* [Can you have default parameters in the structs?](#q700)
+* [Why do functions tend to return pointers to structs, and not just copies of the struct?](#q1000)
+
+### Types
+
+* [Why does unsigned char type accept a number when it's clearly referring to a character?](#q800)
+* [What's the difference between a `float` and a `double`, or between an `int` and a `long`?](#q2300)
+* [What type should I use to hold numbers bigger than an `int` can hold?](#q2600)
+* [When do I have to explicitly cast a type to another type?](#q4100)
+* [In C, can we assume an `int` is 32 bits?](#q4500)
+
+### Arrays
+
+* [When I pass an array as an argument to a function, when do I use pointer notation and when do I use array notation ?](#q900)
+
+### Pointers
+
+* [When I pass an array as an argument to a function, when do I use pointer notation and when do I use array notation ?](#q900)
+* [Why do functions tend to return pointers to structs, and not just copies of the struct?](#q1000)
+* [When do I need a pointer to a pointer?](#q1200)
+* [Do other languages use pointers?](#q1300)
+* [What's the difference between "`int *x`" and "`int* x`"?](#q1400)
+* [How do I print a pointer with `printf`?](#q3000)
+* [How many levels of indirection can you have with pointers? `int******`?](#q3300)
+* [What's the `incompatible integer to pointer conversion` error?](#q3400)
+* [Should I declare a pointer to a thing, or just declare the thing?](#q4700)
+* [When you free a pointer, does it get set to `NULL` automatically?](#q5100)
+
+### Heap, Stack, Dynamic Memory
+
+* [What happens if my program exits but I forgot to `free()` some memory I allocated?](#q2200)
+* [Are there any other ways besides `malloc()` to store things on the heap?](#q3500)
+* [Is the C stack like the stack data structure?](#q3700)
+* [Is the C heap like a binary heap data structure?](#q3800)
+* [Is `realloc()` the same as calling `malloc()`, copying the data over, then calling `free()` on the original pointer?](#q4200)
+* [What happens if I `free()` a `NULL` pointer?](#q4300)
+* [When you free a pointer, does it get set to `NULL` automatically?](#q5100)
+
+## Questions
+
+<a name="q100"></a>
+### `runtests.sh: 4: Syntax error: word unexpected (expecting "do")`
 
 If you see this error:
 
@@ -36,20 +127,18 @@ following:
 git config --global core.autocrlf false
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b><tt>runtests.sh: 3: 56059 Segmentation fault: 11  $VALGRIND</tt></b></summary><p>
+<a name="q200"></a>
+### `runtests.sh: 3: 56059 Segmentation fault: 11  $VALGRIND`
 
 This means you got a segfault in your program. See [What is a segmentation fault
 and how do I stop it?](#what-is-segfault)
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Mac: <tt>malformed object</tt> error when running <tt>make tests</tt></b></summary><p>
+<a name="q300"></a>
+### Mac: `malformed object` error when running `make tests`
 
 This is caused by an older version of the `ar` and `ranlib` packages being installed.
 Sometimes these conflict with the versions installed with xcode.
@@ -68,11 +157,10 @@ sudo brew update
 sudo brew upgrade gcc
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Should I bother fixing compiler warnings?</b></summary><p>
+<a name="q400"></a>
+### Should I bother fixing compiler warnings?
 
 YES!
 
@@ -89,11 +177,10 @@ void foo(int a)
     (void)a; // Do nothing, but at least the compiler will be quiet
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Can I accidentally destroy my computer running C code?</b></summary><p>
+<a name="q500"></a>
+### Can I accidentally destroy my computer running C code?
 
 Nope! Not with a modern OS.
 
@@ -108,11 +195,10 @@ you're not supposed to, or wiping out a disk you're not supposed to, etc.
 The worst you'll see is a `Segmentation fault` message which means your program
 tried to do something bad and the OS killed it.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Is a <tt>struct</tt> comparable to something in Python or JS? Is it like a class?</b></summary><p>
+<a name="q600"></a>
+### Is a `struct` comparable to something in Python or JS? Is it like a class?
 
 It's like a class, except with only data (fields, properties) attached to it.
 There are no methods (functions) associated with it.
@@ -152,11 +238,10 @@ int main(void)
 }
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Can you have default parameters in the structs?</b></summary><p>
+<a name="q700"></a>
+### Can you have default parameters in the structs?
 
 No. The best you can do is have a helper function set the defaults.
 
@@ -183,9 +268,11 @@ values:
 ```c
 struct foo x = { .a = 10, .b = 20, .c = 30 };
 ```
-</p></details></p>
 
-<p><details><summary><b>Why does unsigned char type accept a number when it's clearly referring to a character?</b></summary><p>
+------------------------------------------------------------------------
+
+<a name="q800"></a>
+### Why does unsigned char type accept a number when it's clearly referring to a character?
 
 Deep down, computers just deal in numbers (`1`s and `0`s). They don't know what
 a character is. We humans have come up with a system wherein a number
@@ -232,9 +319,10 @@ If you never needed numbers larger than 255, you could use `unsigned char` for
 all your variables! (But since modern computers are at least as fast with `int`s
 as they are with `char`s, people just use `int`s.)
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<p><details><summary><b>When I pass an array as an argument to a function, when do I use pointer notation and when do I use array notation ?</b></summary><p>
+<a name="q900"></a>
+### When I pass an array as an argument to a function, when do I use pointer notation and when do I use array notation ?
 
 It's a little-known FunFact that C doesn't actually pass entire arrays to
 functions. It only passes pointers to the first element in that array.
@@ -292,9 +380,11 @@ int main(void)
 This only applies for multidimensional arrays. For 1-dimensional arrays, the
 rule still applies; you still need to specify all dimensions except the first
 one... but since there is only one, you never need to specify it.
-</p></details></p>
 
-<p><details><summary><b>Why do functions tend to return pointers to structs, and not just copies of the struct?</b></summary><p>
+------------------------------------------------------------------------
+
+<a name="q1000"></a>
+### Why do functions tend to return pointers to structs, and not just copies of the struct?
 
 It's possible to do this:
 
@@ -349,11 +439,10 @@ struct foo *my_func(void)
 The reason is because `f` vaporizes as soon as the function returns (since it's
 just a local variable), so any pointers to it are invalid.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Why do we subtract '0' from a char to convert it from ASCII to a numeric value?</b></summary><p>
+<a name="q1100"></a>
+### Why do we subtract '0' from a char to convert it from ASCII to a numeric value?
 
 The code typically looks like this:
 
@@ -398,11 +487,10 @@ Example: `'7'` is value `55` (from the table), compute `55 - 48` and you get
 And since `'0'` is `48`, it's become idiomatic in C to convert ASCII digits to
 values by subtracting `'0'` from them.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>When do I need a pointer to a pointer?</b></summary><p>
+<a name="q1200"></a>
+### When do I need a pointer to a pointer?
 
 There are a few reasons you might need one, but the most common is when you pass
 a pointer to a function, and the function needs to modify the pointer.
@@ -518,11 +606,11 @@ int main(void)
 ```
 
 Success!
-</p></details></p>
 
-<!-- ============================================================================= -->
+------------------------------------------------------------------------
 
-<p><details><summary><b>Do other languages use pointers?</b></summary><p>
+<a name="q1300"></a>
+### Do other languages use pointers?
 
 Most all of them do, but some are more explicit about it than others. In
 languages like Go, C, C++, and Rust, you have to use the proper operators when
@@ -597,11 +685,10 @@ property on the thing that `a` points to".
 And when we set `a` to `NULL`, it's just modifying `a`, not the thing that `a`
 points to (namely `f`).
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What's the difference between "<tt>int *x</tt>" and "<tt>int* x</tt>"?</b></summary><p>
+<a name="q1400"></a>
+### What's the difference between "`int *x`" and "`int* x`"?
 
 Syntactically, nothing. They're equivalent.
 
@@ -630,11 +717,11 @@ int y, *x; // Also equivalent to the previous two examples
 
 It's idiomatic to keep the asterisk tucked up next to the variable that's the
 pointer.
-</p></details></p>
 
-<!-- ============================================================================= -->
+------------------------------------------------------------------------
 
-<p><details><summary><b>What does the "implicit declaration of function" warning mean?</b></summary><p>
+<a name="q1500"></a>
+### What does the "implicit declaration of function" warning mean?
 
 This is the compiler saying "Hey, you're calling a function but I haven't seen a
 declaration for that function yet." Basically you're calling a function before
@@ -713,11 +800,10 @@ functions that no other file will even need to call), those usually are either
 defined at the top of the file before their first call. If that's inconvenient,
 a prototype can be placed at the top of the `.c` file, instead.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What's the difference between <tt>puts()</tt>, <tt>fprintf()</tt>, and <tt>printf()</tt>?</b></summary><p>
+<a name="q1600"></a>
+### What's the difference between `puts()`, `fprintf()`, and `printf()`?
 
 `puts()` simply outputs a string. It does no formatting of variables. Its only
 argument is a single string. Additionally, it prints a newline at the end for
@@ -766,11 +852,10 @@ if (argc != 2) {
 }
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Why does <tt>025 == 21</tt>?</b></summary><p>
+<a name="q1700"></a>
+### Why does `025 == 21`?
 
 In C, any time you have a plain leading `0` on front of a number, the compiler
 thinks your number is _base-8_ or _octal_.
@@ -785,11 +870,10 @@ Octal is rarely used in practice, and it's common for new C programmers to put
 One of the last common places to see octal numbers is in [Unix file
 permissions](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation).
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What is the "true dev workflow" in C?</b></summary><p>
+<a name="q1800"></a>
+### What is the "true dev workflow" in C?
 
 There is none.
 
@@ -805,11 +889,10 @@ But dev for specific platforms like Windows probably happens in [Visual
 Studio](https://en.wikipedia.org/wiki/Microsoft_Visual_Studio) instead of using
 `make` and the rest of it.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Does C have garbage collection?</b></summary><p>
+<a name="q1900"></a>
+### Does C have garbage collection?
 
 Nope!
 
@@ -831,11 +914,10 @@ pointers to data that you got back from `malloc()` when you're done with them.
 Also, when a program exits, all memory associated with it is freed by the OS,
 whether locals or `malloc()`d data.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Why is C code faster than other languages?</b></summary><p>
+<a name="q2000"></a>
+### Why is C code faster than other languages?
 
 The big thing is _interpreted_ versus _compiled_.
 
@@ -859,11 +941,10 @@ it doesn't have to do a lot of things behind your back.
 Additionally, people have been working on optimizing the output from C compilers
 for over 45 years. That's a big head start over other languages.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<a name="what-is-segfault"></a><p><details><summary><b>What is a segmentation fault and how do I stop it?</b></summary><p>
+<a name="what-is-segfault"></a><a name="q2100"></a>
+### What is a segmentation fault and how do I stop it?
 
 It means you've accessed some memory you weren't supposed to. The OS killed your
 process to prevent it from doing so.
@@ -880,11 +961,10 @@ pointers behind syntactic sugar).
 Maybe you're accessing a `NULL` pointer, or an array out of bounds, or modifying
 something you're not allowed to modify.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What happens if my program exits but I forgot to <tt>free()</tt> some memory I allocated?</b></summary><p>
+<a name="q2200"></a>
+### What happens if my program exits but I forgot to `free()` some memory I allocated?
 
 All memory associated with a process is freed when the program exits, even if
 you forgot to `free()` it.
@@ -892,11 +972,10 @@ you forgot to `free()` it.
 It's considered shoddy programming to not `free()` all the things you
 `malloc()`d, though. The OS will free it, but it's bad style to rely on that.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What's the difference between a <tt>float</tt> and a <tt>double</tt>, or between an <tt>int</tt> and a <tt>long</tt>?</b></summary><p>
+<a name="q2300"></a>
+### What's the difference between a `float` and a `double`, or between an `int` and a `long`?
 
 It's all about the range of numbers you want to be able to store.
 
@@ -911,11 +990,10 @@ a `long` could hold much larger numbers.
 Use as little as you need. If a `float` or `int` can do the job, use them. If
 you need more precision or larger numbers, step up to the next larger type.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Can you use <tt>+</tt> to concatenate two strings?</b></summary><p>
+<a name="q2400"></a>
+### Can you use `+` to concatenate two strings?
 
 No.
 
@@ -925,11 +1003,10 @@ The reason is that strings are represented as `char*` types, and adding two
 Use the `strcat()` function in `<string.h>` to concatenate one string onto
 another.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Are variables automatically initialized to zero when I declare them?</b></summary><p>
+<a name="q2500"></a>
+### Are variables automatically initialized to zero when I declare them?
 
 No.
 
@@ -940,11 +1017,10 @@ types. If you don't, random garbage will be in them when you use them.
 > is out of scope for Lambda) and global variables get initialized to zero
 > automatically. But it's still good form to explicitly initialize them.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What type should I use to hold numbers bigger than an <tt>int</tt> can hold?</b></summary><p>
+<a name="q2600"></a>
+### What type should I use to hold numbers bigger than an `int` can hold?
 
 If you don't need negative numbers, try `unsigned int`.
 
@@ -960,19 +1036,17 @@ If you need big numbers _and_ a lot of precision _and_ none of the above are big
 enough, check out the [GNU Multiple Precision library](https://gmplib.org/). It
 does arbitrary precision arithmetic to as much precision as you have RAM.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What VS Code plugins are good for C development?</b></summary><p>
+<a name="q2700"></a>
+### What VS Code plugins are good for C development?
 
 "C/C++ IntelliSense, debugging, and code browsing" by Microsoft is a good one.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What are some additional C resources?</b></summary><p>
+<a name="q2800"></a>
+### What are some additional C resources?
 
 A great C book is _The C Programming Language_ Second Edition, by Kernighan [the
 "g" is silent] and Ritchie. It's affectionately referred to simply as _K&R2_.
@@ -988,11 +1062,10 @@ Googling `printf example`, for example, will get you good results.
 
 Googling `man printf` will bring up the `man` page for `printf`.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>How do I get the debugger working?</b></summary><p>
+<a name="q2900"></a>
+### How do I get the debugger working?
 
 The commonly-used debugger is called `gdb` (GNU Debugger).
 
@@ -1020,11 +1093,10 @@ If you're not seeing program output in the `Output` tab, try adding this to your
 We recommend Googling for `vscode gdb setup macos`, substituting whatever
 platform you're on for `macos` and setting the search date range to be recent.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>How do I print a pointer with <tt>printf</tt>?</b></summary><p>
+<a name="q3000"></a>
+### How do I print a pointer with `printf`?
 
 Use the `%p` format specifier. This will print the value of the pointer (i.e.
 the memory address), not what it's pointing to (i.e. the value stored at that
@@ -1032,28 +1104,25 @@ memory address.)
 
 In practice, pointers are rarely printed except for debugging.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Does C have closures?</b></summary><p>
+<a name="q3100"></a>
+### Does C have closures?
 
 No.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>If I look at an uninitialized variable, will the garbage in it ever be leftover data from another process?</b></summary><p>
+<a name="q3200"></a>
+### If I look at an uninitialized variable, will the garbage in it ever be leftover data from another process?
 
 Not on a modern OS. It would be a security risk, so the OS makes sure this never
 happens.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>How many levels of indirection can you have with pointers? <tt>int******</tt>?</b></summary><p>
+<a name="q3300"></a>
+### How many levels of indirection can you have with pointers? `int******`?
 
 It's effectively unlimited. But the more you have, the less readable your code
 is.
@@ -1064,11 +1133,10 @@ In real life:
 * 1.5% (roughly) is double indirection, like `char**`.
 * And the remaining 0.5% is the rest of it.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What's the <tt>incompatible integer to pointer conversion</tt> error?</b></summary><p>
+<a name="q3400"></a>
+### What's the `incompatible integer to pointer conversion` error?
 
 This means you have a type mismatch in your assignment.
 
@@ -1080,11 +1148,10 @@ pointer type.
 Maybe you meant to take the address of the right hand side? Or dereference the
 right hand side?
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Are there any other ways besides <tt>malloc()</tt> to store things on the heap?</b></summary><p>
+<a name="q3500"></a>
+### Are there any other ways besides `malloc()` to store things on the heap?
 
 Short answer: no.
 
@@ -1096,11 +1163,10 @@ operating system. In practice, this is very rare; people just call `malloc()`.
 
 In Unix, that syscall is `brk()` (or `sbrk()`). The behavior of this call is a bit strange no
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>For string literals like <tt>"Hello"</tt>, are those stored on the stack or heap?</b></summary><p>
+<a name="q3600"></a>
+### For string literals like `"Hello"`, are those stored on the stack or heap?
 
 Neither.
 
@@ -1163,11 +1229,10 @@ char *s = "Hello!";
 *s = 'B'; // segfault!
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Is the C stack like the stack data structure?</b></summary><p>
+<a name="q3700"></a>
+### Is the C stack like the stack data structure?
 
 Yup! It's used by C to allocate space for local variables when you call functions.
 
@@ -1175,11 +1240,10 @@ When you return from a function, all those local variables are popped off the
 stack and thrown away. (Which is why local variables only last as long as the
 function!)
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Is the C heap like a binary heap data structure?</b></summary><p>
+<a name="q3800"></a>
+### Is the C heap like a binary heap data structure?
 
 No--it's just a name collision.
 
@@ -1187,11 +1251,10 @@ Just assume the heap is a big, contiguous chunk of memory. It can be used for
 whatever, but in C, it is typically managed by `malloc()` and `free()` so that
 we don't have to worry about it.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ===================================================================== -->
-
-<p><details><summary><b>What are <tt>stdin</tt>, <tt>stdout</tt>, and <tt>stderr</tt>?</b></summary><p>
+<a name="q3900"></a>
+### What are `stdin`, `stdout`, and `stderr`?
 
 These are the three files that are automatically opened for a process when it is first created.
 
@@ -1206,11 +1269,10 @@ to the same place as `stdout`. (The idea is that you can redirect all normal
 output to one place, and all error output to another place. Or suppress normal
 output while allowing error output.)
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>How do I know which header files to <tt>#include</tt> for any particular function?</b></summary><p>
+<a name="q4000"></a>
+### How do I know which header files to `#include` for any particular function?
 
 Check the man page for the function in question. It'll show it in the _Synopsis_
 section.
@@ -1244,11 +1306,10 @@ And section 2 for the `mkdir()` syscall:
 man 2 mkdir
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>When do I have to explicitly cast a type to another type?</b></summary><p>
+<a name="q4100"></a>
+### When do I have to explicitly cast a type to another type?
 
 Barely ever.
 
@@ -1314,11 +1375,10 @@ void foo(int a)
     printf("\n");
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Is <tt>realloc()</tt> the same as calling <tt>malloc()</tt>, copying the data over, then calling <tt>free()</tt> on the original pointer?</b></summary><p>
+<a name="q4200"></a>
+### Is `realloc()` the same as calling `malloc()`, copying the data over, then calling `free()` on the original pointer?
 
 Effectively, yes, it's the same. Practically, you should use `realloc()`.
 
@@ -1332,12 +1392,10 @@ of the memory region and not bother moving the data.
 Also, if you shrink the space, `realloc()` will likely not copy the data. It'll
 just truncate it.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What happens if I <tt>free()</tt> a <tt>NULL</tt> pointer?</b></summary><p>
+<a name="q4300"></a>
+### What happens if I `free()` a `NULL` pointer?
 
 Nothing. It's a [no-op](https://en.wikipedia.org/wiki/NOP_(code)).
 
@@ -1363,10 +1421,10 @@ spec](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1124.pdf) section
 > space has been deallocated by a call to `free` or `realloc`, the behavior is
 > undefined.
 
-</p></details></p>
-<!-- ============================================================================= -->
+------------------------------------------------------------------------
 
-<p><details><summary><b>What are bits, bytes, kilobytes, megabytes, and all that?</b></summary><p>
+<a name="q4400"></a>
+### What are bits, bytes, kilobytes, megabytes, and all that?
 
 A [_bit_](https://www.youtube.com/watch?v=_fGujzulsas) is a single `1` or `0`.
 That's all the numbers it can represent.
@@ -1409,11 +1467,10 @@ That said, in conversation, if someone says _kilobyte_, odds are extremely high
 they mean 1024 bytes, not 1000 bytes. _kibibyte_ is uncommonly used in
 conversation.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>In C, can we assume an <tt>int</tt> is 32 bits?</b></summary><p>
+<a name="q4500"></a>
+### In C, can we assume an `int` is 32 bits?
 
 No.
 
@@ -1430,11 +1487,10 @@ that lists the minimum sizes of the types. If you want your code to be portable
 to other compilers and systems, choose a type with a minimum size that works for
 the numbers you need to hold.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What's the difference between <tt>#include</tt> with double quotes and <tt>#include</tt> with angle brackets?</b></summary><p>
+<a name="q4600"></a>
+### What's the difference between `#include` with double quotes and `#include` with angle brackets?
 
 In general, use double quotes for your own header files, and angle brackets for
 built-in system header files like `<stdio.h>`.
@@ -1454,11 +1510,10 @@ the header file. This is where all the built-in header files are installed. On
 Unix machines, this tends to be the `/usr/include` directory, but it depends on
 the OS and compiler.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Should I declare a pointer to a thing, or just declare the thing?</b></summary><p>
+<a name="q4700"></a>
+### Should I declare a pointer to a thing, or just declare the thing?
 
 It depends on if you want a thing or not, or if you just want to point to
 another, **already-existing** thing.
@@ -1492,11 +1547,10 @@ to it? Sure, why not?
 int *p = &a; // and there's a pointer to it
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Is there a difference between <tt>exit()</tt> and <tt>return</tt>?</b></summary><p>
+<a name="q4800"></a>
+### Is there a difference between `exit()` and `return`?
 
 If you're in the `main()` function, then no.
 
@@ -1508,11 +1562,10 @@ If you're in `main()`, `return` also exits the running process.
 
 If you're in any other function, `return` just returns from that function.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Why does <tt>strcmp()</tt> return <tt>0</tt> when strings match? Since <tt>0</tt> means "false" in C, that seems backwards.</b></summary><p>
+<a name="q4900"></a>
+### Why does `strcmp()` return `0` when strings match? Since `0` means "false" in C, that seems backwards.
 
 `strcmp()` returns the _difference_ between two strings. If the strings are the
 same, there is zero difference, so it returns zero.
@@ -1533,11 +1586,10 @@ So not only can it tell you if the strings are the same, it can tell you their
 relative sort order. And that means you can pass it in as the comparator
 function to the library built-in `qsort()` function.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<a name="ub"></a><p><details><summary><b>What is "undefined behavior" in C?</b></summary><p>
+<a name="ub"></a><a name="q5000"></a>
+### What is "undefined behavior" in C?
 
 There are a number of things you're allowed to do in C where the compiler is
 allowed to produce code that can have any indeterminate effect. It could work,
@@ -1564,11 +1616,10 @@ At Lambda, the most common things you can do to get UB is using bad pointer refe
 GCC with `-Wall -Wextra` should warn on a lot of these. This is why it's
 _really_ important to fix all those warnings.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>When you free a pointer, does it get set to <tt>NULL</tt> automatically?</b></summary><p>
+<a name="q5100"></a>
+### When you free a pointer, does it get set to `NULL` automatically?
 
 No.
 
@@ -1598,11 +1649,10 @@ p = NULL; // NOW p is NULL
 (Note that it's [undefined behavior](#ub) to _dereference_ a pointer after
 you've `free()`d it. But it's still OK to change that pointer's value.)
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>How do I write preprocessor macros with <tt>#define</tt>?</b></summary><p>
+<a name="q5200"></a>
+### How do I write preprocessor macros with `#define`?
 
 You've probably already seen simple cases of `#define` like this:
 
@@ -1698,11 +1748,10 @@ And now the expansion of our line will be:
 
 That will work in all expected cases.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>What is an <tt>undefined symbol</tt> linker error?</b></summary><p>
+<a name="q5300"></a>
+### What is an `undefined symbol` linker error?
 
 This happens when you've called a function, and the _linker_ can't find it in
 any of the source files or libraries that you're using.
@@ -1764,11 +1813,10 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 To fix, we need to figure out which file `foobaz()` is defined in, and make sure
 to pass that filename to the compiler when we build.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>How do I make my own header files and what do I put in them?</b></summary><p>
+<a name="q5400"></a>
+### How do I make my own header files and what do I put in them?
 
 If you have a `.c` file and you want to be able to use functions, `#define`s, or
 globals from that file in another file, you'll need to make a _header file_
@@ -1838,11 +1886,10 @@ When you build, you must specify all `.c` files on the command line:
 gcc -Wall -Wextra -o main main.c square.c
 ```
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>How do I make my own Makefile?</b></summary><p>
+<a name="q5500"></a>
+### How do I make my own Makefile?
 
 **IMPORTANT: Any lines shown _indented_ in any Makefile _must_ begin with a
 single TAB character! Spaces will _not_ work. If you use spaces to indent,
@@ -1937,11 +1984,10 @@ default.
 
 * [GNU make documentation](https://www.gnu.org/software/make/manual/make.html)
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Why are there so many <tt>printf()</tt> variants? How do I know which one to use?</b></summary><p>
+<a name="q5600"></a>
+### Why are there so many `printf()` variants? How do I know which one to use?
 
 The way to approach it is when you think, "I need something just like
 `printf()`, except instead of to the screen, it prints to _x_," then you look in
@@ -1964,11 +2010,10 @@ The first letters let you know what speciality each one has:
   at Lambda.
 * etc.
 
-</p></details></p>
+------------------------------------------------------------------------
 
-<!-- ============================================================================= -->
-
-<p><details><summary><b>Why is <tt>main()</tt> always at the bottom of the file?</b></summary><p>
+<a name="q5700"></a>
+### Why is `main()` always at the bottom of the file?
 
 C has the feature that you have to _declare_ a function before you can use it.
 So any functions `main()` needs have to be declared before `main()`, which means
@@ -1981,17 +2026,4 @@ It's more common for C devs to put `main()` at the bottom of the file that
 contains it, and C devs expect it that way, but it's not wrong or frowned upon
 to use prototypes to put it at the top instead.
 
-</p></details></p>
-
-<!--
-TODO:
-
-<!-- ============================================================================= -->
-
-<!--
-Template:
-
-<p><details><summary><b></b></summary><p>
-</p></details></p>
-
--->
+------------------------------------------------------------------------
