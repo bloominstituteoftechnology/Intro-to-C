@@ -20,10 +20,12 @@ int fizzbuzz(int n)
     {
         return printf("Buzz\n");
     }
+
     if (n % 3 == 0 && n % 5 == 0)
     {
         return printf("FizzBuzz\n");
     }
+    
     return 0;
 }
 

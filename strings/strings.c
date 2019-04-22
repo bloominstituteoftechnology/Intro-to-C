@@ -9,7 +9,13 @@
 */
 int string_length(char *s)
 {
+    int max = 0;
 
+    while (s[max] != '\0')
+    {
+        max++;
+    }
+    return max;
 }
 
 /*
@@ -20,6 +26,10 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
+    char *s = "Hello";
+    char *p = find_end(s);
+
+    return 0;
 
 }
 
