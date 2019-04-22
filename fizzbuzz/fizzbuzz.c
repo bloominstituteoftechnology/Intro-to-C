@@ -11,6 +11,15 @@
 int fizzbuzz(int n)
 {
 
+    if (n % 5 == 0)
+    {
+        return printf("Fizz\n");
+    }
+
+    if (n % 3 == 0)
+    {
+        return printf("Buzz\n");
+    }
 }
 
 #ifndef TESTING
