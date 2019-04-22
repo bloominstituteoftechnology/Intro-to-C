@@ -17,7 +17,7 @@ int string_length(char *s)
     }
     return max;
 }
-
+//!man strtol; string to long; <stdlib.h>;
 /*
     Write a function that reverses the order of string s and outputs 
     the reversed string to the input array rv. The rv array will have 
@@ -26,11 +26,15 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
-    char *s = "Hello";
-    char *p = find_end(s);
-
-    return 0;
-
+    int theLength = string_length(s) - 1;
+    int theStart = 0;
+    for (int i = theLength; i >= 0; i--)
+    {
+        rv[theStart] = s[i];
+        theStart++;
+    }
+    rv[theStart] = 0;
+    return rv;
 }
 
 #ifndef TESTING
