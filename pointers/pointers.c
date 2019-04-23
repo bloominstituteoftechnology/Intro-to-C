@@ -53,8 +53,32 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
+    {
+        char *hayPointer;
+        while (*haystack != '\0')
+        {
+            hayPointer = haystack;
+            if (*hayPointer == *needle)
+            {
+                while (*needle != '\0')
+                {
+                    if (*hayPointer != *needle)
+                    {
+                        break;
+                    }
+                    hayPointer++;
+                    needle++;
+                    if (*needle == '\0')
+                    {
+                        return haystack;
+                    }
+                }
+            }
+            haystack++;
+        }
 
-}
+        return NULL;
+    }
 
 #ifndef TESTING
 int main(void)
