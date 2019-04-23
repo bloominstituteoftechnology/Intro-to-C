@@ -4,8 +4,8 @@
 
 ### Common Errors
 
-* [`runtests.sh: 4: Syntax error: word unexpected (expecting "do")`](#q100)
-* [`runtests.sh: 3: 56059 Segmentation fault: 11  $VALGRIND`](#q200)
+* [`runtests.sh: $'\r': command not found` or `Syntax error: word unexpected (expecting "do")`](#q100)
+* [`runtests.sh: 56059 Segmentation fault: 11  $VALGRIND`](#q200)
 * [Mac: `malformed object` error when running `make tests`](#q300)
 * [What does the "implicit declaration of function" warning mean?](#q1500)
 * [What is a segmentation fault and how do I stop it?](#q2100)
@@ -33,6 +33,7 @@
 * [How do I know which header files to `#include` for any particular function?](#q4000)
 * [What are bits, bytes, kilobytes, megabytes, and all that?](#q4400)
 * [What's the difference between `#include` with double quotes and `#include` with angle brackets?](#q4600)
+* [Why does `main()` return `0`? What does the return value mean?](#q5800)
 * [Is there a difference between `exit()` and `return`?](#q4800)
 * [What is "undefined behavior" in C?](#q5000)
 * [How do I write preprocessor macros with `#define`?](#q5200)
@@ -40,6 +41,9 @@
 * [How do I make my own Makefile?](#q5500)
 * [Why are there so many `printf()` variants? How do I know which one to use?](#q5600)
 * [Why is `main()` always at the bottom of the file?](#q5700)
+* [Do we have to have a `main()`? Can there be more than one?](#q5900)
+* [Can `main()` return `void`? What about `main()` with no parameters?](#q6000)
+* [Do we need a semicolon at the end of every line?](#q6100)
 
 ### Strings
 
@@ -77,6 +81,8 @@
 * [What's the `incompatible integer to pointer conversion` error?](#q3400)
 * [Should I declare a pointer to a thing, or just declare the thing?](#q4700)
 * [When you free a pointer, does it get set to `NULL` automatically?](#q5100)
+* [Can a pointer pointer to more than one thing? What about to arrays and `struct`s?](#q6200)
+* [If variables are stored in memory, where are pointers stored?](#q6300)
 
 ### Heap, Stack, Dynamic Memory
 
@@ -91,7 +97,7 @@
 ## Questions
 
 <a name="q100"></a>
-### `runtests.sh: 4: Syntax error: word unexpected (expecting "do")`
+### `runtests.sh: $'\r': command not found` or `Syntax error: word unexpected (expecting "do")`
 
 If you see this error:
 
@@ -2025,5 +2031,146 @@ You can also declare functions with _prototypes_ and then put the definition of
 It's more common for C devs to put `main()` at the bottom of the file that
 contains it, and C devs expect it that way, but it's not wrong or frowned upon
 to use prototypes to put it at the top instead.
+
+------------------------------------------------------------------------
+
+<a name="q5800"></a>
+### Why does `main()` return `0`? What does the return value mean?
+
+It doesn't _have_ to. The return value from `main()` is the _exit status_ of the
+process. This is passed back to the program that first launched your program, so
+it can do different things based on the exit status of your program.
+
+Think of it like a way for an exiting program to pass a small piece of
+information (an integer) back to the program that spawned it.
+
+`0` by convention means "success". Non-zero means "failure". The idea there is
+that there's typically only one way for a program to succeed, but many ways for
+it to fail, and you can communicate those different ways with different exit
+codes.
+
+Note that you can also use the `exit()` call, passing an exit status code to it
+as an argument. Using `return` in `main()` is equivalent to calling `exit()`.
+
+In bash, you can look at the exit status of the previous command by `echo`ing
+the `$?` shell variable. In the following example, we use `grep` incorrectly,
+and it exits with status `2` to indicate that. Whereas we use `ls` correctly,
+and it exits with successful status `0`:
+
+```shell
+$ grep
+usage: grep [-abcDEFGHhIiJLlmnOoqRSsUVvwxZ] [-A num] [-B num] [-C[num]]
+	[-e pattern] [-f file] [--binary-files=value] [--color=when]
+	[--context[=num]] [--directories=action] [--label] [--line-buffered]
+	[--null] [pattern] [file ...]
+$ echo $?
+2
+$ ls -d .
+.
+$ echo $?
+0
+```
+
+At the OS level, `fork()` is used to create a new process, and `wait()` is used
+to get the exit status back from that process.
+
+------------------------------------------------------------------------
+
+<a name="q5900"></a>
+### Do we have to have a `main()`? Can there be more than one?
+
+Only if you want to have a program that you can run. When you first launch a
+program, it looks for a function called `main`.
+
+There can only be one `main()` in a program. (There can only be one of any
+function, for that matter.)
+
+It could be that individual files don't have a `main()` in them, but when the
+whole project it built, `main()` is brought in from another source file.
+
+Also, there's a thing called a
+[library](https://en.wikipedia.org/wiki/Library_(computing)) which is a
+collection of functionality that your program makes use of, but doesn't have a
+`main()`, itself. Your program has the `main()`, and it just _calls_ routines
+that are in the library.
+
+[The C Standard Library](https://en.wikipedia.org/wiki/C_standard_library) is a
+library that holds all the standard C functionality (e.g. `printf()`, `sqrt()`,
+etc.) but doesn't have a `main()` of its own. Other programs simply use the
+library.
+
+------------------------------------------------------------------------
+
+<a name="q6000"></a>
+### Can `main()` return `void`? What about `main()` with no parameters?
+
+No. The function signature for `main()` must be one of the following:
+
+```c
+int main(void)
+int main(int argc, char *argv[])
+int main(int argc, char **argv)
+```
+
+Note that the second two are equivalent. Use the first form if you don't need to
+process command line arguments.
+
+Historically, these were also equivalent, but the second form is now obsolete:
+
+```c
+int main(void)  // OK
+int main()      // Obsolete
+```
+
+------------------------------------------------------------------------
+
+<a name="q6100"></a>
+### Do we need a semicolon at the end of every line?
+
+Yes.
+
+Or, more technically, at the end of every statement or expression.
+
+C won't fill them in automatically like JavaScript will.
+
+------------------------------------------------------------------------
+
+<a name="q6200"></a>
+### Can a pointer pointer to more than one thing? What about to arrays and `struct`s?
+
+A pointer is a memory address. A single memory address, a single index number
+into your memory array.
+
+As such, it can only point to a single byte in memory.
+
+For single-byte and multi-byte entities, the pointer _always points to the first
+first byte of that entity_.
+
+If you have an `int` made up of 4 bytes, a pointer to that `int` points to the
+address in memory of the first byte of that `int`.
+
+If you have a `struct`, it points to the first byte of that `struct`.
+
+If you have an array of a zillion `struct`s, it points to the first byte of the
+0th `struct` in that array.
+
+------------------------------------------------------------------------
+
+<a name="q6300"></a>
+### If variables are stored in memory, where are pointers stored?
+
+Pointers themselves are variables.
+
+Variables are stored in memory.
+
+Therefore pointers are also stored in memory.
+
+Remember that a pointer is just an index into memory. It's just a number; in
+fact it's an integer number. We can store integer numbers in memory without a
+hassle.
+
+The only difference between a pointer and an integer is that you can dereference
+the pointer to see what it's pointing to. You can't dereference an integer. In
+memory, they're both just stored as numbers.
 
 ------------------------------------------------------------------------
