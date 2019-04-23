@@ -29,7 +29,7 @@ Person *createPerson(char *name, int age, int height, int weight)
     p->name = (char *)malloc(strlen(name) + 1);
 
     strcpy(p->name, name);
-    
+
     p->age = age;
   
     p->height = height;
@@ -45,6 +45,10 @@ Person *createPerson(char *name, int age, int height, int weight)
 */
 void destroyPerson(Person *who)
 {
+
+    free((*who).name);
+    
+    free(who);
 
 }
 
