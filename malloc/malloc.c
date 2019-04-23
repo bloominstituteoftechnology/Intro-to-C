@@ -3,6 +3,12 @@
 #include <time.h>
 #include "lib.h"
 
+#include <string.h>
+
+int string_length(char *s)
+{
+    return strlen(s);
+}
 /*
     Duplicates the input string by dynamically allocating memory for 
     the duplicate string using `malloc` and then copying the string
@@ -12,8 +18,16 @@
 */
 char *string_dup(char *src)
 {
-
+    char *outstr = (char *)malloc(sizeof(char) * strlen(src) + 1);
+    for (int i = 0; i < strlen(src); i++)
+    {
+        outstr[i] = src[i];
+    }
+    outstr[strlen(src)] = '\0';
+    // printf("dupped str: %s ", outstr);
+    return outstr;
 }
+
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
@@ -24,7 +38,15 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
-
+    char *chardest = (char *)dest;
+    char *charsrc = (char *)src;
+    
+    
+    int length = n / sizeof(char);
+    for (int i = 0; i < length; i++)
+    {
+        chardest[i] = charsrc[i];
+    }
 }
 
 /*
@@ -39,7 +61,32 @@ void mem_copy(void *dest, const void *src, int n)
     Do not use the `realloc` function from the standard libary.
 */
 void *resize_memory(void *ptr, int old_size, int new_size)
+
 {
+    char *old_mem = (char *)ptr;
+    if (new_size > old_size)
+    {
+        char *new_mem = malloc(new_size * sizeof(char));
+        // copy old_mem into new_mem
+        for (int i = 0; i < old_size; i++)
+        {
+            new_mem[i] = old_mem[i];
+        }
+        ptr = new_mem;
+    }
+    else if (new_size < old_size)
+    {
+        // only copy up to new_size
+        char *new_mem = malloc((new_size + 1) * sizeof(char));
+        for (int i = 0; i < new_size; i++)
+        { //
+            new_mem[i] = old_mem[i];
+        }
+        new_mem[new_size + 1] = '\0';
+        ptr = new_mem;
+    }
+    return ptr;
+
 
 }
 
