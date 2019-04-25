@@ -1115,7 +1115,18 @@ In practice, pointers are rarely printed except for debugging.
 <a name="q3100"></a>
 ### Does C have closures?
 
-No.
+No, not in the way that you're used to from higher-level languages. What C does have that essentially acts as a poor man's closure is function pointers. These are literally what their name implies: pointers to functions. 
+
+The standard library implementation of the quicksort sorting algorithm provides a good example of this. It's function signature is 
+```
+void qsort(void *base, size_t nitems, size_t size, int (*compare)(const void *, const void *))
+```
+
+The parameter to notice is the `int (*compare)(const void *, const void *)`. This is a function pointer, mainly denoted by the asterisk in front of the function name all wrapped in parentheses and followed by another set of parentheses containing a parameter signature. 
+
+This signature is saying that the `qsort` function, in addition to the other parameters it receives, also receives a pointer to a function that receives two `const void *`s and returns an `int`. 
+
+Function pointers are used to fulfill the same use case as closures. They can be used to pass some dynamic logic into another function. In the case of `qsort`, the function pointer points to a function that specifies how the comparison for the sorting should be done.
 
 ------------------------------------------------------------------------
 
@@ -2136,7 +2147,7 @@ C won't fill them in automatically like JavaScript will.
 ------------------------------------------------------------------------
 
 <a name="q6200"></a>
-### Can a pointer pointer to more than one thing? What about to arrays and `struct`s?
+### Can a pointer point to more than one thing? What about to arrays and `struct`s?
 
 A pointer is a memory address. A single memory address, a single index number
 into your memory array.
