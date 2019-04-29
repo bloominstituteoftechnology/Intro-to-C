@@ -2,7 +2,7 @@
 
 Functions in C are not much different from functions in JavaScript. Probably the most notable difference, at least from a syntactic point of view, is that you need to specify types on all your variables and input parameters, along with needing to specify the return type of the function. Remember, C is a _strongly_ typed language, as opposed to JavaScript which is a _loosely_ typed language where types are entirely inferred by the interpreter. The C compiler ensures that you specify your types and that your code is consistent with the types you specify. 
 
-Here is a non-comprehensive list of C data types: [https://www.le.ac.uk/users/rjm1/cotter/page_22.htm](https://www.le.ac.uk/users/rjm1/cotter/page_22.htm)
+Here is a non-comprehensive list of C data types: [https://codeforwin.org/2015/05/list-of-all-format-specifiers-in-c-programming.html](https://codeforwin.org/2015/05/list-of-all-format-specifiers-in-c-programming.html)
 
 To reiterate, you might declare a function in C like this:
 ```c
