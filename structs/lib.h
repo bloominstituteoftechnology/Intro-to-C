@@ -3,6 +3,8 @@
 
 #include <string.h>
 
+char *strdup(const char *);
+
 char *string_dup(char *src)
 {
   return strdup(src);
