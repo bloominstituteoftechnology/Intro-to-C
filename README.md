@@ -1,6 +1,6 @@
 # Introduction to the C Programming Language
 
-Welcome to your first C lab!
+Welcome to your first C sprint!
 
 The two main goals of this sprint are as follows. The first goal is to give
 students the experience of learning a different programming language. This is
@@ -31,11 +31,11 @@ control that C provides you intoxicating.
 
 But before any of that happens, you've gotta get your feet wet with C. So without further ado, let's get started!
 
-## What you'll be doing in this lab
+## What you'll be doing in this sprint
 
 If you haven't gotten your C compiler up and running, please do that first. You'll find instructions on how to do that for your specific platform here: https://github.com/LambdaSchool/CS-Wiki/wiki/Getting-Your-C-Compiler-Installed.
 
-This lab is structured very much like how your introductory JavaScript labs are structured. There are independent modules, each with their own set of exercises that you'll be tasked with implementing. There's an associated set of tests for all the exercises in each module, which you'll run against your code to check to see if it behaves and functions correctly. The order in which you should tackle these exercises is this:
+This sprint is structured very much like how your introductory JavaScript sprints are structured. There are independent modules, each with their own set of exercises that you'll be tasked with implementing. There's an associated set of tests for all the exercises in each module, which you'll run against your code to check to see if it behaves and functions correctly. The order in which you should tackle these exercises is this:
 
   - [ ] fizzbuzz
   - [ ] strings
