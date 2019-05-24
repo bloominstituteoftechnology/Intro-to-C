@@ -54,6 +54,7 @@ char *all_tests()
 {
     mu_suite_start();
 
+    mu_run_test(test_string_copy);
     mu_run_test(test_find_char);
     mu_run_test(test_find_string);
 
