@@ -2,9 +2,8 @@
 #include "lib.h" 
 
 /*
-    Implement the Quicksort algorithm. You'll likely want to re-use the
-    `swap` function you implemented in the pointers module (which is
-    already being included for you in this file).
+    Implement the Quicksort algorithm. You'll likely want to use the `swap`
+    function, which is already being included for you in this file.
 
     The `low` and `high` parameters indicate the lowest and highest indices
     of the array that is getting passed in. This is necessary because the 
