@@ -9,10 +9,12 @@ char *test_queue_creation()
 {
     unsigned int capacity = 5;
     Queue *q = createQueue(capacity);
+    printf("Storage pointer in test: %p\n", q->storage);
 
     mu_assert(q, "Your createQueue function did not return a valid pointer to the created queue.");
     mu_assert(q->length == 0, "Your createQueue function did not initialize a queue length of 0.");
     mu_assert(q->capacity == capacity, "Your createQueue function did not initialize a queue with the expected capacity.");
+    
     mu_assert(q->storage, "Your createQueue function did not initialize a pointer for storage in the queue.");
 
     destroyQueue(q);
