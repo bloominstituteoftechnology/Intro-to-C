@@ -26,7 +26,7 @@ void string_copy(char *x, char *y)
 
     Do not use the `strchr` function from the standard library.
 */
-char *find_char(char *str, int c)
+char *find_char(char *str, char c)
 {
 
 }
