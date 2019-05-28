@@ -26,7 +26,7 @@ char *test_find_char()
     mu_assert(strcmp(found, "School") == 0, "Your find_char function did not work as expected.");
 
     found = find_char(str, 's');
-
+    printf("found = %p\n", found);
     mu_assert(!found, "Your find_char function return a char when it should have returned NULL.");
 
     return NULL;
@@ -44,7 +44,7 @@ char *test_find_string()
     mu_assert(strcmp(found, "LambdaSchool") == 0, "Your find_sting function did not find the expected substring.");
 
     found = find_string(str, "lambda");
-
+    printf("found = %p\n", found);
     mu_assert(!found, "Your find_string function found a substring when it should have returned NULL.");
 
     return NULL;

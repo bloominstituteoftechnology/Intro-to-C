@@ -15,7 +15,14 @@
 */
 void string_copy(char *x, char *y)
 {
+    int length = 0;
 
+    while (*(y + length) != '\0') {
+        *(x + length) = *(y + length);
+        length += 1;
+    }
+
+    *(x + length) = '\0';
 }
 
 /*
@@ -28,7 +35,14 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, int c)
 {
-
+    int check = 0;
+    while (*(str + check) != '\0') {
+        if (*(str + check) == c) {
+            return str + check;
+        }
+        check += 1;
+    }
+    return NULL;
 }
 
 /*
@@ -41,6 +55,28 @@ char *find_char(char *str, int c)
 */
 char *find_string(char *haystack, char *needle)
 {
+    int check = 0;
+    int letter = 0;
+    int isEnd = 0;
+
+    while (*(haystack + check) != '\0') {
+        if (*(haystack + check) == *(needle + letter)) {
+            while (*(needle + letter) != '\0' && *(haystack + check + letter) != '\0') {
+                if (*(needle + letter) != *(haystack + check + letter)) {
+                    letter = 0;
+                    break;
+                } else if (*(needle + letter + 1) == '\0') {
+                    isEnd = 1;
+                }
+                letter += 1;
+            }
+            if (isEnd) {
+                return haystack + check;
+            }
+        }
+        check += 1;
+    }
+    return NULL;
 
 }
 
