@@ -25,7 +25,6 @@ Queue *createQueue(unsigned capacity)
 
     newQueue->storage = malloc(sizeof(int) * capacity);
 
-    printf("Storage pointer in createQueue: %p\n", newQueue->storage);
     return newQueue;
 }
 

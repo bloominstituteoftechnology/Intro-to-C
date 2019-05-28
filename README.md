@@ -41,7 +41,7 @@ This sprint is structured very much like how your introductory JavaScript sprint
   - [x] strings
   - [x] pointers
   - [x] malloc
-  - [ ] structs
+  - [x] structs
 
   **Stretch Goal Problems**
   - [ ] queue
