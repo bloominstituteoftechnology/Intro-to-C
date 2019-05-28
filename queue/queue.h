@@ -9,10 +9,10 @@ typedef struct Queue {
 
 Queue *createQueue(unsigned capacity);
 
-void enqueue(Queue *q, int item);
-
 int dequeue(Queue *q);
 
 void destroyQueue(Queue *q);
+void enqueue(Queue *q, int item);
+
 
 #endif

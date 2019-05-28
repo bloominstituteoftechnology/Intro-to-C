@@ -24,7 +24,7 @@ Queue *createQueue(unsigned capacity)
     newQueue->rear = 0;
 
     newQueue->storage = malloc(sizeof(int) * capacity);
-    
+
     printf("Storage pointer in createQueue: %p\n", newQueue->storage);
     return newQueue;
 }
@@ -55,9 +55,13 @@ void enqueue(Queue *q, int item)
 {
     if (isFull(q)) {
         // Add more storage
-        q->rear += q->capacity;
+        int oldCapacity = q->capacity;
         q->capacity *= 2;
         q->storage = resize_memory(q->storage, q->capacity);
+        for (int i = q->front; i < oldCapacity; i++) {
+            q->storage[i+oldCapacity] = q->storage[i];
+        }
+        q->front += oldCapacity;
     }
     q->storage[q->rear] = item;
     q->rear = (q->rear + 1) % q->capacity;
@@ -106,6 +110,7 @@ int main(void)
     enqueue(q, 2);
     enqueue(q, 3);
     enqueue(q, 4);
+    printf("%d\n", dequeue(q));
     enqueue(q, 5);
     enqueue(q, 6);
 
