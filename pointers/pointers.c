@@ -15,6 +15,15 @@
 */
 void string_copy(char *x, char *y)
 {
+while (*y != '\0')
+{
+    *x = *y;
+    y++;
+    x++;
+    printf("%s\n", y);
+    
+}
+
 
 }
 
@@ -28,7 +37,15 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, char c)
 {
-
+while (*str != '\0')
+{
+   if (*str == c) {
+       printf("%s\n", str);
+       return str;
+   }
+   str++;
+}
+return NULL;
 }
 
 /*

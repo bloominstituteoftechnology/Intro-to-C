@@ -28,16 +28,29 @@ char *reverse_string(char *rv, char *s)
 {
     int count = string_length(s);
     int i = 0;
-    while (count >= 0) { 
+    while (count >= 1) { 
         count--;
         *(rv + i) = *(s + count);
-        
         i++;
     }
     *(rv + i) = '\0';
+    printf("%s\n", rv);
     return rv;
 
 }
+
+    // char *reverse_string(char *rv, char *s)
+    // {
+    //     char temp;
+    //     int n = string_length(s);
+
+    //     for (int i = 0; i < n/2; i++) {
+    //         temp = s[i];
+    //         s[i] = s[n-i-1];
+    //         s[n-i-1] = temp;
+    //     }
+    //     return temp;
+    // }
 
 #ifndef TESTING
 int main(void)
