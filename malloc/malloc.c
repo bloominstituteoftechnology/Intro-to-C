@@ -1,7 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "lib.h"
+#include <string.h>
+// #include "lib.h"
+
+int string_length(char *s)
+{
+  return strlen(s);
+}
+
+
+// int string_length(char *s)
+// {
+//     int i = 0;
+
+//     // while (s[n] != '\0') {
+//     //     n++;
+//     // }    
+
+//     while (*(s+i) != '\0') { 
+//         i++;
+//     }
+//     return i;
+// }
 
 /*
     Duplicates the input string by dynamically allocating memory for 
@@ -12,8 +33,35 @@
 */
 char *string_dup(char *src)
 {
-
+    int len = string_length(src);
+    char *newthing = malloc(len + 1);
+    char *start = newthing;
+    
+    while(*src) {
+        // printf("%c\n", *src);
+        // printf("%p\n", src);
+        *newthing = *src;
+        src++;
+        newthing++;   
+    }
+    *newthing = '\0';
+    return start;
 }
+
+//Model Solution
+// char *string_dup(char *src)
+// {
+//    int n = string_length(src);
+//    char *str = malloc(n + 1);
+
+//    for (int i = 0; i < n; i++) {
+//        *(str+i) = *(src+i);
+//    }
+
+//    *(str+n) = '\0';
+
+//    return str;
+// }
 
 /*
     A generic version of string_copy, mem_copy receives a block of memory
@@ -24,8 +72,15 @@ char *string_dup(char *src)
 */
 void mem_copy(void *dest, const void *src, int n)
 {
-
+    char *cast_dest = (char *) dest;
+    char *cast_src = (char *) src;
+    for (int i=0; i<n; i++) {
+        *(cast_dest + i) = *(cast_src + i);
+    }
 }
+
+
+
 
 /*
     Given a pointer of `malloc`'d memory, this function will 
@@ -38,9 +93,45 @@ void mem_copy(void *dest, const void *src, int n)
     
     Do not use the `realloc` function from the standard libary.
 */
+// void *resize_memory(void *ptr, int old_size, int new_size)
+// {
+//     char *dest_ptr = malloc(new_size);
+//     if (old_size < new_size) {
+//         mem_copy(dest_ptr, ptr, old_size);
+//     } else {
+//         mem_copy(dest_ptr, ptr, new_size);
+//     }
+//     return dest_ptr;
+// }
+
+// Model Solution
 void *resize_memory(void *ptr, int old_size, int new_size)
 {
+    if (new_size == 0) {
+        free(ptr);
+        return NULL;
+    }
 
+    else if (!ptr) {
+        return malloc(new_size);
+    }
+
+    else if (old_size == new_size) {
+        return ptr;
+    }
+
+    void *new_block = malloc(new_size);
+
+    if (new_size < old_size) {
+        mem_copy(new_block, ptr, new_size);
+    }
+
+    else {
+        mem_copy(new_block, ptr, old_size);
+    }
+
+    free(ptr);
+    return new_block;
 }
 
 #ifndef TESTING

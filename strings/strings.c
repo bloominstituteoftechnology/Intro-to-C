@@ -9,13 +9,16 @@
 */
 int string_length(char *s)
 {
-    
-int count = 0;
-while (*(s + count) != '\0')
-{
-   count++;
-}
-return count;
+    int i = 0;
+
+    // while (s[n] != '\0') {
+    //     n++;
+    // }    
+
+    while (*(s+i) != '\0') { 
+        i++;
+    }
+    return i;
 }
 
 /*
@@ -24,6 +27,31 @@ return count;
     enough space for the reversed string. Don't forget to terminate 
     the reversed string with a null character. Return the rv array.
 */
+char *reverse_string(char *rv, char *s)
+{
+    int reverseReverse = string_length(s);
+    int newIndex = 0;
+    for (int i = reverseReverse - 1; i >= 0; i--) {
+        rv[newIndex] = s[i];
+        newIndex++;
+    }
+    rv[reverseReverse] = '\0';
+    return rv;
+}
+
+// char *reverse_string(char rv[], char s[])
+// {
+//     int count = 0;
+//     int n = string_length(s);
+
+//     for (int i = n - 1; i >= 0; i--) {
+//         rv[count++] = s[i];
+//     }
+
+//     rv[n] = '\0';
+//     return rv;
+// }
+
 char *reverse_string(char *rv, char *s)
 {
     int count = string_length(s);
@@ -39,18 +67,19 @@ char *reverse_string(char *rv, char *s)
 
 }
 
-    // char *reverse_string(char *rv, char *s)
-    // {
-    //     char temp;
-    //     int n = string_length(s);
+// char *reverse_string(char *rv, char *s)
+//     {
+//         char temp;
+//         int n = string_length(s);
 
-    //     for (int i = 0; i < n/2; i++) {
-    //         temp = s[i];
-    //         s[i] = s[n-i-1];
-    //         s[n-i-1] = temp;
-    //     }
-    //     return temp;
-    // }
+//         for (int i = 0; i < n/2; i++) {
+//             temp = s[i];
+//             s[i] = s[n-i-1];
+//             s[n-i-1] = temp;
+//         }
+//         return temp;
+//     }
+
 
 #ifndef TESTING
 int main(void)
@@ -66,4 +95,3 @@ int main(void)
     return 0;
 }
 #endif
-    
