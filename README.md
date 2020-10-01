@@ -3,12 +3,12 @@
 Welcome to your first C sprint!
 
 The two main goals of this sprint are as follows. The first goal is to give
-students the experience of learning a different programming language. This is
-important because it is _very_ rarely the case where you are familiar and
+students the experience of learning a different programming language in an
+easier way . This is important because it is _very_ rarely the case where you are familiar and
 comfortable with all of the technologies/programming languages that you'll be
 using on a job as a professional developer. Being able to pick up
 languages/technologies you aren't familiar with is a skill that we want to
-cultivate in students during their time here at Lambda, which is why we expose
+cultivate in students during their time here at Lambda School , which is why we expose
 students to both C and Python during their time here.
 
 The second goal is to start peeling away the layers of abstraction that students
@@ -63,4 +63,5 @@ inside that program's `main` function.
 
 ## Troubleshooting
 
-For things that go wrong, check out the [troubleshooting](TROUBLESHOOTING.md) doc.
+For things that go wrong, check out the  [troubleshooting] (TROUBLESHOOTING.md) doc.
+
