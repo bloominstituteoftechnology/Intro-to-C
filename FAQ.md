@@ -1083,7 +1083,7 @@ instructions](https://www.thegeekstuff.com/2010/03/debug-c-program-using-gdb/)
 are reported good for WSL on Windows.
 
 [The CS Wiki
-page](https://github.com/LambdaSchool/CS-Wiki/wiki/C-and-Cpp-Debugging-in-VS-Code)
+page](https://github.com/BloomInstituteOfTechnology/CS-Wiki/wiki/C-and-Cpp-Debugging-in-VS-Code)
 might help, but it's slightly outdated since VS Code is in heavy development.
 
 [This video](https://www.youtube.com/watch?v=aWIs6Kv1MvE) is reported good, as

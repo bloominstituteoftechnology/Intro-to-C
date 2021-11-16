@@ -65,7 +65,7 @@ int main(void)
 
     printf("\n");
 
-    char *url = string_dup("http://lambdaschool.com");
+    char *url = string_dup("http://bloomtech.com");
     char *path = string_dup("/students/");
     int url_length = string_length(url);
     int path_length = string_length(path);

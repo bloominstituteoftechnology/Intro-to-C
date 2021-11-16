@@ -26,7 +26,7 @@ char *test_mem_copy()
     mem_copy(target, numbers, n * sizeof(int));
     mu_assert(check_arrays(target, numbers, n, n) == 1, "Your mem_copy function did not correctly copy an array of integers.");
 
-    char src[50] = "http://lambdaschool.com";
+    char src[50] = "http://bloomtech.com";
     char dest[50];
 
     mem_copy(dest, src, strlen(src)+1);
@@ -39,7 +39,7 @@ char *test_mem_copy()
 
 char *test_resize_memory()
 {
-    char *url = strdup("http://lambdaschool.com");
+    char *url = strdup("http://bloomtech.com");
     char *path = strdup("/students/");
     int url_length = strlen(url);
     int path_length = strlen(path);
@@ -56,7 +56,7 @@ char *test_resize_memory()
 
     *p = '\0';
 
-    mu_assert(check_strings(new_url, "http://lambdaschool.com/students/") == 0, "Your resize_memory function did not increase the size of the given string correctly.");
+    mu_assert(check_strings(new_url, "http://bloomtech.com/students/") == 0, "Your resize_memory function did not increase the size of the given string correctly.");
     
     char *new_new_url = resize_memory(new_url, new_length, 8);
 
