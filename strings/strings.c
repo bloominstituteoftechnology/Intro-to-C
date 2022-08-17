@@ -9,7 +9,16 @@
 */
 int string_length(char *s)
 {
+    int i = 0;
 
+    // while (s[n] != '\0') {
+    //     n++;
+    // }    
+
+    while (*(s+i) != '\0') { 
+        i++;
+    }
+    return i;
 }
 
 /*
@@ -20,8 +29,57 @@ int string_length(char *s)
 */
 char *reverse_string(char *rv, char *s)
 {
+    int reverseReverse = string_length(s);
+    int newIndex = 0;
+    for (int i = reverseReverse - 1; i >= 0; i--) {
+        rv[newIndex] = s[i];
+        newIndex++;
+    }
+    rv[reverseReverse] = '\0';
+    return rv;
+}
+
+// char *reverse_string(char rv[], char s[])
+// {
+//     int count = 0;
+//     int n = string_length(s);
+
+//     for (int i = n - 1; i >= 0; i--) {
+//         rv[count++] = s[i];
+//     }
+
+//     rv[n] = '\0';
+//     return rv;
+// }
+
+char *reverse_string(char *rv, char *s)
+{
+    int count = string_length(s);
+    int i = 0;
+    while (count >= 1) { 
+        count--;
+        *(rv + i) = *(s + count);
+        i++;
+    }
+    *(rv + i) = '\0';
+    printf("%s\n", rv);
+    return rv;
 
 }
+
+// char *reverse_string(char *rv, char *s)
+//     {
+//         char temp;
+//         int n = string_length(s);
+
+//         for (int i = 0; i < n/2; i++) {
+//             temp = s[i];
+//             s[i] = s[n-i-1];
+//             s[n-i-1] = temp;
+//         }
+//         return temp;
+//     }
+
 
 #ifndef TESTING
 int main(void)
@@ -37,4 +95,3 @@ int main(void)
     return 0;
 }
 #endif
-    

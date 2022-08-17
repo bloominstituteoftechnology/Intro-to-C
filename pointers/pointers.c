@@ -5,17 +5,18 @@
     character pointer y, copies the character contents of y over to x. Pointer
     arithmetic is necessary here. Also, make sure x points to a null terminator
     at its end to terminate it properly. 
-
     Example call:
-
     char buffer[1024];
-
     string_copy(buffer, "Hello!");
     printf("%s", buffer); // Prints "Hello!"
 */
 void string_copy(char *x, char *y)
 {
-
+    while(*y) {
+        *x = *y;
+        x++;
+        y++;
+    }
 }
 
 /*
@@ -23,12 +24,19 @@ void string_copy(char *x, char *y)
     character `c` (an unsigned char). This function returns a pointer
     that points to the first instance of the character `c` in the
     input string `str`.
-
     Do not use the `strchr` function from the standard library.
 */
 char *find_char(char *str, char c)
 {
-
+while (*str != '\0')
+{
+   if (*str == c) {
+       printf("%s\n", str);
+       return str;
+   }
+   str++;
+}
+return NULL;
 }
 
 /*
@@ -36,12 +44,24 @@ char *find_char(char *str, char c)
     the string `needle`. This function returns a pointer that points
     to the first instance of the string `needle` in the input
     string `haystack`. 
-
     Do not use the `strstr` function from the standard library.
 */
 char *find_string(char *haystack, char *needle)
 {
+    while(*haystack) {
+        char *begin = haystack;
+        char *inside = needle;
 
+        while (*haystack && *inside && *haystack == *inside) {
+            haystack++;
+            inside++;
+        }
+        if (!*inside) {
+            return begin;
+        }
+        haystack = begin + 1;
+    }
+    return NULL;
 }
 
 #ifndef TESTING
