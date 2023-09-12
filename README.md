@@ -2,6 +2,7 @@
 
 Welcome to your first C sprint!
 
+C programming language was developed in 1972 by Dennis Ritchie at bell laboratories of AT&T (American Telephone & Telegraph), located in the U.S.A. Dennis Ritchie is known as the founder of the c language. 
 The two main goals of this sprint are as follows. The first goal is to give
 students the experience of learning a different programming language. This is
 important because it is _very_ rarely the case where you are familiar and
